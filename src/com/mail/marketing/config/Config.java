@@ -5,6 +5,7 @@
  */
 package com.mail.marketing.config;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -16,53 +17,35 @@ import java.util.logging.Logger;
  * @author TUNGLV
  */
 public class Config {
+    private static Properties prop = null;
+    static{
+        prop = new Properties();
+	InputStream input = null;
 
-    static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(Config.class.getName());
-    public static final String[] CONFIG_LOCATIONS_FILE = new String[]{"config.properties", "config.properties"};
-    private static Properties props = null;
-    private static Config instance = new Config();
+	try {
 
-    static {
-        try {
-            props = new Properties();
-            props.load(findResourceAsStream(CONFIG_LOCATIONS_FILE));
-        } catch (Exception e) {
-            logger.error("ERROR Loading config parameters: ", e);
-        }
+		input = new FileInputStream("..\\EmailMarketing\\src\\config.properties");
+
+		// load a properties file
+		prop.load(input);
+
+	} catch (IOException ex) {
+		ex.printStackTrace();
+	} finally {
+		if (input != null) {
+			try {
+				input.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
     }
     //lay gia tri config trong file config.properties o day
-    public static final String DB_NAME = get("db_name");
-    public static final String USER_ACCESS_TOKEN = get("USER_ACCESS_TOKEN");
-    public static final String NUMBER_MAIL = get("number_mail");
-    public static final String STATUS_MAIL_SEND = get("status_mail_send");
-    public static final String STATUS_MAIL_UPDATE = get("status_mail_update");
-    
-
-    public static InputStream findResourceAsStream(String[] fileLocations) {
-        for (String fl : fileLocations) {
-            try {
-                InputStream inputStream = getResourceAsStream(fl);
-                if (inputStream != null) {
-                    return inputStream;
-                }
-            } catch (Exception e) {
-                logger.error("Config.findResourceAsStream(): Error: " + e);
-            }
-        }
-        return null;
-    }
-
-    public static InputStream getResourceAsStream(String filePath) {
-        return instance.getClass().getClassLoader().getResourceAsStream(filePath);
-    }
-
-    public static String get(String key) {
-        String value = props.getProperty(key);
-        if (value == null) {
-            logger.error("Get Null config parameter " + key);
-        } else {
-            value = value.trim();
-        }
-        return value;
-    }
+    public static final String DB_NAME = prop.getProperty("db_name");
+    public static final String USER_ACCESS_TOKEN = prop.getProperty("USER_ACCESS_TOKEN");
+    public static final String NUMBER_MAIL = prop.getProperty("number_mail");
+    public static final String STATUS_MAIL_SEND = prop.getProperty("status_mail_send");
+    public static final String STATUS_MAIL_UPDATE = prop.getProperty("status_mail_update");
 }
