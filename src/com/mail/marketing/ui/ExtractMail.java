@@ -5,6 +5,8 @@
  */
 package com.mail.marketing.ui;
 
+import com.mail.marketing.entity.FaceBook;
+
 /**
  *
  * @author PMDVCNTT
@@ -38,7 +40,7 @@ public class ExtractMail extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Extract Email");
 
-        cbxSource.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fanpage", "Group", " ", " " }));
+        cbxSource.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FANPAGE", "GROUP", " ", " " }));
         cbxSource.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxSourceActionPerformed(evt);
@@ -59,6 +61,11 @@ public class ExtractMail extends javax.swing.JFrame {
 
         btExtract.setText("Extract");
         btExtract.setToolTipText("click vao day xuat file va insert du lieu vao bang tbl_email");
+        btExtract.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExtractActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("User Token");
         jLabel3.setToolTipText("");
@@ -75,11 +82,11 @@ public class ExtractMail extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cbxSource, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFromDate, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbxSource, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtFromDate, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btExtract, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(txtToken, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -145,6 +152,21 @@ public class ExtractMail extends javax.swing.JFrame {
     private void txtFromDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFromDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFromDateActionPerformed
+
+    private void btExtractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExtractActionPerformed
+        // TODO add your handling code here:
+        String token = txtToken.getText().trim();
+        //type: FANPAGE, GROUP
+        String type = cbxSource.getSelectedItem().toString().trim();
+        String fromDate = txtFromDate.getText().trim();
+        if (type.equals(FaceBook.TYPE_FANPAGE)) {
+            //lay danh sach fanpage
+
+        }
+        if (type.equals(FaceBook.TYPE_GROUP)) {
+
+        }
+    }//GEN-LAST:event_btExtractActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btExtract;

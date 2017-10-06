@@ -33,11 +33,11 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="cbxSource" min="-2" pref="77" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" pref="83" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtFromDate" min="-2" pref="118" max="-2" attributes="0"/>
+                      <Component id="cbxSource" min="-2" pref="94" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" pref="74" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="txtFromDate" min="-2" pref="112" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btExtract" max="32767" attributes="0"/>
                   </Group>
@@ -73,8 +73,8 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
-            <StringItem index="0" value="Fanpage"/>
-            <StringItem index="1" value="Group"/>
+            <StringItem index="0" value="FANPAGE"/>
+            <StringItem index="1" value="GROUP"/>
             <StringItem index="2" value=" "/>
             <StringItem index="3" value=" "/>
           </StringArray>
@@ -111,6 +111,9 @@
         <Property name="text" type="java.lang.String" value="Extract"/>
         <Property name="toolTipText" type="java.lang.String" value="click vao day xuat file va insert du lieu vao bang tbl_email"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btExtractActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
