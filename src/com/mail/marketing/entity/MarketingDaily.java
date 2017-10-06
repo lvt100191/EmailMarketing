@@ -18,7 +18,7 @@ public class MarketingDaily {
     //id cua bai dang
     String idFeed;
     //thoi gian dang
-    Date postDate;
+    String postDate;
     //id_Facebook cua group hay fanpage
     String fromSource;
     //ten group. fanpage
@@ -47,11 +47,11 @@ public class MarketingDaily {
         this.idFeed = idFeed;
     }
 
-    public Date getPostDate() {
+    public String getPostDate() {
         return postDate;
     }
 
-    public void setPostDate(Date postDate) {
+    public void setPostDate(String postDate) {
         this.postDate = postDate;
     }
 
@@ -62,7 +62,6 @@ public class MarketingDaily {
     public void setFromSource(String fromSource) {
         this.fromSource = fromSource;
     }
-
 
     public String getName() {
         return name;

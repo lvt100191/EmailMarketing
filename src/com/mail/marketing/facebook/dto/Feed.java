@@ -12,11 +12,12 @@ package com.mail.marketing.facebook.dto;
 public class Feed {
 
     private String id;
+    //thoi gian tao bai dang voi fanpage
     private String createTime;
     //noi dung bai dang
     private String message;
     private String story;
-    //thoi gian dang, thoi gian update gan nhat bai dang
+    //thoi gian dang, voi group
     private String updateTime;
 
     public String getUpdateTime() {

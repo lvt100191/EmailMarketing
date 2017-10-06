@@ -218,7 +218,7 @@ public class ExtractMail extends javax.swing.JFrame {
                                             listMail.add(mail);
                                             if (!EmailAction.checkMailExisted(mail)) {
                                                 MailDao.insert(email);
-                                           }
+                                            }
 
                                         } catch (Exception e) {
 
@@ -232,7 +232,8 @@ public class ExtractMail extends javax.swing.JFrame {
                             //insert du lieu 
                             MarketingDaily marketingDaily = new MarketingDaily();
                             marketingDaily.setIdFeed(f.getId());
-                            marketingDaily.setPostDate(null);
+                            String createTime = f.getCreateTime();
+                            marketingDaily.setPostDate(createTime);
                             marketingDaily.setFromSource(fg.getIdFacebook());
                             marketingDaily.setName(fg.getName());
                             marketingDaily.setAmountMail(listMail.size());

@@ -37,7 +37,7 @@ public class MarketingDailyDao {
                     + "VALUES (?,?,?,?,?,?,?,?);";
             pst = c.prepareStatement(query);
             pst.setString(1, marketingDaily.getIdFeed());
-            pst.setDate(2, (Date) marketingDaily.getPostDate());
+            pst.setString(2, marketingDaily.getPostDate());
             pst.setString(3, marketingDaily.getFromSource());
             pst.setString(4, marketingDaily.getName());
             pst.setInt(5, marketingDaily.getAmountMail());
