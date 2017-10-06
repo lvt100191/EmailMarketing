@@ -5,10 +5,12 @@
  */
 package com.mail.marketing.ui;
 
+import com.mail.marketing.db.DBUtil;
 import com.mail.marketing.db.FaceBookDao;
 import com.mail.marketing.db.MailDao;
 import com.mail.marketing.entity.FaceBook;
 import com.mail.marketing.entity.Mail;
+import com.mail.marketing.entity.MarketingDaily;
 import com.mail.marketing.facebook.dto.Comment;
 import com.mail.marketing.facebook.dto.Feed;
 import com.mail.marketing.facebook.dto.Page;
@@ -219,6 +221,10 @@ public class ExtractMail extends javax.swing.JFrame {
                         }
                         //insert TBL_MARKETING_DAILY
                         //xoa du lieu trong bang neu co
+                        boolean rs = DBUtil.truncateTable(MarketingDaily.TABLE_NAME);
+                        if(rs){
+                            //insert du lieu 
+                        }
                     }
                 }
             } catch (Exception ex) {
