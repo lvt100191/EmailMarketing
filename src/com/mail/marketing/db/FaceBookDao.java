@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import org.apache.log4j.Logger;
 
 /**
@@ -18,9 +19,10 @@ import org.apache.log4j.Logger;
  * @author TUNGLV
  */
 public class FaceBookDao {
-     static Logger logger = Logger.getLogger(FaceBookDao.class.getName());
-     
-         public static FaceBook getFaceBook(FaceBook face) throws SQLException, Exception {
+
+    static Logger logger = Logger.getLogger(FaceBookDao.class.getName());
+
+    public static FaceBook getFaceBook(FaceBook face) throws SQLException, Exception {
         FaceBook fb = null;
         Connection c = null;
         PreparedStatement pst = null;
@@ -45,13 +47,52 @@ public class FaceBookDao {
 
             }
         } catch (Exception e) {
-           throw new Exception(e.getMessage());
+            throw new Exception(e.getMessage());
         } finally {
             rs.close();
             pst.close();
             c.close();
         }
         return fb;
+
+    }
+
+    public static ArrayList<FaceBook> getListFaceBook(String type) throws SQLException, Exception {
+        ArrayList<FaceBook> lst = new ArrayList<>();
+        Connection c = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+
+            String query = "SELECT * FROM  " + FaceBook.TABLE_NAME
+                    + " WHERE "
+                    + " type=?; ";
+            pst = c.prepareStatement(query);
+            pst.setString(1, type);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                FaceBook fb = new FaceBook();
+                int id = rs.getInt("id");
+                String idFacebook = rs.getString("id_facebook");
+                String name = rs.getString("name");
+                fb = new FaceBook();
+                fb.setId(id);
+                fb.setIdFacebook(idFacebook);
+                fb.setName(name);
+                fb.setType(type);
+                lst.add(fb);
+
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            rs.close();
+            pst.close();
+            c.close();
+        }
+        return lst;
 
     }
 

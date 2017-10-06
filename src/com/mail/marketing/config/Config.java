@@ -36,6 +36,7 @@ public class Config {
     public static final String NUMBER_MAIL = get("number_mail");
     public static final String STATUS_MAIL_SEND = get("status_mail_send");
     public static final String STATUS_MAIL_UPDATE = get("status_mail_update");
+    
 
     public static InputStream findResourceAsStream(String[] fileLocations) {
         for (String fl : fileLocations) {

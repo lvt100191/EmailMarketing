@@ -5,7 +5,22 @@
  */
 package com.mail.marketing.ui;
 
+import com.mail.marketing.db.FaceBookDao;
+import com.mail.marketing.db.MailDao;
 import com.mail.marketing.entity.FaceBook;
+import com.mail.marketing.entity.Mail;
+import com.mail.marketing.facebook.dto.Comment;
+import com.mail.marketing.facebook.dto.Feed;
+import com.mail.marketing.facebook.dto.Page;
+import com.mail.marketing.facebook.usecase.FanPageAction;
+import com.mail.marketing.mail.EmailAction;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -52,7 +67,7 @@ public class ExtractMail extends javax.swing.JFrame {
         jLabel2.setText("From Date");
         jLabel2.setToolTipText("lay cac bai dang tu ngay nhap vao den ngay hien tai");
 
-        txtFromDate.setToolTipText("Định dạng yyyy/MM/dd");
+        txtFromDate.setToolTipText("Định dạng: yyyy-MM-dd");
         txtFromDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFromDateActionPerformed(evt);
@@ -158,10 +173,58 @@ public class ExtractMail extends javax.swing.JFrame {
         String token = txtToken.getText().trim();
         //type: FANPAGE, GROUP
         String type = cbxSource.getSelectedItem().toString().trim();
-        String fromDate = txtFromDate.getText().trim();
+        String fromDateUI = txtFromDate.getText().trim();
         if (type.equals(FaceBook.TYPE_FANPAGE)) {
-            //lay danh sach fanpage
+            try {
+                //lay danh sach FaceBook co type FANPAGE
+                ArrayList<FaceBook> lst = FaceBookDao.getListFaceBook(FaceBook.TYPE_FANPAGE);
+                FanPageAction fanPageAction = new FanPageAction();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date fromDate = sdf.parse(fromDateUI);
+                for (FaceBook fg : lst) {
 
+                    //lay thong tin trang
+                    Page page = fanPageAction.getPageInfoById(token, fg.getIdFacebook());
+                    //lay danh sach bai da dang tu ngay fromDate truyen vao den hien tai
+                    ArrayList<Feed> lstFeed = fanPageAction.getFeed(token, page.getId(), fromDate);
+                    //lay danh sach binh luan theo bai dang
+                    String mail = null;
+                    for (Feed f : lstFeed) {
+                        ArrayList<Comment> comments = fanPageAction.getComments(token, f.getId());
+                        for (Comment c : comments) {
+                            //neu co email thi gui mail
+                            String comment = c.getContentComment();
+                            if (comment.contains("@")) {
+                                Matcher m = Pattern.compile("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+").matcher(comment);
+                                while (m.find()) {
+                                    try {
+                                        mail = m.group();
+                                        char end = mail.charAt(mail.length() - 1);
+                                        if (end == '.') {
+                                            mail = mail.substring(0, mail.length() - 1);
+                                        }
+                                        Mail email = new Mail();
+                                        email.setEmail(mail);
+                                        //select  count (*), email  from TBL_MAIL   group by email having count(*)>1 ;
+                                        if (!EmailAction.checkMailExisted(mail)) {
+                                            MailDao.insert(email);
+                                        }
+
+                                    } catch (Exception e) {
+
+                                    }
+                                }
+                            }
+
+                        }
+                        //insert TBL_MARKETING_DAILY
+                        //xoa du lieu trong bang neu co
+                    }
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(ExtractMail.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            System.out.println("extract mail thanh cong");
         }
         if (type.equals(FaceBook.TYPE_GROUP)) {
 

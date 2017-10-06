@@ -6,9 +6,11 @@
 package com.mail.marketing.db;
 
 import com.mail.marketing.config.Config;
+import com.mail.marketing.entity.MarketingDaily;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,10 +25,6 @@ import org.apache.log4j.Logger;
 public class DBUtil {
 
     static Logger logger = Logger.getLogger(DBUtil.class.getName());
-
-    public static void main(String[] args) throws SQLException {
-        connectDB("customer.db");
-    }
 
     //tao ket noi den DB
     public static Connection connectDB(String fileName) throws SQLException {
@@ -61,6 +59,27 @@ public class DBUtil {
             conn.close();
         }
         return false;
+    }
+
+    //xoa du lieu trong bang
+    //xoa thanh cong return true, khong thanh cong return fasle
+    public static boolean truncateTable(String tableName) throws SQLException {
+        Connection conn = null;
+        PreparedStatement pst = null;
+        try {
+            conn = connectDB(Config.DB_NAME);
+            String query = "DELETE FROM  " + tableName + ";";
+            pst = conn.prepareStatement(query);
+            pst.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            logger.error("tunglv4 loi kiem tra bang du lieu");
+            return false;
+        } finally {
+            pst.close();
+            conn.close();
+        }
     }
 
     public static void insertTest() {
@@ -170,6 +189,10 @@ public class DBUtil {
             c.close();
         }
         System.out.println("Operation done successfully");
+    }
+
+    public static void main(String[] args) throws SQLException {
+        truncateTable(MarketingDaily.TABLE_NAME);
     }
 
 }

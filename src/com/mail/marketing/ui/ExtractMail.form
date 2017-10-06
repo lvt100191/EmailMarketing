@@ -100,7 +100,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtFromDate">
       <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="&#x110;&#x1ecb;nh d&#x1ea1;ng yyyy/MM/dd"/>
+        <Property name="toolTipText" type="java.lang.String" value="&#x110;&#x1ecb;nh d&#x1ea1;ng: yyyy-MM-dd"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFromDateActionPerformed"/>
