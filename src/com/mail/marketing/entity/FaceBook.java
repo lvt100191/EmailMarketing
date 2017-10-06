@@ -15,6 +15,7 @@ public class FaceBook {
     public static final String TYPE_FANPAGE="FANPAGE";
     
     int id;
+    //id cua trang hoac nhom tren face
     String idFacebook;
     String name;
     String type;

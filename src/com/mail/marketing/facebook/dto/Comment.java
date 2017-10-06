@@ -15,6 +15,7 @@ public class Comment {
     //ten nguoi binh luan
     User user;
     String timeComment;
+    //thuoc bai dang nao
     String idFeed;
     String contentComment;
 
