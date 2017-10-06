@@ -199,7 +199,7 @@ public class FanPageAction {
         
         //lay thong tin email tu binh luan insert vao DB
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date fromDate = sdf.parse("2017-10-05");
+        Date fromDate = sdf.parse("2017-10-06");
         fanPage.getEmailInComments(token, fromDate);
         
         
