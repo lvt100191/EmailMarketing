@@ -28,7 +28,7 @@ public class MarketingDailyDao {
             String query = "INSERT INTO " + MarketingDaily.TABLE_NAME
                     + "(id_feed,"
                     + "post_date,"
-                    + "from,"
+                    + "from_source,"
                     + "name,"
                     + "amount_mail,"
                     + "mail_list,"
@@ -38,7 +38,7 @@ public class MarketingDailyDao {
             pst = c.prepareStatement(query);
             pst.setString(1, marketingDaily.getIdFeed());
             pst.setDate(2, (Date) marketingDaily.getPostDate());
-            pst.setString(3, marketingDaily.getFrom());
+            pst.setString(3, marketingDaily.getFromSource());
             pst.setString(4, marketingDaily.getName());
             pst.setInt(5, marketingDaily.getAmountMail());
             pst.setString(6, marketingDaily.getMailList());

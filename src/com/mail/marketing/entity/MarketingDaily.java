@@ -15,13 +15,20 @@ public class MarketingDaily {
 
     public static final String TABLE_NAME = "TBL_MARKETING_DAILY";
     int id;
+    //id cua bai dang
     String idFeed;
+    //thoi gian dang
     Date postDate;
-    String from;
+    //id_Facebook cua group hay fanpage
+    String fromSource;
+    //ten group. fanpage
     String name;
+    //so mail trong bai dang
     int amountMail;
+    //danh sach mail
     String mailList;
     String note;
+    //noi dung bai dang
     String content;
 
     public int getId() {
@@ -48,13 +55,14 @@ public class MarketingDaily {
         this.postDate = postDate;
     }
 
-    public String getFrom() {
-        return from;
+    public String getFromSource() {
+        return fromSource;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setFromSource(String fromSource) {
+        this.fromSource = fromSource;
     }
+
 
     public String getName() {
         return name;
