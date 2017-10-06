@@ -7,9 +7,9 @@ package com.mail.marketing.db;
 
 import com.mail.marketing.config.Config;
 import com.mail.marketing.entity.FaceBook;
-import com.mail.marketing.entity.Mail;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.apache.log4j.Logger;
 
@@ -19,6 +19,41 @@ import org.apache.log4j.Logger;
  */
 public class FaceBookDao {
      static Logger logger = Logger.getLogger(FaceBookDao.class.getName());
+     
+         public static FaceBook getFaceBook(FaceBook face) throws SQLException, Exception {
+        FaceBook fb = null;
+        Connection c = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+
+            String query = "SELECT * FROM  " + FaceBook.TABLE_NAME
+                    + " WHERE "
+                    + " id_facebook = ? and type=?; ";
+            pst = c.prepareStatement(query);
+            pst.setString(1, face.getIdFacebook());
+            pst.setString(2, face.getType());
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String idFacebook = rs.getString("id_facebook");
+                fb = new FaceBook();
+                fb.setId(id);
+                fb.setIdFacebook(idFacebook);
+
+            }
+        } catch (Exception e) {
+           throw new Exception(e.getMessage());
+        } finally {
+            rs.close();
+            pst.close();
+            c.close();
+        }
+        return fb;
+
+    }
 
     public static void insert(FaceBook face) throws SQLException, Exception {
         Connection c = null;
@@ -34,7 +69,7 @@ public class FaceBookDao {
                     + "note) "
                     + "VALUES (?,?,?,?);";
             pst = c.prepareStatement(query);
-            pst.setString(1, face.getId());
+            pst.setString(1, face.getIdFacebook());
             pst.setString(2, face.getName());
             pst.setString(3, face.getType());
             pst.setString(4, "");

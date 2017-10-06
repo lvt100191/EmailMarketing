@@ -14,18 +14,20 @@ public class FaceBook {
     public static final String TYPE_GROUP="GROUP";
     public static final String TYPE_FANPAGE="FANPAGE";
     
-    String id;
+    int id;
     String idFacebook;
     String name;
     String type;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
+
+ 
 
     public String getIdFacebook() {
         return idFacebook;
