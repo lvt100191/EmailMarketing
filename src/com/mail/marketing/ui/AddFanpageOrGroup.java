@@ -5,7 +5,14 @@
  */
 package com.mail.marketing.ui;
 
+import com.mail.marketing.db.FaceBookDao;
 import com.mail.marketing.entity.FaceBook;
+import com.mail.marketing.facebook.dto.Group;
+import com.mail.marketing.facebook.dto.Page;
+import com.mail.marketing.facebook.usecase.FanPageAction;
+import com.mail.marketing.facebook.usecase.GroupAction;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -36,6 +43,8 @@ public class AddFanpageOrGroup extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         cbxType = new javax.swing.JComboBox<>();
         btAdd = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtToken = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Thêm mới fanpage, group");
@@ -43,6 +52,12 @@ public class AddFanpageOrGroup extends javax.swing.JFrame {
         jLabel1.setText("Tên người dùng");
 
         jLabel2.setText("ID fanpage, group");
+
+        txtID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Loại");
 
@@ -55,6 +70,8 @@ public class AddFanpageOrGroup extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("User token");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -62,25 +79,34 @@ public class AddFanpageOrGroup extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btAdd)
+                    .addComponent(txtToken)
                     .addComponent(txtUserName)
                     .addComponent(txtID)
-                    .addComponent(cbxType, 0, 146, Short.MAX_VALUE))
-                .addContainerGap(88, Short.MAX_VALUE))
+                    .addComponent(cbxType, 0, 194, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                    .addComponent(jLabel4)
+                    .addComponent(txtToken, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -90,22 +116,65 @@ public class AddFanpageOrGroup extends javax.swing.JFrame {
                     .addComponent(cbxType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(btAdd)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
-        // TODO add your handling code here:
-        FaceBook face = new FaceBook();
-        if(txtID.getText()!=null){
-            face.setId(txtID.getText());
-        }else{
-            String username =  txtUserName.getText();
+        try {
+            // lay thong tin nhap lieu gan vao doi tuong Facebook
+            FaceBook face = new FaceBook();
+            if (cbxType.getSelectedIndex() == 1) {//la fanpage
+                face.setType(FaceBook.TYPE_FANPAGE);
+                if (txtID.getText() != null) {//nhap vao id
+                    try {
+                        face.setId(txtID.getText());
+                        FanPageAction fanPageAction = new FanPageAction();
+                        String token = txtToken.getText();
+                        Page page = fanPageAction.getPageInfoByUserName(token, txtID.getText());
+                    } catch (Exception ex) {
+                        Logger.getLogger(AddFanpageOrGroup.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {//nhap ten nguoi dung
+                    try {
+                        String username = txtUserName.getText();
+                        String token = txtToken.getText();
+                        FanPageAction fanPageAction = new FanPageAction();
+                        Page page = fanPageAction.getPageInfoByUserName(token, username);
+                        face.setId(page.getId());
+                        face.setName(page.getName());
+                    } catch (Exception ex) {
+                        Logger.getLogger(AddFanpageOrGroup.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            if (cbxType.getSelectedIndex() == 2) {//la group
+                face.setType(FaceBook.TYPE_GROUP);
+                if (txtID.getText() != null) {//nhap vao id
+                    try {
+                        face.setId(txtID.getText());
+                        GroupAction groupAction = new GroupAction();
+                        String token = txtToken.getText();
+                        Group group = groupAction.getGroupInfo(token, txtID.getText());
+                        face.setId(group.getId());
+                        face.setName(group.getName());
+                    } catch (Exception ex) {
+                        Logger.getLogger(AddFanpageOrGroup.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            //insert du lieu vao bang TBL_FACEBOOK
+            FaceBookDao.insert(face);
+        } catch (Exception ex) {
+            Logger.getLogger(AddFanpageOrGroup.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }//GEN-LAST:event_btAddActionPerformed
+
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,7 +217,9 @@ public class AddFanpageOrGroup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtToken;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }

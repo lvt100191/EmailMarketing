@@ -10,6 +10,10 @@ package com.mail.marketing.entity;
  * @author TUNGLV
  */
 public class FaceBook {
+    public static final String TABLE_NAME = "TBL_FACEBOOK";
+    public static final String TYPE_GROUP="GROUP";
+    public static final String TYPE_FANPAGE="FANPAGE";
+    
     String id;
     String idFacebook;
     String name;

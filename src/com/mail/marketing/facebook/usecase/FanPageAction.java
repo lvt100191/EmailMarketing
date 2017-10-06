@@ -35,10 +35,23 @@ import org.json.simple.parser.JSONParser;
 public class FanPageAction {
 
     //lay thong tin trang theo username
-    public Page getPageInfo(String token, String username) throws Exception {
+    public Page getPageInfoByUserName(String token, String username) throws Exception {
         Page page = new Page();
         JSONParser parser = null;
         String urlGetPage = "https://graph.facebook.com/" + username + "?access_token=" + token;
+        String jsonStr = ResponseUtil.sendGet(urlGetPage);
+        parser = new JSONParser();
+        JSONObject obj = (JSONObject) parser.parse(jsonStr);
+        page.setId(obj.get("id").toString());
+        page.setName(obj.get("name").toString());
+        return page;
+    }
+    
+    //lay thong tin trang theo id
+    public Page getPageInfoById(String token, String id) throws Exception {
+        Page page = new Page();
+        JSONParser parser = null;
+        String urlGetPage = "https://graph.facebook.com/" + id + "?access_token=" + token;
         String jsonStr = ResponseUtil.sendGet(urlGetPage);
         parser = new JSONParser();
         JSONObject obj = (JSONObject) parser.parse(jsonStr);
@@ -155,7 +168,7 @@ public class FanPageAction {
         for (String username : usernameLst) {
 
             //lay thong tin trang
-            Page page = fanPage.getPageInfo(token, username);
+            Page page = fanPage.getPageInfoByUserName(token, username);
             //lay danh sach bai da dang tu ngay fromDate truyen vao den hien tai
             ArrayList<Feed> lstFeed = fanPage.getFeed(token, page.getId(), fromDate);
             //lay danh sach binh luan theo bai dang
