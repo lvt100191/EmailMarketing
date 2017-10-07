@@ -6,8 +6,11 @@
 package com.mail.marketing.mail;
 
 import com.mail.marketing.config.Config;
+import com.mail.marketing.config.Const;
 import com.mail.marketing.db.MailDao;
 import com.mail.marketing.entity.Mail;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -37,27 +40,26 @@ public class EmailAction {
     //truoc khi gui mail len trang https://wordtohtml.net/ soan html online để trình bày sau đó paste noi dung vao content
     //thay hinh  anh img trong package images
     public static void sendMultiEmail() throws Exception {
-//        String from = "lazada.ohaythe@gmail.com";
-//        String pwd = "123456a@";
+        String from = "lazada.ohaythe@gmail.com";
+        String pwd = "123456a@";
 //        String from = "m1.sonlv95@gmail.com";
 //        String pwd = "123456a@";
-        String from = "m2.sonlv95@gmail.com";
-        String pwd = "123456a@";
+//        String from = "m2.sonlv95@gmail.com";
+//        String pwd = "123456a@";
 //        String from = "m3.sonlv95@gmail.com";
 //        String pwd = "123456a@";
-        String title = "Là con trai ai mà chưa 01 lần?";
-        String content = "<p>Cuối tuần rồi gửi anh em giải tr&iacute; t&yacute;, sorry chị em nha!</p>\n" +
-"<p><a href=\"https://www.youtube.com/watch?v=sJisSYmnKeE\">Chưa 01 lần xếp h&igrave;nh :D</a></p>";
+        String title = Const.TITLE;
+        String content = Const.CONTENT;
 
         String numMail = Config.NUMBER_MAIL;
         String status = Config.STATUS_MAIL_SEND;
         String statusUpdate = Config.STATUS_MAIL_UPDATE;
-        ArrayList<Mail> lst = getListMail(status, numMail);
+        //ArrayList<Mail> lst = getListMail(status, numMail);
         //test mail thi set nhu nay
-//        ArrayList<Mail> lst = new ArrayList<>();
-//        Mail m = new Mail();
-//        m.setEmail("tunglv9x@gmail.com");
-//        lst.add(m);
+        ArrayList<Mail> lst = new ArrayList<>();
+        Mail m = new Mail();
+        m.setEmail("tunglv9x@gmail.com");
+        lst.add(m);
         for (Mail to : lst) {
             try {
                 sendEmail(from, pwd, to.getEmail(), title, content);
@@ -79,7 +81,7 @@ public class EmailAction {
     //mailRecipient: dia chi email nhan
     //title: tieu de mail
     //content: noi dung mail
-    public static void sendEmail(String mailSend, String passwordMailSend, String mailRecipient, String title, String content) throws MessagingException {
+    public static void sendEmail(String mailSend, String passwordMailSend, String mailRecipient, String title, String content) throws MessagingException, FileNotFoundException {
         final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
         // Get a Properties object
         Properties props = System.getProperties();
@@ -122,7 +124,7 @@ public class EmailAction {
 
             // second part (the image)
             messageBodyPart = new MimeBodyPart();
-            DataSource fds = new FileDataSource("C:\\Users\\PMDVCNTT\\Documents\\GitHub\\EmailMarketing\\src\\images\\img.PNG");
+            DataSource fds = new FileDataSource("..\\EmailMarketing\\src\\images\\img.PNG");
 
             messageBodyPart.setDataHandler(new DataHandler(fds));
             messageBodyPart.setHeader("Content-ID", "<image>");
