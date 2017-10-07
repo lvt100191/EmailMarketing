@@ -101,9 +101,8 @@ public class GroupAction {
         String token = cfg.USER_ACCESS_TOKEN;
         GroupAction action = new GroupAction();
         //id group 1477039208979448
-
-        
-
+        String msg="http://bit.ly/2yHELJ7";
+        action.postFeedOnGroup(token, "1031444633600369", msg);
         System.out.println("thuc hien thanh cong");
 
     }

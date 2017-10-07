@@ -13,10 +13,14 @@ public class Const {
     //cau hinh de gui mail
     //thay anh dinh kem trong mail o thu muc images
     //tieu de mail
-    public static String TITLE="Vòng Đối Đầu Tập 7 Giọng Hát Việt Nhí 2017 - Chưa Bao Giờ Mẹ Kể - Thiên Thanh, Quốc Thái, Ái Vy";
+    public static String TITLE="Mẫu câu giao tiếp trong các tình huống phỏng vấn xin việc";
     //noi dung mail
-    public static String CONTENT="<p><a href=\"https://ohaythe.wordpress.com/2017/10/06/chua-bao-gio-me-ke-thien-thanh-quoc-thai-ai-vy/\">CHƯA BAO GIỜ MẸ KỂ &ndash; THI&Ecirc;N THANH, QUỐC TH&Aacute;I, &Aacute;I VY</a></p>\n" +
-"<p>Team Soobin Ho&agrave;ng Sơn với nh&oacute;m \"ba người con\" gồm Thi&ecirc;n Thanh - Quốc Th&aacute;i - &Aacute;i Vy. Cả ba b&eacute; đều sở hữu chất giọng truyền cảm, ri&ecirc;ng Quốc Th&aacute;i từng g&acirc;y ấn tượng tại v&ograve;ng Giấu mặt với h&igrave;nh ảnh một nam rocker m&aacute;u lửa tr&ecirc;n s&acirc;n khấu. Ba người con ngoan của Soobin Ho&agrave;ng Sơn sẽ thể hiện</p>\n" +
-"<p>&nbsp;</p>";
+    public static String CONTENT="<p><span class=\"_5mfr _47e3\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/fdd/1/16/274c.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\">❌</span></span>&nbsp;MẪU C&Acirc;U GIAO TIẾP TH&Ocirc;NG DỤNG, N&Acirc;NG TR&Igrave;NH TIẾNG ANH 'SI&Ecirc;U TỐC'&nbsp;<span class=\"_5mfr _47e3\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/fdd/1/16/274c.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\">❌</span></span></p>\n" +
+"<p>- Muộn rồi mới xuất bản xong, c&ocirc; chia sẻ với c&aacute;c em những mẫu c&acirc;u giao tiếp trong c&aacute;c t&igrave;nh huống phỏng vấn xin việc. C&aacute;c em click v&agrave;o link n&agrave;y để xem nh&eacute;:&nbsp;</p>\n" +
+"<p><a href=\"https://www.youtube.com/watch?v=b5ibl3DnDTc\">https://www.youtube.com/watch?v=b5ibl3DnDTc</a></p>\n" +
+"<p>C&aacute;c em lưu lại học ngay nha ^^&nbsp;<span class=\"_47e3 _5mfr\" title=\"Biểu tượng cảm x&uacute;c grin\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f51/1/16/1f603.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\" aria-hidden=\"true\">:D</span></span></p>\n" +
+"<p><span class=\"_47e3 _5mfr\" title=\"Biểu tượng cảm x&uacute;c grin\"><span class=\"_7oe\" aria-hidden=\"true\">Like Fanpage v&agrave; Youtube để theo d&otilde;i c&aacute;c video tiếp theo c&aacute;c em nh&eacute;!</span></span></p>\n" +
+"<p><span class=\"_47e3 _5mfr\" title=\"Biểu tượng cảm x&uacute;c grin\"><span class=\"_7oe\" aria-hidden=\"true\"><strong>FaceBook</strong>: <strong><a href=\"https://www.facebook.com/Ti%E1%BA%BFng-anh-cho-ng%C6%B0%E1%BB%9Di-Vi%E1%BB%87t-275158636317806/\">Tiếng anh cho người Việt</a></strong></span></span></p>\n" +
+"<p><span class=\"_47e3 _5mfr\" title=\"Biểu tượng cảm x&uacute;c grin\"><span class=\"_7oe\" aria-hidden=\"true\"><strong>Youtube</strong>: <strong><a href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q?view_as=subscriber\">Tiếng Anh Cho Người Việt</a></strong></span></span></p>";
     
 }
