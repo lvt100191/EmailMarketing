@@ -31,17 +31,23 @@
                   <Component id="jLabel3" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="cbxSource" min="-2" pref="94" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" pref="74" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="txtFromDate" min="-2" pref="112" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btExtract" max="32767" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="txtToken" min="-2" pref="406" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cbxSource" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
+                          <Component id="btExtract" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="59" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel2" min="-2" pref="74" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="txtFromDate" min="-2" pref="141" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jButton1" min="-2" pref="111" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace pref="75" max="32767" attributes="0"/>
           </Group>
@@ -61,9 +67,13 @@
                   <Component id="cbxSource" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="txtFromDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btExtract" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="41" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btExtract" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="29" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -108,7 +118,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btExtract">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Extract"/>
+        <Property name="text" type="java.lang.String" value="Thu th&#x1ead;p mail"/>
         <Property name="toolTipText" type="java.lang.String" value="click vao day xuat file va insert du lieu vao bang tbl_email"/>
       </Properties>
       <Events>
@@ -122,6 +132,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtToken">
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tho&#xe1;t"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
