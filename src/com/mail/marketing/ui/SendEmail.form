@@ -36,7 +36,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="txtTitle" pref="251" max="32767" attributes="0"/>
-                                  <Component id="passUserSend" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="txtPassUserSend" alignment="1" max="32767" attributes="0"/>
                                   <Component id="txtUserSend" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -56,18 +56,20 @@
                               <Component id="btSendMailDaily" min="-2" pref="105" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jButton4" max="32767" attributes="0"/>
-                                  <Component id="jButton5" max="32767" attributes="0"/>
-                                  <Component id="jLabel3" max="32767" attributes="0"/>
-                                  <Component id="jLabel4" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="lbLimit" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jButton4" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jButton5" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtStatusSent" pref="92" max="32767" attributes="0"/>
+                                  <Component id="txtStatusSent" max="32767" attributes="0"/>
                                   <Component id="txtAmountMail" max="32767" attributes="0"/>
                                   <Component id="txtAmountMailSent" max="32767" attributes="0"/>
                                   <Component id="txtStatusSend" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtLimitMailSend" alignment="0" pref="92" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -99,35 +101,31 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="passUserSend" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPassUserSend" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtAmountMailSent" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtTitle" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtStatusSend" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtStatusSend" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtStatusSent" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lbLimit" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtLimitMailSend" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btSendMail" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btSendMailDaily" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -151,7 +149,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtTitle">
     </Component>
-    <Component class="javax.swing.JPasswordField" name="passUserSend">
+    <Component class="javax.swing.JPasswordField" name="txtPassUserSend">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -217,6 +215,9 @@
         <Property name="text" type="java.lang.String" value="Send Mail"/>
         <Property name="toolTipText" type="java.lang.String" value="he thong se lay danh sach email gui co so luong la amount of mail send trong  bang tbl_mail co trang thai mail send status de gui, gui thanh cong update status trong bang tbl_mail thanh mail sent status hai trang thai nay luan phien doi cho gia tri 1 va 2 cho nhau tuy chon"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSendMailActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtStatusSent">
     </Component>
@@ -235,6 +236,13 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="S&#x1ed1; mail &#x111;&#xe3; g&#x1eed;i marketing"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbLimit">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="S&#x1ed1; l&#x1b0;&#x1ee3;ng mail g&#x1eed;i  t&#x1ed1;i &#x111;a"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtLimitMailSend">
     </Component>
   </SubComponents>
 </Form>

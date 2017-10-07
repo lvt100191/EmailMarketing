@@ -146,7 +146,8 @@ public class EmailAction {
     //lay danh sach mail trong DB: TBL_MAIL 
     //(gioi han so luong ban ghi lay ve theo cau hinh NUMBER_MAIL)
     //select  *   from TBL_MAIL   limit 5 ;
-    private static ArrayList<Mail> getListMail(String status, String numMail) throws SQLException, Exception {
+    //status trang thai xac dinh gui mail
+    public static ArrayList<Mail> getListMail(String status, String numMail) throws SQLException, Exception {
         ArrayList<Mail> lstMail = null;
         lstMail = MailDao.getListMail(status, numMail);
         return lstMail;
