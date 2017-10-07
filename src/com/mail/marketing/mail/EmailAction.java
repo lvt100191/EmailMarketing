@@ -40,10 +40,10 @@ public class EmailAction {
     //truoc khi gui mail len trang https://wordtohtml.net/ soan html online để trình bày sau đó paste noi dung vao content
     //thay hinh  anh img trong package images
     public static void sendMultiEmail() throws Exception {
-        String from = "lazada.ohaythe@gmail.com";
-        String pwd = "123456a@";
-//        String from = "m1.sonlv95@gmail.com";
+//        String from = "lazada.ohaythe@gmail.com";
 //        String pwd = "123456a@";
+        String from = "m1.sonlv95@gmail.com";
+        String pwd = "123456a@";
 //        String from = "m2.sonlv95@gmail.com";
 //        String pwd = "123456a@";
 //        String from = "m3.sonlv95@gmail.com";
@@ -54,12 +54,13 @@ public class EmailAction {
         String numMail = Config.NUMBER_MAIL;
         String status = Config.STATUS_MAIL_SEND;
         String statusUpdate = Config.STATUS_MAIL_UPDATE;
-        //ArrayList<Mail> lst = getListMail(status, numMail);
+        ArrayList<Mail> lst = getListMail(status, numMail);
         //test mail thi set nhu nay
-        ArrayList<Mail> lst = new ArrayList<>();
-        Mail m = new Mail();
-        m.setEmail("tunglv9x@gmail.com");
-        lst.add(m);
+//        ArrayList<Mail> lst = new ArrayList<>();
+//        Mail m = new Mail();
+//        m.setEmail("tunglv9x@gmail.com");
+//        lst.add(m);
+        //end test
         for (Mail to : lst) {
             try {
                 sendEmail(from, pwd, to.getEmail(), title, content);

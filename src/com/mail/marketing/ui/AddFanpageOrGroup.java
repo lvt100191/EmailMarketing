@@ -144,7 +144,7 @@ public class AddFanpageOrGroup extends javax.swing.JFrame {
                     } catch (Exception ex) {
                         Logger.getLogger(AddFanpageOrGroup.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                } else {//nhap ten nguoi dung
+                } else {//nhap ten nguoi dung cua trang
                     try {
                         String username = txtUserName.getText().trim();
                         String token = txtToken.getText().trim();
@@ -165,8 +165,19 @@ public class AddFanpageOrGroup extends javax.swing.JFrame {
                         face.setIdFacebook(txtID.getText().trim());
                         GroupAction groupAction = new GroupAction();
                         String token = txtToken.getText().trim();
-                        Group group = groupAction.getGroupInfo(token, txtID.getText().trim());
+                        Group group = groupAction.getGroupInfoByID(token, txtID.getText().trim());
                         face.setIdFacebook(idFaceBook);
+                        face.setName(group.getName());
+                    } catch (Exception ex) {
+                        Logger.getLogger(AddFanpageOrGroup.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }else {//nhap ten nguoi dung cua nhom
+                    try {
+                        String username = txtUserName.getText().trim();
+                        String token = txtToken.getText().trim();
+                        GroupAction groupAction = new GroupAction();
+                        Group group = groupAction.getGroupInfoByUsername(token, username);
+                        face.setIdFacebook(group.getId());
                         face.setName(group.getName());
                     } catch (Exception ex) {
                         Logger.getLogger(AddFanpageOrGroup.class.getName()).log(Level.SEVERE, null, ex);

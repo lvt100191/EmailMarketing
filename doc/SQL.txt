@@ -1,0 +1,7 @@
+
+
+select * from tbl_facebook
+
+select * from tbl_marketing_daily
+
+select * from tbl_mail

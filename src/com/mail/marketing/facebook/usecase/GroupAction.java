@@ -22,11 +22,24 @@ import org.json.simple.parser.JSONParser;
  */
 public class GroupAction {
 
-    //lay thong tin cua nhom da tham gia
+    //lay thong tin cua nhom da tham gia theo id nhom
     //idGroup: id nhom 1477039208979448
-    public Group getGroupInfo(String token, String idGroup) throws Exception {
+    public Group getGroupInfoByID(String token, String idGroup) throws Exception {
         Group group = new Group();
         String url = "https://graph.facebook.com/v2.10/" + idGroup + "?access_token=" + token;
+        String rsJson = ResponseUtil.sendGet(url);
+        JSONParser parser = new JSONParser();
+        JSONObject obj = (JSONObject) parser.parse(rsJson);
+        group.setId(obj.get("id").toString());
+        group.setName(obj.get("name").toString());
+        return group;
+    }
+    
+    //lay thong tin cua nhom da tham gia theo ten nguoi dung cua nhom
+    //username: ten nguoi dung cua nhom
+    public Group getGroupInfoByUsername(String token, String username) throws Exception {
+        Group group = new Group();
+        String url = "https://graph.facebook.com/v2.10/" + username + "?access_token=" + token;
         String rsJson = ResponseUtil.sendGet(url);
         JSONParser parser = new JSONParser();
         JSONObject obj = (JSONObject) parser.parse(rsJson);
