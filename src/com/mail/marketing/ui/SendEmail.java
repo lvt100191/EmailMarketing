@@ -53,8 +53,8 @@ public class SendEmail extends javax.swing.JFrame {
         btSendMail = new javax.swing.JButton();
         txtStatusSent = new javax.swing.JTextField();
         btSendMailDaily = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btCheckAmountMail = new javax.swing.JButton();
+        btAmountSent = new javax.swing.JButton();
         lbLimit = new javax.swing.JLabel();
         txtLimitMailSend = new javax.swing.JTextField();
 
@@ -100,10 +100,20 @@ public class SendEmail extends javax.swing.JFrame {
 
         btSendMailDaily.setText("Send Mail Daily");
 
-        jButton4.setText("Số mail thu thập được");
-        jButton4.setToolTipText("");
+        btCheckAmountMail.setText("Số mail thu thập được");
+        btCheckAmountMail.setToolTipText("");
+        btCheckAmountMail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCheckAmountMailActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("Số mail đã gửi marketing");
+        btAmountSent.setText("Số mail đã gửi marketing");
+        btAmountSent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAmountSentActionPerformed(evt);
+            }
+        });
 
         lbLimit.setText("Số lượng mail gửi  tối đa");
 
@@ -140,8 +150,8 @@ public class SendEmail extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(lbLimit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btCheckAmountMail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btAmountSent, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
@@ -165,14 +175,14 @@ public class SendEmail extends javax.swing.JFrame {
                         .addComponent(txtUserSend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton4)
+                        .addComponent(btCheckAmountMail)
                         .addComponent(txtAmountMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtPassUserSend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton5)
+                        .addComponent(btAmountSent)
                         .addComponent(txtAmountMailSent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -242,6 +252,27 @@ public class SendEmail extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btSendMailActionPerformed
 
+    private void btCheckAmountMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCheckAmountMailActionPerformed
+        try {
+            int amount= MailDao.count();
+            txtAmountMail.setText(String.valueOf(amount));
+        } catch (Exception ex) {
+            Logger.getLogger(SendEmail.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btCheckAmountMailActionPerformed
+
+    private void btAmountSentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAmountSentActionPerformed
+        try {
+            String statusSent = txtStatusSent.getText().trim();
+            if(!statusSent.isEmpty() && statusSent!=null){
+                int amount = MailDao.countMailSent(statusSent);
+                txtAmountMailSent.setText(String.valueOf(amount));
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(SendEmail.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btAmountSentActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -278,11 +309,11 @@ public class SendEmail extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAmountSent;
+    private javax.swing.JButton btCheckAmountMail;
     private javax.swing.JButton btSendMail;
     private javax.swing.JButton btSendMailDaily;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

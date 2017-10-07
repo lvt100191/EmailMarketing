@@ -82,7 +82,7 @@ public class MailDao {
 
             }
         } catch (Exception e) {
-           throw new Exception(e.getMessage());
+            throw new Exception(e.getMessage());
         } finally {
             rs.close();
             pst.close();
@@ -104,7 +104,7 @@ public class MailDao {
             String query = "SELECT * FROM  " + Mail.TABLE_NAME
                     + " WHERE STATUS = ? LIMIT ?; ";
             pst = c.prepareStatement(query);
-             pst.setString(1, status);
+            pst.setString(1, status);
             pst.setString(2, limit);
             rs = pst.executeQuery();
             while (rs.next()) {
@@ -125,6 +125,7 @@ public class MailDao {
         return mails;
 
     }
+
     //tam thoi chi update status
     public static void updateMail(Mail mail) throws SQLException, Exception {
         Connection c = null;
@@ -137,7 +138,7 @@ public class MailDao {
             String query = "UPDATE  " + Mail.TABLE_NAME
                     + " SET STATUS = ? WHERE ID= ?; ";
             pst = c.prepareStatement(query);
-             pst.setInt(1, mail.getStatus());
+            pst.setInt(1, mail.getStatus());
             pst.setInt(2, mail.getId());
             pst.executeUpdate();
         } catch (Exception e) {
@@ -147,6 +148,57 @@ public class MailDao {
             pst.close();
             c.close();
         }
-    
+
+    }
+
+    //lay so luong toan bo email trong bang tbl_mail
+    public static int count() throws SQLException, Exception {
+        Connection c = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        int count = 0;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+            String query = "select count(*) from   " + Mail.TABLE_NAME + ";";
+            pst = c.prepareStatement(query);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+            return count;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            rs.close();
+            pst.close();
+            c.close();
+        }
+
+    }
+
+    public static int countMailSent(String statusSent) throws Exception {
+        Connection c = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        int count = 0;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+            String query = "select count(*) from   " + Mail.TABLE_NAME + " where status=?;";
+            pst = c.prepareStatement(query);
+            pst.setInt(1, Integer.parseInt(statusSent));
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+            return count;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            rs.close();
+            pst.close();
+            c.close();
+        }
     }
 }
