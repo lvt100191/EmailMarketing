@@ -23,6 +23,7 @@ public class SendEmail extends javax.swing.JFrame {
      */
     public SendEmail() {
         initComponents();
+        setLocationRelativeTo(null);
         this.setVisible(true);
     }
 

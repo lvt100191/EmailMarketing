@@ -16,6 +16,7 @@ public class SendMailDaily extends javax.swing.JFrame {
      */
     public SendMailDaily() {
         initComponents();
+        setLocationRelativeTo(null);
         this.setVisible(true);
     }
 

@@ -37,6 +37,7 @@ public class ExtractMail extends javax.swing.JFrame {
      */
     public ExtractMail() {
         initComponents();
+        setLocationRelativeTo(null);
         this.setVisible(true);
     }
 
