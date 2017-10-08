@@ -9,7 +9,6 @@ import com.mail.marketing.config.Config;
 import com.mail.marketing.config.Const;
 import com.mail.marketing.db.MailDao;
 import com.mail.marketing.entity.Mail;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.ArrayList;
