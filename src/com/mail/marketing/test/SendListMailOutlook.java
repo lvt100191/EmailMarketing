@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mail.marketing.mail;
+package com.mail.marketing.test;
 
 import com.mail.marketing.config.Config;
 import com.mail.marketing.config.Const;
@@ -33,23 +33,15 @@ import javax.mail.internet.MimeMultipart;
  *
  * @author TUNGLV
  */
-public class EmailAction {
+public class SendListMailOutlook {
 
     //truong hop gui den nhieu email va update bang tbl_mail
     //truoc khi gui mail len trang https://wordtohtml.net/ soan html online để trình bày sau đó paste noi dung vao content
     //thay hinh  anh img trong package images
     public static void sendMultiEmail() throws Exception {
-        //gmail
-
-        String from = "lazada.ohaythe@gmail.com";
+        //mail outlook
+        String from = "mshoatoeic@outlook.com";
         String pwd = "123456a@";
-
-//        String from = "m1.sonlv95@gmail.com";
-//        String pwd = "123456a@";
-//        String from = "m3.sonlv95@gmail.com";
-//        String pwd = "123456a@";
-//        String from = "hoa.ms.toeic@gmail.com";
-//        String pwd = "123456a@";
         String title = Const.TITLE;
         String content = Const.CONTENT;
 
@@ -65,7 +57,7 @@ public class EmailAction {
         //end test
         for (Mail to : lst) {
             try {
-                sendGmail(from, pwd, to.getEmail(), title, content);
+                sendOutlookMail(from, pwd, to.getEmail(), title, content);
                 System.out.println("tunglv gui toi mail" + to.getEmail() + " thanh cong");
                 //update status
                 to.setStatus(Integer.parseInt(statusUpdate));
