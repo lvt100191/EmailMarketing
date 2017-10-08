@@ -8,7 +8,6 @@ package com.mail.marketing.ui;
 import com.mail.marketing.db.MailDao;
 import com.mail.marketing.entity.Mail;
 import com.mail.marketing.mail.EmailAction;
-import static com.mail.marketing.mail.EmailAction.sendEmail;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +23,7 @@ public class SendEmail extends javax.swing.JFrame {
      */
     public SendEmail() {
         initComponents();
+        this.setVisible(true);
     }
 
     /**

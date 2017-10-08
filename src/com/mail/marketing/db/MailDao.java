@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import org.apache.log4j.Logger;
@@ -47,7 +48,10 @@ public class MailDao {
             pst.setString(4, "");
             pst.setString(5, "");
             pst.setString(6, "");
-            pst.setDate(7, null);
+            Date d = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+            String dateCreate = sdf.format(d);
+            pst.setString(7, dateCreate);
             pst.setInt(8, Mail.STATUS_INSERT);
             pst.executeUpdate();
         } catch (Exception e) {

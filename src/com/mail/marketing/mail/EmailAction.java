@@ -40,16 +40,14 @@ public class EmailAction {
     //truoc khi gui mail len trang https://wordtohtml.net/ soan html online để trình bày sau đó paste noi dung vao content
     //thay hinh  anh img trong package images
     public static void sendMultiEmail() throws Exception {
-//        String from = "lazada.ohaythe@gmail.com";
-//        String pwd = "123456a@";
+        String from = "lazada.ohaythe@gmail.com";
+        String pwd = "123456a@";
 //        String from = "m1.sonlv95@gmail.com";
-//        String pwd = "123456a@";
-//        String from = "m2.sonlv95@gmail.com";
 //        String pwd = "123456a@";
 //        String from = "m3.sonlv95@gmail.com";
 //        String pwd = "123456a@";
-        String from = "hoa.ms.toeic@gmail.com";
-        String pwd = "123456a@";
+//        String from = "hoa.ms.toeic@gmail.com";
+//        String pwd = "123456a@";
         String title = Const.TITLE;
         String content = Const.CONTENT;
 
