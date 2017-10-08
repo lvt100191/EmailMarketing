@@ -245,7 +245,7 @@ public class SendEmail extends javax.swing.JFrame {
             ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, limitMailSend);
             for (Mail to : lst) {
                 try {
-                    EmailAction.sendEmail(mailSend, password, to.getEmail(), title, content);
+                    EmailAction.sendGmail(mailSend, password, to.getEmail(), title, content);
                     System.out.println("tunglv gui toi mail" + to.getEmail() + " thanh cong");
                     //update status
                     to.setStatus(Integer.parseInt(sttMailSent));

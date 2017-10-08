@@ -39,7 +39,9 @@ public class EmailAction {
     //truoc khi gui mail len trang https://wordtohtml.net/ soan html online để trình bày sau đó paste noi dung vao content
     //thay hinh  anh img trong package images
     public static void sendMultiEmail() throws Exception {
-        String from = "lazada.ohaythe@gmail.com";
+//        String from = "lazada.ohaythe@gmail.com";
+//        String pwd = "123456a@";
+        String from = "toeicmshoa@outlook.com.vn";
         String pwd = "123456a@";
 //        String from = "m1.sonlv95@gmail.com";
 //        String pwd = "123456a@";
@@ -62,7 +64,7 @@ public class EmailAction {
         //end test
         for (Mail to : lst) {
             try {
-                sendEmail(from, pwd, to.getEmail(), title, content);
+                sendOutlookMail(from, pwd, to.getEmail(), title, content);
                 System.out.println("tunglv gui toi mail" + to.getEmail() + " thanh cong");
                 //update status
                 to.setStatus(Integer.parseInt(statusUpdate));
@@ -76,12 +78,12 @@ public class EmailAction {
         }
     }
 
-    //mailSend: email gui
+    //mailSend: gmail gui
     //passwordMailSend: mat khau cua email gui
     //mailRecipient: dia chi email nhan
     //title: tieu de mail
     //content: noi dung mail
-    public static void sendEmail(String mailSend, String passwordMailSend, String mailRecipient, String title, String content) throws MessagingException, FileNotFoundException {
+    public static void sendGmail(String mailSend, String passwordMailSend, String mailRecipient, String title, String content) throws MessagingException, FileNotFoundException {
         final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
         // Get a Properties object
         Properties props = System.getProperties();
@@ -139,6 +141,74 @@ public class EmailAction {
             //System.out.println("Message sent.");
         } catch (MessagingException e) {
             throw new MessagingException(e.getMessage());
+        }
+    }
+
+    //mailSend: outlook mail gui
+    //passwordMailSend: mat khau cua email gui
+    //mailRecipient: dia chi email nhan
+    //title: tieu de mail
+    //content: noi dung mail
+    //gap loi nay la do da gui qua so luong mail cho phep trong ngay
+    /*
+    tunglv gui toi mail: nguyenvantruong03111998@gmail.com bi loicom.sun.mail.smtp.SMTPSendFailedException:
+    554 5.2.0 STOREDRV.Submission.Exception:OutboundSpamException; 
+    Failed to process message due to a permanent exception with message WASCL 
+    UserAction verdict is not None. Actual verdict is RefuseQuota, ShowTierUpgrade.
+    OutboundSpamException: WASCL UserAction verdict is not None. 
+    Actual verdict is RefuseQuota, ShowTierUpgrade. <471579726.21.1507465985178.JavaMail.javamailuser@localhost> 
+    [Hostname=KL1PR04MB1686.apcprd04.prod.outlook.com]
+    */
+    public static void sendOutlookMail(String mailSend, String passwordMailSend, String mailRecipient, String title, String content) throws MessagingException, FileNotFoundException {
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "outlook.office365.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(mailSend, passwordMailSend);
+            }
+        });
+
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(mailSend));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(mailRecipient));
+            message.setSubject(title);
+            // message.setText("Ms.Hoa Toeic xin chào các em!");
+            MimeMultipart multipart = new MimeMultipart("related");
+
+            // first part (the html)
+            BodyPart messageBodyPart = new MimeBodyPart();
+            String htmlText = content + "<img src=\"cid:image\">";
+            messageBodyPart.setContent(htmlText, "text/html;charset=utf-8");
+            // add it
+            multipart.addBodyPart(messageBodyPart);
+
+            // second part (the image)
+            messageBodyPart = new MimeBodyPart();
+            DataSource fds = new FileDataSource("..\\EmailMarketing\\src\\images\\img.PNG");
+
+            messageBodyPart.setDataHandler(new DataHandler(fds));
+            messageBodyPart.setHeader("Content-ID", "<image>");
+
+            // add image to the multipart
+            multipart.addBodyPart(messageBodyPart);
+
+            // put everything together
+            message.setContent(multipart);
+            message.setSentDate(new Date());
+            Transport.send(message);
+
+            System.out.println("Done");
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
         }
     }
 

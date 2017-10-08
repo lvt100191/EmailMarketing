@@ -10,7 +10,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 //send mail outlook: https://outlook.live.com/owa
-public class SendMail {
+public class SendMailOutlook {
 
     public static void main(String[]args) throws IOException {
 
@@ -35,7 +35,7 @@ public class SendMail {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("trungtammshoa@outlook.com"));
             message.setRecipients(Message.RecipientType.TO,
-                InternetAddress.parse("tunglv9x@gmail.com"));
+                InternetAddress.parse("nhunglsgvnb@gmail.com"));
             message.setSubject("Test");
             message.setText("HI");
 
