@@ -59,7 +59,7 @@ public class ExtractMail extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Extract Email");
+        setTitle("Thu thập Email");
 
         cbxSource.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FANPAGE", "GROUP", " ", " " }));
         cbxSource.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +92,11 @@ public class ExtractMail extends javax.swing.JFrame {
         jLabel3.setToolTipText("");
 
         jButton1.setText("Thoát");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -269,6 +274,12 @@ public class ExtractMail extends javax.swing.JFrame {
             Logger.getLogger(ExtractMail.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btExtractActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new DashBoard();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btExtract;
