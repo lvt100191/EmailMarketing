@@ -80,7 +80,7 @@ public class AddFanpageOrGroup extends javax.swing.JFrame {
 
         jLabel4.setText("User token");
 
-        jButton1.setText("Thoát");
+        jButton1.setText("Quay lại");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

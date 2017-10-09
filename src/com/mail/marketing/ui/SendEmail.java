@@ -117,7 +117,7 @@ public class SendEmail extends javax.swing.JFrame {
 
         lbLimit.setText("Số lượng mail gửi  tối đa");
 
-        jButton2.setText("Thoát");
+        jButton2.setText("Quay lại");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

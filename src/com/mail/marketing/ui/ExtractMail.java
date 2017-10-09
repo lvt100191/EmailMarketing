@@ -92,7 +92,7 @@ public class ExtractMail extends javax.swing.JFrame {
         jLabel3.setText("User Token");
         jLabel3.setToolTipText("");
 
-        jButton1.setText("Thoát");
+        jButton1.setText("Quay lại");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
