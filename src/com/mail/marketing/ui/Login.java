@@ -18,8 +18,11 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        //set hien thi ra  giua man hinh
         setLocationRelativeTo(null);
+        //set kich thuoc co dinh
         this.setResizable(false);
+        //set hien thi len
         this.setVisible(true);
 
     }

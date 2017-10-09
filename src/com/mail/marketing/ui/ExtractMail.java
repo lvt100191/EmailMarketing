@@ -37,7 +37,11 @@ public class ExtractMail extends javax.swing.JFrame {
      */
     public ExtractMail() {
         initComponents();
+        //set giao dien ra giua man hinh
         setLocationRelativeTo(null);
+        //set kich thuoc co dinh
+        this.setResizable(false);
+        //set hien thi
         this.setVisible(true);
     }
 

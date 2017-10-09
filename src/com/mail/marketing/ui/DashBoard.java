@@ -17,6 +17,7 @@ public class DashBoard extends javax.swing.JFrame {
     public DashBoard() {
         initComponents();
         setLocationRelativeTo(null);
+        this.setResizable(false);
         this.setVisible(true);
     }
 

@@ -26,6 +26,7 @@ public class AddFanpageOrGroup extends javax.swing.JFrame {
     public AddFanpageOrGroup() {
         initComponents();
         setLocationRelativeTo(null);
+        this.setResizable(false);
         this.setVisible(true);
     }
 
