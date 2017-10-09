@@ -43,9 +43,6 @@ public class EmailAction {
 
         String from = "lazada.ohaythe@gmail.com";
         String pwd = "123456a@";
-
-//        String from = "m1.sonlv95@gmail.com";
-//        String pwd = "123456a@";
 //        String from = "m3.sonlv95@gmail.com";
 //        String pwd = "123456a@";
 //        String from = "hoa.ms.toeic@gmail.com";
