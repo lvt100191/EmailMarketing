@@ -10,7 +10,9 @@ package com.mail.marketing.entity;
  * @author PMDVCNTT
  */
 public class MailSend {
-    String id;
+
+    public static final String TABLE_NAME = "TBL_MAIL_SEND";
+    int id;
     String email;
     String hostMail;
     //thoi gian thuc hien gui mail cuoi cung
@@ -22,14 +24,28 @@ public class MailSend {
     //so luong mail nhan toi da ma host mail cho phep
     //gui qua so luong nay mail se bi coi la spam
     int maxMail;
+    //mat khau mail gui
+    String password;
+    //thong bao loi gui mail va so luong mail gui thanh cong
+    String msg_error;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
 
     public String getEmail() {
         return email;
@@ -70,7 +86,5 @@ public class MailSend {
     public void setMaxMail(int maxMail) {
         this.maxMail = maxMail;
     }
-    
-    
-    
+
 }
