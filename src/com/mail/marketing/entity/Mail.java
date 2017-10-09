@@ -14,6 +14,9 @@ import java.util.Date;
 public class Mail {
 
     public static final String TABLE_NAME = "TBL_MAIL";
+    public static final String GMAIL_HOST= "GMAIL";
+    public static final String OUTLOOK_HOST= "OUTLOOK";
+    public static final String ZOHO_HOST= "ZOHO";
     public static final int STATUS_INSERT = 1;
     //id
     int id;

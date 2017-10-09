@@ -209,6 +209,72 @@ public class EmailAction {
             throw new RuntimeException(e);
         }
     }
+    
+    //mailSend: zoho mail gui
+    //passwordMailSend: mat khau cua email gui
+    //mailRecipient: dia chi email nhan
+    //title: tieu de mail
+    //content: noi dung mail
+    public static void sendZohoMail(String mailSend, String passwordMailSend, String mailRecipient, String title, String content) throws MessagingException, FileNotFoundException {
+        final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
+        // Get a Properties object
+        Properties props = System.getProperties();
+        props.setProperty("mail.smtp.host", "smtp.zoho.com");
+        props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY);
+        props.setProperty("mail.smtp.socketFactory.fallback", "false");
+        props.setProperty("mail.smtp.port", "465");
+        props.setProperty("mail.smtp.socketFactory.port", "465");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.debug", "true");
+        props.put("mail.store.protocol", "pop3");
+        props.put("mail.transport.protocol", "smtp");
+        try {
+            Session session = Session.getDefaultInstance(props,
+                    new Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    //chu y neu gap loi nay thi phai bat bao mat tren tai khoan mail google cho phep ung dung it bao mat hon Erreur d'envoi, cause: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+                    return new PasswordAuthentication(mailSend, passwordMailSend);
+                }
+            });
+
+            // -- Create a new message --
+            Message msg = new MimeMessage(session);
+
+            // -- Set the FROM and TO fields --
+            msg.setFrom(new InternetAddress(mailSend));
+            msg.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(mailRecipient, false));
+            msg.setSubject(title);
+            //msg.setText(content);
+            // This mail has 2 part, the BODY and the embedded image
+            MimeMultipart multipart = new MimeMultipart("related");
+
+            // first part (the html)
+            BodyPart messageBodyPart = new MimeBodyPart();
+            String htmlText = content + "<img src=\"cid:image\">";
+            messageBodyPart.setContent(htmlText, "text/html;charset=utf-8");
+            // add it
+            multipart.addBodyPart(messageBodyPart);
+
+            // second part (the image)
+            messageBodyPart = new MimeBodyPart();
+            DataSource fds = new FileDataSource("..\\EmailMarketing\\src\\images\\img.PNG");
+
+            messageBodyPart.setDataHandler(new DataHandler(fds));
+            messageBodyPart.setHeader("Content-ID", "<image>");
+
+            // add image to the multipart
+            multipart.addBodyPart(messageBodyPart);
+
+            // put everything together
+            msg.setContent(multipart);
+            msg.setSentDate(new Date());
+            Transport.send(msg);
+            //System.out.println("Message sent.");
+        } catch (MessagingException e) {
+            throw new MessagingException(e.getMessage());
+        }
+    }
 
     //lay danh sach mail trong DB: TBL_MAIL 
     //(gioi han so luong ban ghi lay ve theo cau hinh NUMBER_MAIL)
