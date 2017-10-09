@@ -24,7 +24,31 @@ import org.apache.log4j.Logger;
 public class MailSendDao {
 
     static Logger logger = Logger.getLogger(MailSendDao.class.getName());
+        //tam thoi chi update status
+    public static void updateMail(MailSend mail) throws SQLException, Exception {
+        Connection c = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
 
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+
+            String query = "UPDATE  " + MailSend.TABLE_NAME
+                    + " SET LAST_TIME = ? WHERE ID= ?; ";
+            pst = c.prepareStatement(query);
+            Date d = new Date();
+            pst.setString(1, d.toString());
+            pst.setInt(2, mail.getId());
+            pst.executeUpdate();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            rs.close();
+            pst.close();
+            c.close();
+        }
+
+    }
     public static ArrayList<MailSend> getListMailSend() throws SQLException, Exception {
         ArrayList<MailSend> mails = new ArrayList<>();
         Connection c = null;
@@ -44,10 +68,17 @@ public class MailSendDao {
                 String hostMail = rs.getString("host_mail");
                 String lastTime = rs.getString("last_time");
                 String mailBloked = rs.getString("mail_blocked");
-                String maxMail = rs.getString("max_mail");
+                int maxMail = rs.getInt("max_mail");
+                String msgError = rs.getString("msg_error");
                 MailSend m = new MailSend();
                 m.setId(id);
                 m.setEmail(mail);
+                m.setHostMail(hostMail);
+                m.setLastTime(lastTime);
+                m.setMailBlocked(mailBloked);
+                m.setMaxMail(maxMail);
+                m.setPassword(password);
+                m.setMsgError(msgError);
                 mails.add(m);
             }
         } catch (Exception e) {

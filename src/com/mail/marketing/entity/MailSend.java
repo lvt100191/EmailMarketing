@@ -27,7 +27,7 @@ public class MailSend {
     //mat khau mail gui
     String password;
     //thong bao loi gui mail va so luong mail gui thanh cong
-    String msg_error;
+    String msgError;
 
     public int getId() {
         return id;
@@ -36,6 +36,18 @@ public class MailSend {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getMsgError() {
+        return msgError;
+    }
+
+    public void setMsgError(String msgError) {
+        this.msgError = msgError;
+    }
+
+
+    
+    
 
     public String getPassword() {
         return password;

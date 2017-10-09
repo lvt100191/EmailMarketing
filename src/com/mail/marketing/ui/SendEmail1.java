@@ -10,7 +10,10 @@ import com.mail.marketing.db.MailSendDao;
 import com.mail.marketing.entity.Mail;
 import com.mail.marketing.entity.MailSend;
 import com.mail.marketing.mail.EmailAction;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -202,36 +205,56 @@ public class SendEmail1 extends javax.swing.JFrame {
     private void btSendMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSendMailActionPerformed
         try {
             //lay danh sach mail gui
-             ArrayList<MailSend> lstSend = MailSendDao.getListMailSend();
-             for(MailSend mailSend: lstSend){
+            ArrayList<MailSend> lstSend = MailSendDao.getListMailSend();
+            for (MailSend mailSend : lstSend) {
                 String title = txtTitle.getText().trim();
-            String content = txtConent.getText().trim();
-            String sttMailSend = txtStatusSend.getText().trim();
-            String sttMailSent = txtStatusSent.getText().trim();
-            //lay danh sach mail gui
-            ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(mailSend.getMaxMail()));
-            for (Mail to : lst) {
-                try {
-                    if (mailSend.getHostMail().equals(Mail.GMAIL_HOST)) {
-                        EmailAction.sendGmail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
-                    }
-                    if (mailSend.getHostMail().equals(Mail.OUTLOOK_HOST)) {
-                        EmailAction.sendOutlookMail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
-                    }
-                    if (mailSend.getHostMail().equals(Mail.ZOHO_HOST)) {
-                        EmailAction.sendZohoMail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
-                    }
-
-                    System.out.println("---------------- tunglv4 gui mail tu host "+mailSend.getHostMail() +" toi: " + to.getEmail() + " thanh cong");
-                    //update status
-                    to.setStatus(Integer.parseInt(sttMailSent));
-                    MailDao.updateMail(to);
-                } catch (Exception e) {
-                    System.out.println("-----------------tunglv4 gui toi mail: " + to.getEmail() + " bi loi: " + e.getMessage());                  
+                String content = txtConent.getText().trim();
+                String sttMailSend = txtStatusSend.getText().trim();
+                String sttMailSent = txtStatusSent.getText().trim();
+                //lay danh sach mail gui
+                ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(mailSend.getMaxMail()));
+                //lay thoi gian hien tai -24h
+                Date currentDate = new Date();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(currentDate);
+                cal.add(Calendar.HOUR, -24);
+                Date twentyFourHourBack = cal.getTime();
+                //thoi gian hien tai -24h phai < thoi gian gui mail gan day nhat khac null
+                Date lastDate = null;
+                if (mailSend.getLastTime() != null&& !mailSend.getLastTime().isEmpty()) {
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    lastDate = sdf.parse(mailSend.getLastTime());
                 }
-            } 
-             }
-            
+
+                if (lastDate ==null || lastDate.before(twentyFourHourBack)) {
+                    for (Mail to : lst) {
+                        try {
+                            if (mailSend.getHostMail().equals(Mail.GMAIL_HOST)) {
+                                EmailAction.sendGmail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
+
+                            }
+                            if (mailSend.getHostMail().equals(Mail.OUTLOOK_HOST)) {
+                                EmailAction.sendOutlookMail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
+                            }
+                            if (mailSend.getHostMail().equals(Mail.ZOHO_HOST)) {
+                                EmailAction.sendZohoMail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
+                            }
+
+                            System.out.println("---------------- tunglv4 gui mail tu host " + mailSend.getHostMail() + " toi: " + to.getEmail() + " thanh cong");
+                            //update status mail nhan
+                            to.setStatus(Integer.parseInt(sttMailSent));
+                            MailDao.updateMail(to);
+
+                        } catch (Exception e) {
+                            System.out.println("-----------------tunglv4 gui toi mail: " + to.getEmail() + " bi loi: " + e.getMessage());
+                        }
+                    }
+                    //update thoi gian mail gui
+                    MailSendDao.updateMail(mailSend);
+                }
+
+            }
+
         } catch (Exception ex) {
             Logger.getLogger(SendEmail1.class.getName()).log(Level.SEVERE, null, ex);
         }
