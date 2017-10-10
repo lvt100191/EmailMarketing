@@ -9,6 +9,7 @@ import com.mail.marketing.config.Config;
 import com.mail.marketing.config.Const;
 import com.mail.marketing.db.MailDao;
 import com.mail.marketing.entity.Mail;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -41,24 +42,24 @@ public class EmailAction {
     public static void sendMultiEmail() throws Exception {
         //gmail
 
-        String from = "lazada.ohaythe@gmail.com";
-        String pwd = "123456a@";
+//        String from = "lazada.ohaythe@gmail.com";
+//        String pwd = "123456a@";
 //        String from = "m3.sonlv95@gmail.com";
 //        String pwd = "123456a@";
-//        String from = "hoa.ms.toeic@gmail.com";
-//        String pwd = "123456a@";
+        String from = "hoa.ms.toeic@gmail.com";
+        String pwd = "123456a@";
         String title = Const.TITLE;
         String content = Const.CONTENT;
 
         String numMail = Config.NUMBER_MAIL;
         String status = Config.STATUS_MAIL_SEND;
         String statusUpdate = Config.STATUS_MAIL_UPDATE;
-        ArrayList<Mail> lst = getListMail(status, numMail);
+        //ArrayList<Mail> lst = getListMail(status, numMail);
         //test mail thi set nhu nay
-//        ArrayList<Mail> lst = new ArrayList<>();
-//        Mail m = new Mail();
-//        m.setEmail("tunglv9x@gmail.com");
-//        lst.add(m);
+        ArrayList<Mail> lst = new ArrayList<>();
+        Mail m = new Mail();
+        m.setEmail("tunglv9x@gmail.com");
+        lst.add(m);
         //end test
         for (Mail to : lst) {
             try {
@@ -122,16 +123,23 @@ public class EmailAction {
             // add it
             multipart.addBodyPart(messageBodyPart);
 
-            // second part (the image)
+
+                        File currentDirFile = new File(".");
+            String helper = currentDirFile.getAbsolutePath();
+            //projectPath C:\Users\PMDVCNTT\Documents\GitHub\EmailMarketing\
+            String projectPath = helper.substring(0, helper.length() - 1);
+            String folderImage = projectPath+"\\src\\images\\";
+            File folder = new File(folderImage);
+            File[] listOfFiles = folder.listFiles();
+            if(listOfFiles.length>0){
+                            // second part (the image)
             messageBodyPart = new MimeBodyPart();
-            DataSource fds = new FileDataSource("..\\EmailMarketing\\src\\images\\img.PNG");
-
-            messageBodyPart.setDataHandler(new DataHandler(fds));
+               DataSource fds = new FileDataSource(projectPath+"\\src\\images\\"+listOfFiles[0].getName()); 
+                        messageBodyPart.setDataHandler(new DataHandler(fds));
             messageBodyPart.setHeader("Content-ID", "<image>");
-
-            // add image to the multipart
+                // add image to the multipart
             multipart.addBodyPart(messageBodyPart);
-
+            }
             // put everything together
             msg.setContent(multipart);
             msg.setSentDate(new Date());
