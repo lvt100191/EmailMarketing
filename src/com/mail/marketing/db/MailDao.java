@@ -57,8 +57,8 @@ public class MailDao {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {
-            pst.close();
-            c.close();
+            if(pst !=null) pst.close();
+            if(c !=null) c.close();
         }
     }
 
@@ -88,9 +88,9 @@ public class MailDao {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {
-            rs.close();
-            pst.close();
-            c.close();
+            if(rs !=null) rs.close();
+            if(pst !=null) pst.close();
+            if(c !=null) c.close();
         }
         return m;
 
@@ -122,9 +122,9 @@ public class MailDao {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {
-            rs.close();
-            pst.close();
-            c.close();
+            if(rs !=null) rs.close();
+            if(pst !=null) pst.close();
+            if(c !=null) c.close();
         }
         return mails;
 
@@ -134,7 +134,6 @@ public class MailDao {
     public static void updateMail(Mail mail) throws SQLException, Exception {
         Connection c = null;
         PreparedStatement pst = null;
-        ResultSet rs = null;
 
         try {
             c = DBUtil.connectDB(Config.DB_NAME);
@@ -148,9 +147,8 @@ public class MailDao {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {
-            rs.close();
-            pst.close();
-            c.close();
+            if(pst !=null) pst.close();
+            if(c !=null) c.close();
         }
 
     }

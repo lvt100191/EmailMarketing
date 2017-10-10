@@ -282,7 +282,6 @@ public class SendEmail extends javax.swing.JFrame {
                 }
 
             }
-
         } catch (Exception ex) {
             Logger.getLogger(SendEmail.class.getName()).log(Level.SEVERE, null, ex);
         }

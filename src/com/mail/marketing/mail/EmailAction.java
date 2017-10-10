@@ -169,6 +169,11 @@ public class EmailAction {
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", "outlook.office365.com");
+        //hien tai chua ho tro gui mail co dinh dang @outlook.com.vn
+//        if (mailSend.contains("@outlook.com.vn")) {
+//            props.put("mail.smtp.host", "outlook.office365.com.vn");
+//        }
+
         props.put("mail.smtp.port", "587");
 
         Session session = Session.getInstance(props,
