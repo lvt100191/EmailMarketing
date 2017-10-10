@@ -211,22 +211,17 @@ public class SendEmail1 extends javax.swing.JFrame {
                 String content = txtConent.getText().trim();
                 String sttMailSend = txtStatusSend.getText().trim();
                 String sttMailSent = txtStatusSent.getText().trim();
-                //lay danh sach mail gui
+                //lay danh sach mail gui theo trang thai va so luong mail cho phep gui trong ngay
                 ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(mailSend.getMaxMail()));
-                //lay thoi gian hien tai -24h
-                Date currentDate = new Date();
-                Calendar cal = Calendar.getInstance();
-                cal.setTime(currentDate);
-                cal.add(Calendar.HOUR, -24);
-                Date twentyFourHourBack = cal.getTime();
-                //thoi gian hien tai -24h phai < thoi gian gui mail gan day nhat khac null
-                Date lastDate = null;
-                if (mailSend.getLastTime() != null&& !mailSend.getLastTime().isEmpty()) {
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    lastDate = sdf.parse(mailSend.getLastTime());
+
+                //kiem tra thoi gian hien tai co thoa man gui mail khong
+                //checkTime = true roi vao truong hop mailSend.getLastTime()=null va khac "" 
+                boolean checkTime = true;
+                if (mailSend.getLastTime() != null && !mailSend.getLastTime().isEmpty()) {
+                    checkTime = checkRunTime(mailSend.getLastTime());
                 }
 
-                if (lastDate ==null || lastDate.before(twentyFourHourBack)) {
+                if (checkTime) {
                     for (Mail to : lst) {
                         try {
                             if (mailSend.getHostMail().equals(Mail.GMAIL_HOST)) {
@@ -240,7 +235,7 @@ public class SendEmail1 extends javax.swing.JFrame {
                                 EmailAction.sendZohoMail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
                             }
 
-                            System.out.println("---------------- tunglv4 gui mail tu host " + mailSend.getHostMail() + " toi: " + to.getEmail() + " thanh cong");
+                            System.out.println("---------------- tunglv4 gui mail "+mailSend.getEmail()+" tu host " + mailSend.getHostMail() + " toi: " + to.getEmail() + " thanh cong");
                             //update status mail nhan
                             to.setStatus(Integer.parseInt(sttMailSent));
                             MailDao.updateMail(to);
@@ -341,4 +336,26 @@ public class SendEmail1 extends javax.swing.JFrame {
     private javax.swing.JTextField txtStatusSent;
     private javax.swing.JTextField txtTitle;
     // End of variables declaration//GEN-END:variables
+
+    private boolean checkRunTime(String lastDate) {
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        //lay ra yyyyMMdd
+        String endDate = lastDate.trim().substring(0, 8);
+        //lay ra HHmmss
+        String endTime = lastDate.trim().substring(8, 14);
+        //lay thong tin thoi gian hien tai
+        Date currentDate = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        String currDate = sdf.format(currentDate);
+        //lay ra yyyyMMdd thoi gian hien tai
+        String curDate = currDate.trim().substring(0, 8);
+        //lay ra HHmmss thoi gian hien tai
+        String curTime = currDate.trim().substring(8, 14);
+        //dieu kien de chay la ngay hien tai phai khac ngay gui cuoi cung
+        //thoi gian hien tai phai lon hon thoi gian gui cuoi cung
+        if (!endDate.equals(curDate) && Integer.parseInt(curTime) > Integer.parseInt(endTime)) {
+            return true;
+        }
+        return false;
+    }
 }

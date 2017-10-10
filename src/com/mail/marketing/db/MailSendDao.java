@@ -24,7 +24,8 @@ import org.apache.log4j.Logger;
 public class MailSendDao {
 
     static Logger logger = Logger.getLogger(MailSendDao.class.getName());
-        //tam thoi chi update status
+    //tam thoi chi update status
+
     public static void updateMail(MailSend mail) throws SQLException, Exception {
         Connection c = null;
         PreparedStatement pst = null;
@@ -37,7 +38,9 @@ public class MailSendDao {
                     + " SET LAST_TIME = ? WHERE ID= ?; ";
             pst = c.prepareStatement(query);
             Date d = new Date();
-            pst.setString(1, d.toString());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+            String lstTime = sdf.format(d);
+            pst.setString(1, lstTime);
             pst.setInt(2, mail.getId());
             pst.executeUpdate();
         } catch (Exception e) {
@@ -49,6 +52,7 @@ public class MailSendDao {
         }
 
     }
+
     public static ArrayList<MailSend> getListMailSend() throws SQLException, Exception {
         ArrayList<MailSend> mails = new ArrayList<>();
         Connection c = null;

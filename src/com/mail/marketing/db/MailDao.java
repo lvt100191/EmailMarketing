@@ -49,7 +49,7 @@ public class MailDao {
             pst.setString(5, "");
             pst.setString(6, "");
             Date d = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
             String dateCreate = sdf.format(d);
             pst.setString(7, dateCreate);
             pst.setInt(8, Mail.STATUS_INSERT);
