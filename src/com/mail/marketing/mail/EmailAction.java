@@ -123,22 +123,21 @@ public class EmailAction {
             // add it
             multipart.addBodyPart(messageBodyPart);
 
-
-                        File currentDirFile = new File(".");
+            File currentDirFile = new File(".");
             String helper = currentDirFile.getAbsolutePath();
             //projectPath C:\Users\PMDVCNTT\Documents\GitHub\EmailMarketing\
             String projectPath = helper.substring(0, helper.length() - 1);
-            String folderImage = projectPath+"\\src\\images\\";
+            String folderImage = projectPath + "\\src\\images\\";
             File folder = new File(folderImage);
             File[] listOfFiles = folder.listFiles();
-            if(listOfFiles.length>0){
-                            // second part (the image)
-            messageBodyPart = new MimeBodyPart();
-               DataSource fds = new FileDataSource(projectPath+"\\src\\images\\"+listOfFiles[0].getName()); 
-                        messageBodyPart.setDataHandler(new DataHandler(fds));
-            messageBodyPart.setHeader("Content-ID", "<image>");
+            if (listOfFiles.length > 0) {
+                // second part (the image)
+                messageBodyPart = new MimeBodyPart();
+                DataSource fds = new FileDataSource(projectPath + "\\src\\images\\" + listOfFiles[0].getName());
+                messageBodyPart.setDataHandler(new DataHandler(fds));
+                messageBodyPart.setHeader("Content-ID", "<image>");
                 // add image to the multipart
-            multipart.addBodyPart(messageBodyPart);
+                multipart.addBodyPart(messageBodyPart);
             }
             // put everything together
             msg.setContent(multipart);
@@ -164,7 +163,7 @@ public class EmailAction {
     OutboundSpamException: WASCL UserAction verdict is not None. 
     Actual verdict is RefuseQuota, ShowTierUpgrade. <471579726.21.1507465985178.JavaMail.javamailuser@localhost> 
     [Hostname=KL1PR04MB1686.apcprd04.prod.outlook.com]
-    */
+     */
     public static void sendOutlookMail(String mailSend, String passwordMailSend, String mailRecipient, String title, String content) throws MessagingException, FileNotFoundException {
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -196,15 +195,22 @@ public class EmailAction {
             // add it
             multipart.addBodyPart(messageBodyPart);
 
-            // second part (the image)
-            messageBodyPart = new MimeBodyPart();
-            DataSource fds = new FileDataSource("..\\EmailMarketing\\src\\images\\img.PNG");
-
-            messageBodyPart.setDataHandler(new DataHandler(fds));
-            messageBodyPart.setHeader("Content-ID", "<image>");
-
-            // add image to the multipart
-            multipart.addBodyPart(messageBodyPart);
+            File currentDirFile = new File(".");
+            String helper = currentDirFile.getAbsolutePath();
+            //projectPath C:\Users\PMDVCNTT\Documents\GitHub\EmailMarketing\
+            String projectPath = helper.substring(0, helper.length() - 1);
+            String folderImage = projectPath + "\\src\\images\\";
+            File folder = new File(folderImage);
+            File[] listOfFiles = folder.listFiles();
+            if (listOfFiles.length > 0) {
+                // second part (the image)
+                messageBodyPart = new MimeBodyPart();
+                DataSource fds = new FileDataSource(projectPath + "\\src\\images\\" + listOfFiles[0].getName());
+                messageBodyPart.setDataHandler(new DataHandler(fds));
+                messageBodyPart.setHeader("Content-ID", "<image>");
+                // add image to the multipart
+                multipart.addBodyPart(messageBodyPart);
+            }
 
             // put everything together
             message.setContent(multipart);
@@ -217,7 +223,7 @@ public class EmailAction {
             throw new RuntimeException(e);
         }
     }
-    
+
     //mailSend: zoho mail gui
     //passwordMailSend: mat khau cua email gui
     //mailRecipient: dia chi email nhan
@@ -264,15 +270,22 @@ public class EmailAction {
             // add it
             multipart.addBodyPart(messageBodyPart);
 
-            // second part (the image)
-            messageBodyPart = new MimeBodyPart();
-            DataSource fds = new FileDataSource("..\\EmailMarketing\\src\\images\\img.PNG");
-
-            messageBodyPart.setDataHandler(new DataHandler(fds));
-            messageBodyPart.setHeader("Content-ID", "<image>");
-
-            // add image to the multipart
-            multipart.addBodyPart(messageBodyPart);
+            File currentDirFile = new File(".");
+            String helper = currentDirFile.getAbsolutePath();
+            //projectPath C:\Users\PMDVCNTT\Documents\GitHub\EmailMarketing\
+            String projectPath = helper.substring(0, helper.length() - 1);
+            String folderImage = projectPath + "\\src\\images\\";
+            File folder = new File(folderImage);
+            File[] listOfFiles = folder.listFiles();
+            if (listOfFiles.length > 0) {
+                // second part (the image)
+                messageBodyPart = new MimeBodyPart();
+                DataSource fds = new FileDataSource(projectPath + "\\src\\images\\" + listOfFiles[0].getName());
+                messageBodyPart.setDataHandler(new DataHandler(fds));
+                messageBodyPart.setHeader("Content-ID", "<image>");
+                // add image to the multipart
+                multipart.addBodyPart(messageBodyPart);
+            }
 
             // put everything together
             msg.setContent(multipart);
