@@ -33,7 +33,7 @@ public class DBUtil {
         try {
             Class.forName("org.sqlite.JDBC");
             con = DriverManager.getConnection("jdbc:sqlite:" + fileName);
-            System.out.println("tunglv4 ket noi thanh cong");
+            //System.out.println("tunglv4 ket noi thanh cong");
         } catch (Exception e) {
             logger.error("tunglv4 Loi ket noi den co so du lieu" + e.getMessage());
             con.close();
