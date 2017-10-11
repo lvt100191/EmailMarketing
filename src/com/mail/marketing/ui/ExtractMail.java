@@ -271,7 +271,7 @@ public class ExtractMail extends javax.swing.JFrame {
                 } catch (Exception ex) {
                     Logger.getLogger(ExtractMail.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                System.out.println("extract mail thanh cong");
+                System.out.println("thu thap dia chi mail thanh cong");
             }
             if (type.equals(FaceBook.TYPE_GROUP)) { //thu thap mail tu group
 

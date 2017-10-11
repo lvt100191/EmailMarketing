@@ -14,6 +14,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,8 +34,19 @@ public class SendEmail extends javax.swing.JFrame {
     /**
      * Creates new form SendEmail
      */
-    public SendEmail() {
+    public SendEmail() throws IOException, Exception {
         initComponents();
+        File currentDirFile = new File(".");
+        String helper = currentDirFile.getAbsolutePath();
+        //projectPath C:\Users\PMDVCNTT\Documents\GitHub\EmailMarketing\
+        String projectPath = helper.substring(0, helper.length() - 1);
+        File folderImage = new File(projectPath + "\\src\\images\\");
+        File[] listFile = folderImage.listFiles();
+        if (listFile.length > 0) {
+            ImageIcon ii = new ImageIcon(scaleImage(120, 120, ImageIO.read(new File(projectPath + "\\src\\images\\" + listFile[0].getName()))));//get the image from file chooser and scale it to match JLabel size
+            lbImage.setIcon(ii);
+        }
+
         setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(true);
@@ -397,7 +409,11 @@ public class SendEmail extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SendEmail().setVisible(true);
+                try {
+                    new SendEmail().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(SendEmail.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
