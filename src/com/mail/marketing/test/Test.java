@@ -20,7 +20,7 @@ import javax.mail.Store;
 public class Test {
     public static void main(String[] args) throws NoSuchProviderException, MessagingException {
  Properties prop = System.getProperties();
-
+String html="<html><font color='#0000CF'><u>Soạn HTML</u></font></html>";
     String host = "imap.outlook.com";
     String username = "coso1.mshoatoeic@outlook.com";
     String password = "123456a@";

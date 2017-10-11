@@ -10,11 +10,15 @@ import com.mail.marketing.db.MailSendDao;
 import com.mail.marketing.entity.Mail;
 import com.mail.marketing.entity.MailSend;
 import com.mail.marketing.mail.EmailAction;
+import java.awt.Desktop;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,6 +35,8 @@ import org.apache.commons.io.FileUtils;
  */
 public class SendEmail extends javax.swing.JFrame {
 
+    private String myLink = "Soạn HTML";
+
     /**
      * Creates new form SendEmail
      */
@@ -46,7 +52,7 @@ public class SendEmail extends javax.swing.JFrame {
             ImageIcon ii = new ImageIcon(scaleImage(120, 120, ImageIO.read(new File(projectPath + "\\src\\images\\" + listFile[0].getName()))));//get the image from file chooser and scale it to match JLabel size
             lbImage.setIcon(ii);
         }
-        
+
         setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(true);
@@ -81,6 +87,7 @@ public class SendEmail extends javax.swing.JFrame {
         txtAddImage = new javax.swing.JButton();
         lbImage = new javax.swing.JLabel();
         btRemoveImage = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gửi Eail quảng bá");
@@ -154,6 +161,14 @@ public class SendEmail extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("<html><font color=\"#0000CF\"><u>"+myLink+"</u></font></html>");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -178,21 +193,28 @@ public class SendEmail extends javax.swing.JFrame {
                                 .addGap(9, 9, 9))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btCheckAmountMail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btAmountSent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btSendMail, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btCheckMailSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtStatusSent, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                    .addComponent(txtAmountMail)
-                    .addComponent(txtAmountMailSent)
-                    .addComponent(txtStatusSend, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                    .addComponent(jButton2)
-                    .addComponent(txtNumOfMailSend))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btCheckAmountMail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btAmountSent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btCheckMailSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btSendMail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtStatusSent, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                            .addComponent(txtAmountMail)
+                            .addComponent(txtAmountMailSent)
+                            .addComponent(txtStatusSend, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                            .addComponent(txtNumOfMailSend)
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -231,7 +253,9 @@ public class SendEmail extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel7)))
-                        .addGap(64, 64, 64)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2)
                             .addComponent(btSendMail))
@@ -277,7 +301,7 @@ public class SendEmail extends javax.swing.JFrame {
                 if (mailSend.getLastTime() != null && !mailSend.getLastTime().isEmpty()) {
                     checkTime = checkRunTime(mailSend.getLastTime());
                 }
-                
+
                 if (checkTime) {
                     for (Mail to : lst) {
                         try {
@@ -285,8 +309,8 @@ public class SendEmail extends javax.swing.JFrame {
                                 continue;
                             }
                             if (mailSend.getHostMail().equals(Mail.GMAIL_HOST)) {
-                                    EmailAction.sendGmail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
-                                
+                                EmailAction.sendGmail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
+
                             }
                             if (mailSend.getHostMail().equals(Mail.OUTLOOK_HOST)) {
                                 EmailAction.sendOutlookMail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
@@ -294,24 +318,30 @@ public class SendEmail extends javax.swing.JFrame {
                             if (mailSend.getHostMail().equals(Mail.ZOHO_HOST)) {
                                 EmailAction.sendZohoMail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
                             }
-                            
+
                             System.out.println("---------------- tunglv4 gui mail " + mailSend.getEmail() + " tu host " + mailSend.getHostMail() + " toi: " + to.getEmail() + " thanh cong");
                             //update status mail nhan
                             to.setStatus(Integer.parseInt(sttMailSent));
                             MailDao.updateMail(to);
-                            
+
                         } catch (Exception e) {
                             System.out.println("-----------------tunglv4 gui toi mail: " + to.getEmail() + " bi loi: " + e.getMessage());
+//                            if (e.getMessage().contains("554 5.2.0")) {
+//                                continue;
+//                            }
+//                            if (e.getMessage().contains("550 5.4.5")) {
+//                                continue;
+//                            }
                         }
                     }
                     //update thoi gian mail gui
                     //kiem tra phai co mail gui thi moi update thoi gian, chua them dieu kien
                     //so mail da gui phai =so mail max config trong db
-                    if(lst.size() >0){
+                    if (lst.size() > 0) {
                         MailSendDao.updateMailLastTime(mailSend);
-                    }     
+                    }
                 }
-                
+
             }
         } catch (Exception ex) {
             Logger.getLogger(SendEmail.class.getName()).log(Level.SEVERE, null, ex);
@@ -362,7 +392,7 @@ public class SendEmail extends javax.swing.JFrame {
                 } else {
                     count++;
                 }
-                
+
             }
             if (count > 0) {
                 txtNumOfMailSend.setText(String.valueOf(count));
@@ -376,24 +406,24 @@ public class SendEmail extends javax.swing.JFrame {
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
-        if(f !=null){
-                  String filename = f.getAbsolutePath();
-        
-        try {
-            File currentDirFile = new File(".");
-            String helper = currentDirFile.getAbsolutePath();
-            //projectPath C:\Users\PMDVCNTT\Documents\GitHub\EmailMarketing\
-            String projectPath = helper.substring(0, helper.length() - 1);
-            FileUtils.cleanDirectory(new File(projectPath + "\\src\\images\\"));
-            File dest = new File(projectPath + "\\src\\images\\" + f.getName());
-            File source = new File(filename);
-            FileUtils.copyFile(source, dest);
-            ImageIcon ii = new ImageIcon(scaleImage(120, 120, ImageIO.read(new File(f.getAbsolutePath()))));//get the image from file chooser and scale it to match JLabel size
-            lbImage.setIcon(ii);
-            System.out.println("filename: " + filename);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }  
+        if (f != null) {
+            String filename = f.getAbsolutePath();
+
+            try {
+                File currentDirFile = new File(".");
+                String helper = currentDirFile.getAbsolutePath();
+                //projectPath C:\Users\PMDVCNTT\Documents\GitHub\EmailMarketing\
+                String projectPath = helper.substring(0, helper.length() - 1);
+                FileUtils.cleanDirectory(new File(projectPath + "\\src\\images\\"));
+                File dest = new File(projectPath + "\\src\\images\\" + f.getName());
+                File source = new File(filename);
+                FileUtils.copyFile(source, dest);
+                ImageIcon ii = new ImageIcon(scaleImage(120, 120, ImageIO.read(new File(f.getAbsolutePath()))));//get the image from file chooser and scale it to match JLabel size
+                lbImage.setIcon(ii);
+                System.out.println("filename: " + filename);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
     }//GEN-LAST:event_txtAddImageActionPerformed
 
@@ -409,6 +439,17 @@ public class SendEmail extends javax.swing.JFrame {
             Logger.getLogger(SendEmail.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btRemoveImageActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        //mo link
+        if (Desktop.isDesktopSupported()) {
+            try {
+                Desktop.getDesktop().browse(new URI("https://wordtohtml.net/"));
+            } catch (URISyntaxException | IOException ex) {
+                Logger.getLogger(SendEmail.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -459,6 +500,7 @@ public class SendEmail extends javax.swing.JFrame {
     private javax.swing.JButton btRemoveImage;
     private javax.swing.JButton btSendMail;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -496,7 +538,7 @@ public class SendEmail extends javax.swing.JFrame {
         }
         return false;
     }
-    
+
     public static BufferedImage scaleImage(int w, int h, BufferedImage img) throws Exception {
         BufferedImage bi;
         bi = new BufferedImage(w, h, BufferedImage.TRANSLUCENT);
@@ -507,4 +549,5 @@ public class SendEmail extends javax.swing.JFrame {
         g2d.dispose();
         return bi;
     }
+
 }
