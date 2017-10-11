@@ -46,7 +46,7 @@ public class SendEmail extends javax.swing.JFrame {
             ImageIcon ii = new ImageIcon(scaleImage(120, 120, ImageIO.read(new File(projectPath + "\\src\\images\\" + listFile[0].getName()))));//get the image from file chooser and scale it to match JLabel size
             lbImage.setIcon(ii);
         }
-
+        
         setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(true);
@@ -277,13 +277,16 @@ public class SendEmail extends javax.swing.JFrame {
                 if (mailSend.getLastTime() != null && !mailSend.getLastTime().isEmpty()) {
                     checkTime = checkRunTime(mailSend.getLastTime());
                 }
-
+                
                 if (checkTime) {
                     for (Mail to : lst) {
                         try {
+                            if (mailSend.getMailBlocked() != null && !mailSend.getMailBlocked().isEmpty() && mailSend.getMailBlocked().contains(to.getEmail().trim())) {
+                                continue;
+                            }
                             if (mailSend.getHostMail().equals(Mail.GMAIL_HOST)) {
-                                EmailAction.sendGmail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
-
+                                    EmailAction.sendGmail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
+                                
                             }
                             if (mailSend.getHostMail().equals(Mail.OUTLOOK_HOST)) {
                                 EmailAction.sendOutlookMail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
@@ -291,20 +294,24 @@ public class SendEmail extends javax.swing.JFrame {
                             if (mailSend.getHostMail().equals(Mail.ZOHO_HOST)) {
                                 EmailAction.sendZohoMail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
                             }
-
+                            
                             System.out.println("---------------- tunglv4 gui mail " + mailSend.getEmail() + " tu host " + mailSend.getHostMail() + " toi: " + to.getEmail() + " thanh cong");
                             //update status mail nhan
                             to.setStatus(Integer.parseInt(sttMailSent));
                             MailDao.updateMail(to);
-
+                            
                         } catch (Exception e) {
                             System.out.println("-----------------tunglv4 gui toi mail: " + to.getEmail() + " bi loi: " + e.getMessage());
                         }
                     }
                     //update thoi gian mail gui
-                    MailSendDao.updateMail(mailSend);
+                    //kiem tra phai co mail gui thi moi update thoi gian, chua them dieu kien
+                    //so mail da gui phai =so mail max config trong db
+                    if(lst.size() >0){
+                        MailSendDao.updateMailLastTime(mailSend);
+                    }     
                 }
-
+                
             }
         } catch (Exception ex) {
             Logger.getLogger(SendEmail.class.getName()).log(Level.SEVERE, null, ex);
@@ -355,7 +362,7 @@ public class SendEmail extends javax.swing.JFrame {
                 } else {
                     count++;
                 }
-
+                
             }
             if (count > 0) {
                 txtNumOfMailSend.setText(String.valueOf(count));
@@ -369,8 +376,9 @@ public class SendEmail extends javax.swing.JFrame {
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
-        String filename = f.getAbsolutePath();
-
+        if(f !=null){
+                  String filename = f.getAbsolutePath();
+        
         try {
             File currentDirFile = new File(".");
             String helper = currentDirFile.getAbsolutePath();
@@ -385,6 +393,7 @@ public class SendEmail extends javax.swing.JFrame {
             System.out.println("filename: " + filename);
         } catch (Exception ex) {
             ex.printStackTrace();
+        }  
         }
     }//GEN-LAST:event_txtAddImageActionPerformed
 
@@ -487,7 +496,7 @@ public class SendEmail extends javax.swing.JFrame {
         }
         return false;
     }
-
+    
     public static BufferedImage scaleImage(int w, int h, BufferedImage img) throws Exception {
         BufferedImage bi;
         bi = new BufferedImage(w, h, BufferedImage.TRANSLUCENT);

@@ -6,7 +6,6 @@
 package com.mail.marketing.db;
 
 import com.mail.marketing.config.Config;
-import com.mail.marketing.entity.Mail;
 import com.mail.marketing.entity.MailSend;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,9 +23,8 @@ import org.apache.log4j.Logger;
 public class MailSendDao {
 
     static Logger logger = Logger.getLogger(MailSendDao.class.getName());
-    //tam thoi chi update status
-
-    public static void updateMail(MailSend mail) throws SQLException, Exception {
+    //update thoi gian gui mail gan nhat
+    public static void updateMailLastTime(MailSend mail) throws SQLException, Exception {
         Connection c = null;
         PreparedStatement pst = null;
 
@@ -50,6 +48,29 @@ public class MailSendDao {
         }
 
     }
+    //update mailblocked
+    public static void updateMailBlocked(MailSend mail) throws SQLException, Exception {
+        Connection c = null;
+        PreparedStatement pst = null;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+
+            String query = "UPDATE  " + MailSend.TABLE_NAME
+                    + " SET MAIL_BLOCKED = ? WHERE EMAIL= ?; ";
+            pst = c.prepareStatement(query);
+            pst.setString(1, mail.getMailBlocked());
+            pst.setString(2, mail.getEmail());
+            pst.executeUpdate();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            if(pst !=null) pst.close();
+            if(c !=null) c.close();
+        }
+
+    }
+    
 
     public static ArrayList<MailSend> getListMailSend() throws SQLException, Exception {
         ArrayList<MailSend> mails = new ArrayList<>();
@@ -91,6 +112,48 @@ public class MailSendDao {
             if(c !=null) c.close();
         }
         return mails;
+
+    }
+    
+    
+        public static MailSend  getMailSendByEmail(String email) throws SQLException, Exception {
+        MailSend mail = new MailSend();
+        Connection c = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+
+            String query = "SELECT * FROM  " + MailSend.TABLE_NAME + " WHERE EMAIL=?;";
+            pst = c.prepareStatement(query);
+            pst.setString(1, email.trim());
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String password = rs.getString("password_mail");
+                String hostMail = rs.getString("host_mail");
+                String lastTime = rs.getString("last_time");
+                String mailBloked = rs.getString("mail_blocked");
+                int maxMail = rs.getInt("max_mail");
+                String msgError = rs.getString("msg_error");
+                mail.setId(id);
+                mail.setEmail(email);
+                mail.setHostMail(hostMail);
+                mail.setLastTime(lastTime);
+                mail.setMailBlocked(mailBloked);
+                mail.setMaxMail(maxMail);
+                mail.setPassword(password);
+                mail.setMsgError(msgError);
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            if(rs !=null) rs.close();
+            if(pst !=null) pst.close();
+            if(c !=null) c.close();
+        }
+        return mail;
 
     }
 
