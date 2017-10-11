@@ -238,6 +238,7 @@ public class ExtractMail extends javax.swing.JFrame {
                                             listMail.add(mail);
                                             if (!EmailAction.checkMailExisted(mail)) {
                                                 MailDao.insert(email);
+                                                System.out.println("thu thap duoc email: "+mail+" va insert vao bang tbl_mail");
                                             }
 
                                         } catch (Exception e) {
