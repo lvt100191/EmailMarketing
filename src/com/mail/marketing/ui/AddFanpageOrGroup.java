@@ -143,16 +143,19 @@ public class AddFanpageOrGroup extends javax.swing.JFrame {
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
         try {
+            String username = txtUserName.getText().trim();
+            String token = txtToken.getText().trim();
+            String idFaceBook = txtID.getText().trim();
             // lay thong tin nhap lieu gan vao doi tuong Facebook
             FaceBook face = new FaceBook();
             if (cbxType.getSelectedItem().toString().equals(FaceBook.TYPE_FANPAGE)) {//la fanpage
                 face.setType(FaceBook.TYPE_FANPAGE);
-                String idFaceBook = txtID.getText().trim();
+
+                FanPageAction fanPageAction = null;
                 if (!idFaceBook.isEmpty() && idFaceBook != null) { //nhap vao id
                     try {
                         face.setIdFacebook(idFaceBook);
-                        FanPageAction fanPageAction = new FanPageAction();
-                        String token = txtToken.getText().trim();
+                        fanPageAction = new FanPageAction();
                         Page page = fanPageAction.getPageInfoByUserName(token, txtID.getText());
                         face.setName(page.getName());
                     } catch (Exception ex) {
@@ -160,9 +163,7 @@ public class AddFanpageOrGroup extends javax.swing.JFrame {
                     }
                 } else {//nhap ten nguoi dung cua trang
                     try {
-                        String username = txtUserName.getText().trim();
-                        String token = txtToken.getText().trim();
-                        FanPageAction fanPageAction = new FanPageAction();
+                        fanPageAction = new FanPageAction();
                         Page page = fanPageAction.getPageInfoByUserName(token, username);
                         face.setIdFacebook(page.getId());
                         face.setName(page.getName());
@@ -170,26 +171,28 @@ public class AddFanpageOrGroup extends javax.swing.JFrame {
                         Logger.getLogger(AddFanpageOrGroup.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
+                //lay danh sach thanh vien like fanpage
+                fanPageAction = new FanPageAction();
+                String member = fanPageAction.getMemberOfFanPage(face.getIdFacebook(), token);
+                face.setMember(member);
             }
             if (cbxType.getSelectedItem().toString().equals(FaceBook.TYPE_GROUP)) {//la group
                 face.setType(FaceBook.TYPE_GROUP);
-                 String idFaceBook = txtID.getText().trim();
+                 GroupAction groupAction = null;
                 if (!idFaceBook.isEmpty() && idFaceBook != null) {//nhap vao id
                     try {
                         face.setIdFacebook(txtID.getText().trim());
-                        GroupAction groupAction = new GroupAction();
-                        String token = txtToken.getText().trim();
+                         groupAction = new GroupAction();
                         Group group = groupAction.getGroupInfoByID(token, txtID.getText().trim());
                         face.setIdFacebook(idFaceBook);
                         face.setName(group.getName());
                     } catch (Exception ex) {
                         Logger.getLogger(AddFanpageOrGroup.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }else {//nhap ten nguoi dung cua nhom
+                } else {//nhap ten nguoi dung cua nhom
                     try {
-                        String username = txtUserName.getText().trim();
-                        String token = txtToken.getText().trim();
-                        GroupAction groupAction = new GroupAction();
+
+                         groupAction = new GroupAction();
                         Group group = groupAction.getGroupInfoByUsername(token, username);
                         face.setIdFacebook(group.getId());
                         face.setName(group.getName());
@@ -200,10 +203,11 @@ public class AddFanpageOrGroup extends javax.swing.JFrame {
             }
             //kiem tra xem trang da ton tai trong db hay chua
             FaceBook fb = FaceBookDao.getFaceBook(face);
-            if(fb ==null){ //du lieu chua co trong db thi insert
-            //insert du lieu vao bang TBL_FACEBOOK
-            FaceBookDao.insert(face);  
-            }else{
+            if (fb == null) { //du lieu chua co trong db thi insert
+                //insert du lieu vao bang TBL_FACEBOOK
+                FaceBookDao.insert(face);
+                System.out.println("them moi facebook: "+face.getName()+" thanh cong!");
+            } else {
                 System.out.println("insert error!: trang da ton tai");
             }
 

@@ -107,13 +107,15 @@ public class FaceBookDao {
                     + "(id_facebook,"
                     + "name,"
                     + "type,"
-                    + "note) "
-                    + "VALUES (?,?,?,?);";
+                    + "note,"                    
+                    + "member) "
+                    + "VALUES (?,?,?,?,?);";//chu y phai du tham so va dau hoi ?
             pst = c.prepareStatement(query);
             pst.setString(1, face.getIdFacebook());
             pst.setString(2, face.getName());
             pst.setString(3, face.getType());
             pst.setString(4, "");
+            pst.setString(5, face.getMember());
             pst.executeUpdate();
         } catch (Exception e) {
             throw new Exception(e.getMessage());

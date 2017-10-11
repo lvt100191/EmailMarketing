@@ -46,7 +46,7 @@ public class FanPageAction {
         page.setName(obj.get("name").toString());
         return page;
     }
-    
+
     //lay thong tin trang theo id
     public Page getPageInfoById(String token, String id) throws Exception {
         Page page = new Page();
@@ -209,14 +209,23 @@ public class FanPageAction {
         FanPageAction fanPage = new FanPageAction();
         Config cfg = new Config();
         String token = cfg.USER_ACCESS_TOKEN;
-        
+
         //lay thong tin email tu binh luan insert vao DB
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date fromDate = sdf.parse("2017-10-06");
         fanPage.getEmailInComments(token, fromDate);
-        
-        
 
         System.out.println("thuc hien thanh cong");
+    }
+
+    public String getMemberOfFanPage(String idFacebook, String token) throws Exception {
+        String numMember = null;
+        JSONParser parser = null;
+        String url = "https://graph.facebook.com/v2.10/" + idFacebook + "?fields=fan_count&access_token=" + token;
+        String rsJson = ResponseUtil.sendGet(url);
+        parser = new JSONParser();
+        JSONObject obj = (JSONObject) parser.parse(rsJson);
+        numMember = obj.get("fan_count").toString();
+        return numMember;
     }
 }

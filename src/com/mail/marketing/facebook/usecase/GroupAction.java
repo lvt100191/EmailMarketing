@@ -34,7 +34,7 @@ public class GroupAction {
         group.setName(obj.get("name").toString());
         return group;
     }
-    
+
     //lay thong tin cua nhom da tham gia theo ten nguoi dung cua nhom
     //username: ten nguoi dung cua nhom
     public Group getGroupInfoByUsername(String token, String username) throws Exception {
@@ -101,7 +101,7 @@ public class GroupAction {
         String token = cfg.USER_ACCESS_TOKEN;
         GroupAction action = new GroupAction();
         //id group 1477039208979448
-        String msg="http://bit.ly/2yHELJ7";
+        String msg = "http://bit.ly/2yHELJ7";
         action.postFeedOnGroup(token, "1031444633600369", msg);
         System.out.println("thuc hien thanh cong");
 

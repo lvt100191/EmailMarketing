@@ -18,7 +18,10 @@ public class FaceBook {
     //id cua trang hoac nhom tren face
     String idFacebook;
     String name;
+    //loai fanpage hay group
     String type;
+    //so thanh vien like fanpage 
+    String member;
 
     public int getId() {
         return id;
@@ -26,6 +29,14 @@ public class FaceBook {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getMember() {
+        return member;
+    }
+
+    public void setMember(String member) {
+        this.member = member;
     }
 
  
