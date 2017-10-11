@@ -37,7 +37,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="txtAddImage" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtAddImage" max="32767" attributes="0"/>
+                                  <Component id="btRemoveImage" max="32767" attributes="0"/>
+                              </Group>
                               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                               <Component id="lbImage" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
@@ -128,6 +131,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btRemoveImage" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="txtAddImage" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                           </Group>
@@ -245,6 +250,14 @@
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbImage">
+    </Component>
+    <Component class="javax.swing.JButton" name="btRemoveImage">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="X&#xf3;a &#x1ea3;nh &#x111;&#xed;nh k&#xe8;m"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btRemoveImageActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

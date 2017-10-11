@@ -80,6 +80,7 @@ public class SendEmail extends javax.swing.JFrame {
         txtNumOfMailSend = new javax.swing.JTextField();
         txtAddImage = new javax.swing.JButton();
         lbImage = new javax.swing.JLabel();
+        btRemoveImage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gửi Eail quảng bá");
@@ -146,6 +147,13 @@ public class SendEmail extends javax.swing.JFrame {
             }
         });
 
+        btRemoveImage.setText("Xóa ảnh đính kèm");
+        btRemoveImage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRemoveImageActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,7 +170,9 @@ public class SendEmail extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtAddImage)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtAddImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btRemoveImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(51, 51, 51)
                                 .addComponent(lbImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(9, 9, 9))
@@ -232,6 +242,8 @@ public class SendEmail extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btRemoveImage)
+                                .addGap(18, 18, 18)
                                 .addComponent(txtAddImage)
                                 .addGap(46, 46, 46))
                             .addGroup(layout.createSequentialGroup()
@@ -376,6 +388,19 @@ public class SendEmail extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtAddImageActionPerformed
 
+    private void btRemoveImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoveImageActionPerformed
+        try {
+            File currentDirFile = new File(".");
+            String helper = currentDirFile.getAbsolutePath();
+            //projectPath C:\Users\PMDVCNTT\Documents\GitHub\EmailMarketing\
+            String projectPath = helper.substring(0, helper.length() - 1);
+            FileUtils.cleanDirectory(new File(projectPath + "\\src\\images\\"));
+            lbImage.setIcon(null);
+        } catch (IOException ex) {
+            Logger.getLogger(SendEmail.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btRemoveImageActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -422,6 +447,7 @@ public class SendEmail extends javax.swing.JFrame {
     private javax.swing.JButton btAmountSent;
     private javax.swing.JButton btCheckAmountMail;
     private javax.swing.JButton btCheckMailSend;
+    private javax.swing.JButton btRemoveImage;
     private javax.swing.JButton btSendMail;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel3;
