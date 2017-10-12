@@ -533,6 +533,7 @@ public class SendEmail extends javax.swing.JFrame {
         String curTime = currDate.trim().substring(8, 14);
         //dieu kien de chay la ngay hien tai phai khac ngay gui cuoi cung
         //thoi gian hien tai phai lon hon thoi gian gui cuoi cung
+        //chua xu ly dc hqua chay 21h xong hnay qua 12h no la 00 nen ko chay
         if (!endDate.equals(curDate) && Integer.parseInt(curTime) > Integer.parseInt(endTime)) {
             return true;
         }
