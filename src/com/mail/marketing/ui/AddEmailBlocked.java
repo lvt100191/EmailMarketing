@@ -117,13 +117,31 @@ public class AddEmailBlocked extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
-        //nhap tren cung mot dong cach nhau boi dau ;
-        String[] lstMailBlocked = txtAreaMailBlocked.getText().trim().split(";");
-        //nhap tren cung mot dong cach nhau boi dau ;
-        String[] lstMailSend = txtAreaMailSend.getText().trim().split(";");
+        //nhap moi dong 1 dia chi mail can them vao blocked
+        //VD:
+//        nhiihuynhh535@hmail.com
+//        vqtan1994@gmail.com
+//        lethuytram6397@gmail.com
+//        Daoconghan98@gmail.com
+        String[] lstMailBlocked = txtAreaMailBlocked.getText().trim().split("\n");
+        //nhap moi dong 1 dia chi mail gui can them vao blocked
+        //VD:
+//hoa.ms.toeic@gmail.com
+//trungtammshoa@outlook.com
+//mshoatoeic@outlook.com
+//coso1.mshoatoeic@outlook.com
+//coso2.mshoatoeic@gmail.com
+//coso3.mshoatoeic@gmail.com
+//coso4.mshoatoeic@gmail.com
+//coso1.mshoatoeic@gmail.com
+//coso5.mshoatoeic@gmail.com
+//coso6.mshoatoeic@gmail.com
+//coso7.mshoatoeic@gmail.com
+//coso8.mshoatoeic@gmail.com
+        String[] lstMailSend = txtAreaMailSend.getText().trim().split("\n");
         for (String mailSend : lstMailSend) {
             try {
-                MailSend mailSend1 = MailSendDao.getMailSendByEmail(mailSend);
+                MailSend mailSend1 = MailSendDao.getMailSendByEmail(mailSend.trim());
                 String mailBlocked = mailSend1.getMailBlocked();
                 if (mailBlocked == null) {
                     mailBlocked = txtAreaMailBlocked.getText().trim();
@@ -131,8 +149,10 @@ public class AddEmailBlocked extends javax.swing.JFrame {
                     for (String mailLocked : lstMailBlocked) {
                         //kiem tra email blocked da them vao mail_blocked hay chua
                         //chua them thi moi add
-                        if (!mailSend1.getMailBlocked().contains(mailLocked)) {
+                        if (!mailSend1.getMailBlocked().contains(mailLocked.trim())) {
                             mailBlocked = mailBlocked + mailLocked + ";";
+                            
+                        }else{
                             System.out.println("mail "+mailLocked+" da ton tai trong block list");
                         }
                     }
