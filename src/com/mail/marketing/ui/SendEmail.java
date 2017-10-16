@@ -288,7 +288,8 @@ public class SendEmail extends javax.swing.JFrame {
             //lay danh sach mail gui
             ArrayList<MailSend> lstSend = MailSendDao.getListMailSend();
             for (MailSend mailSend : lstSend) {
-                String title = txtTitle.getText().trim();
+                try{
+                                   String title = txtTitle.getText().trim();
                 String content = txtConent.getText().trim();
                 String sttMailSend = txtStatusSend.getText().trim();
                 String sttMailSent = txtStatusSent.getText().trim();
@@ -329,9 +330,10 @@ public class SendEmail extends javax.swing.JFrame {
 //                            if (e.getMessage().contains("554 5.2.0")) {
 //                                continue;
 //                            }
-//                            if (e.getMessage().contains("550 5.4.5")) {
-//                                continue;
-//                            }
+                            if (e.getMessage().contains("550 5.4.5")) {
+                                MailSendDao.updateMailLastTime(mailSend);
+                                throw new Exception("------------tunglv4 gui qua so luong mail cho phep trong ngay");
+                            }
                         }
                     }
                     //update thoi gian mail gui
@@ -340,6 +342,10 @@ public class SendEmail extends javax.swing.JFrame {
                     if (lst.size() > 0) {
                         MailSendDao.updateMailLastTime(mailSend);
                     }
+                } 
+                }catch(Exception e){
+                   System.out.println(mailSend.getEmail()+" : " + e.getMessage());
+                   continue;
                 }
 
             }
