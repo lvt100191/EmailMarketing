@@ -133,18 +133,20 @@ public class AddEmailBlocked extends javax.swing.JFrame {
                         //chua them thi moi add
                         if (!mailSend1.getMailBlocked().contains(mailLocked)) {
                             mailBlocked = mailBlocked + mailLocked + ";";
+                            System.out.println("mail "+mailLocked+" da ton tai trong block list");
                         }
                     }
                 }
 
                 mailSend1.setMailBlocked(mailBlocked);
                 MailSendDao.updateMailBlocked(mailSend1);
+                System.out.println("them mail block vao email "+mailSend1.getEmail()+" thanh cong!");
             } catch (Exception ex) {
                 Logger.getLogger(AddEmailBlocked.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
-        System.out.println("them mail block thanh cong!");
+        
 
     }//GEN-LAST:event_btAddActionPerformed
 
