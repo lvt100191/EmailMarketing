@@ -103,38 +103,123 @@ public class FanPageAction {
     //ai binh luan
     //noi dung binh luan la gi
     //lstFeed: danh sach bai dang cua trang
+//    public ArrayList<Comment> getComments(String token, String feedId) throws Exception {
+//        ArrayList<Comment> listComment = new ArrayList<>();
+//        JSONParser parser = null;
+//        String urlGetComment = "https://graph.facebook.com/v2.10/" + feedId + "/comments?access_token=" + token;
+//        String rsComment = ResponseUtil.sendGet(urlGetComment);
+//        parser = new JSONParser();
+//        JSONObject objComments = (JSONObject) parser.parse(rsComment);
+//        JSONArray dataComments = (JSONArray) objComments.get("data");
+//        List<Comment> lst = new ArrayList<Comment>();
+//        if (dataComments != null && dataComments.size() > 0) {
+//            for (int j = 0; j < dataComments.size(); j++) {
+//                Comment c = new Comment();
+//                //chu y dataComments get j khong duoc nham bien
+//                JSONObject comment = (JSONObject) dataComments.get(j);
+//                c.setId(comment.get("id").toString());
+//                c.setIdFeed(feedId);
+//                Object user = comment.get("from");
+//                if (user != null) {
+//                    String userJson = comment.get("from").toString();
+//                    parser = new JSONParser();
+//                    JSONObject objUser = (JSONObject) parser.parse(userJson);
+//                    User u = new User();
+//                    u.setId(objUser.get("id").toString());
+//                    u.setName(objUser.get("name").toString());
+//                    c.setUser(u);
+//                }
+//                c.setTimeComment(comment.get("created_time").toString());
+//                c.setContentComment(comment.get("message").toString());
+//                //trong lst chua danh sach nguoi binh luan userName
+//                listComment.add(c);
+//            }
+//        }
+//        return listComment;
+//    }
     public ArrayList<Comment> getComments(String token, String feedId) throws Exception {
         ArrayList<Comment> listComment = new ArrayList<>();
         JSONParser parser = null;
         String urlGetComment = "https://graph.facebook.com/v2.10/" + feedId + "/comments?access_token=" + token;
-        String rsComment = ResponseUtil.sendGet(urlGetComment);
-        parser = new JSONParser();
-        JSONObject objComments = (JSONObject) parser.parse(rsComment);
-        JSONArray dataComments = (JSONArray) objComments.get("data");
-        List<Comment> lst = new ArrayList<Comment>();
-        if (dataComments != null && dataComments.size() > 0) {
-            for (int j = 0; j < dataComments.size(); j++) {
-                Comment c = new Comment();
-                //chu y dataComments get j khong duoc nham bien
-                JSONObject comment = (JSONObject) dataComments.get(j);
-                c.setId(comment.get("id").toString());
-                c.setIdFeed(feedId);
-                Object user = comment.get("from");
-                if (user != null) {
-                    String userJson = comment.get("from").toString();
+        Object rsNext = null;
+        do {
+            if (rsNext == null) {
+                String rsComment = ResponseUtil.sendGet(urlGetComment);
+
+                parser = new JSONParser();
+                JSONObject objComments = (JSONObject) parser.parse(rsComment);
+                Object paging = objComments.get("paging");
+                if (paging != null) {
+                    String rsPaging = objComments.get("paging").toString();
                     parser = new JSONParser();
-                    JSONObject objUser = (JSONObject) parser.parse(userJson);
-                    User u = new User();
-                    u.setId(objUser.get("id").toString());
-                    u.setName(objUser.get("name").toString());
-                    c.setUser(u);
+                    JSONObject objPaging = (JSONObject) parser.parse(rsPaging);
+                    rsNext = objPaging.get("next");
                 }
-                c.setTimeComment(comment.get("created_time").toString());
-                c.setContentComment(comment.get("message").toString());
-                //trong lst chua danh sach nguoi binh luan userName
-                listComment.add(c);
+
+                JSONArray dataComments = (JSONArray) objComments.get("data");
+
+                if (dataComments != null && dataComments.size() > 0) {
+                    for (int j = 0; j < dataComments.size(); j++) {
+                        Comment c = new Comment();
+                        //chu y dataComments get j khong duoc nham bien
+                        JSONObject comment = (JSONObject) dataComments.get(j);
+                        c.setId(comment.get("id").toString());
+                        c.setIdFeed(feedId);
+                        Object user = comment.get("from");
+                        if (user != null) {
+                            String userJson = comment.get("from").toString();
+                            parser = new JSONParser();
+                            JSONObject objUser = (JSONObject) parser.parse(userJson);
+                            User u = new User();
+                            u.setId(objUser.get("id").toString());
+                            u.setName(objUser.get("name").toString());
+                            c.setUser(u);
+                        }
+                        c.setTimeComment(comment.get("created_time").toString());
+                        c.setContentComment(comment.get("message").toString());
+                        //trong lst chua danh sach nguoi binh luan userName
+                        listComment.add(c);
+
+                    }
+                }
             }
-        }
+            if (rsNext != null) {
+                String rsCommentNext = ResponseUtil.sendGet(rsNext.toString());
+                parser = new JSONParser();
+                JSONObject objComments = (JSONObject) parser.parse(rsCommentNext);
+                String rsPaging = objComments.get("paging").toString();
+                parser = new JSONParser();
+                JSONObject objPaging = (JSONObject) parser.parse(rsPaging);
+                rsNext = objPaging.get("next");
+                JSONArray dataComments = (JSONArray) objComments.get("data");
+
+                if (dataComments != null && dataComments.size() > 0) {
+                    for (int j = 0; j < dataComments.size(); j++) {
+                        Comment c = new Comment();
+                        //chu y dataComments get j khong duoc nham bien
+                        JSONObject comment = (JSONObject) dataComments.get(j);
+                        c.setId(comment.get("id").toString());
+                        c.setIdFeed(feedId);
+                        Object user = comment.get("from");
+                        if (user != null) {
+                            String userJson = comment.get("from").toString();
+                            parser = new JSONParser();
+                            JSONObject objUser = (JSONObject) parser.parse(userJson);
+                            User u = new User();
+                            u.setId(objUser.get("id").toString());
+                            u.setName(objUser.get("name").toString());
+                            c.setUser(u);
+                        }
+                        c.setTimeComment(comment.get("created_time").toString());
+                        c.setContentComment(comment.get("message").toString());
+                        //trong lst chua danh sach nguoi binh luan userName
+                        listComment.add(c);
+
+                    }
+                }
+            }
+
+        } while (rsNext != null);
         return listComment;
     }
 
