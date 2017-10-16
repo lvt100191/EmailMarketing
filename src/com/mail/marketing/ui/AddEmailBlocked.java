@@ -51,7 +51,7 @@ public class AddEmailBlocked extends javax.swing.JFrame {
 
         txtAreaMailSend.setColumns(20);
         txtAreaMailSend.setRows(5);
-        txtAreaMailSend.setToolTipText("Danh sách mail gửi cần thêm mail chặn vào mail_blocked, nếu mail bị chặn thì chỉ thêm vào những mail gửi bị chặn, nếu mail nhận là địa chỉ không xác định thì thêm vào tất cả mail gửi \ntrungtammshoa@outlook.com;mshoatoeic@outlook.com;coso1.mshoatoeic@outlook.com\n");
+        txtAreaMailSend.setToolTipText("Danh sách mail gửi cần thêm mail chặn vào mail_blocked, moi mail tren mot dong\nVD:\nhoa.ms.toeic@gmail.com\ntrungtammshoa@outlook.com\nmshoatoeic@outlook.com\ncoso1.mshoatoeic@outlook.com\ncoso2.mshoatoeic@gmail.com\ncoso3.mshoatoeic@gmail.com\ncoso4.mshoatoeic@gmail.com\ncoso1.mshoatoeic@gmail.com\ncoso5.mshoatoeic@gmail.com\ncoso6.mshoatoeic@gmail.com\ncoso7.mshoatoeic@gmail.com\ncoso8.mshoatoeic@gmail.com\n");
         jScrollPane1.setViewportView(txtAreaMailSend);
 
         btAdd.setText("Thêm vào danh sách mail gửi");
@@ -65,7 +65,7 @@ public class AddEmailBlocked extends javax.swing.JFrame {
 
         txtAreaMailBlocked.setColumns(20);
         txtAreaMailBlocked.setRows(5);
-        txtAreaMailBlocked.setToolTipText("Danh sách mail chặn cần thêm vào mail_blocked ngăn cách nhau bằng dấu ;  chú ý nằm trên cùng 1 dòng\nnhiihuynhh535@hmail.com;quynhanhktqt17@gmaik.com;lehuynhduc97@gmail.com;chihangsnsd@gmail.com;nguyenthihonghanh1552001@gmail.com");
+        txtAreaMailBlocked.setToolTipText("Danh sách mail chặn cần thêm vào mail_blocked, moi mail nam tren mot dong\nVD:\nnhiihuynhh535@hmail.com\nquynhanhktqt17@gmaik.com\nlehuynhduc97@gmail.com\n");
         jScrollPane2.setViewportView(txtAreaMailBlocked);
 
         btExit.setText("Quay lại");

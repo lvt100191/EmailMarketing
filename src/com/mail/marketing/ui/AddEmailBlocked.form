@@ -85,7 +85,7 @@
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="toolTipText" type="java.lang.String" value="Danh s&#xe1;ch mail g&#x1eed;i c&#x1ea7;n th&#xea;m mail ch&#x1eb7;n v&#xe0;o mail_blocked, n&#x1ebf;u mail b&#x1ecb; ch&#x1eb7;n th&#xec; ch&#x1ec9; th&#xea;m v&#xe0;o nh&#x1eef;ng mail g&#x1eed;i b&#x1ecb; ch&#x1eb7;n, n&#x1ebf;u mail nh&#x1ead;n l&#xe0; &#x111;&#x1ecb;a ch&#x1ec9; kh&#xf4;ng x&#xe1;c &#x111;&#x1ecb;nh th&#xec; th&#xea;m v&#xe0;o t&#x1ea5;t c&#x1ea3; mail g&#x1eed;i &#xa;trungtammshoa@outlook.com;mshoatoeic@outlook.com;coso1.mshoatoeic@outlook.com&#xa;"/>
+            <Property name="toolTipText" type="java.lang.String" value="Danh s&#xe1;ch mail g&#x1eed;i c&#x1ea7;n th&#xea;m mail ch&#x1eb7;n v&#xe0;o mail_blocked, moi mail tren mot dong&#xa;VD:&#xa;hoa.ms.toeic@gmail.com&#xa;trungtammshoa@outlook.com&#xa;mshoatoeic@outlook.com&#xa;coso1.mshoatoeic@outlook.com&#xa;coso2.mshoatoeic@gmail.com&#xa;coso3.mshoatoeic@gmail.com&#xa;coso4.mshoatoeic@gmail.com&#xa;coso1.mshoatoeic@gmail.com&#xa;coso5.mshoatoeic@gmail.com&#xa;coso6.mshoatoeic@gmail.com&#xa;coso7.mshoatoeic@gmail.com&#xa;coso8.mshoatoeic@gmail.com&#xa;"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -114,7 +114,7 @@
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="toolTipText" type="java.lang.String" value="Danh s&#xe1;ch mail ch&#x1eb7;n c&#x1ea7;n th&#xea;m v&#xe0;o mail_blocked ng&#x103;n c&#xe1;ch nhau b&#x1eb1;ng d&#x1ea5;u ;  ch&#xfa; &#xfd; n&#x1eb1;m tr&#xea;n c&#xf9;ng 1 d&#xf2;ng&#xa;nhiihuynhh535@hmail.com;quynhanhktqt17@gmaik.com;lehuynhduc97@gmail.com;chihangsnsd@gmail.com;nguyenthihonghanh1552001@gmail.com"/>
+            <Property name="toolTipText" type="java.lang.String" value="Danh s&#xe1;ch mail ch&#x1eb7;n c&#x1ea7;n th&#xea;m v&#xe0;o mail_blocked, moi mail nam tren mot dong&#xa;VD:&#xa;nhiihuynhh535@hmail.com&#xa;quynhanhktqt17@gmaik.com&#xa;lehuynhduc97@gmail.com&#xa;"/>
           </Properties>
         </Component>
       </SubComponents>
