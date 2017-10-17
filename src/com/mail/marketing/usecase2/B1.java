@@ -22,7 +22,7 @@ public class B1 {
 
     private static String sttMailSend = "1";
     private static String sttMailSent = "2";
-    private static String mailSend1 = "coso3.mshoatoeic@gmail.com";
+    private static String mailSend1 = "coso4.mshoatoeic@gmail.com";
     private static String title = "Có khi nào giới từ đứng một mình?";
     private static String content = "<p>Hệ thống mail bị lỗi n&ecirc;n c&ocirc; gửi lại&nbsp; cho những bạn n&agrave;o chưa nhận được</p>\n"
             + "<p>Bạn n&agrave;o đ&atilde; nhận rồi th&igrave; đừng tr&aacute;ch c&ocirc; spam mail nha!</p>\n"
