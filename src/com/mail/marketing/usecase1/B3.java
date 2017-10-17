@@ -36,13 +36,15 @@ import org.json.simple.parser.JSONParser;
  */
 
 public class B3 {
-
+    //nhap tham so dau vao
     private static String token = "EAACEdEose0cBANBZAfcOfZA8vE5Wz7ZCZAqzI7F4z6b2uE3bwhHcX6CV4Ib568QDF2ni3xjrZA3lDVrNXIqt1M0GGsbKRqjZClzvJLBfA8Tat62tdy4eCa5NxHedL7wW68zZAXwSyZBGk2yBUHJE9Taq7Y95ZA9m9W1pRzwwcFv4R3GgiVoiO0r8uIZBPqZCY2VLj4ZD";
 
+    //id cua trang
+    private static String id = "275158636317806";
     public static void main(String[] args) throws Exception {
         //lay thong tin trang tieng anh cho nguoi viet theo id:275158636317806
         FanPageAction fanPageAction = new FanPageAction();
-        String id = "275158636317806";
+        
         Page page = fanPageAction.getPageInfoById(token, id);
         //lay bai dang cua trang tu ngay truyen vao
         //lay danh sach bai da dang tu ngay fromDate truyen vao den hien tai

@@ -6,4 +6,5 @@ B2: Gửi mail đến tất cả email thu thập được trong bảng TBL_MAIL
 B3: Thu thập 1000 gmail bình luận sớm nhất tại bình luận của bài viết, insert
     vào bảng tbl_mail_send_document (chú ý chỉ thu thập Gmail)  
 B4: Lấy email từ bảng tbl_mail_send_document theo bài viết Gửi link tài liệu
+    (trong quá trình thu thập ở B3 thực hiện song song bước này)
 
