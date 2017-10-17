@@ -103,6 +103,7 @@ public class FanPageAction {
     //ai binh luan
     //noi dung binh luan la gi
     //lstFeed: danh sach bai dang cua trang
+    //truong hop khong phan trang
 //    public ArrayList<Comment> getComments(String token, String feedId) throws Exception {
 //        ArrayList<Comment> listComment = new ArrayList<>();
 //        JSONParser parser = null;
@@ -137,6 +138,7 @@ public class FanPageAction {
 //        }
 //        return listComment;
 //    }
+    //truong hop lay theo phan trang
     public ArrayList<Comment> getComments(String token, String feedId) throws Exception {
         ArrayList<Comment> listComment = new ArrayList<>();
         JSONParser parser = null;
