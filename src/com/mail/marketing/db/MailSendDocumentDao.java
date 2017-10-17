@@ -97,4 +97,31 @@ public class MailSendDocumentDao {
         return m;
 
     }
+
+    public static int countMailByFeedId(String idFeed) throws Exception {
+        int count = 0;
+        Connection c = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+
+            String query = "SELECT count(*) FROM  " + MailSendDocument.TABLE_NAME + " WHERE feed_id=?;";
+            pst = c.prepareStatement(query);
+            pst.setString(1, idFeed);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                 count = rs.getInt(1);
+
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            if(rs !=null) rs.close();
+            if(pst !=null) pst.close();
+            if(c !=null) c.close();
+        }
+        return count;
+    }
 }

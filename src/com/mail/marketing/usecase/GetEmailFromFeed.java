@@ -48,7 +48,7 @@ public class GetEmailFromFeed {
         String feedId = "275158636317806_287001431800193";
 
         for (Feed feed : lstFeed) {
-            //lay ra bai dang can thu thap mail
+            //lay ra bai dang can thu thap mail theo id cua bai dang
             if (feed.getId().equals(feedId)) {
                 //lay ra comment cua bai dang 
                 ArrayList<Comment> comments = getComments(token, feed.getId());
@@ -139,11 +139,17 @@ public class GetEmailFromFeed {
         } while (rsNext != null);
         return listComment;
     }
-
-    private static int countMailByFeedId(String idFeed) {
-        int count = 0;
-        System.out.println("So luong mail da du 1000 khong the them moi email");
-        return count;
+    
+    //kiem tra so luong mail binh luan cua bai viet da dat 1000 chua 
+    //fasle:chua dat true:da dat
+    private static boolean countMailByFeedId(String idFeed) throws Exception {
+        boolean check = false;
+        int count = MailSendDocumentDao.countMailByFeedId(idFeed);
+        if(count > 1000){
+            System.out.println("So luong mail da du 1000 khong the them moi email");
+            return true;
+        } 
+        return check;
     }
 
     //kiem tra tai khoan mail da ton tai chua
@@ -152,6 +158,7 @@ public class GetEmailFromFeed {
         boolean check = false;
         MailSendDocument m = MailSendDocumentDao.getByEmail(mail);
         if (m != null) {
+            System.out.println("tai khoan mail "+mail+" da ton tai");
             return true;
         }
         return check;
@@ -184,7 +191,7 @@ public class GetEmailFromFeed {
                         //kiem tra xem voi moi bai dang so luong email da du 1000 mail chua
                         // select count (*) from tbl_mail_Send_document where id_feed=id bai dang
                         //countMailByFeedId
-                        if (!checkMailExisted(mail) && countMailByFeedId(idFeed) < 1000) {
+                        if (!checkMailExisted(mail) && !countMailByFeedId(idFeed)) {
                             MailSendDocumentDao.insert(email);
                         }
                     } catch (Exception e) {
@@ -198,7 +205,7 @@ public class GetEmailFromFeed {
 }
 /**
  *
- * @Desc Post 1 bai voi noi dung chia se tai lieu Yeu cau: like bai like fanpage
- * dangky youtube comment email Duyet qua cac binh luan lay du 1000 mail Gui tai
+ * @Desc Post 1 bai voi noi dung chia se tai lieu Yeu cau: like bai,like fanpage
+ * dangky youtube, comment email.Duyet qua cac binh luan lay du 1000 mail Gui tai
  * lieu cho danh sach mail da thu thap duoc
  */
