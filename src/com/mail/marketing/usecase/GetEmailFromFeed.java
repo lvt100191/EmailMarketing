@@ -139,16 +139,16 @@ public class GetEmailFromFeed {
         } while (rsNext != null);
         return listComment;
     }
-    
+
     //kiem tra so luong mail binh luan cua bai viet da dat 1000 chua 
     //fasle:chua dat true:da dat
     private static boolean countMailByFeedId(String idFeed) throws Exception {
         boolean check = false;
         int count = MailSendDocumentDao.countMailByFeedId(idFeed);
-        if(count > 1000){
+        if (count > 1000) {
             System.out.println("So luong mail da du 1000 khong the them moi email");
             return true;
-        } 
+        }
         return check;
     }
 
@@ -158,11 +158,12 @@ public class GetEmailFromFeed {
         boolean check = false;
         MailSendDocument m = MailSendDocumentDao.getByEmail(mail);
         if (m != null) {
-            System.out.println("tai khoan mail "+mail+" da ton tai");
+            System.out.println("tai khoan mail " + mail + " da ton tai");
             return true;
         }
         return check;
     }
+
     //comments: danh sach comment
     //idFeed: id cua bai dang
     private static void extractMailFromComment(ArrayList<Comment> comments, String idFeed) {
@@ -191,7 +192,8 @@ public class GetEmailFromFeed {
                         //kiem tra xem voi moi bai dang so luong email da du 1000 mail chua
                         // select count (*) from tbl_mail_Send_document where id_feed=id bai dang
                         //countMailByFeedId
-                        if (!checkMailExisted(mail) && !countMailByFeedId(idFeed)) {
+                        //chi lay gmail
+                        if (!checkMailExisted(mail) && !countMailByFeedId(idFeed) && mail.contains("@gmail.com")) {
                             MailSendDocumentDao.insert(email);
                         }
                     } catch (Exception e) {
@@ -206,6 +208,6 @@ public class GetEmailFromFeed {
 /**
  *
  * @Desc Post 1 bai voi noi dung chia se tai lieu Yeu cau: like bai,like fanpage
- * dangky youtube, comment email.Duyet qua cac binh luan lay du 1000 mail Gui tai
- * lieu cho danh sach mail da thu thap duoc
+ * dangky youtube, comment email(chu y phai comment gmail), .Duyet qua cac binh
+ * luan lay du 1000 mail Gui tai lieu cho danh sach mail da thu thap duoc
  */
