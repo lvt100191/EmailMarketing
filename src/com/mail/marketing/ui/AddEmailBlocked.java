@@ -51,7 +51,7 @@ public class AddEmailBlocked extends javax.swing.JFrame {
 
         txtAreaMailSend.setColumns(20);
         txtAreaMailSend.setRows(5);
-        txtAreaMailSend.setToolTipText("Danh sách mail gửi cần thêm mail chặn vào mail_blocked, moi mail tren mot dong\nVD:\nhoa.ms.toeic@gmail.com\ntrungtammshoa@outlook.com\nmshoatoeic@outlook.com\ncoso1.mshoatoeic@outlook.com\ncoso2.mshoatoeic@gmail.com\ncoso3.mshoatoeic@gmail.com\ncoso4.mshoatoeic@gmail.com\ncoso1.mshoatoeic@gmail.com\ncoso5.mshoatoeic@gmail.com\ncoso6.mshoatoeic@gmail.com\ncoso7.mshoatoeic@gmail.com\ncoso8.mshoatoeic@gmail.com\n");
+        txtAreaMailSend.setToolTipText("Danh sách mail gửi cần thêm mail chặn vào mail_blocked, moi mail tren mot dong\nVD:\nhoa.ms.toeic@gmail.com\ncoso2.mshoatoeic@gmail.com\ncoso3.mshoatoeic@gmail.com\ncoso4.mshoatoeic@gmail.com\ncoso1.mshoatoeic@gmail.com\ncoso5.mshoatoeic@gmail.com\ncoso6.mshoatoeic@gmail.com\ncoso7.mshoatoeic@gmail.com\ncoso8.mshoatoeic@gmail.com\n");
         jScrollPane1.setViewportView(txtAreaMailSend);
 
         btAdd.setText("Thêm vào danh sách mail gửi");

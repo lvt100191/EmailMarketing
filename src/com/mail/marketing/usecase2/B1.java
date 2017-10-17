@@ -10,12 +10,9 @@ import com.mail.marketing.db.MailSendDao;
 import com.mail.marketing.entity.Mail;
 import com.mail.marketing.entity.MailSend;
 import com.mail.marketing.mail.EmailAction;
-import com.mail.marketing.ui.SendEmail;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -25,7 +22,7 @@ public class B1 {
 
     private static String sttMailSend = "1";
     private static String sttMailSent = "2";
-    private static String mailSend1 = "coso8.mshoatoeic@gmail.com";
+    private static String mailSend1 = "coso3.mshoatoeic@gmail.com";
     private static String title = "Có khi nào giới từ đứng một mình?";
     private static String content = "<p>Hệ thống mail bị lỗi n&ecirc;n c&ocirc; gửi lại&nbsp; cho những bạn n&agrave;o chưa nhận được</p>\n"
             + "<p>Bạn n&agrave;o đ&atilde; nhận rồi th&igrave; đừng tr&aacute;ch c&ocirc; spam mail nha!</p>\n"

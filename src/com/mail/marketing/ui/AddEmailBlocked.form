@@ -85,7 +85,7 @@
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="toolTipText" type="java.lang.String" value="Danh s&#xe1;ch mail g&#x1eed;i c&#x1ea7;n th&#xea;m mail ch&#x1eb7;n v&#xe0;o mail_blocked, moi mail tren mot dong&#xa;VD:&#xa;hoa.ms.toeic@gmail.com&#xa;trungtammshoa@outlook.com&#xa;mshoatoeic@outlook.com&#xa;coso1.mshoatoeic@outlook.com&#xa;coso2.mshoatoeic@gmail.com&#xa;coso3.mshoatoeic@gmail.com&#xa;coso4.mshoatoeic@gmail.com&#xa;coso1.mshoatoeic@gmail.com&#xa;coso5.mshoatoeic@gmail.com&#xa;coso6.mshoatoeic@gmail.com&#xa;coso7.mshoatoeic@gmail.com&#xa;coso8.mshoatoeic@gmail.com&#xa;"/>
+            <Property name="toolTipText" type="java.lang.String" value="Danh s&#xe1;ch mail g&#x1eed;i c&#x1ea7;n th&#xea;m mail ch&#x1eb7;n v&#xe0;o mail_blocked, moi mail tren mot dong&#xa;VD:&#xa;hoa.ms.toeic@gmail.com&#xa;coso2.mshoatoeic@gmail.com&#xa;coso3.mshoatoeic@gmail.com&#xa;coso4.mshoatoeic@gmail.com&#xa;coso1.mshoatoeic@gmail.com&#xa;coso5.mshoatoeic@gmail.com&#xa;coso6.mshoatoeic@gmail.com&#xa;coso7.mshoatoeic@gmail.com&#xa;coso8.mshoatoeic@gmail.com&#xa;"/>
           </Properties>
         </Component>
       </SubComponents>
