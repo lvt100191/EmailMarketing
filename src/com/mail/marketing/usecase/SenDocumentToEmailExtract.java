@@ -12,8 +12,9 @@ package com.mail.marketing.usecase;
 public class SenDocumentToEmailExtract {
 
     public static void main(String[] args) {
-        //lay ra cac bai dang da co 1000 mail comment
-        //lay ra link tai lieu
+        //select db lay ra cac bai dang da co 1000 mail comment
+        //select count(*), id_feed  from tbl_mail_send_document group by id_feed
+        //lay ra link tai lieu 
         //gui mail den cac email thu thap duoc tu bai dang
     }
 
