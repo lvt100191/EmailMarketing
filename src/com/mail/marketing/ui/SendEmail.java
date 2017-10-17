@@ -288,64 +288,68 @@ public class SendEmail extends javax.swing.JFrame {
             //lay danh sach mail gui
             ArrayList<MailSend> lstSend = MailSendDao.getListMailSend();
             for (MailSend mailSend : lstSend) {
-                try{
-                                   String title = txtTitle.getText().trim();
-                String content = txtConent.getText().trim();
-                String sttMailSend = txtStatusSend.getText().trim();
-                String sttMailSent = txtStatusSent.getText().trim();
-                //lay danh sach mail gui theo trang thai va so luong mail cho phep gui trong ngay
-                ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(mailSend.getMaxMail()));
+                try {
+                    String title = txtTitle.getText().trim();
+                    String content = txtConent.getText().trim();
+                    String sttMailSend = txtStatusSend.getText().trim();
+                    String sttMailSent = txtStatusSent.getText().trim();
+                    //lay danh sach mail gui theo trang thai va so luong mail cho phep gui trong ngay
+                    ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(mailSend.getMaxMail()));
+                    //test
+//                    ArrayList<Mail> lst = new ArrayList<>();
+//                    Mail m = new Mail();
+//                    m.setEmail("tunglv9x@gmail.com");
+//                    lst.add(m);
+                    //kiem tra thoi gian hien tai co thoa man gui mail khong
+                    //checkTime = true roi vao truong hop mailSend.getLastTime()=null va khac "" 
+                    boolean checkTime = true;
+                    if (mailSend.getLastTime() != null && !mailSend.getLastTime().isEmpty()) {
+                        checkTime = checkRunTime(mailSend.getLastTime());
+                    }
 
-                //kiem tra thoi gian hien tai co thoa man gui mail khong
-                //checkTime = true roi vao truong hop mailSend.getLastTime()=null va khac "" 
-                boolean checkTime = true;
-                if (mailSend.getLastTime() != null && !mailSend.getLastTime().isEmpty()) {
-                    checkTime = checkRunTime(mailSend.getLastTime());
-                }
+                    if (checkTime) {
+                        for (Mail to : lst) {
+                            try {
+                                if (mailSend.getMailBlocked() != null && !mailSend.getMailBlocked().isEmpty() && mailSend.getMailBlocked().contains(to.getEmail().trim())) {
+                                    continue;
+                                }
+                                if (mailSend.getHostMail().equals(Mail.GMAIL_HOST)) {
+                                    EmailAction.sendGmail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
 
-                if (checkTime) {
-                    for (Mail to : lst) {
-                        try {
-                            if (mailSend.getMailBlocked() != null && !mailSend.getMailBlocked().isEmpty() && mailSend.getMailBlocked().contains(to.getEmail().trim())) {
-                                continue;
-                            }
-                            if (mailSend.getHostMail().equals(Mail.GMAIL_HOST)) {
-                                EmailAction.sendGmail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
+                                }
+                                if (mailSend.getHostMail().equals(Mail.OUTLOOK_HOST)) {
+                                    EmailAction.sendOutlookMail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
+                                }
+                                if (mailSend.getHostMail().equals(Mail.ZOHO_HOST)) {
+                                    EmailAction.sendZohoMail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
+                                }
 
-                            }
-                            if (mailSend.getHostMail().equals(Mail.OUTLOOK_HOST)) {
-                                EmailAction.sendOutlookMail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
-                            }
-                            if (mailSend.getHostMail().equals(Mail.ZOHO_HOST)) {
-                                EmailAction.sendZohoMail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
-                            }
+                                System.out.println("---------------- tunglv4 gui mail " + mailSend.getEmail() + " tu host " + mailSend.getHostMail() + " toi: " + to.getEmail() + " thanh cong");
+                                //update status mail nhan
+                                to.setStatus(Integer.parseInt(sttMailSent));
+                                MailDao.updateMail(to);
 
-                            System.out.println("---------------- tunglv4 gui mail " + mailSend.getEmail() + " tu host " + mailSend.getHostMail() + " toi: " + to.getEmail() + " thanh cong");
-                            //update status mail nhan
-                            to.setStatus(Integer.parseInt(sttMailSent));
-                            MailDao.updateMail(to);
-
-                        } catch (Exception e) {
-                            System.out.println("-----------------tunglv4 gui toi mail: " + to.getEmail() + " bi loi: " + e.getMessage());
+                            } catch (Exception e) {
+                                System.out.println("-----------------tunglv4 gui toi mail: " + to.getEmail() + " bi loi: " + e.getMessage());
 //                            if (e.getMessage().contains("554 5.2.0")) {
 //                                continue;
 //                            }
-                            if (e.getMessage().contains("550 5.4.5")) {
-                                MailSendDao.updateMailLastTime(mailSend);
-                                throw new Exception("------------tunglv4 gui qua so luong mail cho phep trong ngay");
+                                if (e.getMessage().contains("550 5.4.5")) {
+                                    MailSendDao.updateMailLastTime(mailSend);
+                                    throw new Exception("------------tunglv4 gui qua so luong mail cho phep trong ngay");
+                                }
                             }
                         }
+                        //update thoi gian mail gui
+                        //kiem tra phai co mail gui thi moi update thoi gian, chua them dieu kien
+                        //so mail da gui phai =so mail max config trong db
+                        if (lst.size() > 0) {
+                            MailSendDao.updateMailLastTime(mailSend);
+                        }
                     }
-                    //update thoi gian mail gui
-                    //kiem tra phai co mail gui thi moi update thoi gian, chua them dieu kien
-                    //so mail da gui phai =so mail max config trong db
-                    if (lst.size() > 0) {
-                        MailSendDao.updateMailLastTime(mailSend);
-                    }
-                } 
-                }catch(Exception e){
-                   System.out.println(mailSend.getEmail()+" : " + e.getMessage());
-                   continue;
+                } catch (Exception e) {
+                    System.out.println(mailSend.getEmail() + " : " + e.getMessage());
+                    continue;
                 }
 
             }

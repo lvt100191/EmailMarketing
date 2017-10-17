@@ -37,7 +37,7 @@ import org.json.simple.parser.JSONParser;
 
 public class B3 {
     //nhap tham so dau vao
-    private static String token = "EAACEdEose0cBANBZAfcOfZA8vE5Wz7ZCZAqzI7F4z6b2uE3bwhHcX6CV4Ib568QDF2ni3xjrZA3lDVrNXIqt1M0GGsbKRqjZClzvJLBfA8Tat62tdy4eCa5NxHedL7wW68zZAXwSyZBGk2yBUHJE9Taq7Y95ZA9m9W1pRzwwcFv4R3GgiVoiO0r8uIZBPqZCY2VLj4ZD";
+    private static String token = "EAACEdEose0cBADTTLg8W0JIPm9hJb4g8sWBAHylJVG9mS4bBLcrVC6MRRT05hRTwuVdPzb3c6ZAuyFwIazDhzXtbqJRzHoAkXWLsjWbQ61bxSLU55viZBjUa3Hxh57yFalN0yrxi20DR5gDBOJFYFlJMTGb1yKMreHocsThTRihqQuA2d9b10jMdMpReUZD";
 
     //id cua trang
     private static String id = "275158636317806";

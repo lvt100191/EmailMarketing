@@ -96,7 +96,8 @@ public class EmailAction {
         props.put("mail.store.protocol", "pop3");
         props.put("mail.transport.protocol", "smtp");
         try {
-            Session session = Session.getDefaultInstance(props,
+            Session session =null;
+            session = Session.getDefaultInstance(props,
                     new Authenticator() {
                 protected PasswordAuthentication getPasswordAuthentication() {
                     //chu y neu gap loi nay thi phai bat bao mat tren tai khoan mail google cho phep ung dung it bao mat hon Erreur d'envoi, cause: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
