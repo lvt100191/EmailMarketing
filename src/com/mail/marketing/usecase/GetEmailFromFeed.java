@@ -5,9 +5,7 @@
  */
 package com.mail.marketing.usecase;
 
-import com.mail.marketing.db.MailDao;
 import com.mail.marketing.db.MailSendDocumentDao;
-import com.mail.marketing.entity.Mail;
 import com.mail.marketing.entity.MailSendDocument;
 import com.mail.marketing.facebook.dto.Comment;
 import com.mail.marketing.facebook.dto.Feed;
@@ -15,7 +13,6 @@ import com.mail.marketing.facebook.dto.Page;
 import com.mail.marketing.facebook.dto.User;
 import com.mail.marketing.facebook.usecase.FanPageAction;
 import com.mail.marketing.http.ResponseUtil;
-import com.mail.marketing.mail.EmailAction;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,6 +27,14 @@ import org.json.simple.parser.JSONParser;
  * @author TUNGLV
  *
  */
+/**
+ *
+ * @Desc Post 1 bai voi noi dung chia se tai lieu. Yeu cau: like bai,like fanpage
+ * dangky youtube, comment email(chu y phai comment gmail).Duyet qua cac binh
+ * thu thap dia chi email insert vao bang tbl_mail_send_document, voi moi bai
+ * dang chi insert 1000 mail
+ */
+
 public class GetEmailFromFeed {
 
     private static String token = "EAACEdEose0cBANBZAfcOfZA8vE5Wz7ZCZAqzI7F4z6b2uE3bwhHcX6CV4Ib568QDF2ni3xjrZA3lDVrNXIqt1M0GGsbKRqjZClzvJLBfA8Tat62tdy4eCa5NxHedL7wW68zZAXwSyZBGk2yBUHJE9Taq7Y95ZA9m9W1pRzwwcFv4R3GgiVoiO0r8uIZBPqZCY2VLj4ZD";
@@ -205,9 +210,3 @@ public class GetEmailFromFeed {
         }
     }
 }
-/**
- *
- * @Desc Post 1 bai voi noi dung chia se tai lieu Yeu cau: like bai,like fanpage
- * dangky youtube, comment email(chu y phai comment gmail), .Duyet qua cac binh
- * luan lay du 1000 mail Gui tai lieu cho danh sach mail da thu thap duoc
- */
