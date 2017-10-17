@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mail.marketing.usecase;
+package com.mail.marketing.usecase1;
 
 import com.mail.marketing.db.MailSendDocumentDao;
 import com.mail.marketing.entity.MailSendDocument;
@@ -35,7 +35,7 @@ import org.json.simple.parser.JSONParser;
  * dang chi insert 1000 mail
  */
 
-public class GetEmailFromFeed {
+public class B3 {
 
     private static String token = "EAACEdEose0cBANBZAfcOfZA8vE5Wz7ZCZAqzI7F4z6b2uE3bwhHcX6CV4Ib568QDF2ni3xjrZA3lDVrNXIqt1M0GGsbKRqjZClzvJLBfA8Tat62tdy4eCa5NxHedL7wW68zZAXwSyZBGk2yBUHJE9Taq7Y95ZA9m9W1pRzwwcFv4R3GgiVoiO0r8uIZBPqZCY2VLj4ZD";
 

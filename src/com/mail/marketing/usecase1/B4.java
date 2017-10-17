@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mail.marketing.usecase;
+package com.mail.marketing.usecase1;
 
 /**
  *
- * @author TUNGLV
+ * @author TUNGLV sau khi thu thap duoc du 1000 mail thi thuc hien gui tai lieu
+ * den cac mail thu thap duoc
  */
-public class SenDocumentToEmailExtract {
+public class B4 {
 
     public static void main(String[] args) {
         //select db lay ra cac bai dang da co 1000 mail comment

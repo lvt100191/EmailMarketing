@@ -1,0 +1,9 @@
+    Mục đích tăng lượng đăng ký kênh youtube
+B1: POST bài viết cung cấp tài liệu lên FanPage
+B2: Gửi mail đến tất cả email thu thập được trong bảng TBL_MAIL, quảng bá bài
+    post, yêu cầu phải like bài viết, like fanpage, like youtube, comment gmail
+    (chú ý thu thập đủ 1000 gmail thì không gửi mail nữa)
+B3: Thu thập 1000 gmail bình luận sớm nhất tại bình luận của bài viết, insert
+    vào bảng tbl_mail_send_document (chú ý chỉ thu thập Gmail)  
+B4: Lấy email từ bảng tbl_mail_send_document theo bài viết Gửi link tài liệu
+
