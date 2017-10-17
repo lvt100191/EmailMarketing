@@ -65,11 +65,15 @@ public class GetEmailFromFeed {
                             }
                             Mail email = new Mail();
                             email.setEmail(mail);
-                            //select  count (*), email  from TBL_MAIL   group by email having count(*)>1 ;
-                            if (!EmailAction.checkMailExisted(mail)) {
+                            //kiem tra email da ton tai trong bang tbl_mail_Send_document chua
+                            //select  count (*), email  from tbl_mail_Send_document   group by email having count(*)>1 ;
+                            //checkMailExisted
+                            //kiem tra xem voi moi bai dang so luong email da du 1000 mail chua
+                            // select count (*) from tbl_mail_Send_document where id_feed=id bai dang
+                            //countMailByFeedId
+                            if (!EmailAction.checkMailExisted(mail) && countMailByFeedId("275158636317806_287001431800193")<1000) {
                                 MailDao.insert(email);
                             }
-
                         } catch (Exception e) {
 
                         }
@@ -161,6 +165,12 @@ public static ArrayList<Comment> getComments(String token, String feedId) throws
 
         } while (rsNext != null);
         return listComment;
+    }
+
+    private static int countMailByFeedId(String idFeed) {
+        int count =0;
+        System.out.println("So luong mail da du 1000 khong the them moi email");
+        return count;
     }
 
     
