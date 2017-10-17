@@ -6,7 +6,9 @@
 package com.mail.marketing.usecase;
 
 import com.mail.marketing.db.MailDao;
+import com.mail.marketing.db.MailSendDocumentDao;
 import com.mail.marketing.entity.Mail;
+import com.mail.marketing.entity.MailSendDocument;
 import com.mail.marketing.facebook.dto.Comment;
 import com.mail.marketing.facebook.dto.Feed;
 import com.mail.marketing.facebook.dto.Page;
@@ -26,14 +28,16 @@ import org.json.simple.parser.JSONParser;
 /**
  *
  * @author TUNGLV
- * 
+ *
  */
 public class GetEmailFromFeed {
+
     private static String token = "EAACEdEose0cBANBZAfcOfZA8vE5Wz7ZCZAqzI7F4z6b2uE3bwhHcX6CV4Ib568QDF2ni3xjrZA3lDVrNXIqt1M0GGsbKRqjZClzvJLBfA8Tat62tdy4eCa5NxHedL7wW68zZAXwSyZBGk2yBUHJE9Taq7Y95ZA9m9W1pRzwwcFv4R3GgiVoiO0r8uIZBPqZCY2VLj4ZD";
+
     public static void main(String[] args) throws Exception {
-        //lay thong tin trang theo id:275158636317806
+        //lay thong tin trang tieng anh cho nguoi viet theo id:275158636317806
         FanPageAction fanPageAction = new FanPageAction();
-        String id= "275158636317806";
+        String id = "275158636317806";
         Page page = fanPageAction.getPageInfoById(token, id);
         //lay bai dang cua trang tu ngay truyen vao
         //lay danh sach bai da dang tu ngay fromDate truyen vao den hien tai
@@ -41,51 +45,20 @@ public class GetEmailFromFeed {
         Date fromDate = sdf.parse("2017-10-16");
         ArrayList<Feed> lstFeed = fanPageAction.getFeed(token, page.getId(), fromDate);
         //tu danh sach bai dang debug de lay ra id cua bai dang can thu thap email
-        String feedId="275158636317806_287001431800193";
-        String mail = null;
-        for(Feed feed: lstFeed){
+        String feedId = "275158636317806_287001431800193";
+
+        for (Feed feed : lstFeed) {
             //lay ra bai dang can thu thap mail
-            if( feed.getId().equals(feedId)){
-            //lay ra comment cua bai dang 
-            ArrayList<Comment> comments = getComments(token, feed.getId());
-            for (Comment c : comments) {
-                //neu comment co email thuc hien kiem tra
-                //so luong email thu thap tu bai dang da du 1000 email chua
-                //neu =1000 khong add vao, khi so luong email<1000
-                //add vao bang tbl_mail_send_document
-                String comment = c.getContentComment();
-                if (comment.contains("@")) {
-                    Matcher m = Pattern.compile("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+").matcher(comment);
-                    while (m.find()) {
-                        try {
-                            mail = m.group();
-                            char end = mail.charAt(mail.length() - 1);
-                            if (end == '.') {
-                                mail = mail.substring(0, mail.length() - 1);
-                            }
-                            Mail email = new Mail();
-                            email.setEmail(mail);
-                            //kiem tra email da ton tai trong bang tbl_mail_Send_document chua
-                            //select  count (*), email  from tbl_mail_Send_document   group by email having count(*)>1 ;
-                            //checkMailExisted
-                            //kiem tra xem voi moi bai dang so luong email da du 1000 mail chua
-                            // select count (*) from tbl_mail_Send_document where id_feed=id bai dang
-                            //countMailByFeedId
-                            if (!EmailAction.checkMailExisted(mail) && countMailByFeedId("275158636317806_287001431800193")<1000) {
-                                MailDao.insert(email);
-                            }
-                        } catch (Exception e) {
-
-                        }
-                    }
-                }
-
-            } 
+            if (feed.getId().equals(feedId)) {
+                //lay ra comment cua bai dang 
+                ArrayList<Comment> comments = getComments(token, feed.getId());
+                //duyet qua cac comment thu thap dia chi mail
+                extractMailFromComment(comments, feedId);
             }
         }
     }
 
-public static ArrayList<Comment> getComments(String token, String feedId) throws Exception {
+    public static ArrayList<Comment> getComments(String token, String feedId) throws Exception {
         ArrayList<Comment> listComment = new ArrayList<>();
         JSONParser parser = null;
         String urlGetComment = "https://graph.facebook.com/v2.10/" + feedId + "/comments?access_token=" + token;
@@ -168,22 +141,64 @@ public static ArrayList<Comment> getComments(String token, String feedId) throws
     }
 
     private static int countMailByFeedId(String idFeed) {
-        int count =0;
+        int count = 0;
         System.out.println("So luong mail da du 1000 khong the them moi email");
         return count;
     }
 
-    
+    //kiem tra tai khoan mail da ton tai chua
+    //fasle:chua ton tai true:da ton tai
+    private static boolean checkMailExisted(String mail) throws Exception {
+        boolean check = false;
+        MailSendDocument m = MailSendDocumentDao.getByEmail(mail);
+        if (m != null) {
+            return true;
+        }
+        return check;
+    }
+    //comments: danh sach comment
+    //idFeed: id cua bai dang
+    private static void extractMailFromComment(ArrayList<Comment> comments, String idFeed) {
+        String mail = null;
+        for (Comment c : comments) {
+            //neu comment co email thuc hien kiem tra
+            //so luong email thu thap tu bai dang da du 1000 email chua
+            //neu =1000 khong add vao, khi so luong email<1000
+            //add vao bang tbl_mail_send_document
+            String comment = c.getContentComment();
+            if (comment.contains("@")) {
+                //parse dinh danh mail
+                Matcher m = Pattern.compile("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+").matcher(comment);
+                while (m.find()) {
+                    try {
+                        mail = m.group();
+                        char end = mail.charAt(mail.length() - 1);
+                        if (end == '.') {
+                            mail = mail.substring(0, mail.length() - 1);
+                        }
+                        MailSendDocument email = new MailSendDocument();
+                        email.setEmail(mail);
+                        //kiem tra email da ton tai trong bang tbl_mail_Send_document chua
+                        //select  count (*), email  from tbl_mail_Send_document   group by email having count(*)>1 ;
+                        //checkMailExisted
+                        //kiem tra xem voi moi bai dang so luong email da du 1000 mail chua
+                        // select count (*) from tbl_mail_Send_document where id_feed=id bai dang
+                        //countMailByFeedId
+                        if (!checkMailExisted(mail) && countMailByFeedId(idFeed) < 1000) {
+                            MailSendDocumentDao.insert(email);
+                        }
+                    } catch (Exception e) {
+
+                    }
+                }
+            }
+
+        }
+    }
 }
 /**
  *
- * @Desc
- * Post 1 bai voi noi dung chia se tai lieu
- * Yeu cau:
- * like bai 
- * like fanpage 
- * dangky youtube
- * comment email 
- * Duyet qua cac binh luan lay du 1000 mail
- * Gui tai lieu cho danh sach mail da thu thap duoc
+ * @Desc Post 1 bai voi noi dung chia se tai lieu Yeu cau: like bai like fanpage
+ * dangky youtube comment email Duyet qua cac binh luan lay du 1000 mail Gui tai
+ * lieu cho danh sach mail da thu thap duoc
  */

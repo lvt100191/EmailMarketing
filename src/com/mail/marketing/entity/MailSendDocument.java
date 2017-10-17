@@ -10,6 +10,8 @@ package com.mail.marketing.entity;
  * @author TUNGLV
  */
 public class MailSendDocument {
+    public static final String TABLE_NAME = "TBL_MAIL_SEND_DOCUMENT";
+    public static int STATUS_INSERT =1;
     int id;
     //id cua bai dang
     String idFeed;
