@@ -194,7 +194,7 @@ public class ExtractMail extends javax.swing.JFrame {
 
     private void btExtractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExtractActionPerformed
         try {
-            // TODO add your handling code here:
+            // chỉ thu thập gmail
             String token = txtToken.getText().trim();
             //type: FANPAGE, GROUP
             String type = cbxSource.getSelectedItem().toString().trim();
