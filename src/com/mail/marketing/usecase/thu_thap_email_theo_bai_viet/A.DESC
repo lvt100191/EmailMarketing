@@ -1,0 +1,42 @@
+
+
+THU THẬP ĐỊA CHỈ EMAIL THEO BÀI VIẾT
+
+Mục đích: Truyền vào id của trang, lấy ra bài viết có nội dung yêu cầu comment 
+lại địa chỉ email, thực hiện thu thập email từ bài viết đó.
+
+Kịch bản:
+Xây dựng chương trình 1, thu thập địa chỉ bài viết y/c comment email
+- Từ trang FB ta có id hoặc user của FB
+- Lấy thông tin bài viết của FB
+- Xem bài viết nào có comment email
+- Lấy ra id của bài viết
+- Insert vào bảng tbl_feed_mail bao gồm các trường sau:
+  id_feed: id của bài viết
+  content: nội dung bài viết
+  num_mail_before: số mail trước khi thu thập
+  num_mail_after: số mail sau khi thu thập 
+  create_time: thời gian insert
+  update_time: thời gian update
+
+Xây dựng chương trình 2, thu thập địa chỉ email
+- Lấy dữ liệu bài viết từ bảng tbl_feed_mail đã thu thập được
+- update  giá trị num_mail_before = số mail sau khi thu thập
+- Lấy ra danh sách bình luận, thực hiện thu thập email insert vào bảng tbl_mail
+  ,đếm số email được thêm mới vào bảng tbl_mail
+- update  giá trị num_mail_after = num_mail_before + số email được thêm mới vào 
+  bảng tbl_mail
+- update thời gian: update_time
+- update bảng tbl_feed_mail
+
+KL: Khi ta thấy số lượng num_mail_before = num_mail_after trong một thời gian dài
+  có thể quy định 1 tuần, 1 tháng, 1 năm ....(dựa vào create_time và update_time) 
+  có nghĩa là bài viết không còn thu hút được email nữa thì xóa bài viết đi.
+
+Xây dựng chương trình 3,Xóa bài viết đã lâu không thu thập được mail nữa
+- Duyệt các bài viết từ bảng tbl_feed_mail
+- Xem bài viết nào có giá trị num_mail_after = num_mail_before
+- (update_time - create_time) > 1 tuần, 1 tháng, 1 năm .... tùy chọn theo chiến lược
+- Lấy ra id và xóa bản ghi đó khỏi bảng tbl_feed_mail
+
+

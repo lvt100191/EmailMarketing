@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mail.marketing.usecase2;
+package com.mail.marketing.usecase.gui_email_truyen_vao_1_mail_gui;
 
 import com.mail.marketing.db.MailDao;
 import com.mail.marketing.db.MailSendDao;

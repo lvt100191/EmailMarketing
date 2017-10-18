@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mail.marketing.usecase1;
+package com.mail.marketing.usecase.tang_so_luong_dk_kenh_fb_youtube;
 
 import com.mail.marketing.db.MailDao;
 import com.mail.marketing.db.MailSendDao;
