@@ -236,7 +236,7 @@ public class ExtractMail extends javax.swing.JFrame {
                                             email.setEmail(mail);
                                             //select  count (*), email  from TBL_MAIL   group by email having count(*)>1 ;
                                             listMail.add(mail);
-                                            if (!EmailAction.checkMailExisted(mail)) {
+                                            if (mail.trim().contains("@gmail.com") && !EmailAction.checkMailExisted(mail)) {
                                                 MailDao.insert(email);
                                                 System.out.println("thu thap duoc email: "+mail+" va insert vao bang tbl_mail");
                                             }
