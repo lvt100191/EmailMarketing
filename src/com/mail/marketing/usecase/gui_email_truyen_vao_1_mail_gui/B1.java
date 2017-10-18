@@ -22,17 +22,14 @@ public class B1 {
 
     private static String sttMailSend = "1";
     private static String sttMailSent = "2";
-    private static String mailSend1 = "coso7.mshoatoeic@gmail.com";
-    private static String title = "Có khi nào giới từ đứng một mình?";
-    private static String content = "<p>Hệ thống mail bị lỗi n&ecirc;n c&ocirc; gửi lại&nbsp; cho những bạn n&agrave;o chưa nhận được</p>\n"
-            + "<p>Bạn n&agrave;o đ&atilde; nhận rồi th&igrave; đừng tr&aacute;ch c&ocirc; spam mail nha!</p>\n"
-            + "<p>Sorry c&aacute;c em!</p>\n"
-            + "<p>C&aacute;c em c&oacute; thể xem ở link sau:</p>\n"
-            + "<p><a href=\"http://bit.ly/2zgOhTA\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=vi&amp;q=http://bit.ly/2zgOhTA&amp;source=gmail&amp;ust=1508333958814000&amp;usg=AFQjCNFpbiL0oNjyzJqL5Ni4s3aGjD0N2w\">http://bit.ly/2zgOhTA</a>&nbsp;</p>\n"
-            + "<p>Hoặc theo d&otilde;i tr&ecirc;n</p>\n"
-            + "<p>Facebook:&nbsp;<a href=\"https://www.facebook.com/permalink.php?story_fbid=287001431800193&amp;id=275158636317806\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=vi&amp;q=https://www.facebook.com/permalink.php?story_fbid%3D287001431800193%26id%3D275158636317806&amp;source=gmail&amp;ust=1508333958814000&amp;usg=AFQjCNGiRLAeszjozi_1wxwRthUEQN-SKQ\">Tiếng Anh Cho Người Việt</a></p>\n"
-            + "<p>YouTube :&nbsp;<a href=\"https://www.youtube.com/watch?v=TprwZsCjmkc\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=vi&amp;q=https://www.youtube.com/watch?v%3DTprwZsCjmkc&amp;source=gmail&amp;ust=1508333958814000&amp;usg=AFQjCNF4aSsecEeTL6HzzRQ9KWqpHhzDQw\">Tiếng Anh Cho Người Việt</a></p>\n"
-            + "<p>C&aacute;c em nhớ like FB v&agrave; k&ecirc;nh YT nh&eacute;, sắp tới c&ocirc; sẽ gửi mail tới c&aacute;c em trọn bọn ngữ ph&aacute;p tiếng anh.</p>";
+    private static String mailSend1 = "coso4.mshoatoeic@gmail.com";
+    private static String title = "Giới từ là gì?";
+    private static String content = "<p>&nbsp;</p>\n" +
+"<p>C&ocirc; gửi c&aacute;c em link t&agrave;i liệu về&nbsp;<span style=\"color: #800080;\"><strong>GIỚI TỪ</strong></span> nh&eacute;</p>\n" +
+"<p><a href=\"http://bit.ly/2zgOhTA\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=vi&amp;q=http://bit.ly/2zgOhTA&amp;source=gmail&amp;ust=1508428037273000&amp;usg=AFQjCNHSXIcbWCiL0oEyJJjRSlc4biFLOw\">http://bit.ly/2zgOhTA</a>&nbsp;</p>\n" +
+"<p>&nbsp;</p>\n" +
+"<p>C&aacute;c em nhớ like <span style=\"color: #000000;\"><strong><span style=\"color: #0000ff;\">Fanpage </span></strong>v&agrave;&nbsp;&nbsp;<strong><span style=\"color: #ff0000;\">YouTube</span></strong> <strong>Tiếng Anh Cho Người Việt</strong></span>&nbsp; để thoi d&otilde;i nh&eacute;, sắp tới c&ocirc; sẽ gửi mail tới c&aacute;c em trọn bọn ngữ ph&aacute;p tiếng anh.</p>\n" +
+"<p>Cảm ơn c&aacute;c em đ&atilde; ủng hộ c&ocirc; trong suốt thời gian qua.</p>";
 
     public static void main(String[] args) throws Exception {
         ArrayList<MailSend> lstSend = MailSendDao.getListMailSend();
