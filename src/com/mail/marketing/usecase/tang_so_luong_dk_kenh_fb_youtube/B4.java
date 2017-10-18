@@ -13,10 +13,10 @@ package com.mail.marketing.usecase.tang_so_luong_dk_kenh_fb_youtube;
 public class B4 {
 
     public static void main(String[] args) {
-        //select db lay ra cac bai dang da co 1000 mail comment
-        //select count(*), id_feed  from tbl_mail_send_document group by id_feed
-        //lay ra link tai lieu 
-        //gui mail den cac email thu thap duoc tu bai dang
+        //lay thong tin email gui tai lieu
+        //select *  from tbl_mail_send_document where id_feed= id cua bai viet
+        //lay ra link tai lieu : link_document
+        //gui mail den cac email thu thap duoc tu bai dang, update status da gui=2
     }
 
 }
