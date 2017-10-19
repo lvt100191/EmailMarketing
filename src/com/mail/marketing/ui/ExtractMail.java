@@ -10,7 +10,6 @@ import com.mail.marketing.db.FaceBookDao;
 import com.mail.marketing.db.MailDao;
 import com.mail.marketing.entity.FaceBook;
 import com.mail.marketing.entity.Mail;
-import com.mail.marketing.entity.MarketingDaily;
 import com.mail.marketing.facebook.dto.Comment;
 import com.mail.marketing.facebook.dto.Feed;
 import com.mail.marketing.facebook.dto.Page;
@@ -192,74 +191,69 @@ public class ExtractMail extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFromDateActionPerformed
 
     private void btExtractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExtractActionPerformed
-        try {
-            // chỉ thu thập gmail
-            String token = txtToken.getText().trim();
-            //type: FANPAGE, GROUP
-            String type = cbxSource.getSelectedItem().toString().trim();
-            String fromDateUI = txtFromDate.getText().trim();
-            //xoa du lieu trong bang neu co
-            boolean rs = DBUtil.truncateTable(MarketingDaily.TABLE_NAME);
-            if (type.equals(FaceBook.TYPE_FANPAGE)) {
-                try {
-                    //lay danh sach FaceBook co type FANPAGE
-                    ArrayList<FaceBook> lst = FaceBookDao.getListFaceBook(FaceBook.TYPE_FANPAGE);
-                    FanPageAction fanPageAction = new FanPageAction();
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    Date fromDate = sdf.parse(fromDateUI);
-                    for (FaceBook fg : lst) {
-
-                        //lay thong tin trang
-                        Page page = fanPageAction.getPageInfoById(token, fg.getIdFacebook());
-                        //lay danh sach bai da dang tu ngay fromDate truyen vao den hien tai
-                        ArrayList<Feed> lstFeed = fanPageAction.getFeed(token, page.getId(), fromDate);
-                        //lay danh sach binh luan theo bai dang
-                        String mail = null;
-                        for (Feed f : lstFeed) {
-                            ArrayList<String> listMail = new ArrayList<>();
-                            String lstMail = "";
-                            ArrayList<Comment> comments = fanPageAction.getComments(token, f.getId());
-                            for (Comment c : comments) {
-                                //neu co email thi gui mail
-                                String comment = c.getContentComment();
-                                if (comment.contains("@")) {
-                                    Matcher m = Pattern.compile("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+").matcher(comment);
-                                    while (m.find()) {
-                                        try {
-                                            mail = m.group();
-                                            char end = mail.charAt(mail.length() - 1);
-                                            if (end == '.') {
-                                                mail = mail.substring(0, mail.length() - 1);
-                                            }
-                                            Mail email = new Mail();
-                                            email.setEmail(mail);
-                                            //select  count (*), email  from TBL_MAIL   group by email having count(*)>1 ;
-                                            listMail.add(mail);
-                                            if (mail.trim().contains("@gmail.com") && !EmailAction.checkMailExisted(mail)) {
-                                                MailDao.insert(email);
-                                                System.out.println("thu thap duoc email: "+mail+" va insert vao bang tbl_mail");
-                                            }
-
-                                        } catch (Exception e) {
-
+        // chỉ thu thập gmail
+        String token = txtToken.getText().trim();
+        //type: FANPAGE, GROUP
+        String type = cbxSource.getSelectedItem().toString().trim();
+        String fromDateUI = txtFromDate.getText().trim();
+        //xoa du lieu trong bang neu co
+        if (type.equals(FaceBook.TYPE_FANPAGE)) {
+            try {
+                //lay danh sach FaceBook co type FANPAGE
+                ArrayList<FaceBook> lst = FaceBookDao.getListFaceBook(FaceBook.TYPE_FANPAGE);
+                FanPageAction fanPageAction = new FanPageAction();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date fromDate = sdf.parse(fromDateUI);
+                for (FaceBook fg : lst) {
+                    
+                    //lay thong tin trang
+                    Page page = fanPageAction.getPageInfoById(token, fg.getIdFacebook());
+                    //lay danh sach bai da dang tu ngay fromDate truyen vao den hien tai
+                    ArrayList<Feed> lstFeed = fanPageAction.getFeed(token, page.getId(), fromDate);
+                    //lay danh sach binh luan theo bai dang
+                    String mail = null;
+                    for (Feed f : lstFeed) {
+                        ArrayList<String> listMail = new ArrayList<>();
+                        String lstMail = "";
+                        ArrayList<Comment> comments = fanPageAction.getComments(token, f.getId());
+                        for (Comment c : comments) {
+                            //neu co email thi gui mail
+                            String comment = c.getContentComment();
+                            if (comment.contains("@")) {
+                                Matcher m = Pattern.compile("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+").matcher(comment);
+                                while (m.find()) {
+                                    try {
+                                        mail = m.group();
+                                        char end = mail.charAt(mail.length() - 1);
+                                        if (end == '.') {
+                                            mail = mail.substring(0, mail.length() - 1);
                                         }
+                                        Mail email = new Mail();
+                                        email.setEmail(mail);
+                                        //select  count (*), email  from TBL_MAIL   group by email having count(*)>1 ;
+                                        listMail.add(mail);
+                                        if (mail.trim().contains("@gmail.com") && !EmailAction.checkMailExisted(mail)) {
+                                            MailDao.insert(email);
+                                            System.out.println("thu thap duoc email: "+mail+" va insert vao bang tbl_mail");
+                                        }
+                                        
+                                    } catch (Exception e) {
+                                        
                                     }
                                 }
-
                             }
 
                         }
+                        
                     }
-                } catch (Exception ex) {
-                    Logger.getLogger(ExtractMail.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                System.out.println("thu thap dia chi mail thanh cong");
+            } catch (Exception ex) {
+                Logger.getLogger(ExtractMail.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (type.equals(FaceBook.TYPE_GROUP)) { //thu thap mail tu group
+            System.out.println("thu thap dia chi mail thanh cong");
+        }
+        if (type.equals(FaceBook.TYPE_GROUP)) { //thu thap mail tu group
 
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ExtractMail.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btExtractActionPerformed
 

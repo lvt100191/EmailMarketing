@@ -6,9 +6,11 @@
 package com.mail.marketing.usecase.marketing_theo_bai_viet;
 
 import com.mail.marketing.db.FaceBookDao;
+import com.mail.marketing.db.FeedEntityDao;
 import com.mail.marketing.db.MailBlockDao;
 import com.mail.marketing.db.MailDao;
 import com.mail.marketing.entity.FaceBook;
+import com.mail.marketing.entity.FeedEntity;
 import com.mail.marketing.entity.Mail;
 import com.mail.marketing.entity.MailBlock;
 import com.mail.marketing.facebook.dto.Comment;
@@ -24,14 +26,14 @@ import java.util.regex.Pattern;
 
 /**
  *
- * @author TUNGLV
+ * @author PMDVCNTT
  */
-public class ExtractMailByFeed {
+public class ExtractFeedHaveCommentEmail {
 
     //tham so truyen vao
     private static String fromDateUI = "2017-10-19";
     private static String token = "";
-
+    
     public static void main(String[] args) throws Exception {
         ArrayList<FaceBook> lst = FaceBookDao.getListFaceBook(FaceBook.TYPE_FANPAGE);
         FanPageAction fanPageAction = new FanPageAction();
@@ -50,54 +52,41 @@ public class ExtractMailByFeed {
                 for (Comment c : comments) {
                     //lay noi dung binh luan
                     String comment = c.getContentComment();
-                    //chi thu thap gmail
+                    //neu binh luan co chua gmail
                     if (comment.contains("@gmail.com")) {
-                        //insert thong tin bai viet vao bang tbl_feed
                         //kiem tra id_feed da ton tai trong bang tbl_feed hay chua
-
-                        Matcher m = Pattern.compile("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+").matcher(comment);
-                        while (m.find()) {
-                            try {
-                                mail = m.group();
-                                char end = mail.charAt(mail.length() - 1);
-                                if (end == '.') {
-                                    mail = mail.substring(0, mail.length() - 1);
-                                }
-                                //kiem tra dieu kien truoc khi insert vao db
-                                if (checkMailBeforeInsert(mail)) {
-                                    //khoi tao doi tung mail
-                                    Mail email = new Mail();
-                                    email.setEmail(mail);
-                                    //insert vao bang tbl_mail
-                                    MailDao.insert(email);
-                                    //insert vao bang tbl_feed_mail
-
-                                    System.out.println("thu thap duoc email: " + mail + " va insert vao bang tbl_mail");
-                                }
-
-                            } catch (Exception e) {
-
-                            }
-                        }
+                        if (!checkFeedExisted(f)) {
+                            //khoi tao doi tuong insert
+                            FeedEntity feedEntity = initFeedEntity(f);
+                            //insert thong tin bai viet vao bang tbl_feed
+                            FeedEntityDao.insert(feedEntity);
+                        }                        
                     }
-
                 }
-
+                
             }
+            
         }
     }
 
-    private static boolean checkMailBeforeInsert(String mail) throws Exception {
-        //ko insert mail đã tồn tại trong danh sách mail chặn tbl_mail_block
-        MailBlock mailBlock = MailBlockDao.getByEmail(mail);
-        if (mailBlock != null) {
-            return false;
+    //true: da ton tai
+    //false: chua ton tai
+    private static boolean checkFeedExisted(Feed f) throws Exception {
+        FeedEntity feedEntity = FeedEntityDao.getByFeed(f.getId());
+        if (feedEntity != null) {
+            return true;
         }
-        //ko insert mail đã tồn tại trong bảng tbl_mail
-        if (EmailAction.checkMailExisted(mail)) {
-            return false;
-        }
-        return true;
+        return false;
     }
-
+    
+    private static FeedEntity initFeedEntity(Feed f) {
+        FeedEntity feedEntity = new FeedEntity();
+        feedEntity.setIdFeed(f.getId());
+        feedEntity.setContentFeed(f.getMessage());
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        String dateCreate = sdf.format(d);
+        feedEntity.setCreateDate(dateCreate);    
+        return feedEntity;
+    }
 }

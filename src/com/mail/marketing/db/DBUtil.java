@@ -6,7 +6,6 @@
 package com.mail.marketing.db;
 
 import com.mail.marketing.config.Config;
-import com.mail.marketing.entity.MarketingDaily;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -192,7 +191,6 @@ public class DBUtil {
     }
 
     public static void main(String[] args) throws SQLException {
-        truncateTable(MarketingDaily.TABLE_NAME);
     }
 
 }
