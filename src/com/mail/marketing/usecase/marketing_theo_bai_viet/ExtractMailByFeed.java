@@ -6,9 +6,11 @@
 package com.mail.marketing.usecase.marketing_theo_bai_viet;
 
 import com.mail.marketing.db.FaceBookDao;
+import com.mail.marketing.db.FeedEntityDao;
 import com.mail.marketing.db.MailBlockDao;
 import com.mail.marketing.db.MailDao;
 import com.mail.marketing.entity.FaceBook;
+import com.mail.marketing.entity.FeedEntity;
 import com.mail.marketing.entity.Mail;
 import com.mail.marketing.entity.MailBlock;
 import com.mail.marketing.facebook.dto.Comment;
@@ -31,16 +33,16 @@ public class ExtractMailByFeed {
     //tham so truyen vao
     private static String token = "";
     //so luong ban ghi lay ra tu bang tbl_feed
-    private static int numFeed = 100;
+    private static String numFeed = "100";
 
     public static void main(String[] args) throws Exception {
         FanPageAction fanPageAction = new FanPageAction();
         //lay danh sach bai viet tu bang tbl_feed theo so luong truyen vao
-        ArrayList<Feed> lstFeed = null;
+        ArrayList<FeedEntity> lstFeed = FeedEntityDao.getListFeedEntity(numFeed);
         //lay danh sach binh luan theo bai dang
         String mail = null;
-        for (Feed f : lstFeed) {
-            ArrayList<Comment> comments = fanPageAction.getComments(token, f.getId());
+        for (FeedEntity f : lstFeed) {
+            ArrayList<Comment> comments = fanPageAction.getComments(token, f.getIdFeed());
             for (Comment c : comments) {
                 //lay noi dung binh luan
                 String comment = c.getContentComment();
@@ -56,9 +58,8 @@ public class ExtractMailByFeed {
                             }
                             //kiem tra dieu kien truoc khi insert vao db
                             if (checkMailBeforeInsert(mail)) {
-                                //khoi tao doi tung mail
-                                Mail email = new Mail();
-                                email.setEmail(mail);
+                                //khoi tao doi tuong mail
+                                Mail email = initMail(mail);
                                 //insert vao bang tbl_mail
                                 MailDao.insert(email);
                                 //insert vao bang tbl_feed_mail
@@ -87,6 +88,18 @@ public class ExtractMailByFeed {
             return false;
         }
         return true;
+    }
+
+    private static Mail initMail(String mail) {
+        Mail email = new Mail();
+        email.setEmail(mail);
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        String dateCreate = sdf.format(d);
+        email.setCreateDate(dateCreate);
+        email.setStatus(Mail.STATUS_INSERT);
+        email.setStatusFeedMail(Mail.STATUS_INSERT);
+        return email;
     }
 
 }

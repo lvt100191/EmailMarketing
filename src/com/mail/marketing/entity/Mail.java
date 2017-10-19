@@ -36,7 +36,7 @@ public class Mail {
     //cac truong ngan cach nhau bang ky tu |
     String note;
     //ngay insert vao csdl
-    Date createDate;
+    String createDate;
     //trang thai email da gui hoac chua gui mail
     //chu y trang thai nay quy dinh nhu sau:
     //khi insert set gia tri status=1 la chua gui
@@ -46,6 +46,18 @@ public class Mail {
     //gui mail thanh cong update status=1
     //lap nhu vay de gui mail theo lo tranh tinh trang chay chuong trinh lau
     int status;
+    //trang thai email da gui hoac chua theo bai viet
+    int statusFeedMail;
+
+    public int getStatusFeedMail() {
+        return statusFeedMail;
+    }
+
+    public void setStatusFeedMail(int statusFeedMail) {
+        this.statusFeedMail = statusFeedMail;
+    }
+    
+    
 
     public int getStatus() {
         return status;
@@ -121,12 +133,14 @@ public class Mail {
         this.note = note;
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
+
+  
 
 }

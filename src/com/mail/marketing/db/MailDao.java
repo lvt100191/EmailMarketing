@@ -39,8 +39,9 @@ public class MailDao {
                     + "mobile,"
                     + "note,"
                     + "create_date,"
-                    + "status) "
-                    + "VALUES (?,?,?,?,?,?,?,?);";
+                    + "status,"
+                    + "status_feed_mail) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?);";
             pst = c.prepareStatement(query);
             pst.setString(1, mail.getEmail());
             pst.setString(2, "");
@@ -48,17 +49,19 @@ public class MailDao {
             pst.setString(4, "");
             pst.setString(5, "");
             pst.setString(6, "");
-            Date d = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-            String dateCreate = sdf.format(d);
-            pst.setString(7, dateCreate);
-            pst.setInt(8, Mail.STATUS_INSERT);
+            pst.setString(7, mail.getCreateDate());
+            pst.setInt(8, mail.getStatus());
+            pst.setInt(9, mail.getStatusFeedMail());
             pst.executeUpdate();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {
-            if(pst !=null) pst.close();
-            if(c !=null) c.close();
+            if (pst != null) {
+                pst.close();
+            }
+            if (c != null) {
+                c.close();
+            }
         }
     }
 
@@ -88,9 +91,15 @@ public class MailDao {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {
-            if(rs !=null) rs.close();
-            if(pst !=null) pst.close();
-            if(c !=null) c.close();
+            if (rs != null) {
+                rs.close();
+            }
+            if (pst != null) {
+                pst.close();
+            }
+            if (c != null) {
+                c.close();
+            }
         }
         return m;
 
@@ -122,9 +131,15 @@ public class MailDao {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {
-            if(rs !=null) rs.close();
-            if(pst !=null) pst.close();
-            if(c !=null) c.close();
+            if (rs != null) {
+                rs.close();
+            }
+            if (pst != null) {
+                pst.close();
+            }
+            if (c != null) {
+                c.close();
+            }
         }
         return mails;
 
@@ -147,8 +162,12 @@ public class MailDao {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {
-            if(pst !=null) pst.close();
-            if(c !=null) c.close();
+            if (pst != null) {
+                pst.close();
+            }
+            if (c != null) {
+                c.close();
+            }
         }
 
     }
