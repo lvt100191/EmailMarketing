@@ -5,19 +5,16 @@
  */
 package com.mail.marketing.usecase.marketing_theo_bai_viet;
 
-import com.mail.marketing.db.FaceBookDao;
 import com.mail.marketing.db.FeedEntityDao;
+import com.mail.marketing.db.FeedMailDao;
 import com.mail.marketing.db.MailBlockDao;
 import com.mail.marketing.db.MailDao;
-import com.mail.marketing.entity.FaceBook;
 import com.mail.marketing.entity.FeedEntity;
+import com.mail.marketing.entity.FeedMail;
 import com.mail.marketing.entity.Mail;
 import com.mail.marketing.entity.MailBlock;
 import com.mail.marketing.facebook.dto.Comment;
-import com.mail.marketing.facebook.dto.Feed;
-import com.mail.marketing.facebook.dto.Page;
 import com.mail.marketing.facebook.usecase.FanPageAction;
-import com.mail.marketing.mail.EmailAction;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,10 +28,10 @@ import java.util.regex.Pattern;
 public class ExtractMailByFeed {
 
     //tham so truyen vao
-    private static String token = "";
+    private static String token = "EAACEdEose0cBACweaCpGp9kMNZCuwkWCPZBnINNZCGoWlJtjdxkv6ZBLxDOR1PiNbNdZA1MkqeGdfkvIgoW9t75j7wSoGipyHLMoMe48OOAebjieZC7GqTjH2N2syZBHa0VtebQhZCp4Gs3ZA3dhXUquS28zVTfyrXCoesclNZAa5voTzlRNEgW4AeqOAz9JMclIHaAZC0zCz3ziAZDZD";
     //so luong ban ghi lay ra tu bang tbl_feed
     private static String numFeed = "100";
-
+    
     public static void main(String[] args) throws Exception {
         FanPageAction fanPageAction = new FanPageAction();
         //lay danh sach bai viet tu bang tbl_feed theo so luong truyen vao
@@ -57,39 +54,59 @@ public class ExtractMailByFeed {
                                 mail = mail.substring(0, mail.length() - 1);
                             }
                             //kiem tra dieu kien truoc khi insert vao db
-                            if (checkMailBeforeInsert(mail)) {
-                                //khoi tao doi tuong mail
-                                Mail email = initMail(mail);
-                                //insert vao bang tbl_mail
-                                MailDao.insert(email);
-                                //insert vao bang tbl_feed_mail
-
+                            //truong hop mail ko bi chan va mail chua co trong
+                            //bang tbl_mail
+                            if (checkMailBlock(mail)) {
+                                //kiem tra mail đã tồn tại trong bảng tbl_mail
+                                Mail mailDB = MailDao.getByEmail(mail);
+                                if (mailDB == null) {
+                                    //khoi tao doi tuong mail
+                                    Mail email = initMail(mail);
+                                    //insert vao bang tbl_mail
+                                    MailDao.insert(email);
+                                    //kiem tra cap idTblFeed - idTblMail da ton hay chua
+                                    Mail mailDto = MailDao.getByEmail(mail);
+                                    if (!checkIdTblFeedIdTblMail(f.getId(), mailDto.getId())) {
+                                        FeedMail fm = initFeedMail(f.getId(), mailDto.getId());
+                                        //insert vao bang tbl_feed_mail
+                                        FeedMailDao.insert(fm);
+                                    }
+                                } else {
+                                    if (!checkIdTblFeedIdTblMail(f.getId(), mailDB.getId())) {
+                                        //insert vao bang tbl_feed_mail 
+                                        FeedMail fm = initFeedMail(f.getId(), mailDB.getId());
+                                        //insert vao bang tbl_feed_mail
+                                        FeedMailDao.insert(fm);
+                                    }
+                                    
+                                }
+                                
                             }
-
+                            
                         } catch (Exception e) {
-
+                            
                         }
                     }
                 }
-
+                
             }
-
+            
         }
+        System.out.println("                    -----*****-----**********************---------------------*****----");
+        System.out.println("                    -----*****-----CHUONG TRINH ExtractMailByFeed KET THUC!---*****----");
+        System.out.println("                    -----*****-----**********************---------------------*****----");        
     }
 
-    private static boolean checkMailBeforeInsert(String mail) throws Exception {
+    //check dia chi mail co bi chan hay chua
+    private static boolean checkMailBlock(String mail) throws Exception {
         //ko insert mail đã tồn tại trong danh sách mail chặn tbl_mail_block
         MailBlock mailBlock = MailBlockDao.getByEmail(mail);
         if (mailBlock != null) {
             return false;
         }
-        //ko insert mail đã tồn tại trong bảng tbl_mail
-        if (EmailAction.checkMailExisted(mail)) {
-            return false;
-        }
         return true;
     }
-
+    
     private static Mail initMail(String mail) {
         Mail email = new Mail();
         email.setEmail(mail);
@@ -102,4 +119,26 @@ public class ExtractMailByFeed {
         return email;
     }
 
+    //kiem tra cap IdTblFeed IdTblMail da ton tai hay chua
+    //true: da ton tai
+    //false: chua ton tai
+    private static boolean checkIdTblFeedIdTblMail(int idTblFeed, int idTblMail) throws Exception {
+        FeedMail fm = FeedMailDao.getByIdTblFeedIdTblMail(idTblFeed, idTblMail);
+        if (fm != null) {
+            return true;
+        }
+        return false;
+    }
+    
+    private static FeedMail initFeedMail(int idTblFeed, int idTblMail) {
+        FeedMail fm = new FeedMail();
+        fm.setIdTblFeed(idTblFeed);
+        fm.setIdTblMail(idTblMail);
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        String dateCreate = sdf.format(d);
+        fm.setCreateDate(dateCreate);
+        return fm;
+    }
+    
 }

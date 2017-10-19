@@ -67,9 +67,9 @@ public class ExtractFeedHaveCommentEmail {
             }
 
         }
-        System.out.println("                    -----*****-----**********************---*****----");
-        System.out.println("                    -----*****-----CHUONG TRINH KET THUC!---*****----");
-        System.out.println("                    -----*****-----**********************---*****----");
+        System.out.println("                    -----*****-----**********************-------------------------------*****----");
+        System.out.println("                    -----*****-----CHUONG TRINH ExtractFeedHaveCommentEmail KET THUC!---*****----");
+        System.out.println("                    -----*****-----**********************-------------------------------*****----");
     }
 
     //true: da ton tai

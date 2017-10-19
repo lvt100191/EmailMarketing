@@ -9,14 +9,15 @@ package com.mail.marketing.entity;
  *
  * @author PMDVCNTT
  */
-public class MailBlock {
-     public static final String TABLE_NAME = "TBL_MAIL_BLOCKED";
-     
-     int id;
-     //email chặn
-     String mailBlock;
-     //ngay tao
-     String createDate;
+public class FeedMail {
+     public static final String TABLE_NAME = "TBL_FEED_MAIL";
+    int id;
+    //id cua bang tbl_feed
+    int idTblFeed;
+    //id cua bang tbl_mail
+    int idTblMail;
+    //ngay insert du lieu
+    String createDate;
 
     public int getId() {
         return id;
@@ -26,14 +27,20 @@ public class MailBlock {
         this.id = id;
     }
 
-
-
-    public String getMailBlock() {
-        return mailBlock;
+    public int getIdTblFeed() {
+        return idTblFeed;
     }
 
-    public void setMailBlock(String mailBlock) {
-        this.mailBlock = mailBlock;
+    public void setIdTblFeed(int idTblFeed) {
+        this.idTblFeed = idTblFeed;
+    }
+
+    public int getIdTblMail() {
+        return idTblMail;
+    }
+
+    public void setIdTblMail(int idTblMail) {
+        this.idTblMail = idTblMail;
     }
 
     public String getCreateDate() {
@@ -43,6 +50,5 @@ public class MailBlock {
     public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
-     
     
 }
