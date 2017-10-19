@@ -8,7 +8,6 @@ package com.mail.marketing.ui;
 import com.mail.marketing.db.DBUtil;
 import com.mail.marketing.db.FaceBookDao;
 import com.mail.marketing.db.MailDao;
-import com.mail.marketing.db.MarketingDailyDao;
 import com.mail.marketing.entity.FaceBook;
 import com.mail.marketing.entity.Mail;
 import com.mail.marketing.entity.MarketingDaily;
