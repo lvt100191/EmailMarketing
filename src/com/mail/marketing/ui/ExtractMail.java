@@ -248,23 +248,6 @@ public class ExtractMail extends javax.swing.JFrame {
                                 }
 
                             }
-                            //insert TBL_MARKETING_DAILY
-
-                            //insert du lieu 
-                            MarketingDaily marketingDaily = new MarketingDaily();
-                            marketingDaily.setIdFeed(f.getId());
-                            String createTime = f.getCreateTime();
-                            marketingDaily.setPostDate(createTime);
-                            marketingDaily.setFromSource(fg.getIdFacebook());
-                            marketingDaily.setName(fg.getName());
-                            marketingDaily.setAmountMail(listMail.size());
-
-                            for (String m : listMail) {
-                                lstMail = lstMail + m + "|";
-                            }
-                            marketingDaily.setMailList(lstMail);
-                            marketingDaily.setContent(f.getMessage());
-                            MarketingDailyDao.insert(marketingDaily);
 
                         }
                     }
