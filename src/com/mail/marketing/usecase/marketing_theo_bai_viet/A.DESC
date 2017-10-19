@@ -1,0 +1,19 @@
+
+
+                             MARKETING THEO BÀI VIẾT
+CT1:
+B1: Lấy danh sách FANPAGE trong bảng TBL_FACEBOOK
+B2: Lấy danh sách bài viết của FANPAGE từ ngày truyền vào đến hiện tại
+B3: Lấy danh sách  bình luận của bài viết, nếu bình luận có chứa email thì insert
+    thông tin bài viết vào bảng TBL_FEED  email vào bảng TBL_MAIL và mối quan hệ 
+    email bình luận trong bài viết nào ở bảng TBL_FEED_MAIL
+
+CT2:
+B4: Lấy danh sách bài viết từ bảng TBL_FEED
+B5: Lấy danh sách email theo bài viết từ bảng TBL_FEED
+B6: Gửi email marketing, update trang thái status_feed_email = 2 đã gửi mail 
+    vào bảng  TBL_MAIL
+
+
+
+
