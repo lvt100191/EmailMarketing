@@ -29,61 +29,50 @@ import java.util.regex.Pattern;
 public class ExtractMailByFeed {
 
     //tham so truyen vao
-    private static String fromDateUI = "2017-10-19";
     private static String token = "";
+    //so luong ban ghi lay ra tu bang tbl_feed
+    private static int numFeed = 100;
 
     public static void main(String[] args) throws Exception {
-        ArrayList<FaceBook> lst = FaceBookDao.getListFaceBook(FaceBook.TYPE_FANPAGE);
         FanPageAction fanPageAction = new FanPageAction();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date fromDate = sdf.parse(fromDateUI);
-        for (FaceBook fg : lst) {
-
-            //lay thong tin trang
-            Page page = fanPageAction.getPageInfoById(token, fg.getIdFacebook());
-            //lay danh sach bai da dang tu ngay fromDate truyen vao den hien tai
-            ArrayList<Feed> lstFeed = fanPageAction.getFeed(token, page.getId(), fromDate);
-            //lay danh sach binh luan theo bai dang
-            String mail = null;
-            for (Feed f : lstFeed) {
-                ArrayList<Comment> comments = fanPageAction.getComments(token, f.getId());
-                for (Comment c : comments) {
-                    //lay noi dung binh luan
-                    String comment = c.getContentComment();
-                    //chi thu thap gmail
-                    if (comment.contains("@gmail.com")) {
-                        //insert thong tin bai viet vao bang tbl_feed
-                        //kiem tra id_feed da ton tai trong bang tbl_feed hay chua
-
-                        Matcher m = Pattern.compile("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+").matcher(comment);
-                        while (m.find()) {
-                            try {
-                                mail = m.group();
-                                char end = mail.charAt(mail.length() - 1);
-                                if (end == '.') {
-                                    mail = mail.substring(0, mail.length() - 1);
-                                }
-                                //kiem tra dieu kien truoc khi insert vao db
-                                if (checkMailBeforeInsert(mail)) {
-                                    //khoi tao doi tung mail
-                                    Mail email = new Mail();
-                                    email.setEmail(mail);
-                                    //insert vao bang tbl_mail
-                                    MailDao.insert(email);
-                                    //insert vao bang tbl_feed_mail
-
-                                    System.out.println("thu thap duoc email: " + mail + " va insert vao bang tbl_mail");
-                                }
-
-                            } catch (Exception e) {
+        //lay danh sach bai viet tu bang tbl_feed theo so luong truyen vao
+        ArrayList<Feed> lstFeed = null;
+        //lay danh sach binh luan theo bai dang
+        String mail = null;
+        for (Feed f : lstFeed) {
+            ArrayList<Comment> comments = fanPageAction.getComments(token, f.getId());
+            for (Comment c : comments) {
+                //lay noi dung binh luan
+                String comment = c.getContentComment();
+                //chi thu thap gmail
+                if (comment.contains("@gmail.com")) {
+                    Matcher m = Pattern.compile("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+").matcher(comment);
+                    while (m.find()) {
+                        try {
+                            mail = m.group();
+                            char end = mail.charAt(mail.length() - 1);
+                            if (end == '.') {
+                                mail = mail.substring(0, mail.length() - 1);
+                            }
+                            //kiem tra dieu kien truoc khi insert vao db
+                            if (checkMailBeforeInsert(mail)) {
+                                //khoi tao doi tung mail
+                                Mail email = new Mail();
+                                email.setEmail(mail);
+                                //insert vao bang tbl_mail
+                                MailDao.insert(email);
+                                //insert vao bang tbl_feed_mail
 
                             }
+
+                        } catch (Exception e) {
+
                         }
                     }
-
                 }
 
             }
+
         }
     }
 

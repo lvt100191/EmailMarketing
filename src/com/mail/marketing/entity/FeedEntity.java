@@ -26,6 +26,28 @@ public class FeedEntity {
     String contentSend;
     //link tai lieu de gui
     String linkDocument;
+    //id cua fanpage
+    String idFanpage;
+    //ten trang
+    String fanpageName;
+
+    public String getIdFanpage() {
+        return idFanpage;
+    }
+
+    public void setIdFanpage(String idFanpage) {
+        this.idFanpage = idFanpage;
+    }
+
+    public String getFanpageName() {
+        return fanpageName;
+    }
+
+    public void setFanpageName(String fanpageName) {
+        this.fanpageName = fanpageName;
+    }
+    
+    
 
     public int getId() {
         return id;

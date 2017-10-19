@@ -37,7 +37,6 @@ public class FeedEntityDao {
             rs = pst.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String mail = rs.getString("email");
                 f = new FeedEntity();
                 f.setId(id);
                 f.setIdFeed(feedId);
@@ -64,12 +63,16 @@ public class FeedEntityDao {
             String query = "INSERT INTO " + FeedEntity.TABLE_NAME
                     + "(id_feed,"
                     + "content_feed,"
-                    + "create_date) "
-                    + "VALUES (?,?,?);";
+                    + "create_date,"
+                    + "id_fanpage,"
+                    + "fanpage_name) "
+                    + "VALUES (?,?,?,?,?);";
             pst = c.prepareStatement(query);
             pst.setString(1, feedEntity.getIdFeed());
             pst.setString(2, feedEntity.getContentFeed());
             pst.setString(3, feedEntity.getCreateDate());
+            pst.setString(4, feedEntity.getIdFanpage());
+            pst.setString(5, feedEntity.getFanpageName());
             pst.executeUpdate();
         } catch (Exception e) {
             throw new Exception(e.getMessage());

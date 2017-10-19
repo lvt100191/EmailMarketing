@@ -31,9 +31,9 @@ import java.util.regex.Pattern;
 public class ExtractFeedHaveCommentEmail {
 
     //tham so truyen vao
-    private static String fromDateUI = "2017-10-19";
-    private static String token = "";
-    
+    private static String fromDateUI = "2017-10-18";
+    private static String token = "EAACEdEose0cBAEQrHi8akdWbPpjBKo5w8c3TNc5FcNex5ufZCTmw2oU6fZAqcd058SU1L3ZAs25fKRPvJsMYrWWSZCb3aZA78PmEZAfAhCqEZCcd3dee1eIYeqKrleM6IZAhn2UVNUraj5F3JZCYWlnjYqZBUl0rYfHJeOZBZBD3g5bZCWqDQY2xvkYOb6mIqnlJNJ2UZD";
+
     public static void main(String[] args) throws Exception {
         ArrayList<FaceBook> lst = FaceBookDao.getListFaceBook(FaceBook.TYPE_FANPAGE);
         FanPageAction fanPageAction = new FanPageAction();
@@ -57,16 +57,19 @@ public class ExtractFeedHaveCommentEmail {
                         //kiem tra id_feed da ton tai trong bang tbl_feed hay chua
                         if (!checkFeedExisted(f)) {
                             //khoi tao doi tuong insert
-                            FeedEntity feedEntity = initFeedEntity(f);
+                            FeedEntity feedEntity = initFeedEntity(f,page);
                             //insert thong tin bai viet vao bang tbl_feed
                             FeedEntityDao.insert(feedEntity);
-                        }                        
+                        }
                     }
                 }
-                
+
             }
-            
+
         }
+        System.out.println("                    -----*****-----**********************---*****----");
+        System.out.println("                    -----*****-----CHUONG TRINH KET THUC!---*****----");
+        System.out.println("                    -----*****-----**********************---*****----");
     }
 
     //true: da ton tai
@@ -78,15 +81,17 @@ public class ExtractFeedHaveCommentEmail {
         }
         return false;
     }
-    
-    private static FeedEntity initFeedEntity(Feed f) {
+
+    private static FeedEntity initFeedEntity(Feed f, Page p) {
         FeedEntity feedEntity = new FeedEntity();
         feedEntity.setIdFeed(f.getId());
         feedEntity.setContentFeed(f.getMessage());
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
         String dateCreate = sdf.format(d);
-        feedEntity.setCreateDate(dateCreate);    
+        feedEntity.setCreateDate(dateCreate);
+        feedEntity.setIdFanpage(p.getId());
+        feedEntity.setFanpageName(p.getName());
         return feedEntity;
     }
 }
