@@ -25,6 +25,7 @@ import java.util.regex.Pattern;
  *
  * @author TUNGLV
  */
+//tu cac bai viet thu thap duoc thuc hien thu thap email tu cac binh luan
 public class ExtractMailByFeed {
 
     //tham so truyen vao

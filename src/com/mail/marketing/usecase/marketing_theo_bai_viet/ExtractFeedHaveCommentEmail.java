@@ -7,27 +7,21 @@ package com.mail.marketing.usecase.marketing_theo_bai_viet;
 
 import com.mail.marketing.db.FaceBookDao;
 import com.mail.marketing.db.FeedEntityDao;
-import com.mail.marketing.db.MailBlockDao;
-import com.mail.marketing.db.MailDao;
 import com.mail.marketing.entity.FaceBook;
 import com.mail.marketing.entity.FeedEntity;
-import com.mail.marketing.entity.Mail;
-import com.mail.marketing.entity.MailBlock;
 import com.mail.marketing.facebook.dto.Comment;
 import com.mail.marketing.facebook.dto.Feed;
 import com.mail.marketing.facebook.dto.Page;
 import com.mail.marketing.facebook.usecase.FanPageAction;
-import com.mail.marketing.mail.EmailAction;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  *
- * @author PMDVCNTT
+ * @author tunglv4
  */
+//thu thap bai viet co binh luan email tu ngay truyen vao den hien tai cua cac fanpage
 public class ExtractFeedHaveCommentEmail {
 
     //tham so truyen vao
