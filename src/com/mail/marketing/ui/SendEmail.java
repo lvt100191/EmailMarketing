@@ -548,7 +548,7 @@ public class SendEmail extends javax.swing.JFrame {
         if (!endDate.equals(curDate) && Integer.parseInt(curTime) > Integer.parseInt(endTime)) {
             return true;
         }
-        if(Integer.parseInt(curDate) - Integer.parseInt(endDate) >2){
+        if(Integer.parseInt(curDate) - Integer.parseInt(endDate) >= 2){
             return true;
         }
         return false;

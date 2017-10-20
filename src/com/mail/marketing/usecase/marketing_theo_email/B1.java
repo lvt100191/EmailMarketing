@@ -19,8 +19,9 @@ import java.util.Date;
  * @author PMDVCNTT
  */
 public class B1 {
-
+    //trang thai mail lay ra de gui truong status trong bang tbl_mail
     private static String sttMailSend = "1";
+    //update trang thai da gui mail
     private static String sttMailSent = "2";
     private static String mailSend1 = "coso4.mshoatoeic@gmail.com";
     private static String title = "Giới từ là gì?";
@@ -90,7 +91,9 @@ public class B1 {
                 }
             }
         }
-        System.out.println("------------------------Chuong trinh ket thuc------------------------------");
+        System.out.println("------------------------------------------------------------------------------------");
+        System.out.println("------------------------CHƯƠNG TRÌNH GỬI MAIL KẾT THÚC------------------------------");
+        System.out.println("------------------------------------------------------------------------------------");
     }
 
     private static boolean checkRunTime(String lastDate) {
@@ -111,6 +114,9 @@ public class B1 {
         //thoi gian hien tai phai lon hon thoi gian gui cuoi cung
         //chua xu ly dc hqua chay 21h xong hnay qua 12h no la 00 nen ko chay
         if (!endDate.equals(curDate) && Integer.parseInt(curTime) > Integer.parseInt(endTime)) {
+            return true;
+        }
+        if(Integer.parseInt(curDate) - Integer.parseInt(endDate) >= 2){
             return true;
         }
         return false;
