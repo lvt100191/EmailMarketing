@@ -235,7 +235,7 @@ public class ExtractMail extends javax.swing.JFrame {
                                         //select  count (*), email  from TBL_MAIL   group by email having count(*)>1 ;
                                         listMail.add(mail);
                                         if (mail.trim().contains("@gmail.com") && !EmailAction.checkMailExisted(mail)) {
-                                            if (checkMailBlock(mail)) {
+                                            if (!checkMailBlock(mail)) {
                                                 MailDao.insert(email);
                                                 System.out.println("thu thap duoc email: " + mail + " va insert vao bang tbl_mail");
                                             }
@@ -269,15 +269,15 @@ public class ExtractMail extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     //check dia chi mail co bi chan hay chua
-    //true: chua bi chan
-    //false:da chan
+    //true: da chan
+    //false:chua chan
     private static boolean checkMailBlock(String mail) throws Exception {
         //ko insert mail đã tồn tại trong danh sách mail chặn tbl_mail_block
         MailBlock mailBlock = MailBlockDao.getByEmail(mail);
         if (mailBlock != null) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btExtract;

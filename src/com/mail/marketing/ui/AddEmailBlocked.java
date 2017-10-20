@@ -5,7 +5,9 @@
  */
 package com.mail.marketing.ui;
 
+import com.mail.marketing.db.MailBlockDao;
 import com.mail.marketing.db.MailSendDao;
+import com.mail.marketing.entity.MailBlock;
 import com.mail.marketing.entity.MailSend;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,10 +38,7 @@ public class AddEmailBlocked extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtAreaMailSend = new javax.swing.JTextArea();
         btAdd = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAreaMailBlocked = new javax.swing.JTextArea();
         btExit = new javax.swing.JButton();
@@ -47,21 +46,14 @@ public class AddEmailBlocked extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Thêm danh sách mail chặn");
 
-        jLabel1.setText("Danh sách email chặn");
+        jLabel1.setText("DANH SÁCH MAIL CHẶN");
 
-        txtAreaMailSend.setColumns(20);
-        txtAreaMailSend.setRows(5);
-        txtAreaMailSend.setToolTipText("Danh sách mail gửi cần thêm mail chặn vào mail_blocked, moi mail tren mot dong\nVD:\nhoa.ms.toeic@gmail.com\ncoso2.mshoatoeic@gmail.com\ncoso3.mshoatoeic@gmail.com\ncoso4.mshoatoeic@gmail.com\ncoso1.mshoatoeic@gmail.com\ncoso5.mshoatoeic@gmail.com\ncoso6.mshoatoeic@gmail.com\ncoso7.mshoatoeic@gmail.com\ncoso8.mshoatoeic@gmail.com\n");
-        jScrollPane1.setViewportView(txtAreaMailSend);
-
-        btAdd.setText("Thêm vào danh sách mail gửi");
+        btAdd.setText("Thêm mail block");
         btAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAddActionPerformed(evt);
             }
         });
-
-        jLabel2.setText("Danh sách mail gửi");
 
         txtAreaMailBlocked.setColumns(20);
         txtAreaMailBlocked.setRows(5);
@@ -80,37 +72,33 @@ public class AddEmailBlocked extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGap(141, 141, 141)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btAdd)
-                        .addGap(18, 18, 18)
-                        .addComponent(btExit)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -124,49 +112,20 @@ public class AddEmailBlocked extends javax.swing.JFrame {
 //        lethuytram6397@gmail.com
 //        Daoconghan98@gmail.com
         String[] lstMailBlocked = txtAreaMailBlocked.getText().trim().split("\n");
-        //nhap moi dong 1 dia chi mail gui can them vao blocked
-        //VD:
-//hoa.ms.toeic@gmail.com
-//trungtammshoa@outlook.com
-//mshoatoeic@outlook.com
-//coso1.mshoatoeic@outlook.com
-//coso2.mshoatoeic@gmail.com
-//coso3.mshoatoeic@gmail.com
-//coso4.mshoatoeic@gmail.com
-//coso1.mshoatoeic@gmail.com
-//coso5.mshoatoeic@gmail.com
-//coso6.mshoatoeic@gmail.com
-//coso7.mshoatoeic@gmail.com
-//coso8.mshoatoeic@gmail.com
-        String[] lstMailSend = txtAreaMailSend.getText().trim().split("\n");
-        for (String mailSend : lstMailSend) {
-            try {
-                MailSend mailSend1 = MailSendDao.getMailSendByEmail(mailSend.trim());
-                String mailBlocked = mailSend1.getMailBlocked();
-                if (mailBlocked == null) {
-                    mailBlocked = txtAreaMailBlocked.getText().trim();
-                } else {
-                    for (String mailLocked : lstMailBlocked) {
-                        //kiem tra email blocked da them vao mail_blocked hay chua
-                        //chua them thi moi add
-                        if (!mailSend1.getMailBlocked().contains(mailLocked.trim())) {
-                            mailBlocked = mailBlocked + mailLocked + ";";
-                            
-                        }else{
-                            System.out.println("mail "+mailLocked+" da ton tai trong block list");
-                        }
-                    }
-                }
 
-                mailSend1.setMailBlocked(mailBlocked);
-                MailSendDao.updateMailBlocked(mailSend1);
-                System.out.println("them mail block vao email "+mailSend1.getEmail()+" thanh cong!");
-            } catch (Exception ex) {
-                Logger.getLogger(AddEmailBlocked.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            for (String mailLocked : lstMailBlocked) {
+            //kiem tra mail da ton tai trong bang tbl_mail_blocked hay chua
+            if(!checkMailBlocked(mailLocked.trim())){
+             //tim mail trong bang tbl_mail lay ra id cua ban ghi
+             //xoa ban ghi trong bang tbl_mail
+             //xoa ban ghi trong bang tbl_feed_mail theo id
             }
-
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(AddEmailBlocked.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
 
     }//GEN-LAST:event_btAddActionPerformed
 
@@ -215,10 +174,19 @@ public class AddEmailBlocked extends javax.swing.JFrame {
     private javax.swing.JButton btAdd;
     private javax.swing.JButton btExit;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea txtAreaMailBlocked;
-    private javax.swing.JTextArea txtAreaMailSend;
     // End of variables declaration//GEN-END:variables
+
+   //check dia chi mail co bi chan hay chua
+    //false: mail chua ton tai
+    //true: mail da ton tai
+    private static boolean checkMailBlocked(String mail) throws Exception {
+        //ko insert mail đã tồn tại trong danh sách mail chặn tbl_mail_block
+        MailBlock mailBlock = MailBlockDao.getByEmail(mail);
+        if (mailBlock != null) {
+            return true;
+        }
+        return false;
+    }
 }

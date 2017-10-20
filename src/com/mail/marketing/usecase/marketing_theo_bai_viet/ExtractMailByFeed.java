@@ -57,7 +57,7 @@ public class ExtractMailByFeed {
                             //kiem tra dieu kien truoc khi insert vao db
                             //truong hop mail ko bi chan va mail chua co trong
                             //bang tbl_mail
-                            if (checkMailBlock(mail)) {
+                            if (!checkMailBlock(mail)) {
                                 //kiem tra mail đã tồn tại trong bảng tbl_mail
                                 Mail mailDB = MailDao.getByEmail(mail);
                                 if (mailDB == null) {
@@ -72,7 +72,7 @@ public class ExtractMailByFeed {
                                         //insert vao bang tbl_feed_mail
                                         FeedMailDao.insert(fm);
                                     }
-                                } else {
+                                } else {//truong hop mail da ton tai trong tbl_mail chua ton tai trong tbl_feed_mail
                                     if (!checkIdTblFeedIdTblMail(f.getId(), mailDB.getId())) {
                                         //insert vao bang tbl_feed_mail 
                                         FeedMail fm = initFeedMail(f.getId(), mailDB.getId());
@@ -99,13 +99,15 @@ public class ExtractMailByFeed {
     }
 
     //check dia chi mail co bi chan hay chua
+    //false: mail chua ton tai
+    //true: mail da ton tai
     private static boolean checkMailBlock(String mail) throws Exception {
         //ko insert mail đã tồn tại trong danh sách mail chặn tbl_mail_block
         MailBlock mailBlock = MailBlockDao.getByEmail(mail);
         if (mailBlock != null) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
     
     private static Mail initMail(String mail) {
