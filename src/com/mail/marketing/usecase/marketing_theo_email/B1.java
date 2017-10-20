@@ -18,12 +18,13 @@ import java.util.Date;
  *
  * @author PMDVCNTT
  */
+//chu y co khoang 9-10 mail chan thi se bi chan gui mail ban ra loi 550 5.4.5 Daily user sending quota exceeded
 public class B1 {
     //trang thai mail lay ra de gui truong status trong bang tbl_mail
     private static String sttMailSend = "1";
     //update trang thai da gui mail
     private static String sttMailSent = "2";
-    private static String mailSend1 = "coso4.mshoatoeic@gmail.com";
+    private static String mailSend1 = "coso6.mshoatoeic@gmail.com";
     private static String title = "Giới từ là gì?";
     private static String content = "<p>&nbsp;</p>\n" +
 "<p>C&ocirc; gửi c&aacute;c em link t&agrave;i liệu về&nbsp;<span style=\"color: #800080;\"><strong>GIỚI TỪ</strong></span> nh&eacute;</p>\n" +
