@@ -11,9 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import org.apache.log4j.Logger;
 
 /**
@@ -23,6 +21,31 @@ import org.apache.log4j.Logger;
 public class MailDao {
 
     static Logger logger = Logger.getLogger(MailDao.class.getName());
+    
+            public static void deleteMail(int id) throws SQLException, Exception {
+        Connection c = null;
+        PreparedStatement pst = null;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+
+            String query = "DELETE FROM  " + Mail.TABLE_NAME
+                    + " WHERE ID= ?; ";
+            pst = c.prepareStatement(query);
+            pst.setInt(1, id);
+            pst.execute();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            if (pst != null) {
+                pst.close();
+            }
+            if (c != null) {
+                c.close();
+            }
+        }
+
+    }
 
     public static void insert(Mail mail) throws SQLException, Exception {
         Connection c = null;
@@ -64,7 +87,7 @@ public class MailDao {
             }
         }
     }
-
+    //lay doi tuong Mail theo địa chỉ email
     public static Mail getByEmail(String email) throws SQLException, Exception {
         Mail m = null;
         Connection c = null;

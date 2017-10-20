@@ -86,4 +86,29 @@ public class FeedMailDao {
             }
         }
     }
+    
+        public static void deleteFeedMail(int idTblMail) throws SQLException, Exception {
+        Connection c = null;
+        PreparedStatement pst = null;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+
+            String query = "DELETE FROM  " + FeedMail.TABLE_NAME
+                    + " WHERE ID_TBL_MAIL= ?; ";
+            pst = c.prepareStatement(query);
+            pst.setInt(1, idTblMail);
+            pst.execute();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            if (pst != null) {
+                pst.close();
+            }
+            if (c != null) {
+                c.close();
+            }
+        }
+
+    }
 }

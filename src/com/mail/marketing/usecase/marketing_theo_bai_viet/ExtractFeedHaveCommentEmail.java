@@ -21,7 +21,7 @@ import java.util.Date;
  *
  * @author tunglv4
  */
-//thu thap bai viet co binh luan email tu ngay truyen vao den hien tai cua cac fanpage
+//thu thap bai viet co binh luan email tu ngay truyen vao den hien tai cua cac fanpage lay tu bang tbl_facebook
 public class ExtractFeedHaveCommentEmail {
 
     //tham so truyen vao

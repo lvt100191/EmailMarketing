@@ -5,9 +5,11 @@
  */
 package com.mail.marketing.usecase.marketing_theo_email;
 
+import com.mail.marketing.db.MailBlockDao;
 import com.mail.marketing.db.MailDao;
 import com.mail.marketing.db.MailSendDao;
 import com.mail.marketing.entity.Mail;
+import com.mail.marketing.entity.MailBlock;
 import com.mail.marketing.entity.MailSend;
 import com.mail.marketing.mail.EmailAction;
 import java.text.SimpleDateFormat;
@@ -18,8 +20,9 @@ import java.util.Date;
  *
  * @author PMDVCNTT
  */
+//dung de quang ba bai viet tren fanpage
 //chu y co khoang 9-10 mail chan thi se bi chan gui mail ban ra loi 550 5.4.5 Daily user sending quota exceeded
-public class B1 {
+public class SendUseOneMailSend {
     //trang thai mail lay ra de gui truong status trong bang tbl_mail
     private static String sttMailSend = "1";
     //update trang thai da gui mail
@@ -59,6 +62,11 @@ public class B1 {
                                 if (mailSend.getMailBlocked() != null && !mailSend.getMailBlocked().isEmpty() && mailSend.getMailBlocked().contains(to.getEmail().trim())) {
                                     continue;
                                 }
+                                //neu mail da ton tai trong bang tbl_mail_blocked thi khong gui mail
+                                if(checkMailBlock(to.getEmail().trim())){
+                                    continue; 
+                                }
+                                
                                 if (mailSend.getHostMail().equals(Mail.GMAIL_HOST)) {
                                     EmailAction.sendGmail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
 
@@ -96,7 +104,17 @@ public class B1 {
         System.out.println("------------------------CHƯƠNG TRÌNH GỬI MAIL KẾT THÚC------------------------------");
         System.out.println("------------------------------------------------------------------------------------");
     }
-
+    //check dia chi mail co bi chan hay chua
+    //false: mail chua ton tai
+    //true: mail da ton tai
+    private static boolean checkMailBlock(String mail) throws Exception {
+        //ko insert mail đã tồn tại trong danh sách mail chặn tbl_mail_block
+        MailBlock mailBlock = MailBlockDao.getByEmail(mail);
+        if (mailBlock != null) {
+            return true;
+        }
+        return false;
+    }
     private static boolean checkRunTime(String lastDate) {
         //SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
         //lay ra yyyyMMdd

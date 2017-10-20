@@ -5,10 +5,15 @@
  */
 package com.mail.marketing.ui;
 
+import com.mail.marketing.db.FeedMailDao;
 import com.mail.marketing.db.MailBlockDao;
+import com.mail.marketing.db.MailDao;
 import com.mail.marketing.db.MailSendDao;
+import com.mail.marketing.entity.Mail;
 import com.mail.marketing.entity.MailBlock;
 import com.mail.marketing.entity.MailSend;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -72,10 +77,6 @@ public class AddEmailBlocked extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(141, 141, 141)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -85,13 +86,16 @@ public class AddEmailBlocked extends javax.swing.JFrame {
                         .addComponent(btAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(49, 49, 49)
                         .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81))))
+                        .addGap(81, 81, 81))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(120, 120, 120))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
@@ -114,18 +118,28 @@ public class AddEmailBlocked extends javax.swing.JFrame {
         String[] lstMailBlocked = txtAreaMailBlocked.getText().trim().split("\n");
 
         try {
-            for (String mailLocked : lstMailBlocked) {
+            for (String mailLock : lstMailBlocked) {
             //kiem tra mail da ton tai trong bang tbl_mail_blocked hay chua
-            if(!checkMailBlocked(mailLocked.trim())){
+            if(!checkMailBlocked(mailLock.trim())){
              //tim mail trong bang tbl_mail lay ra id cua ban ghi
-             //xoa ban ghi trong bang tbl_mail
+             Mail m = MailDao.getByEmail(mailLock);
              //xoa ban ghi trong bang tbl_feed_mail theo id
+             if(m !=null){
+             FeedMailDao.deleteFeedMail(m.getId());
+             //xoa ban ghi trong bang tbl_mail
+             MailDao.deleteMail(m.getId());
+             }
+             //insert vao bang tbl_mail_blocked
+             MailBlock mb = initMailBlock(mailLock);
+             MailBlockDao.insert(mb);
             }
             }
         } catch (Exception ex) {
             Logger.getLogger(AddEmailBlocked.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        System.out.println("------------------------------------------------------------");
+        System.out.println("------------------Thêm mail lock thành công-----------------");
+        System.out.println("------------------------------------------------------------");
 
     }//GEN-LAST:event_btAddActionPerformed
 
@@ -188,5 +202,15 @@ public class AddEmailBlocked extends javax.swing.JFrame {
             return true;
         }
         return false;
+    }
+
+    private MailBlock initMailBlock(String mailLock) {
+       MailBlock m = new MailBlock();
+       m.setMailBlock(mailLock);
+       Date d = new Date();
+       SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+       String dateCreate = sdf.format(d);
+       m.setCreateDate(dateCreate);
+       return m;
     }
 }

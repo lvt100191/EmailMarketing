@@ -17,6 +17,34 @@ import java.sql.SQLException;
  * @author PMDVCNTT
  */
 public class MailBlockDao {
+    
+        public static void insert(MailBlock mailBlock) throws SQLException, Exception {
+        Connection c = null;
+        PreparedStatement pst = null;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+
+            String query = "INSERT INTO " + MailBlock.TABLE_NAME
+                    + "(email_block,"
+                    + "create_date) "
+                    + "VALUES (?,?);";
+            pst = c.prepareStatement(query);
+            pst.setString(1, mailBlock.getMailBlock());
+            pst.setString(2, mailBlock.getCreateDate());
+            pst.executeUpdate();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            if (pst != null) {
+                pst.close();
+            }
+            if (c != null) {
+                c.close();
+            }
+        }
+    }
+        
     public static MailBlock getByEmail(String email) throws SQLException, Exception {
         MailBlock m = null;
         Connection c = null;
@@ -34,7 +62,7 @@ public class MailBlockDao {
             rs = pst.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String mail = rs.getString("email");
+                String mail = rs.getString("email_block");
                 m = new MailBlock();
                 m.setId(id);
                 m.setMailBlock(mail);
