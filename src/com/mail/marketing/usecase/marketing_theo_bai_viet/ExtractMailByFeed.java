@@ -29,9 +29,9 @@ import java.util.regex.Pattern;
 public class ExtractMailByFeed {
 
     //tham so truyen vao
-    private static String token = "EAACEdEose0cBACweaCpGp9kMNZCuwkWCPZBnINNZCGoWlJtjdxkv6ZBLxDOR1PiNbNdZA1MkqeGdfkvIgoW9t75j7wSoGipyHLMoMe48OOAebjieZC7GqTjH2N2syZBHa0VtebQhZCp4Gs3ZA3dhXUquS28zVTfyrXCoesclNZAa5voTzlRNEgW4AeqOAz9JMclIHaAZC0zCz3ziAZDZD";
+    private static String token = "EAACEdEose0cBAJTwu3tm2ZAagHFhpa8R8dH2vgCuhctItCrNjwp217MB3VfulVYweeqAiA6DfrQOvY1YMFTS4CRr1chQe5CEJxe1ZCnCtEdLC5VrnBrB2xw5IADXMa2F2wpcGeqhxNTPfBVjSKRHY5wx7afpyma4CCMJuAQlhUkC1nu6WCe5jmVyDkATYZD";
     //so luong ban ghi lay ra tu bang tbl_feed
-    private static String numFeed = "100";
+    private static String numFeed = "1000";
     
     public static void main(String[] args) throws Exception {
         FanPageAction fanPageAction = new FanPageAction();

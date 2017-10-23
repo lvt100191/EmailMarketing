@@ -19,21 +19,24 @@ import java.util.Date;
 /**
  *
  * @author PMDVCNTT
+ * https://wordtohtml.net/
  */
 //dung de quang ba bai viet tren fanpage
 //nhap vao 1 dia chi mail gui, gui den cac mail thu thap trong bang tbl_mail
 //chu y co khoang 9-10 mail chan thi se bi chan gui mail ban ra loi 550 5.4.5 Daily user sending quota exceeded
+//mot buoi sang gui duoc 4 mail tu 8h den 16h  gui dc tiep 2 email, thi ko gap loi quota
+//theo doi test xem sau bao lau gui dc tiep
+
 public class SendUseOneMailSend {
     //trang thai mail lay ra de gui truong status trong bang tbl_mail
     private static String sttMailSend = "1";
     //update trang thai da gui mail
     private static String sttMailSent = "2";
-    private static String mailSend1 = "coso5.mshoatoeic@gmail.com";
+    private static String mailSend1 = "coso8.mshoatoeic@gmail.com";
     private static String title = "Giới từ là phần ngữ pháp không nên bỏ qua trong tiếng anh!";
-    private static String content = "<p>Đừng nghĩ giới từ kh&ocirc;ng quan trọng, l&uacute;c n&agrave;o n&oacute; cũng xuất hiện trong phần ngữ ph&aacute;p của c&aacute;c b&agrave;i thi tiếng anh. C&ocirc; xin gửi đến c&aacute;c bạn tất tần tật t&agrave;i liệu về giới từ.T&agrave;i liệu sẽ được bổ sung ng&agrave;y một phong ph&uacute; đa dạng. C&aacute;c bạn <strong>Like</strong> v&agrave; <strong>đăng k&yacute;</strong> k&ecirc;nh Youtube&nbsp; để c&ugrave;ng nhau học tốt. Lượng like v&agrave; đăng k&yacute; k&ecirc;nh youtube Tiếng Anh Cho Người Việt c&agrave;ng nhiều th&igrave; t&agrave;i liệu sẽ được bổ sung nhiều hơn nha c&aacute;c em.</p>\n" +
+    private static String content = "<p>Đừng nghĩ giới từ kh&ocirc;ng quan trọng, l&uacute;c n&agrave;o n&oacute; cũng xuất hiện trong phần ngữ ph&aacute;p của c&aacute;c b&agrave;i thi tiếng anh. C&ocirc; xin gửi đến c&aacute;c bạn tất tần tật t&agrave;i liệu về giới từ.T&agrave;i liệu sẽ được bổ sung ng&agrave;y một phong ph&uacute; đa dạng. C&aacute;c bạn&nbsp;<strong>Like</strong>&nbsp;v&agrave;&nbsp;<strong>đăng k&yacute;</strong>&nbsp;k&ecirc;nh Youtube&nbsp; để c&ugrave;ng nhau học tốt. Lượng like v&agrave; đăng k&yacute; k&ecirc;nh youtube Tiếng Anh Cho Người Việt c&agrave;ng nhiều th&igrave; t&agrave;i liệu sẽ được bổ sung nhiều hơn nha c&aacute;c em.</p>\n" +
 "<p>Cảm ơn c&aacute;c bạn đ&atilde; ủng hộ c&ocirc; trong suốt thời gian qua!</p>\n" +
-"<p>FaceBook: Tiếng Anh Cho Người Việt: <a class=\"yt-simple-endpoint style-scope yt-formatted-string\" href=\"https://www.youtube.com/redirect?v=TprwZsCjmkc&amp;redir_token=zjtGDNfgWg5g-uT2wonRmNxVYqd8MTUwODgwMjc1OUAxNTA4NzE2MzU5&amp;event=video_description&amp;q=https%3A%2F%2Fgoo.gl%2FTpHT7n\">https://goo.gl/TpHT7n</a></p>\n" +
-"<p>Link download t&agrave;i liệu: <a class=\"yt-simple-endpoint style-scope yt-formatted-string\" href=\"https://www.youtube.com/redirect?v=TprwZsCjmkc&amp;redir_token=zjtGDNfgWg5g-uT2wonRmNxVYqd8MTUwODgwMjc1OUAxNTA4NzE2MzU5&amp;event=video_description&amp;q=https%3A%2F%2Fgoo.gl%2FrnTwAM\">https://goo.gl/rnTwAM</a></p>\n" +
+"<p>Link download t&agrave;i liệu: Tiếng Anh Cho Người Việt:&nbsp;<a class=\"m_3864711229718116219yt-simple-endpoint m_3864711229718116219style-scope m_3864711229718116219yt-formatted-string\" href=\"https://www.youtube.com/redirect?v=TprwZsCjmkc&amp;redir_token=zjtGDNfgWg5g-uT2wonRmNxVYqd8MTUwODgwMjc1OUAxNTA4NzE2MzU5&amp;event=video_description&amp;q=https%3A%2F%2Fgoo.gl%2FTpHT7n\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=en&amp;q=https://www.youtube.com/redirect?v%3DTprwZsCjmkc%26redir_token%3DzjtGDNfgWg5g-uT2wonRmNxVYqd8MTUwODgwMjc1OUAxNTA4NzE2MzU5%26event%3Dvideo_description%26q%3Dhttps%253A%252F%252Fgoo.gl%252FTpHT7n&amp;source=gmail&amp;ust=1508836426296000&amp;usg=AFQjCNGL_CYtkbY-mXjYzddMgwVr8p-UBA\">https://goo.gl/TpHT7n</a></p>\n" +
 "<p>Ms Hoa!</p>";
 
     public static void main(String[] args) throws Exception {

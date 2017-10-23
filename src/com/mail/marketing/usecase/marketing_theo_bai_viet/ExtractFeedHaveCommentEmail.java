@@ -25,8 +25,8 @@ import java.util.Date;
 public class ExtractFeedHaveCommentEmail {
 
     //tham so truyen vao
-    private static String fromDateUI = "2017-10-18";
-    private static String token = "EAACEdEose0cBAEQrHi8akdWbPpjBKo5w8c3TNc5FcNex5ufZCTmw2oU6fZAqcd058SU1L3ZAs25fKRPvJsMYrWWSZCb3aZA78PmEZAfAhCqEZCcd3dee1eIYeqKrleM6IZAhn2UVNUraj5F3JZCYWlnjYqZBUl0rYfHJeOZBZBD3g5bZCWqDQY2xvkYOb6mIqnlJNJ2UZD";
+    private static String fromDateUI = "2017-10-16";
+    private static String token = "EAACEdEose0cBAJTwu3tm2ZAagHFhpa8R8dH2vgCuhctItCrNjwp217MB3VfulVYweeqAiA6DfrQOvY1YMFTS4CRr1chQe5CEJxe1ZCnCtEdLC5VrnBrB2xw5IADXMa2F2wpcGeqhxNTPfBVjSKRHY5wx7afpyma4CCMJuAQlhUkC1nu6WCe5jmVyDkATYZD";
 
     public static void main(String[] args) throws Exception {
         ArrayList<FaceBook> lst = FaceBookDao.getListFaceBook(FaceBook.TYPE_FANPAGE);
@@ -34,7 +34,8 @@ public class ExtractFeedHaveCommentEmail {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date fromDate = sdf.parse(fromDateUI);
         for (FaceBook fg : lst) {
-
+            //fix chi lay ra trang tieng anh cho nguoi viet
+            if(fg.getIdFacebook().equals("275158636317806")){
             //lay thong tin trang
             Page page = fanPageAction.getPageInfoById(token, fg.getIdFacebook());
             //lay danh sach bai da dang tu ngay fromDate truyen vao den hien tai
@@ -58,7 +59,9 @@ public class ExtractFeedHaveCommentEmail {
                     }
                 }
 
+            }  
             }
+
 
         }
         System.out.println("                    -----*****-----**********************-------------------------------*****----");
