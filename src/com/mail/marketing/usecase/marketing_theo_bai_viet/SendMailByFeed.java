@@ -5,17 +5,28 @@
  */
 package com.mail.marketing.usecase.marketing_theo_bai_viet;
 
+import com.mail.marketing.db.FeedEntityDao;
+import com.mail.marketing.entity.FeedEntity;
+import java.util.ArrayList;
+
 /**
  *
  * @author TUNGLV
  */
-//duyet qua cac bai dang co comment email trong bang tbl_feed lay ra danh sach
-//email de gui tai lieu
+//moi bai dang se thong bao chi nhan email den het ngay
+//lay ra email binh luan trong bai dang gui mail quang ba
 public class SendMailByFeed {
-    public static void main(String[] args) {
-        //lay danh sach bai viet trong bang tbl_feed
-        //duyet qua danh sach bai viet lay danh sach dia chi mail thuoc bai viet
-        //kiem tra trang thai status_feed_mail trong bang tbl_mail, chi gui mail
-        //den dia chi mail co gia tri =1: la chua gui mail
+    //tham so truyen vao
+    private static String token = "EAACEdEose0cBAJTwu3tm2ZAagHFhpa8R8dH2vgCuhctItCrNjwp217MB3VfulVYweeqAiA6DfrQOvY1YMFTS4CRr1chQe5CEJxe1ZCnCtEdLC5VrnBrB2xw5IADXMa2F2wpcGeqhxNTPfBVjSKRHY5wx7afpyma4CCMJuAQlhUkC1nu6WCe5jmVyDkATYZD";
+    //id cua bang tbl_feed
+    private static String idTblFeed = "";
+    
+    public static void main(String[] args) throws Exception {
+        //lay bai dang theo id
+        //lay danh sach id email tu bang tbl_feed_mail
+        //lay danh sach dia chi email tu bang tbl_mail theo id
+        //gui email den dia chi email co status_feed_mail=1
+        //update status_feed_mail =2, trang thai da gui mail
+
     }
 }
