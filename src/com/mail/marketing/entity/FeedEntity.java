@@ -30,6 +30,8 @@ public class FeedEntity {
     String idFanpage;
     //ten trang
     String fanpageName;
+    //ma cua video trong phan tag tren youtube
+    String codeVideo;
 
     public String getIdFanpage() {
         return idFanpage;
@@ -112,9 +114,12 @@ public class FeedEntity {
     public void setLinkDocument(String linkDocument) {
         this.linkDocument = linkDocument;
     }
-    
-    
-    
-    
-    
+
+    public String getCodeVideo() {
+        return codeVideo;
+    }
+
+    public void setCodeVideo(String codeVideo) {
+        this.codeVideo = codeVideo;
+    }
 }

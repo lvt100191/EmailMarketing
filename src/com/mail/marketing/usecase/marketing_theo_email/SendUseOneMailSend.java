@@ -32,7 +32,7 @@ public class SendUseOneMailSend {
     private static String sttMailSend = "1";
     //update trang thai da gui mail
     private static String sttMailSent = "2";
-    private static String mailSend1 = "coso8.mshoatoeic@gmail.com";
+    private static String mailSend1 = "coso9.mshoatoeic@gmail.com";
     private static String title = "Giới từ là phần ngữ pháp không nên bỏ qua trong tiếng anh!";
     private static String content = "<p>Đừng nghĩ giới từ kh&ocirc;ng quan trọng, l&uacute;c n&agrave;o n&oacute; cũng xuất hiện trong phần ngữ ph&aacute;p của c&aacute;c b&agrave;i thi tiếng anh. C&ocirc; xin gửi đến c&aacute;c bạn tất tần tật t&agrave;i liệu về giới từ.T&agrave;i liệu sẽ được bổ sung ng&agrave;y một phong ph&uacute; đa dạng. C&aacute;c bạn&nbsp;<strong>Like</strong>&nbsp;v&agrave;&nbsp;<strong>đăng k&yacute;</strong>&nbsp;k&ecirc;nh Youtube&nbsp; để c&ugrave;ng nhau học tốt. Lượng like v&agrave; đăng k&yacute; k&ecirc;nh youtube Tiếng Anh Cho Người Việt c&agrave;ng nhiều th&igrave; t&agrave;i liệu sẽ được bổ sung nhiều hơn nha c&aacute;c em.</p>\n" +
 "<p>Cảm ơn c&aacute;c bạn đ&atilde; ủng hộ c&ocirc; trong suốt thời gian qua!</p>\n" +
