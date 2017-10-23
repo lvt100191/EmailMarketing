@@ -25,8 +25,8 @@ import java.util.Date;
 public class ExtractFeedHaveCommentEmail {
 
     //tham so truyen vao
-    private static String fromDateUI = "2017-10-01";
-    private static String token = "EAACEdEose0cBACzH6hD55A2EnWxqDeATCNAnM8w9UlZAEBS7yZB8sbvZB2WdmJTWsbL7strxiDL5aYdZAKJgBjMRXfZBm1ugu0fqg5ZCPEiX6wcrlEndQZAWJDzn7pc3iHGu5mOUGN3SQmEnGZBAoJHLbFAJqQRN1ipwq6JKvls2JJrCDVBdqc2ZBzLpSJH6yov0ZD";
+    private static String fromDateUI = "2017-10-23";
+    private static String token = "EAACEdEose0cBAFIV3wAOID1atIFhl1LctwdDMU770E6ZCEtSxZAHjmZCWMFb4MnEYkmdTleEt66mzJtujxSse7l9ivRTEgUqenmPCIJSyewBhupkvJKpbYCvvzNjNqstv7F8MH5DCMcjZBanKsDUZAS2O5kW3quZB5sZBBhQpY2f3kfsbY9xD5RMQ8wG96cMy8ZD";
 
     public static void main(String[] args) throws Exception {
         ArrayList<FaceBook> lst = FaceBookDao.getListFaceBook(FaceBook.TYPE_FANPAGE);
@@ -35,7 +35,8 @@ public class ExtractFeedHaveCommentEmail {
         Date fromDate = sdf.parse(fromDateUI);
         for (FaceBook fg : lst) {
             //fix chi lay ra trang tieng anh cho nguoi viet
-            if(fg.getIdFacebook().equals("275158636317806")){
+            //if(fg.getIdFacebook().equals("275158636317806")){
+            if(true){
             //lay thong tin trang
             Page page = fanPageAction.getPageInfoById(token, fg.getIdFacebook());
             //lay danh sach bai da dang tu ngay fromDate truyen vao den hien tai

@@ -32,13 +32,11 @@ public class SendUseOneMailSend {
     //update trang thai da gui mail
     private static String sttMailSent = "2";
     //private static String mailSend1 = "coso9.mshoatoeic@gmail.com";
-    private static String mailSend1 = "english.forvn30082017@gmail.com";
-    //private static String mailSend1 = "hoa.ms.toeic@gmail.com";
-    private static String title = "Giới từ là phần ngữ pháp không nên bỏ qua trong tiếng anh!";
-    private static String content = "<p>Đừng nghĩ giới từ kh&ocirc;ng quan trọng, l&uacute;c n&agrave;o n&oacute; cũng xuất hiện trong phần ngữ ph&aacute;p của c&aacute;c b&agrave;i thi tiếng anh. C&ocirc; xin gửi đến c&aacute;c bạn tất tần tật t&agrave;i liệu về giới từ.T&agrave;i liệu sẽ được bổ sung ng&agrave;y một phong ph&uacute; đa dạng. C&aacute;c bạn&nbsp;<strong>Like</strong>&nbsp;v&agrave;&nbsp;<strong>đăng k&yacute;</strong>&nbsp;k&ecirc;nh Youtube&nbsp; để c&ugrave;ng nhau học tốt. Lượng like v&agrave; đăng k&yacute; k&ecirc;nh youtube Tiếng Anh Cho Người Việt c&agrave;ng nhiều th&igrave; t&agrave;i liệu sẽ được bổ sung nhiều hơn nha c&aacute;c em.</p>\n"
-            + "<p>Cảm ơn c&aacute;c bạn đ&atilde; ủng hộ c&ocirc; trong suốt thời gian qua!</p>\n"
-            + "<p>Link download t&agrave;i liệu: Tiếng Anh Cho Người Việt:&nbsp;<a class=\"m_3864711229718116219yt-simple-endpoint m_3864711229718116219style-scope m_3864711229718116219yt-formatted-string\" href=\"https://www.youtube.com/redirect?v=TprwZsCjmkc&amp;redir_token=zjtGDNfgWg5g-uT2wonRmNxVYqd8MTUwODgwMjc1OUAxNTA4NzE2MzU5&amp;event=video_description&amp;q=https%3A%2F%2Fgoo.gl%2FTpHT7n\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=en&amp;q=https://www.youtube.com/redirect?v%3DTprwZsCjmkc%26redir_token%3DzjtGDNfgWg5g-uT2wonRmNxVYqd8MTUwODgwMjc1OUAxNTA4NzE2MzU5%26event%3Dvideo_description%26q%3Dhttps%253A%252F%252Fgoo.gl%252FTpHT7n&amp;source=gmail&amp;ust=1508836426296000&amp;usg=AFQjCNGL_CYtkbY-mXjYzddMgwVr8p-UBA\">https://goo.gl/TpHT7n</a></p>\n"
-            + "<p>Ms Hoa!</p>";
+    //private static String mailSend1 = "english.forvn30082017@gmail.com";
+    private static String mailSend1 = "hoa.ms.toeic@gmail.com";
+    private static String title = "TOP 10 đầu sách không thể thiếu cho người tự học TOEIC 2017 (Fulll PDF + Audio)";
+    private static String content = "<p>Full PDF + AUDIO <br />🔥 TUYỂN TẬP 10 BỘ S&Aacute;CH TỰ HỌC TOEIC KH&Ocirc;NG THỂ THIẾU CHO MỌI CẤP ĐỘ 🔥</p>\n" +
+"<p>❗C&aacute;c em xem link tải ở phần m&ocirc; tả của video nh&eacute;<br />https://www.youtube.com/watch?v=TprwZsCjmkc<br />- B&agrave;i n&agrave;y c&ocirc; đ&atilde; tổng hợp những bộ s&aacute;ch hay nhất v&agrave; dễ học nhất theo từng level, mỗi bộ sẽ c&oacute; đầy đủ link tải PDF + Audio, c&aacute;c em tải về để học lu&ocirc;n nh&eacute; ^^.<br />Nhớ đăng k&yacute; k&ecirc;nh youtube: <a href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\">Tiếng anh cho người việt</a>, để nhận được những t&agrave;i liệu tiếp theo nh&eacute; c&aacute;c em</p>";
 
     public static void main(String[] args) throws Exception {
         ArrayList<MailSend> lstSend = MailSendDao.getListMailSend();
