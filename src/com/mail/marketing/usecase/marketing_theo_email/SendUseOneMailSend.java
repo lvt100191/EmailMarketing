@@ -21,23 +21,24 @@ import java.util.Date;
  * @author PMDVCNTT
  */
 //dung de quang ba bai viet tren fanpage
+//nhap vao 1 dia chi mail gui, gui den cac mail thu thap trong bang tbl_mail
 //chu y co khoang 9-10 mail chan thi se bi chan gui mail ban ra loi 550 5.4.5 Daily user sending quota exceeded
 public class SendUseOneMailSend {
     //trang thai mail lay ra de gui truong status trong bang tbl_mail
     private static String sttMailSend = "1";
     //update trang thai da gui mail
     private static String sttMailSent = "2";
-    private static String mailSend1 = "coso9.mshoatoeic@gmail.com";
-    private static String title = "Giới từ là gì?";
-    private static String content = "<p>&nbsp;</p>\n" +
-"<p>C&ocirc; gửi c&aacute;c em link t&agrave;i liệu về&nbsp;<span style=\"color: #800080;\"><strong>GIỚI TỪ</strong></span> nh&eacute;</p>\n" +
-"<p><a href=\"http://bit.ly/2zgOhTA\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=vi&amp;q=http://bit.ly/2zgOhTA&amp;source=gmail&amp;ust=1508428037273000&amp;usg=AFQjCNHSXIcbWCiL0oEyJJjRSlc4biFLOw\">http://bit.ly/2zgOhTA</a>&nbsp;</p>\n" +
-"<p>&nbsp;</p>\n" +
-"<p>C&aacute;c em nhớ like <span style=\"color: #000000;\"><strong><span style=\"color: #0000ff;\">Fanpage </span></strong>v&agrave;&nbsp;&nbsp;<strong><span style=\"color: #ff0000;\">YouTube</span></strong> <strong>Tiếng Anh Cho Người Việt</strong></span>&nbsp; để thoi d&otilde;i nh&eacute;, sắp tới c&ocirc; sẽ gửi mail tới c&aacute;c em trọn bọn ngữ ph&aacute;p tiếng anh.</p>\n" +
-"<p>Cảm ơn c&aacute;c em đ&atilde; ủng hộ c&ocirc; trong suốt thời gian qua.</p>";
+    private static String mailSend1 = "coso5.mshoatoeic@gmail.com";
+    private static String title = "Giới từ là phần ngữ pháp không nên bỏ qua trong tiếng anh!";
+    private static String content = "<p>Đừng nghĩ giới từ kh&ocirc;ng quan trọng, l&uacute;c n&agrave;o n&oacute; cũng xuất hiện trong phần ngữ ph&aacute;p của c&aacute;c b&agrave;i thi tiếng anh. C&ocirc; xin gửi đến c&aacute;c bạn tất tần tật t&agrave;i liệu về giới từ.T&agrave;i liệu sẽ được bổ sung ng&agrave;y một phong ph&uacute; đa dạng. C&aacute;c bạn <strong>Like</strong> v&agrave; <strong>đăng k&yacute;</strong> k&ecirc;nh Youtube&nbsp; để c&ugrave;ng nhau học tốt. Lượng like v&agrave; đăng k&yacute; k&ecirc;nh youtube Tiếng Anh Cho Người Việt c&agrave;ng nhiều th&igrave; t&agrave;i liệu sẽ được bổ sung nhiều hơn nha c&aacute;c em.</p>\n" +
+"<p>Cảm ơn c&aacute;c bạn đ&atilde; ủng hộ c&ocirc; trong suốt thời gian qua!</p>\n" +
+"<p>FaceBook: Tiếng Anh Cho Người Việt: <a class=\"yt-simple-endpoint style-scope yt-formatted-string\" href=\"https://www.youtube.com/redirect?v=TprwZsCjmkc&amp;redir_token=zjtGDNfgWg5g-uT2wonRmNxVYqd8MTUwODgwMjc1OUAxNTA4NzE2MzU5&amp;event=video_description&amp;q=https%3A%2F%2Fgoo.gl%2FTpHT7n\">https://goo.gl/TpHT7n</a></p>\n" +
+"<p>Link download t&agrave;i liệu: <a class=\"yt-simple-endpoint style-scope yt-formatted-string\" href=\"https://www.youtube.com/redirect?v=TprwZsCjmkc&amp;redir_token=zjtGDNfgWg5g-uT2wonRmNxVYqd8MTUwODgwMjc1OUAxNTA4NzE2MzU5&amp;event=video_description&amp;q=https%3A%2F%2Fgoo.gl%2FrnTwAM\">https://goo.gl/rnTwAM</a></p>\n" +
+"<p>Ms Hoa!</p>";
 
     public static void main(String[] args) throws Exception {
         ArrayList<MailSend> lstSend = MailSendDao.getListMailSend();
+        int countMailSentSuccess =0;
         for (MailSend mailSend : lstSend) {
             //chi lay mailSend1 truyen vao de gui lam mail
             if (mailSend.getEmail().trim().equals(mailSend1)) {
@@ -72,6 +73,7 @@ public class SendUseOneMailSend {
 
                                 }
                                 System.out.println("---------------- tunglv4 gui mail " + mailSend.getEmail() + " tu host " + mailSend.getHostMail() + " toi: " + to.getEmail() + " thanh cong");
+                                countMailSentSuccess ++;
                                 //update status mail nhan
                                 to.setStatus(Integer.parseInt(sttMailSent));
                                 MailDao.updateMail(to);
@@ -103,6 +105,7 @@ public class SendUseOneMailSend {
         System.out.println("------------------------------------------------------------------------------------");
         System.out.println("------------------------CHƯƠNG TRÌNH GỬI MAIL KẾT THÚC------------------------------");
         System.out.println("------------------------------------------------------------------------------------");
+        System.out.println("-------------------Đã gửi đến thành công: "+ countMailSentSuccess+" email!----------");
     }
     //check dia chi mail co bi chan hay chua
     //false: mail chua ton tai
