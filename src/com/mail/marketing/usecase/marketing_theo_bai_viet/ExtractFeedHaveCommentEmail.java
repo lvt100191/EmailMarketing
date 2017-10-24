@@ -25,8 +25,8 @@ import java.util.Date;
 public class ExtractFeedHaveCommentEmail {
 
     //tham so truyen vao
-    private static String fromDateUI = "2017-10-23";
-    private static String token = "EAACEdEose0cBAFIV3wAOID1atIFhl1LctwdDMU770E6ZCEtSxZAHjmZCWMFb4MnEYkmdTleEt66mzJtujxSse7l9ivRTEgUqenmPCIJSyewBhupkvJKpbYCvvzNjNqstv7F8MH5DCMcjZBanKsDUZAS2O5kW3quZB5sZBBhQpY2f3kfsbY9xD5RMQ8wG96cMy8ZD";
+    private static String fromDateUI = "2017-10-24";
+    private static String token = "EAACEdEose0cBAGRTIbtTHFId0g7YWDQwtR8R6InFa1JK2NqrB0cEUHQRFzgbZC3uQIll7GyZA9BZBtPdwxeGsInZAUrd3WVZBDviBEI67RsHBhBZBBb5EqKZBLAJL16ockkvFbFnBxyi3e20K8uZB3axUWcwmpk7MsoSpYmBk9x8jsf1YdbnruZBSWXJTW3GChKIZD";
 
     public static void main(String[] args) throws Exception {
         ArrayList<FaceBook> lst = FaceBookDao.getListFaceBook(FaceBook.TYPE_FANPAGE);
