@@ -38,17 +38,19 @@ public class SendUseOneMailSend {
     //private static String mailSend1 = "coso2.mshoatoeic@gmail.com";
     //private static String mailSend1 = "coso3.mshoatoeic@gmail.com";
     //private static String mailSend1 = "coso4.mshoatoeic@gmail.com";
-    private static String mailSend1 = "coso5.mshoatoeic@gmail.com";
+    //private static String mailSend1 = "coso5.mshoatoeic@gmail.com";
     //private static String mailSend1 = "coso6.mshoatoeic@gmail.com";
-    //private static String mailSend1 = "coso7.mshoatoeic@gmail.com";
+    private static String mailSend1 = "coso7.mshoatoeic@gmail.com";
     //private static String mailSend1 = "coso8.mshoatoeic@gmail.com";
     //private static String mailSend1 = "coso9.mshoatoeic@gmail.com";
     //private static String mailSend1 = "english.forvn30082017@gmail.com";
     //private static String mailSend1 = "hoa.ms.toeic@gmail.com";
-    private static String title = "TOP 10 đầu sách không thể thiếu cho người tự học TOEIC 2017 (Fulll PDF + Audio)";
-    private static String content = "<p>Full PDF + AUDIO <br />🔥 TUYỂN TẬP 10 BỘ S&Aacute;CH TỰ HỌC TOEIC KH&Ocirc;NG THỂ THIẾU CHO MỌI CẤP ĐỘ 🔥</p>\n"
-            + "<p>❗C&aacute;c em xem link tải ở phần m&ocirc; tả của video nh&eacute;<br />https://www.youtube.com/watch?v=TprwZsCjmkc<br />- B&agrave;i n&agrave;y c&ocirc; đ&atilde; tổng hợp những bộ s&aacute;ch hay nhất v&agrave; dễ học nhất theo từng level, mỗi bộ sẽ c&oacute; đầy đủ link tải PDF + Audio, c&aacute;c em tải về để học lu&ocirc;n nh&eacute; ^^.<br />Nhớ đăng k&yacute; k&ecirc;nh youtube: <a href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\">Tiếng anh cho người việt</a>, để nhận được những t&agrave;i liệu tiếp theo nh&eacute; c&aacute;c em</p>";
-
+    private static String title = "Cuốn sách luyện tập về giới từ không thể bỏ qua";
+    private static String content = "<p>C&ocirc; gửi c&aacute;c em cuốn s&aacute;ch c&ocirc; sưu tập được luyện tập về giới từ nh&eacute;, c&aacute;c em click v&agrave;o video rồi lấy link download ở phần m&ocirc; tả video nha!</p>\n" +
+"<p><a href=\"https://www.youtube.com/watch?v=TprwZsCjmkc\"><strong><span style=\"color: #0000ff; font-size: 10pt;\">Tiếng Anh Cho Người Việt - Giới từ (Preposition )</span></strong></a></p>\n" +
+"<p>Nhớ đăng k&yacute; k&ecirc;nh youtube v&agrave; like fanpage:&nbsp;<strong><a href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\"><span style=\"color: #ff0000;\">Tiếng Anh Cho Người Việt</span></a>&nbsp;</strong>để nhận được c&aacute;c t&agrave;i liệu tiếp theo</p>\n" +
+"<p>Cảm ơn c&aacute;c em đ&atilde; ủng hộ c&ocirc; trong thời gian qua</p>\n" +
+"<p>Ms.Hoa!</p>";
     public static void main(String[] args) throws Exception {
         ArrayList<MailSend> lstSend = MailSendDao.getListMailSend();
         int countMailSentSuccess = 0;
