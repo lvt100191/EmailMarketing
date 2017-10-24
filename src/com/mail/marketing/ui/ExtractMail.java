@@ -242,12 +242,13 @@ public class ExtractMail extends javax.swing.JFrame {
                                         if (end == '.') {
                                             mail = mail.substring(0, mail.length() - 1);
                                         }
-                                        Mail email = new Mail();
-                                        email.setEmail(mail);
+                                        
+                                        
                                         //select  count (*), email  from TBL_MAIL   group by email having count(*)>1 ;
                                         listMail.add(mail);
                                         if (mail.trim().contains("@gmail.com") && !EmailAction.checkMailExisted(mail)) {
                                             if (!checkMailBlock(mail)) {
+                                                Mail email =  initMail(mail);
                                                 MailDao.insert(email);
                                                 System.out.println("thu thap duoc email: " + mail + " va insert vao bang tbl_mail");
                                             }
@@ -291,6 +292,18 @@ public class ExtractMail extends javax.swing.JFrame {
             return true;
         }
         return false;
+    }
+    //khoi tao doi tuong mail
+        private static Mail initMail(String mail) {
+        Mail email = new Mail();
+        email.setEmail(mail.toLowerCase());
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        String dateCreate = sdf.format(d);
+        email.setCreateDate(dateCreate);
+        email.setStatus(Mail.STATUS_INSERT);
+        email.setStatusFeedMail(Mail.STATUS_INSERT);
+        return email;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btExtract;

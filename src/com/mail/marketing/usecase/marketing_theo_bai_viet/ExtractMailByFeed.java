@@ -112,7 +112,7 @@ public class ExtractMailByFeed {
     
     private static Mail initMail(String mail) {
         Mail email = new Mail();
-        email.setEmail(mail);
+        email.setEmail(mail.toLowerCase());
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
         String dateCreate = sdf.format(d);

@@ -33,22 +33,13 @@ public class SendUseOneMailSend {
     private static String sttMailSend = "1";
     //update trang thai da gui mail
     private static String sttMailSent = "2";
+    
+    private static String mailSend1 = "coso9.mshoatoeic@gmail.com";
 
-    //private static String mailSend1 = "coso1.mshoatoeic@gmail.com";
-    //private static String mailSend1 = "coso2.mshoatoeic@gmail.com";
-    //private static String mailSend1 = "coso3.mshoatoeic@gmail.com";
-    //private static String mailSend1 = "coso4.mshoatoeic@gmail.com";
-    //private static String mailSend1 = "coso5.mshoatoeic@gmail.com";
-    //private static String mailSend1 = "coso6.mshoatoeic@gmail.com";
-    private static String mailSend1 = "coso7.mshoatoeic@gmail.com";
-    //private static String mailSend1 = "coso8.mshoatoeic@gmail.com";
-    //private static String mailSend1 = "coso9.mshoatoeic@gmail.com";
-    //private static String mailSend1 = "english.forvn30082017@gmail.com";
-    //private static String mailSend1 = "hoa.ms.toeic@gmail.com";
     private static String title = "Cuốn sách luyện tập về giới từ không thể bỏ qua";
-    private static String content = "<p>C&ocirc; gửi c&aacute;c em cuốn s&aacute;ch c&ocirc; sưu tập được luyện tập về giới từ nh&eacute;, c&aacute;c em click v&agrave;o video rồi lấy link download ở phần m&ocirc; tả video nha!</p>\n" +
-"<p><a href=\"https://www.youtube.com/watch?v=TprwZsCjmkc\"><strong><span style=\"color: #0000ff; font-size: 10pt;\">Tiếng Anh Cho Người Việt - Giới từ (Preposition )</span></strong></a></p>\n" +
-"<p>Nhớ đăng k&yacute; k&ecirc;nh youtube v&agrave; like fanpage:&nbsp;<strong><a href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\"><span style=\"color: #ff0000;\">Tiếng Anh Cho Người Việt</span></a>&nbsp;</strong>để nhận được c&aacute;c t&agrave;i liệu tiếp theo</p>\n" +
+    private static String content = "<p>C&ocirc; gửi c&aacute;c em cuốn s&aacute;ch c&ocirc; sưu tập được luyện tập về giới từ nh&eacute;, c&aacute;c em nhanh tay click v&agrave;o video rồi lấy link download ở phần m&ocirc; tả video, nhớ l&agrave; nhanh tay nh&eacute; v&igrave; c&ocirc; sẽ kh&ocirc;ng chia sẻ link l&acirc;u đ&acirc;u. Bạn n&agrave;o chậm tay m&agrave; chưa download được t&agrave;i liệu th&igrave; ch&uacute;c c&aacute;c em may mắn lần sau nha!</p>\n" +
+"<p><a href=\"https://www.youtube.com/watch?v=TprwZsCjmkc\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=vi&amp;q=https://www.youtube.com/watch?v%3DTprwZsCjmkc&amp;source=gmail&amp;ust=1508932165457000&amp;usg=AFQjCNGiRVojwzXateNmtZPcrsXJ0F2NSA\"><strong>Tiếng Anh Cho Người Việt - Giới từ (Preposition )</strong></a></p>\n" +
+"<p>Nhớ đăng k&yacute; k&ecirc;nh youtube v&agrave; like fanpage:&nbsp;<strong><a href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=vi&amp;q=https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q&amp;source=gmail&amp;ust=1508932165457000&amp;usg=AFQjCNEDd5N_WE8eNPg1HFMxZJ5JrZN8Fw\">Tiếng Anh Cho Người Việt</a>&nbsp;</strong>để nhận được c&aacute;c t&agrave;i liệu tiếp theo.</p>\n" +
 "<p>Cảm ơn c&aacute;c em đ&atilde; ủng hộ c&ocirc; trong thời gian qua</p>\n" +
 "<p>Ms.Hoa!</p>";
     public static void main(String[] args) throws Exception {
@@ -56,7 +47,7 @@ public class SendUseOneMailSend {
         int countMailSentSuccess = 0;
         for (MailSend mailSend : lstSend) {
             //chi lay mailSend1 truyen vao de gui lam mail
-            if (mailSend.getEmail().trim().equals(mailSend1)) {
+            if (mailSend.getEmail().trim().equals(mailSend1.trim())) {
                 try {
                     //lay danh sach mail gui theo trang thai va so luong mail cho phep gui trong ngay
                     ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(mailSend.getMaxMail()));
@@ -84,7 +75,7 @@ public class SendUseOneMailSend {
                                 }
 
                                 if (mailSend.getHostMail().equals(Mail.GMAIL_HOST)) {
-                                    EmailAction.sendGmail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
+                                    EmailAction.sendGmail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail().toLowerCase(), title, content);
 
                                 }
                                 System.out.println("---------------- tunglv4 gui mail " + mailSend.getEmail() + " tu host " + mailSend.getHostMail() + " toi: " + to.getEmail() + " thanh cong");
