@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mail.marketing.ui;
+package com.mail.marketing.test;
 
+import com.mail.marketing.ui.*;
 import com.mail.marketing.db.MailDao;
 import com.mail.marketing.db.MailSendDao;
 import com.mail.marketing.entity.Mail;
@@ -486,6 +487,10 @@ public class SendEmail extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SendEmail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

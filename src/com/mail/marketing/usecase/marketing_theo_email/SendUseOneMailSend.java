@@ -5,6 +5,7 @@
  */
 package com.mail.marketing.usecase.marketing_theo_email;
 
+import com.mail.marketing.db.FeedMailDao;
 import com.mail.marketing.db.MailBlockDao;
 import com.mail.marketing.db.MailDao;
 import com.mail.marketing.db.MailSendDao;
@@ -15,6 +16,7 @@ import com.mail.marketing.mail.EmailAction;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.mail.internet.AddressException;
 
 /**
  *
@@ -31,12 +33,21 @@ public class SendUseOneMailSend {
     private static String sttMailSend = "1";
     //update trang thai da gui mail
     private static String sttMailSent = "2";
+
+    //private static String mailSend1 = "coso1.mshoatoeic@gmail.com";
+    //private static String mailSend1 = "coso2.mshoatoeic@gmail.com";
+    private static String mailSend1 = "coso3.mshoatoeic@gmail.com";
+    //private static String mailSend1 = "coso4.mshoatoeic@gmail.com";
+    //private static String mailSend1 = "coso5.mshoatoeic@gmail.com";
+    //private static String mailSend1 = "coso6.mshoatoeic@gmail.com";
+    //private static String mailSend1 = "coso7.mshoatoeic@gmail.com";
+    //private static String mailSend1 = "coso8.mshoatoeic@gmail.com";
     //private static String mailSend1 = "coso9.mshoatoeic@gmail.com";
     //private static String mailSend1 = "english.forvn30082017@gmail.com";
-    private static String mailSend1 = "hoa.ms.toeic@gmail.com";
+    //private static String mailSend1 = "hoa.ms.toeic@gmail.com";
     private static String title = "TOP 10 đầu sách không thể thiếu cho người tự học TOEIC 2017 (Fulll PDF + Audio)";
-    private static String content = "<p>Full PDF + AUDIO <br />🔥 TUYỂN TẬP 10 BỘ S&Aacute;CH TỰ HỌC TOEIC KH&Ocirc;NG THỂ THIẾU CHO MỌI CẤP ĐỘ 🔥</p>\n" +
-"<p>❗C&aacute;c em xem link tải ở phần m&ocirc; tả của video nh&eacute;<br />https://www.youtube.com/watch?v=TprwZsCjmkc<br />- B&agrave;i n&agrave;y c&ocirc; đ&atilde; tổng hợp những bộ s&aacute;ch hay nhất v&agrave; dễ học nhất theo từng level, mỗi bộ sẽ c&oacute; đầy đủ link tải PDF + Audio, c&aacute;c em tải về để học lu&ocirc;n nh&eacute; ^^.<br />Nhớ đăng k&yacute; k&ecirc;nh youtube: <a href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\">Tiếng anh cho người việt</a>, để nhận được những t&agrave;i liệu tiếp theo nh&eacute; c&aacute;c em</p>";
+    private static String content = "<p>Full PDF + AUDIO <br />🔥 TUYỂN TẬP 10 BỘ S&Aacute;CH TỰ HỌC TOEIC KH&Ocirc;NG THỂ THIẾU CHO MỌI CẤP ĐỘ 🔥</p>\n"
+            + "<p>❗C&aacute;c em xem link tải ở phần m&ocirc; tả của video nh&eacute;<br />https://www.youtube.com/watch?v=TprwZsCjmkc<br />- B&agrave;i n&agrave;y c&ocirc; đ&atilde; tổng hợp những bộ s&aacute;ch hay nhất v&agrave; dễ học nhất theo từng level, mỗi bộ sẽ c&oacute; đầy đủ link tải PDF + Audio, c&aacute;c em tải về để học lu&ocirc;n nh&eacute; ^^.<br />Nhớ đăng k&yacute; k&ecirc;nh youtube: <a href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\">Tiếng anh cho người việt</a>, để nhận được những t&agrave;i liệu tiếp theo nh&eacute; c&aacute;c em</p>";
 
     public static void main(String[] args) throws Exception {
         ArrayList<MailSend> lstSend = MailSendDao.getListMailSend();
@@ -80,6 +91,19 @@ public class SendUseOneMailSend {
                                 to.setStatus(Integer.parseInt(sttMailSent));
                                 MailDao.updateMail(to);
 
+                            } catch (AddressException adEx) {
+                                System.out.println("-----------------tunglv4 gui toi mail: " + to.getEmail() + " bi loi: " + adEx.getMessage());
+                                //tim mail trong bang tbl_mail lay ra id cua ban ghi
+                                Mail m = MailDao.getByEmail(to.getEmail());
+                                //xoa ban ghi trong bang tbl_feed_mail theo id
+                                if (m != null) {
+                                    FeedMailDao.deleteFeedMail(m.getId());
+                                    //xoa ban ghi trong bang tbl_mail
+                                    MailDao.deleteMail(m.getId());
+                                }
+                                //insert vao bang tbl_mail_blocked
+                                MailBlock mb = initMailBlock(to.getEmail());
+                                MailBlockDao.insert(mb);
                             } catch (Exception e) {
                                 System.out.println("-----------------tunglv4 gui toi mail: " + to.getEmail() + " bi loi: " + e.getMessage());
 //                            if (e.getMessage().contains("554 5.2.0")) {
@@ -89,6 +113,9 @@ public class SendUseOneMailSend {
                                     MailSendDao.updateMailLastTime(mailSend);
                                     throw new Exception("------------tunglv4 gui qua so luong mail cho phep trong ngay");
                                 }
+
+                            } finally {
+
                             }
                         }
                         //update thoi gian mail gui
@@ -120,6 +147,16 @@ public class SendUseOneMailSend {
             return true;
         }
         return false;
+    }
+
+    private static MailBlock initMailBlock(String mailLock) {
+        MailBlock m = new MailBlock();
+        m.setMailBlock(mailLock);
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        String dateCreate = sdf.format(d);
+        m.setCreateDate(dateCreate);
+        return m;
     }
 
     private static boolean checkRunTime(String lastDate) {

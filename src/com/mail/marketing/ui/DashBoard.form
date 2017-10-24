@@ -29,6 +29,7 @@
               <Component id="jButton2" min="-2" pref="98" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btCheckMailSendInfo" max="32767" attributes="0"/>
                   <Component id="btAddEmailBlocked" pref="174" max="32767" attributes="0"/>
                   <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
                   <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
@@ -54,7 +55,9 @@
                       <Component id="btAddEmailBlocked" min="-2" pref="52" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="101" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="btCheckMailSendInfo" min="-2" pref="47" max="-2" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -90,6 +93,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAddEmailBlockedActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btCheckMailSendInfo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ki&#x1ec3;m tra th&#xf4;ng tin mail g&#x1eed;i"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCheckMailSendInfoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
