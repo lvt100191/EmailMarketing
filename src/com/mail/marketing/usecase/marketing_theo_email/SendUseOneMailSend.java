@@ -36,9 +36,9 @@ public class SendUseOneMailSend {
 
     //private static String mailSend1 = "coso1.mshoatoeic@gmail.com";
     //private static String mailSend1 = "coso2.mshoatoeic@gmail.com";
-    private static String mailSend1 = "coso3.mshoatoeic@gmail.com";
+    //private static String mailSend1 = "coso3.mshoatoeic@gmail.com";
     //private static String mailSend1 = "coso4.mshoatoeic@gmail.com";
-    //private static String mailSend1 = "coso5.mshoatoeic@gmail.com";
+    private static String mailSend1 = "coso5.mshoatoeic@gmail.com";
     //private static String mailSend1 = "coso6.mshoatoeic@gmail.com";
     //private static String mailSend1 = "coso7.mshoatoeic@gmail.com";
     //private static String mailSend1 = "coso8.mshoatoeic@gmail.com";
