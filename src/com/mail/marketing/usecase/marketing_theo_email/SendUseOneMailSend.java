@@ -25,8 +25,8 @@ import javax.mail.internet.AddressException;
 //dung de quang ba bai viet tren fanpage
 //nhap vao 1 dia chi mail gui, gui den cac mail thu thap trong bang tbl_mail
 //chu y co khoang 9-10 mail chan thi se bi chan gui mail ban ra loi 550 5.4.5 Daily user sending quota exceeded
-//mot buoi sang gui duoc 4 mail tu 8h den 16h  gui dc tiep 2 email, thi ko gap loi quota
-//theo doi test xem sau bao lau gui dc tiep
+//thuong  gui duoc 4 mail lien tiep, gui den mail thu 5 bi loi 550 5.4.5 Daily user sending quota 
+//sang gui 4 mail, chieu 4 mail toi 4 mail
 public class SendUseOneMailSend {
 
     //trang thai mail lay ra de gui truong status trong bang tbl_mail

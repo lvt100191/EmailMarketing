@@ -155,7 +155,7 @@ public class MailSendInfo extends javax.swing.JFrame {
 
     private void btExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExitActionPerformed
         this.dispose();
-        new DashBoard();
+        new SendMail();
     }//GEN-LAST:event_btExitActionPerformed
 
     /**
