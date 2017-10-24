@@ -219,7 +219,6 @@ public class ExtractMail extends javax.swing.JFrame {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 Date fromDate = sdf.parse(fromDateUI);
                 for (FaceBook fg : lst) {
-
                     //lay thong tin trang
                     Page page = fanPageAction.getPageInfoById(token, fg.getIdFacebook());
                     //lay danh sach bai da dang tu ngay fromDate truyen vao den hien tai
@@ -227,8 +226,6 @@ public class ExtractMail extends javax.swing.JFrame {
                     //lay danh sach binh luan theo bai dang
                     String mail = null;
                     for (Feed f : lstFeed) {
-                        ArrayList<String> listMail = new ArrayList<>();
-                        String lstMail = "";
                         ArrayList<Comment> comments = fanPageAction.getComments(token, f.getId());
                         for (Comment c : comments) {
                             //neu co email thi gui mail
@@ -242,17 +239,15 @@ public class ExtractMail extends javax.swing.JFrame {
                                         if (end == '.') {
                                             mail = mail.substring(0, mail.length() - 1);
                                         }
-                                        
-                                        
-                                        //select  count (*), email  from TBL_MAIL   group by email having count(*)>1 ;
-                                        listMail.add(mail);
-                                        if (mail.trim().contains("@gmail.com") && !EmailAction.checkMailExisted(mail)) {
-                                            if (!checkMailBlock(mail)) {
-                                                Mail email =  initMail(mail);
-                                                MailDao.insert(email);
-                                                System.out.println("thu thap duoc email: " + mail + " va insert vao bang tbl_mail");
-                                            }
+                                        if (checkAddressMail(mail)) {
+                                            if (mail.trim().contains("@gmail.com") && !EmailAction.checkMailExisted(mail)) {
+                                                if (!checkMailBlock(mail)) {
+                                                    Mail email = initMail(mail);
+                                                    MailDao.insert(email);
+                                                    System.out.println("thu thap duoc email: " + mail + " va insert vao bang tbl_mail");
+                                                }
 
+                                            }
                                         }
 
                                     } catch (Exception e) {
@@ -293,8 +288,9 @@ public class ExtractMail extends javax.swing.JFrame {
         }
         return false;
     }
+
     //khoi tao doi tuong mail
-        private static Mail initMail(String mail) {
+    private static Mail initMail(String mail) {
         Mail email = new Mail();
         email.setEmail(mail.toLowerCase());
         Date d = new Date();
@@ -317,4 +313,20 @@ public class ExtractMail extends javax.swing.JFrame {
     private javax.swing.JTextField txtRs;
     private javax.swing.JTextField txtToken;
     // End of variables declaration//GEN-END:variables
+
+    private boolean checkAddressMail(String mail) {
+        if (mail.contains("@gmail.con")) {
+            return false;
+        }
+        if (mail.contains("@gmail.com.")) {
+            return false;
+        }
+        if (mail.contains("@gamil.com")) {
+            return false;
+        }
+                if (mail.startsWith("_")) {
+            return false;
+        }
+        return true;
+    }
 }

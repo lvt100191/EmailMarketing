@@ -34,7 +34,7 @@ public class SendUseOneMailSend {
     //update trang thai da gui mail
     private static String sttMailSent = "2";
     
-    private static String mailSend1 = "coso9.mshoatoeic@gmail.com";
+    private static String mailSend1 = "hoa.ms.toeic@gmail.com";
 
     private static String title = "Cuốn sách luyện tập về giới từ không thể bỏ qua";
     private static String content = "<p>C&ocirc; gửi c&aacute;c em cuốn s&aacute;ch c&ocirc; sưu tập được luyện tập về giới từ nh&eacute;, c&aacute;c em nhanh tay click v&agrave;o video rồi lấy link download ở phần m&ocirc; tả video, nhớ l&agrave; nhanh tay nh&eacute; v&igrave; c&ocirc; sẽ kh&ocirc;ng chia sẻ link l&acirc;u đ&acirc;u. Bạn n&agrave;o chậm tay m&agrave; chưa download được t&agrave;i liệu th&igrave; ch&uacute;c c&aacute;c em may mắn lần sau nha!</p>\n" +
