@@ -244,7 +244,7 @@ public class SendMail extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCheckMailSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCheckMailSendActionPerformed
-
+        txtAreaMailLst.setText(null);
         txtNumOfMailSend.setText("0");
         String lstMailSend = "";
         int count = 0;
@@ -306,6 +306,8 @@ public class SendMail extends javax.swing.JFrame {
     }//GEN-LAST:event_txtStatusActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //moi mot lan gui phai clean build lai project khong se bi cache session khi gui mail
+        //check hop thu da gui trong mail gui se khong co thong tin email da gui
         try {
             String mailSend = txtFrom.getText().trim();
             String sttSend = txtStatusSend.getText().trim();
