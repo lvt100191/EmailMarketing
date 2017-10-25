@@ -5,14 +5,20 @@
  */
 package com.mail.marketing.ui;
 
+import com.mail.marketing.db.FeedMailDao;
+import com.mail.marketing.db.MailBlockDao;
 import com.mail.marketing.db.MailDao;
 import com.mail.marketing.db.MailSendDao;
+import com.mail.marketing.entity.Mail;
+import com.mail.marketing.entity.MailBlock;
 import com.mail.marketing.entity.MailSend;
+import com.mail.marketing.mail.EmailAction;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.internet.AddressException;
 
 /**
  *
@@ -44,16 +50,16 @@ public class SendMail extends javax.swing.JFrame {
 
         btCheckMailSend = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtFrom = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtSubject = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtAreaContent = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtStatusSend = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtStatusSent = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         txtAreaMailLst = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -82,15 +88,20 @@ public class SendMail extends javax.swing.JFrame {
 
         jLabel3.setText("Nội dung");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtAreaContent.setColumns(20);
+        txtAreaContent.setRows(5);
+        jScrollPane1.setViewportView(txtAreaContent);
 
         jLabel4.setText("Trạng thái mail gửi");
 
         jLabel5.setText("Trạng thái mail đã gửi");
 
         jButton1.setText("Gửi mail");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Số mail được phép gửi");
 
@@ -143,15 +154,15 @@ public class SendMail extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtStatusSend, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel5)
                                 .addGap(37, 37, 37)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtStatusSent, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(41, 41, 41))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(223, 223, 223)
@@ -186,7 +197,7 @@ public class SendMail extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(checkAmountMail)
                     .addComponent(txtAmountMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -194,7 +205,7 @@ public class SendMail extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(checkMailByStatus)
                         .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtAmountMailByStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -207,17 +218,18 @@ public class SendMail extends javax.swing.JFrame {
                     .addComponent(txtAreaMailLst, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtStatusSend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtStatusSent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(txtNumOfMailSend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btCheckMailSend, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btCheckMailSend, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
@@ -286,6 +298,21 @@ public class SendMail extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStatusActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            String mailSend = txtFrom.getText().trim();
+            String sttSend = txtStatusSend.getText().trim();
+            String sttSent = txtStatusSent.getText().trim();
+            String subject = txtSubject.getText().trim();
+            String content = txtAreaContent.getText().trim();
+            
+            sendByUseOneMailSend(mailSend, sttSend, sttSent, subject, content);
+        } catch (Exception ex) {
+            Logger.getLogger(SendMail.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -335,16 +362,16 @@ public class SendMail extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField txtAmountMail;
     private javax.swing.JTextField txtAmountMailByStatus;
+    private javax.swing.JTextArea txtAreaContent;
     private javax.swing.JTextField txtAreaMailLst;
+    private javax.swing.JTextField txtFrom;
     private javax.swing.JTextField txtNumOfMailSend;
     private javax.swing.JTextField txtStatus;
+    private javax.swing.JTextField txtStatusSend;
+    private javax.swing.JTextField txtStatusSent;
+    private javax.swing.JTextField txtSubject;
     // End of variables declaration//GEN-END:variables
 
     private boolean checkRunTime(String lastDate) {
@@ -372,5 +399,116 @@ public class SendMail extends javax.swing.JFrame {
             return true;
         }
         return false;
+    }
+    
+    private void sendByUseOneMailSend(String mailSend1, String sttMailSend,String sttMailSent, String subject, String content) throws Exception{
+        
+        ArrayList<MailSend> lstSend = MailSendDao.getListMailSend();
+        int countMailSentSuccess = 0;
+        for (MailSend mailSend : lstSend) {
+            //chi lay mailSend1 truyen vao de gui lam mail
+            if (mailSend.getEmail().trim().equals(mailSend1.trim())) {
+                try {
+                    //lay danh sach mail gui theo trang thai va so luong mail cho phep gui trong ngay
+                    ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(mailSend.getMaxMail()));
+                    //test
+//                    ArrayList<Mail> lst = new ArrayList<>();
+//                    Mail m = new Mail();
+//                    m.setEmail("tunglv9x@gmail.com");
+//                    lst.add(m);
+                    //kiem tra thoi gian hien tai co thoa man gui mail khong
+                    //checkTime = true roi vao truong hop mailSend.getLastTime()=null va khac "" 
+                    boolean checkTime = true;
+                    if (mailSend.getLastTime() != null && !mailSend.getLastTime().isEmpty()) {
+                        checkTime = checkRunTime(mailSend.getLastTime());
+                    }
+
+                    if (checkTime) {
+                        for (Mail to : lst) {
+                            try {
+                                if (mailSend.getMailBlocked() != null && !mailSend.getMailBlocked().isEmpty() && mailSend.getMailBlocked().contains(to.getEmail().trim())) {
+                                    continue;
+                                }
+                                //neu mail da ton tai trong bang tbl_mail_blocked thi khong gui mail
+                                if (checkMailBlock(to.getEmail().trim())) {
+                                    continue;
+                                }
+
+                                if (mailSend.getHostMail().equals(Mail.GMAIL_HOST)) {
+                                    EmailAction.sendGmail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail().toLowerCase(), subject, content);
+
+                                }
+                                System.out.println("---------------- tunglv4 gui mail " + mailSend.getEmail() + " tu host " + mailSend.getHostMail() + " toi: " + to.getEmail() + " thanh cong");
+                                countMailSentSuccess++;
+                                //update status mail nhan
+                                to.setStatus(Integer.parseInt(sttMailSent));
+                                MailDao.updateMail(to);
+
+                            } catch (AddressException adEx) {
+                                System.out.println("-----------------tunglv4 gui toi mail: " + to.getEmail() + " bi loi: " + adEx.getMessage());
+                                //tim mail trong bang tbl_mail lay ra id cua ban ghi
+                                Mail m = MailDao.getByEmail(to.getEmail());
+                                //xoa ban ghi trong bang tbl_feed_mail theo id
+                                if (m != null) {
+                                    FeedMailDao.deleteFeedMail(m.getId());
+                                    //xoa ban ghi trong bang tbl_mail
+                                    MailDao.deleteMail(m.getId());
+                                }
+                                //insert vao bang tbl_mail_blocked
+                                MailBlock mb = initMailBlock(to.getEmail());
+                                MailBlockDao.insert(mb);
+                            } catch (Exception e) {
+                                System.out.println("-----------------tunglv4 gui toi mail: " + to.getEmail() + " bi loi: " + e.getMessage());
+//                            if (e.getMessage().contains("554 5.2.0")) {
+//                                continue;
+//                            }
+                                if (e.getMessage().contains("550 5.4.5")) {
+                                    MailSendDao.updateMailLastTime(mailSend);
+                                    throw new Exception("------------tunglv4 gui qua so luong mail cho phep trong ngay");
+                                }
+
+                            } finally {
+
+                            }
+                        }
+                        //update thoi gian mail gui
+                        //kiem tra phai co mail gui thi moi update thoi gian, chua them dieu kien
+                        //so mail da gui phai =so mail max config trong db
+                        if (lst.size() > 0) {
+                            MailSendDao.updateMailLastTime(mailSend);
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println(mailSend.getEmail() + " : " + e.getMessage());
+                    continue;
+                }
+            }
+        }
+        System.out.println("------------------------------------------------------------------------------------");
+        System.out.println("------------------------CHƯƠNG TRÌNH GỬI MAIL KẾT THÚC------------------------------");
+        System.out.println("------------------------------------------------------------------------------------");
+        System.out.println("-------------------Đã gửi đến thành công: " + countMailSentSuccess + " email!----------");
+    }
+
+  //check dia chi mail co bi chan hay chua
+    //false: mail chua ton tai
+    //true: mail da ton tai
+    private static boolean checkMailBlock(String mail) throws Exception {
+        //ko insert mail đã tồn tại trong danh sách mail chặn tbl_mail_block
+        MailBlock mailBlock = MailBlockDao.getByEmail(mail);
+        if (mailBlock != null) {
+            return true;
+        }
+        return false;
+    }
+
+    private static MailBlock initMailBlock(String mailLock) {
+        MailBlock m = new MailBlock();
+        m.setMailBlock(mailLock);
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        String dateCreate = sdf.format(d);
+        m.setCreateDate(dateCreate);
+        return m;
     }
 }
