@@ -139,7 +139,7 @@ public class TestSendMailABC {
             msg.setHeader("Content-Type", "text/plain; charset=UTF-8");
 
             InternetAddress senderAddress = new InternetAddress(sendMail);
-            senderAddress.setPersonal("Tiếng Anh Cho Người Việt", "UTF-8");
+            senderAddress.setPersonal("Ms Hoa Toeic - Sứ giả truyền cảm hứng", "UTF-8");
             senderAddress.validate();
             msg.setFrom(senderAddress);
 

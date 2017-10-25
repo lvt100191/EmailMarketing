@@ -100,14 +100,19 @@ public class GUITestMailSendABC extends javax.swing.JFrame {
             //  private static String mailSend1 = "hoa.ms.toeic@gmail.com";
 
             String title = "Nhanh tay đăng ký 2 khóa học miễn phí từ Ms Hoa Toeic";
-            String content = "<p><span style=\"color: #000000; background-color: #ffff00;\">Th&ocirc;ng b&aacute;o khuya:</span><br /><span style=\"color: #000000; background-color: #ffff00;\">- 2 \"qu&agrave; khủng\" m&agrave; c&ocirc; hứa tặng c&aacute;c em, gồm:</span></p>\n"
-                    + "<p><span style=\"color: #000000; background-color: #ffff00;\">1. Kh&oacute;a Online MIỄN PH&Iacute; TOEIC 4 kỹ năng 10 buổi </span><br /><span style=\"color: #000000; background-color: #ffff00;\">2. Lớp Bổ trợ TOEIC Speaking &amp; Writing miễn ph&iacute; chiều thứ 7 h&agrave;ng tuần cho học vi&ecirc;n của trung t&acirc;m</span></p>\n"
-                    + "<p><span style=\"color: #000000; background-color: #ffff00;\">Đều được ra mắt cả rồi ^^. C&ograve;n bạn n&agrave;o bị lỡ m&agrave; chưa nhận được kh&ocirc;ng :3. Comment m&oacute;n qu&agrave; mong muốn của em n&agrave;o :D</span></p>\n"
-                    + "<p><br />C&ocirc; gửi c&aacute;c em link đăng k&yacute; kh&oacute;a học nh&eacute;! C&aacute;c em nhanh tay điền v&agrave;o mẫu đăng k&yacute;, trung t&acirc;m sẽ li&ecirc;n hệ hướng dẫn c&aacute;c em tham gia kh&oacute;a học, lưu &yacute; điền đ&uacute;ng địa chỉ v&agrave; số điện thoại để được học tại cơ sở gần nhất nh&eacute; c&aacute;c em, v&igrave; số lượng c&oacute; hạn n&ecirc;n bạn n&agrave;o chưa nhanh tay th&igrave; hẹn c&aacute;c em v&agrave;o dịp kh&aacute;c nha!</p>\n"
-                    + "<p><a href=\"http://bit.ly/2yQsR35\">http://bit.ly/2yQsR35</a></p>\n"
-                    + "<p>&nbsp;</p>";
+            String content = "<p><span style=\"background-color: #ffff00;\">Th&ocirc;ng b&aacute;o khuya:</span><br /><span style=\"background-color: #ffff00;\">- 2 \\\"qu&agrave; khủng\\\" m&agrave; c&ocirc; hứa tặng c&aacute;c em, gồm:</span></p>\n" +
+"<p><span style=\"background-color: #ffff00;\">1. Kh&oacute;a Online MIỄN PH&Iacute; TOEIC 4 kỹ năng 10 buổi </span><br /><span style=\"background-color: #ffff00;\">2. Lớp Bổ trợ TOEIC Speaking &amp; Writing miễn ph&iacute; chiều thứ 7 h&agrave;ng tuần cho học vi&ecirc;n của trung t&acirc;m</span></p>\n" +
+"<p><span style=\"background-color: #ffff00;\">Đều được ra mắt cả rồi ^^. C&ograve;n bạn n&agrave;o bị lỡ m&agrave; chưa nhận được kh&ocirc;ng :3. Comment m&oacute;n qu&agrave; mong muốn của em n&agrave;o :D</span></p>\n" +
+"<p>C&aacute;c em nhanh tay điền v&agrave;o mẫu đăng k&yacute;, trung t&acirc;m sẽ li&ecirc;n hệ hướng dẫn c&aacute;c em tham gia kh&oacute;a học, lưu &yacute; điền đ&uacute;ng địa chỉ v&agrave; số điện thoại để được học tại cơ sở gần nhất nh&eacute; c&aacute;c em, v&igrave; số lượng c&oacute; hạn n&ecirc;n bạn n&agrave;o chưa nhanh tay th&igrave; hẹn c&aacute;c em v&agrave;o dịp kh&aacute;c nha!</p>\n" +
+"<p>C&ocirc; gửi c&aacute;c em link đăng k&yacute; kh&oacute;a học nh&eacute;!</p>\n" +
+"<p><a href=\"\\&quot;http:/bit.ly/2yQsR35\\&quot;\">http://bit.ly/2yQsR35</a></p>\n" +
+"<p>Bạn n&agrave;o thực hiện</p>\n" +
+"<p>Đăng k&yacute; k&ecirc;nh youtube:&nbsp;<span style=\"color: #ff0000;\"><strong><a style=\"color: #ff0000;\" href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\">Tiếng Anh Cho Người Việt</a></strong></span></p>\n" +
+"<p>Like fanpage: <span style=\"color: #3366ff;\"><strong><a style=\"color: #3366ff;\" href=\"https://www.facebook.com/englishforvn/\">Tiếng Anh Cho Người Việt</a></strong></span></p>\n" +
+"<p><strong>Sẽ được ưu ti&ecirc;n li&ecirc;n hệ trước nha</strong></p>\n" +
+"<p>Ms.Hoa!</p>";
             int countMailSentSuccess = 0;
-            ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(1000));
+            ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(50));
             //test
 //                    ArrayList<Mail> lst = new ArrayList<>();
 //                    Mail mxx = new Mail();
