@@ -143,7 +143,7 @@ public class SendMail extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txtAreaMailLst);
 
         jLabel8.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel8.setText("Chú ý: Khi gửi phải chạy lại project không sẽ bị cache session khi gửi mail");
+        jLabel8.setText("Chú ý: Khi mỗi một lần gửi phải chạy lại project không sẽ bị cache session khi gửi mail");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
