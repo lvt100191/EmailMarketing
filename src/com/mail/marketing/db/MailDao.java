@@ -261,7 +261,7 @@ public class MailDao {
             pst = c.prepareStatement(query);
             pst.setString(1, idTblFeed);
             pst.setString(2, statusFeedMailSend);
-            pst.setString(2, numMaxMailTo);
+            pst.setString(3, numMaxMailTo);
             rs = pst.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
