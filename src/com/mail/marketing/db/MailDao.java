@@ -21,8 +21,8 @@ import org.apache.log4j.Logger;
 public class MailDao {
 
     static Logger logger = Logger.getLogger(MailDao.class.getName());
-    
-            public static void deleteMail(int id) throws SQLException, Exception {
+
+    public static void deleteMail(int id) throws SQLException, Exception {
         Connection c = null;
         PreparedStatement pst = null;
 
@@ -87,6 +87,7 @@ public class MailDao {
             }
         }
     }
+
     //lay doi tuong Mail theo địa chỉ email
     public static Mail getByEmail(String email) throws SQLException, Exception {
         Mail m = null;
@@ -244,5 +245,45 @@ public class MailDao {
             pst.close();
             c.close();
         }
+    }
+
+    public static ArrayList<Mail> getMailFromTblFeed(String idTblFeed, String statusFeedMailSend, String numMaxMailTo) throws Exception {
+        ArrayList<Mail> mails = new ArrayList<>();
+        Connection c = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+
+            String query = "SELECT * FROM  " + Mail.TABLE_NAME
+                    + " WHERE id in (select  id_tbl_mail from tbl_feed_mail where id_tbl_feed=?) and  STATUS_FEED_MAIL = ? LIMIT ?; ";
+            pst = c.prepareStatement(query);
+            pst.setString(1, idTblFeed);
+            pst.setString(2, statusFeedMailSend);
+            pst.setString(2, numMaxMailTo);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String mail = rs.getString("email");
+                Mail m = new Mail();
+                m.setId(id);
+                m.setEmail(mail);
+                mails.add(m);
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (pst != null) {
+                pst.close();
+            }
+            if (c != null) {
+                c.close();
+            }
+        }
+        return mails;
     }
 }

@@ -78,6 +78,10 @@ public class FeedEntityDao {
                 f = new FeedEntity();
                 f.setId(id);
                 f.setIdFeed(feedId);
+                String title = rs.getString("title_send");
+                String content = rs.getString("content_send");
+                f.setTitleSend(title);
+                f.setContentSend(content);
 
             }
         } catch (Exception e) {
