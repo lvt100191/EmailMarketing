@@ -32,7 +32,7 @@ public class FeedEntityDao {
             c = DBUtil.connectDB(Config.DB_NAME);
 
             String query = "SELECT * FROM  " + FeedEntity.TABLE_NAME
-                    + "  LIMIT ?; ";
+                    + " ORDER BY CREATE_DATE DESC  LIMIT ?; ";
             pst = c.prepareStatement(query);
             pst.setString(1, limit);
             rs = pst.executeQuery();
