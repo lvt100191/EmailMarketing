@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 public class ExtractMailByFeed {
 
     //tham so truyen vao
-    private static String token = "EAACEdEose0cBAEa8QsgmEBV5JmIJzMvHRzvtdSabJLweexNtauJfbbEZBDLGoMe8ZCRT8x8ckow31bpiyjF3l6vyX18nXZCaA30EE2egHVTTpwGgge4Bh24RArnKHRR5VcBel9dRWqdRuQeZBXFY7Pzh6CDaUvZA7Vv6vjUXyAcZAHpRV3xrxwDVxh8spk6DIZD";
+    private static String token = "EAACEdEose0cBAPSubzZCVLIZA2D53Ps8TCAmDpgiERcoIt5B8PN2XAApZCfNvqEgZCIQhUqqVwjt6PzZAz11TwDeaVBqZCwrwmEji5eUWwfSmgwtG2ltxaKI08GGaEYmcGRbnmDKNMYMNr7mlguKhI8rK0XZATXxqZA10j9SNagNQIrVyJiPuPwyQZBdMnk1WTjfxjgLa59ydUAZDZD";
     //so luong ban ghi lay ra tu bang tbl_feed
     private static String numFeed = "1000";
     
@@ -85,6 +85,7 @@ public class ExtractMailByFeed {
                             }
                             
                         } catch (Exception e) {
+                            System.out.println("Exception: "+e.getMessage());
                             
                         }
                     }
@@ -118,7 +119,6 @@ public class ExtractMailByFeed {
         String dateCreate = sdf.format(d);
         email.setCreateDate(dateCreate);
         email.setStatus(Mail.STATUS_INSERT);
-        email.setStatusFeedMail(Mail.STATUS_INSERT);
         return email;
     }
 
@@ -141,6 +141,7 @@ public class ExtractMailByFeed {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
         String dateCreate = sdf.format(d);
         fm.setCreateDate(dateCreate);
+        fm.setStatus(FeedMail.STATUS_INSERT);
         return fm;
     }
     

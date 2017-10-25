@@ -11,6 +11,7 @@ import com.mail.marketing.db.MailBlockDao;
 import com.mail.marketing.db.MailDao;
 import com.mail.marketing.db.MailSendDao;
 import com.mail.marketing.entity.FeedEntity;
+import com.mail.marketing.entity.FeedMail;
 import com.mail.marketing.entity.Mail;
 import com.mail.marketing.entity.MailBlock;
 import com.mail.marketing.entity.MailSend;
@@ -30,7 +31,7 @@ public class SendMailByFeed {
 
     //tham so dau vao
     //id cua  bang tbl_feed đảm bảo  title_send !=null, content_send !=null
-    static String idTblFeed = "";
+    static String idTblFeed = "126";
     //mail gui 
     static String mailSend = "";
     //trang thai chua gui mail theo bai viet
@@ -73,9 +74,11 @@ public class SendMailByFeed {
                 }
                 System.out.println("---------------- tunglv4 gui mail " + mSend.getEmail() + " tu host " + mSend.getHostMail() + " toi: " + to.getEmail() + " thanh cong");
                 countMailSentSuccess++;
-                //update status mail nhan
-                to.setStatusFeedMail(Integer.parseInt(statusFeedMailSent));
-                MailDao.updateMail(to);
+                //update status=2 tbl_feed_mail da gui
+                FeedMail fm = FeedMailDao.getByIdTblFeedIdTblMail(Integer.parseInt(idTblFeed), to.getId());
+                fm.setStatus(Integer.parseInt(statusFeedMailSent));
+                FeedMailDao.updateStatus(fm);
+
 
             } catch (AddressException adEx) {
                 System.out.println("-----------------tunglv4 gui toi mail: " + to.getEmail() + " bi loi: " + adEx.getMessage());

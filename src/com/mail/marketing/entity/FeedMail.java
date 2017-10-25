@@ -11,6 +11,8 @@ package com.mail.marketing.entity;
  */
 public class FeedMail {
      public static final String TABLE_NAME = "TBL_FEED_MAIL";
+     public static final int STATUS_INSERT = 1;
+     public static final int STATUS_SENT = 2;
     int id;
     //id cua bang tbl_feed
     int idTblFeed;
@@ -18,6 +20,8 @@ public class FeedMail {
     int idTblMail;
     //ngay insert du lieu
     String createDate;
+    //trang thai danh dau da gui mailtheo bai viet hay chua 1: chua gui, 2:da gui
+    int status;
 
     public int getId() {
         return id;
@@ -50,5 +54,17 @@ public class FeedMail {
     public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+  
+    
+    
     
 }

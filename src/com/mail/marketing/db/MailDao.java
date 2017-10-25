@@ -62,9 +62,8 @@ public class MailDao {
                     + "mobile,"
                     + "note,"
                     + "create_date,"
-                    + "status,"
-                    + "status_feed_mail) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?);";
+                    + "status) "
+                    + "VALUES (?,?,?,?,?,?,?,?);";
             pst = c.prepareStatement(query);
             pst.setString(1, mail.getEmail());
             pst.setString(2, "");
@@ -74,7 +73,6 @@ public class MailDao {
             pst.setString(6, "");
             pst.setString(7, mail.getCreateDate());
             pst.setInt(8, mail.getStatus());
-            pst.setInt(9, mail.getStatusFeedMail());
             pst.executeUpdate();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -257,7 +255,7 @@ public class MailDao {
             c = DBUtil.connectDB(Config.DB_NAME);
 
             String query = "SELECT * FROM  " + Mail.TABLE_NAME
-                    + " WHERE id in (select  id_tbl_mail from tbl_feed_mail where id_tbl_feed=?) and  STATUS_FEED_MAIL = ? LIMIT ?; ";
+                    + " WHERE id in (select  id_tbl_mail from tbl_feed_mail where id_tbl_feed=? and status=?)  LIMIT ?; ";
             pst = c.prepareStatement(query);
             pst.setString(1, idTblFeed);
             pst.setString(2, statusFeedMailSend);

@@ -46,16 +46,9 @@ public class Mail {
     //gui mail thanh cong update status=1
     //lap nhu vay de gui mail theo lo tranh tinh trang chay chuong trinh lau
     int status;
-    //trang thai email da gui hoac chua theo bai viet
-    int statusFeedMail;
 
-    public int getStatusFeedMail() {
-        return statusFeedMail;
-    }
 
-    public void setStatusFeedMail(int statusFeedMail) {
-        this.statusFeedMail = statusFeedMail;
-    }
+
     
     
 

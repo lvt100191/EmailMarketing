@@ -68,12 +68,14 @@ public class FeedMailDao {
             String query = "INSERT INTO " + FeedMail.TABLE_NAME
                     + "(id_tbl_feed,"
                     + "id_tbl_mail,"
-                    + "create_date) "
-                    + "VALUES (?,?,?);";
+                    + "create_date,"
+                    + "status) "
+                    + "VALUES (?,?,?,?);";
             pst = c.prepareStatement(query);
             pst.setInt(1, fm.getIdTblFeed());
             pst.setInt(2, fm.getIdTblMail());
             pst.setString(3, fm.getCreateDate());
+            pst.setInt(4, fm.getStatus());
             pst.executeUpdate();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -110,5 +112,30 @@ public class FeedMailDao {
             }
         }
 
+    }
+
+    public static void updateStatus(FeedMail fm) throws Exception {
+                Connection c = null;
+        PreparedStatement pst = null;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+
+            String query = "UPDATE  " + FeedMail.TABLE_NAME
+                    + " SET STATUS = ? WHERE ID= ?; ";
+            pst = c.prepareStatement(query);
+            pst.setInt(1, FeedMail.STATUS_SENT);
+            pst.setInt(2, fm.getId());
+            pst.executeUpdate();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            if (pst != null) {
+                pst.close();
+            }
+            if (c != null) {
+                c.close();
+            }
+        }
     }
 }

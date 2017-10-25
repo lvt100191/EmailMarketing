@@ -298,7 +298,6 @@ public class ExtractMail extends javax.swing.JFrame {
         String dateCreate = sdf.format(d);
         email.setCreateDate(dateCreate);
         email.setStatus(Mail.STATUS_INSERT);
-        email.setStatusFeedMail(Mail.STATUS_INSERT);
         return email;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
