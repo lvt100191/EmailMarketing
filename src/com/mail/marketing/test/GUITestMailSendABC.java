@@ -107,7 +107,7 @@ public class GUITestMailSendABC extends javax.swing.JFrame {
                     + "<p><a href=\"http://bit.ly/2yQsR35\">http://bit.ly/2yQsR35</a></p>\n"
                     + "<p>&nbsp;</p>";
             int countMailSentSuccess = 0;
-            ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(3));
+            ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(1000));
             //test
 //                    ArrayList<Mail> lst = new ArrayList<>();
 //                    Mail mxx = new Mail();
