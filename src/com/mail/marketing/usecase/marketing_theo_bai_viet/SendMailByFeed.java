@@ -16,17 +16,14 @@ import java.util.ArrayList;
 //moi bai dang se thong bao chi nhan email den het ngay
 //lay ra email binh luan trong bai dang gui mail quang ba
 public class SendMailByFeed {
-    //tham so truyen vao
-    private static String token = "EAACEdEose0cBAJTwu3tm2ZAagHFhpa8R8dH2vgCuhctItCrNjwp217MB3VfulVYweeqAiA6DfrQOvY1YMFTS4CRr1chQe5CEJxe1ZCnCtEdLC5VrnBrB2xw5IADXMa2F2wpcGeqhxNTPfBVjSKRHY5wx7afpyma4CCMJuAQlhUkC1nu6WCe5jmVyDkATYZD";
-    //id cua bang tbl_feed
-    private static String idTblFeed = "";
+    //tham so dau vao
+    String token="";
+    String idFeed="";
     
     public static void main(String[] args) throws Exception {
-        //lay bai dang theo id
-        //lay danh sach id email tu bang tbl_feed_mail
-        //lay danh sach dia chi email tu bang tbl_mail theo id
-        //gui email den dia chi email co status_feed_mail=1
-        //update status_feed_mail =2, trang thai da gui mail
+       //chon ra 1 bai trong ngay tu bang tbl_feed ta co id cua bai viet
+       //lay email tu bai viet do
+       //gui mail
 
     }
 }
