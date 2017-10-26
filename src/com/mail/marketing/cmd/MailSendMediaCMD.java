@@ -74,7 +74,7 @@ public class MailSendMediaCMD {
                     + "</tbody>\n"
                     + "</table>";
             int countMailSentSuccess = 0;
-            ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(1));
+            ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(1000));
             //test
 //                    ArrayList<Mail> lst = new ArrayList<>();
 //                    Mail mxx = new Mail();
@@ -95,7 +95,7 @@ public class MailSendMediaCMD {
                     sendMail(host, sendName, mailSend1, to.getEmail().toLowerCase(), title, content);
 
                     countMailSentSuccess++;
-                    System.out.println("-------------------Đã gửi đến:-- " + to.getEmail() + "-- thành công! Số lượng email đã gửi:  " + countMailSentSuccess);
+                    System.out.println("-------------------da gui den:  " + to.getEmail() + "  thanh cong! tong so mail da gui:  " + countMailSentSuccess);
 
                     //update status mail nhan
                     to.setStatus(Integer.parseInt(sttMailSent));
@@ -127,7 +127,7 @@ public class MailSendMediaCMD {
             Logger.getLogger(GUITestMailSendABC.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             System.out.println("--------------xxxxxxxxxxxxxxxxxxxxx-----------------");
-            System.out.println("--------------CHƯƠNG TRÌNH KẾT THÚC-----------------");
+            System.out.println("--------------CHUONG TRINH KET THUC-----------------");
             System.out.println("--------------xxxxxxxxxxxxxxxxxxxxx-----------------");
         }
     }
