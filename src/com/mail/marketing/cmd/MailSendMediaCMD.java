@@ -34,6 +34,7 @@ import javax.mail.internet.MimeMultipart;
  *
  * @author TUNGLV
  */
+//su dung mot mail gui de gui thong bao den tat ca mail trong bang tbl_mail
 public class MailSendMediaCMD {
 
     public static void main(String[] args) {

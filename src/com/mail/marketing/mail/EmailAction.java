@@ -347,4 +347,5 @@ public class EmailAction {
     public static void main(String[] args) throws SQLException, Exception {
         sendMultiEmail();
     }
+
 }
