@@ -58,6 +58,7 @@ public class GUITestMailSendABC extends javax.swing.JFrame {
         });
 
         txtAreaRs.setColumns(20);
+        txtAreaRs.setLineWrap(true);
         txtAreaRs.setRows(5);
         jScrollPane1.setViewportView(txtAreaRs);
 
@@ -65,23 +66,21 @@ public class GUITestMailSendABC extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -100,18 +99,30 @@ public class GUITestMailSendABC extends javax.swing.JFrame {
             String mailSend1 = "noreply@truelife.vn";
             //  private static String mailSend1 = "hoa.ms.toeic@gmail.com";
 
-            String title = "Nhanh tay đăng ký 2 khóa học miễn phí từ Ms Hoa Toeic";
-            String content = "<p><span style=\"background-color: #ffff00;\">Th&ocirc;ng b&aacute;o khuya:</span><br /><span style=\"background-color: #ffff00;\">- 2 \\\"qu&agrave; khủng\\\" m&agrave; c&ocirc; hứa tặng c&aacute;c em, gồm:</span></p>\n"
-                    + "<p><span style=\"background-color: #ffff00;\">1. Kh&oacute;a Online MIỄN PH&Iacute; TOEIC 4 kỹ năng 10 buổi&nbsp;</span><br /><span style=\"background-color: #ffff00;\">2. Lớp Bổ trợ TOEIC Speaking &amp; Writing miễn ph&iacute; chiều thứ 7 h&agrave;ng tuần cho học vi&ecirc;n của trung t&acirc;m</span></p>\n"
-                    + "<p><span style=\"background-color: #ffff00;\">Đều được ra mắt cả rồi ^^. C&ograve;n bạn n&agrave;o bị lỡ m&agrave; chưa nhận được kh&ocirc;ng :3. Comment m&oacute;n qu&agrave; mong muốn của em n&agrave;o :D</span></p>\n"
-                    + "<p>C&aacute;c em nhanh tay điền v&agrave;o mẫu đăng k&yacute;, trung t&acirc;m sẽ li&ecirc;n hệ hướng dẫn c&aacute;c em tham gia kh&oacute;a học, lưu &yacute; điền đ&uacute;ng địa chỉ v&agrave; số điện thoại để được học tại cơ sở gần nhất nh&eacute; c&aacute;c em, v&igrave; số lượng c&oacute; hạn n&ecirc;n bạn n&agrave;o chưa nhanh tay th&igrave; hẹn c&aacute;c em v&agrave;o dịp kh&aacute;c nha!</p>\n"
-                    + "<p>Click v&agrave;o&nbsp;<strong><a href=\"https://www.youtube.com/watch?v=TprwZsCjmkc\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=vi&amp;q=https://www.youtube.com/watch?v%3DTprwZsCjmkc&amp;source=gmail&amp;ust=1509033957400000&amp;usg=AFQjCNFjlDYn7yua0_kLUH7jXLgzBjlbHg\">Đ&Acirc;Y</a></strong>&nbsp;để đăng k&yacute; kh&oacute;a học nh&eacute;!</p>\n"
-                    + "<p>Bạn n&agrave;o thực hiện</p>\n"
-                    + "<p>Đăng k&yacute; k&ecirc;nh youtube:&nbsp;<span style=\"color: #ff0000;\"><strong><a style=\"color: #ff0000;\" href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=vi&amp;q=https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q&amp;source=gmail&amp;ust=1509033957400000&amp;usg=AFQjCNHnC-KAA64ncNm8L4xX0L1Bj8f_lQ\">Tiếng Anh Cho Người Việt</a></strong></span></p>\n"
-                    + "<p>Like fanpage:&nbsp;<strong><a href=\"https://www.facebook.com/englishforvn/\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=vi&amp;q=https://www.facebook.com/englishforvn/&amp;source=gmail&amp;ust=1509033957400000&amp;usg=AFQjCNF0soqECrAdgRyIHfU611RNLV1zxw\">Tiếng Anh Cho Người Việt</a></strong></p>\n"
-                    + "<p><strong>Sẽ được ưu ti&ecirc;n li&ecirc;n hệ trước nha</strong></p>\n"
-                    + "<p><span style=\"color: #000000; background-color: #ffff00;\">Ch&uacute; &yacute;: Nếu c&aacute;c em v&agrave;o m&agrave; kh&ocirc;ng thấy link đăng k&yacute; c&oacute; nghĩa l&agrave; c&ocirc; đ&atilde; dừng việc đăng k&yacute; để chốt danh s&aacute;ch rồi nha.</span></p>\n"
-                    + "<p>Ms.Hoa!</p>";
+            String title = "Nhanh tay đăng ký 2 khóa học miễn phí từ Ms Hoa Toeic - hôm nay (26/10/2017) là ngày cuối chốt danh sách rồi!";
+            String content = "<table style=\"height: 263px;\" width=\"722\">\n" +
+"<tbody>\n" +
+"<tr style=\"height: 120px;\">\n" +
+"<td style=\"width: 712px; height: 120px; background-color: #d3ed74;\">\n" +
+"<p style=\"text-align: center;\"><span style=\"color: #800000;\"><strong>KH&Oacute;A HỌC TOEIC MIỄN PH&Iacute;</strong></span></p>\n" +
+"<p style=\"text-align: left;\"><strong><span style=\"color: #ff0000;\">Qu&agrave; khủng</span> </strong>m&agrave; c&ocirc; hứa tặng c&aacute;c em, gồm 2 kh&oacute;a học:</p>\n" +
+"<p style=\"text-align: left;\">1. Kh&oacute;a Online MIỄN PH&Iacute; TOEIC 4 kỹ năng 10 buổi&nbsp;<br />2. Lớp bổ trợ TOEIC Speaking &amp; Writing miễn ph&iacute; chiều thứ 7 h&agrave;ng tuần cho học vi&ecirc;n của trung t&acirc;m</p>\n" +
+"<p style=\"text-align: left;\">Đều được ra mắt cả rồi ^^. C&ograve;n bạn n&agrave;o bị lỡ m&agrave; chưa nhận được kh&ocirc;ng :3.&nbsp;</p>\n" +
+"</td>\n" +
+"</tr>\n" +
+"<tr style=\"height: 60px;\">\n" +
+"<td style=\"width: 712px; height: 60px; background-color: #e6d8d8;\">\n" +
+"<p style=\"text-align: justify;\">C&aacute;c em nhanh tay điền v&agrave;o mẫu đăng k&yacute;, trung t&acirc;m sẽ li&ecirc;n hệ hướng dẫn c&aacute;c em tham gia kh&oacute;a học, lưu &yacute; điền đ&uacute;ng địa chỉ v&agrave; số điện thoại để được học tại cơ sở gần nhất, v&igrave; số lượng c&oacute; hạn n&ecirc;n bạn n&agrave;o chưa nhanh tay th&igrave; hẹn c&aacute;c em v&agrave;o dịp kh&aacute;c nha!&nbsp;C&ocirc; sẽ <strong>chốt danh s&aacute;ch</strong> v&agrave;o <span style=\"color: #ff0000;\"><strong>18</strong> </span>giờ ng&agrave;y h&ocirc;m nay nh&eacute;!(<strong>26/10/2017</strong>)</p>\n" +
+"<p style=\"text-align: justify;\">C&aacute;c em click v&agrave;o <span style=\"color: #0000ff;\"><strong><a style=\"color: #0000ff;\" href=\"http://bit.ly/2yQsR35\">Đ&Acirc;Y</a></strong></span> để đăng k&yacute; kh&oacute;a học nh&eacute;!</p>\n" +
+"<p style=\"text-align: justify;\">Bạn n&agrave;o thực hiện</p>\n" +
+"<p style=\"text-align: justify;\">Đăng k&yacute; k&ecirc;nh youtube:&nbsp;<span style=\"color: #ff0000;\"><strong><a style=\"color: #ff0000;\" href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=vi&amp;q=https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q&amp;source=gmail&amp;ust=1509063884202000&amp;usg=AFQjCNE3ThiiKML9xG0CvmBbdlJsD5p5zQ\">Tiếng Anh Cho Người Việt</a></strong></span></p>\n" +
+"<p style=\"text-align: justify;\">Like fanpage:&nbsp;<strong><a href=\"https://www.facebook.com/englishforvn/\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=vi&amp;q=https://www.facebook.com/englishforvn/&amp;source=gmail&amp;ust=1509063884202000&amp;usg=AFQjCNF9cRtKl7eGUxCiIxnmMA3LWSWO4Q\">Tiếng Anh Cho Người Việt</a></strong></p>\n" +
+"<p style=\"text-align: justify;\"><strong>Sẽ được ưu ti&ecirc;n li&ecirc;n hệ trước nha</strong></p>\n" +
+"<p style=\"text-align: justify;\"><strong><span style=\"font-size: 16pt;\">Ms.Hoa!</span></strong></p>\n" +
+"</td>\n" +
+"</tr>\n" +
+"</tbody>\n" +
+"</table>";
             int countMailSentSuccess = 0;
             ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(100));
             //test
@@ -122,7 +133,7 @@ public class GUITestMailSendABC extends javax.swing.JFrame {
             Date d = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HH-mm-ss");
             String dateCreate = sdf.format(d);
-            String filename = "mail-to-" + dateCreate;
+            String filename = "xxx-mail-to-" + dateCreate;
             writer = new PrintWriter(filename, "UTF-8");
             for (Mail to : lst) {
                 try {
@@ -164,8 +175,7 @@ public class GUITestMailSendABC extends javax.swing.JFrame {
 
                 }
             }
-
-            txtAreaRs.setText("Đã gửi đến thành công: " + countMailSentSuccess + " email! " + new Date());
+            txtAreaRs.setText("Đã gửi đến thành công: " + countMailSentSuccess + " email - Thời gian kết thúc: " + dateCreate);
         } catch (Exception ex) {
             Logger.getLogger(GUITestMailSendABC.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
