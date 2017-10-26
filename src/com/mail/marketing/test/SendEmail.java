@@ -315,7 +315,7 @@ public class SendEmail extends javax.swing.JFrame {
                                     continue;
                                 }
                                 if (mailSend.getHostMail().equals(Mail.GMAIL_HOST)) {
-                                    EmailAction.sendGmail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
+                                    EmailAction.sendGmail(null,mailSend.getEmail(), mailSend.getPassword(), to.getEmail(), title, content);
 
                                 }
                                 if (mailSend.getHostMail().equals(Mail.OUTLOOK_HOST)) {

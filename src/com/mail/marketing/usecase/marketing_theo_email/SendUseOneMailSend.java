@@ -34,11 +34,35 @@ public class SendUseOneMailSend {
     //update trang thai da gui mail
     private static String sttMailSent = "2";
     
-    private static String mailSend1 = "coso2.mshoatoeic@gmail.com";
+    private static String mailSend1 = "coso9.mshoatoeic@gmail.com";
+    //ten nguoi gui
+      private static String sendName = "Ms Hoa Toeic - Sứ giả truyền cảm hứng";
 
-    private static String title = "2 Khóa học tiếng anh miễn phí tại Ms Hoa Toeic";
-    private static String content = "<p><span style=\"color: #1d2129; font-family: Helvetica,Arial,sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: #ffffff; display: inline ! important; float: none;\">&nbsp;\"<span style=\"color: #ff0000;\"><strong>QU&Agrave; KHỦNG</strong></span>\" m&agrave; Ms Hoa Toeic gửi tặng c&aacute;c bạn, gồm:</span><br style=\"color: #1d2129; font-family: Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-style: initial; text-decoration-color: initial;\" /><span style=\"color: #1d2129; font-family: Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">1. Kh&oacute;a Online MIỄN PH&Iacute; TOEIC 4 kỹ năng 10 buổi&nbsp;</span><br style=\"color: #1d2129; font-family: Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-style: initial; text-decoration-color: initial;\" /><span style=\"color: #1d2129; font-family: Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">2. Lớp Bổ trợ TOEIC Speaking &amp; Writing miễn ph&iacute; chiều thứ 7 h&agrave;ng tuần cho học vi&ecirc;n của trung t&acirc;m</span><br style=\"color: #1d2129; font-family: Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-style: initial; text-decoration-color: initial;\" /><span style=\"color: #1d2129; font-family: Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">C&ograve;n bạn n&agrave;o bị lỡ m&agrave; chưa nhận được kh&ocirc;ng? Nhanh tay đăng k&yacute;, like, share fanpage v&agrave; k&ecirc;nh youtube Tiếng Anh Cho Người Việt để nhận được c&aacute;c kh&oacute;a học miễn ph&iacute;</span><span class=\"text_exposed_show\" style=\"display: inline; font-family: Helvetica, Arial, sans-serif; color: #1d2129; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-style: initial; text-decoration-color: initial;\"><br />Click v&agrave;o video sau để lấy link đăng k&yacute; nhận kh&oacute;a học miễn ph&iacute;, link đăng k&yacute; ở d&ograve;ng đầu ti&ecirc;n phần m&ocirc; tả video ah, nhanh tay nhanh tay, số lượng c&oacute; hạn..</span></p>\n" +
-"<p><span style=\"color: #000000;\"><span class=\"text_exposed_show\" style=\"display: inline; font-family: Helvetica,Arial,sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: #ffffff;\">Click v&agrave;o <a href=\"https://www.facebook.com/englishforvn/posts/290381158128887\"><strong><span style=\"color: #0000ff;\">Đ&Acirc;Y </span></strong></a>để nhận 2 kh&oacute;a học miễn ph&iacute; từ Ms Hoa Toeic</span></span></p>";
+    private static String title = "Nhanh tay đăng ký 2 khóa học miễn phí từ Ms Hoa Toeic - Hôm nay là ngày cuối chốt danh sách";
+    private static String content ="<table style=\"height: 263px;\" width=\"722\">\n" +
+"<tbody>\n" +
+"<tr style=\"height: 120px;\">\n" +
+"<td style=\"width: 712px; height: 120px; background-color: #d3ed74;\">\n" +
+"<p style=\"text-align: center;\"><span style=\"color: #800000;\"><strong>KH&Oacute;A HỌC TOEIC MIỄN PH&Iacute;</strong></span></p>\n" +
+"<p style=\"text-align: left;\"><strong><span style=\"color: #ff0000;\">Qu&agrave; khủng</span> </strong>m&agrave; c&ocirc; hứa tặng c&aacute;c em, gồm 2 kh&oacute;a học:</p>\n" +
+"<p style=\"text-align: left;\">1. Kh&oacute;a Online MIỄN PH&Iacute; TOEIC 4 kỹ năng 10 buổi&nbsp;<br />2. Lớp bổ trợ TOEIC Speaking &amp; Writing miễn ph&iacute; chiều thứ 7 h&agrave;ng tuần cho học vi&ecirc;n của trung t&acirc;m</p>\n" +
+"<p style=\"text-align: left;\">Đều được ra mắt cả rồi ^^. C&ograve;n bạn n&agrave;o bị lỡ m&agrave; chưa nhận được kh&ocirc;ng :3.&nbsp;</p>\n" +
+"</td>\n" +
+"</tr>\n" +
+"<tr style=\"height: 60px;\">\n" +
+"<td style=\"width: 712px; height: 60px; background-color: #e6d8d8;\">\n" +
+"<p style=\"text-align: justify;\">C&aacute;c em nhanh tay điền v&agrave;o mẫu đăng k&yacute;, trung t&acirc;m sẽ li&ecirc;n hệ hướng dẫn c&aacute;c em tham gia kh&oacute;a học, lưu &yacute; điền đ&uacute;ng địa chỉ v&agrave; số điện thoại để được học tại cơ sở gần nhất, v&igrave; số lượng c&oacute; hạn n&ecirc;n bạn n&agrave;o chưa nhanh tay th&igrave; hẹn c&aacute;c em v&agrave;o dịp kh&aacute;c nha!&nbsp;C&ocirc; sẽ <strong>chốt danh s&aacute;ch</strong> v&agrave;o <span style=\"color: #ff0000;\"><strong>18</strong> </span>giờ ng&agrave;y h&ocirc;m nay nh&eacute;!(<strong>26/10/2017</strong>)</p>\n" +
+"<p style=\"text-align: justify;\">C&aacute;c em click v&agrave;o <span style=\"color: #0000ff;\"><strong><a style=\"color: #0000ff;\" href=\"http://bit.ly/2yQsR35\">Đ&Acirc;Y</a></strong></span> để đăng k&yacute; kh&oacute;a học nh&eacute;!</p>\n" +
+"<p style=\"text-align: justify;\">Bạn n&agrave;o thực hiện</p>\n" +
+"<p style=\"text-align: justify;\">Đăng k&yacute; k&ecirc;nh youtube:&nbsp;<span style=\"color: #ff0000;\"><strong><a style=\"color: #ff0000;\" href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=vi&amp;q=https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q&amp;source=gmail&amp;ust=1509063884202000&amp;usg=AFQjCNE3ThiiKML9xG0CvmBbdlJsD5p5zQ\">Tiếng Anh Cho Người Việt</a></strong></span></p>\n" +
+"<p style=\"text-align: justify;\">Like fanpage:&nbsp;<strong><a href=\"https://www.facebook.com/englishforvn/\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=vi&amp;q=https://www.facebook.com/englishforvn/&amp;source=gmail&amp;ust=1509063884202000&amp;usg=AFQjCNF9cRtKl7eGUxCiIxnmMA3LWSWO4Q\">Tiếng Anh Cho Người Việt</a></strong></p>\n" +
+"<p style=\"text-align: justify;\"><strong>Sẽ được ưu ti&ecirc;n li&ecirc;n hệ trước nha</strong></p>\n" +
+"<p style=\"text-align: justify;\"><strong><span style=\"font-size: 16pt;\">Ms.Hoa!</span></strong></p>\n" +
+"</td>\n" +
+"</tr>\n" +
+"</tbody>\n" +
+"</table>";
+
     public static void main(String[] args) throws Exception {
         ArrayList<MailSend> lstSend = MailSendDao.getListMailSend();
         int countMailSentSuccess = 0;
@@ -47,12 +71,12 @@ public class SendUseOneMailSend {
             if (mailSend.getEmail().trim().equals(mailSend1.trim())) {
                 try {
                     //lay danh sach mail gui theo trang thai va so luong mail cho phep gui trong ngay
-                    ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(mailSend.getMaxMail()));
+                    //ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(mailSend.getMaxMail()));
                     //test
-//                    ArrayList<Mail> lst = new ArrayList<>();
-//                    Mail m = new Mail();
-//                    m.setEmail("tunglv9x@gmail.com");
-//                    lst.add(m);
+                    ArrayList<Mail> lst = new ArrayList<>();
+                    Mail mx = new Mail();
+                    mx.setEmail("tunglv9x@gmail.com");
+                    lst.add(mx);
                     //kiem tra thoi gian hien tai co thoa man gui mail khong
                     //checkTime = true roi vao truong hop mailSend.getLastTime()=null va khac "" 
                     boolean checkTime = true;
@@ -72,7 +96,7 @@ public class SendUseOneMailSend {
                                 }
 
                                 if (mailSend.getHostMail().equals(Mail.GMAIL_HOST)) {
-                                    EmailAction.sendGmail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail().toLowerCase(), title, content);
+                                    EmailAction.sendGmail(sendName, mailSend.getEmail(), mailSend.getPassword(), to.getEmail().toLowerCase(), title, content);
 
                                 }
                                 System.out.println("---------------- tunglv4 gui mail " + mailSend.getEmail() + " tu host " + mailSend.getHostMail() + " toi: " + to.getEmail() + " thanh cong");

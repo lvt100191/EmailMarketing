@@ -25,8 +25,7 @@ import javax.mail.internet.AddressException;
  *
  * @author TUNGLV
  */
-//moi bai dang se thong bao chi nhan email den het ngay
-//lay ra email binh luan trong bai dang gui mail quang ba
+//nhap vao id cua bang tbl_feed, lay danh sach email theo 1 bai viet roi gui mail
 public class SendMailByFeed {
 
     //tham so dau vao
@@ -34,6 +33,8 @@ public class SendMailByFeed {
     static String idTblFeed = "126";
     //mail gui 
     static String mailSend = "";
+    //ten nguoi gui
+    static String sendName = "";
     //trang thai chua gui mail theo bai viet
     static String statusFeedMailSend = "1";
     //trang thai da gui mail theo bai viet
@@ -50,11 +51,11 @@ public class SendMailByFeed {
         //lay tieu de, noi dung, link tai lieu o bang tbl_feed cua feed de gui mail
         String title = feedEntity.getTitleSend();
         String content = feedEntity.getContentSend();
-        sendMail(mailSend, title, content, lst, statusFeedMailSent);
+        sendMail(sendName, mailSend, title, content, lst, statusFeedMailSent);
 
     }
 
-    private static void sendMail(String mailSend, String title, String content, ArrayList<Mail> lst, String statusFeedMailSent) throws Exception {
+    private static void sendMail(String sendName, String mailSend, String title, String content, ArrayList<Mail> lst, String statusFeedMailSent) throws Exception {
         //lay thong tin mail gui
         MailSend mSend = MailSendDao.getMailSendByEmail(mailSend);
         int countMailSentSuccess = 0;
@@ -69,7 +70,7 @@ public class SendMailByFeed {
                 }
 
                 if (mSend.getHostMail().equals(Mail.GMAIL_HOST)) {
-                    EmailAction.sendGmail(mSend.getEmail(), mSend.getPassword(), to.getEmail().toLowerCase(), title, content);
+                    EmailAction.sendGmail(sendName, mSend.getEmail(), mSend.getPassword(), to.getEmail().toLowerCase(), title, content);
 
                 }
                 System.out.println("---------------- tunglv4 gui mail " + mSend.getEmail() + " tu host " + mSend.getHostMail() + " toi: " + to.getEmail() + " thanh cong");

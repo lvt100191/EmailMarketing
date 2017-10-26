@@ -11,6 +11,7 @@ import com.mail.marketing.db.MailDao;
 import com.mail.marketing.entity.Mail;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -63,7 +64,7 @@ public class EmailAction {
         //end test
         for (Mail to : lst) {
             try {
-                sendGmail(from, pwd, to.getEmail(), title, content);
+                sendGmail(null, from, pwd, to.getEmail(), title, content);
                 System.out.println("tunglv gui toi mail" + to.getEmail() + " thanh cong");
                 //update status
                 to.setStatus(Integer.parseInt(statusUpdate));
@@ -76,13 +77,13 @@ public class EmailAction {
             }
         }
     }
-
+    //sendName: Tên sẽ hiển thị lên hộp thư đến thay vì hiển thị địa chỉ email 
     //mailSend: gmail gui
     //passwordMailSend: mat khau cua email gui
     //mailRecipient: dia chi email nhan
     //title: tieu de mail
     //content: noi dung mail
-    public static void sendGmail(String mailSend, String passwordMailSend, String mailRecipient, String title, String content) throws MessagingException, FileNotFoundException {
+    public static void sendGmail(String sendName, String mailSend, String passwordMailSend, String mailRecipient, String title, String content) throws MessagingException, FileNotFoundException, UnsupportedEncodingException {
         final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
         // Get a Properties object
         Properties props = System.getProperties();
@@ -96,7 +97,7 @@ public class EmailAction {
         props.put("mail.store.protocol", "pop3");
         props.put("mail.transport.protocol", "smtp");
         try {
-            Session session =null;
+            Session session = null;
             session = Session.getDefaultInstance(props,
                     new Authenticator() {
                 protected PasswordAuthentication getPasswordAuthentication() {
@@ -109,7 +110,11 @@ public class EmailAction {
             Message msg = new MimeMessage(session);
 
             // -- Set the FROM and TO fields --
-            msg.setFrom(new InternetAddress(mailSend));
+            InternetAddress senderAddress = new InternetAddress(mailSend);
+            if (sendName != null && sendName != "") {
+                senderAddress.setPersonal(sendName, "UTF-8");
+            }
+            msg.setFrom(senderAddress);
             msg.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(mailRecipient, false));
             msg.setSubject(title);
@@ -143,6 +148,7 @@ public class EmailAction {
             // put everything together
             msg.setContent(multipart);
             msg.setSentDate(new Date());
+
             Transport.send(msg);
             //System.out.println("Message sent.");
         } catch (MessagingException e) {

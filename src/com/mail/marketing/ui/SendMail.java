@@ -73,6 +73,8 @@ public class SendMail extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAreaMailLst = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtSendName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gửi mail quảng bá");
@@ -145,6 +147,14 @@ public class SendMail extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 0, 0));
         jLabel8.setText("Chú ý: Khi mỗi một lần gửi phải chạy lại project không sẽ bị cache session khi gửi mail");
 
+        jLabel9.setText("Tên người gửi");
+
+        txtSendName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSendNameActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -165,15 +175,16 @@ public class SendMail extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFrom)
+                            .addComponent(txtSubject)
+                            .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtStatusSend, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel5)
                                 .addGap(37, 37, 37)
-                                .addComponent(txtStatusSent, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtStatusSent, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtSendName))
                         .addGap(41, 41, 41))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(223, 223, 223)
@@ -204,13 +215,20 @@ public class SendMail extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtSendName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
@@ -245,7 +263,7 @@ public class SendMail extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btCheckMailSend, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addContainerGap())
         );
@@ -324,13 +342,18 @@ public class SendMail extends javax.swing.JFrame {
             String sttSent = txtStatusSent.getText().trim();
             String subject = txtSubject.getText().trim();
             String content = txtAreaContent.getText().trim();
+            String sendName = txtSendName.getText().trim();
             
-            sendByUseOneMailSend(mailSend, sttSend, sttSent, subject, content);
+            sendByUseOneMailSend(sendName, mailSend, sttSend, sttSent, subject, content);
         } catch (Exception ex) {
             Logger.getLogger(SendMail.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtSendNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSendNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSendNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -381,6 +404,7 @@ public class SendMail extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField txtAmountMail;
@@ -389,6 +413,7 @@ public class SendMail extends javax.swing.JFrame {
     private javax.swing.JTextArea txtAreaMailLst;
     private javax.swing.JTextField txtFrom;
     private javax.swing.JTextField txtNumOfMailSend;
+    private javax.swing.JTextField txtSendName;
     private javax.swing.JTextField txtStatus;
     private javax.swing.JTextField txtStatusSend;
     private javax.swing.JTextField txtStatusSent;
@@ -422,7 +447,7 @@ public class SendMail extends javax.swing.JFrame {
         return false;
     }
     
-    private void sendByUseOneMailSend(String mailSend1, String sttMailSend,String sttMailSent, String subject, String content) throws Exception{
+    private void sendByUseOneMailSend(String sendName, String mailSend1, String sttMailSend,String sttMailSent, String subject, String content) throws Exception{
         
         ArrayList<MailSend> lstSend = MailSendDao.getListMailSend();
         int countMailSentSuccess = 0;
@@ -456,7 +481,7 @@ public class SendMail extends javax.swing.JFrame {
                                 }
 
                                 if (mailSend.getHostMail().equals(Mail.GMAIL_HOST)) {
-                                    EmailAction.sendGmail(mailSend.getEmail(), mailSend.getPassword(), to.getEmail().toLowerCase(), subject, content);
+                                    EmailAction.sendGmail(sendName, mailSend.getEmail(), mailSend.getPassword(), to.getEmail().toLowerCase(), subject, content);
 
                                 }
                                 System.out.println("---------------- tunglv4 gui mail " + mailSend.getEmail() + " tu host " + mailSend.getHostMail() + " toi: " + to.getEmail() + " thanh cong");
