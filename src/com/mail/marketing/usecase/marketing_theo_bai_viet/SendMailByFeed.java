@@ -29,12 +29,13 @@ import javax.mail.internet.AddressException;
 public class SendMailByFeed {
 
     //tham so dau vao
-    //id cua  bang tbl_feed đảm bảo  title_send !=null, content_send !=null
-    static String idTblFeed = "126";
+    //truong id_feed cua  bang tbl_feed đảm bảo  title_send !=null, content_send !=null
+    static String idFeed = "612637105494489_1494612213963636";
+    //id cua bang tbl_Feed
+    static String idTblFeed="127";
     //mail gui 
-    static String mailSend = "";
-    //ten nguoi gui
-    static String sendName = "";
+    static String mailSend = "coso5.mshoatoeic@gmail.com";
+
     //trang thai chua gui mail theo bai viet
     static String statusFeedMailSend = "1";
     //trang thai da gui mail theo bai viet
@@ -46,16 +47,32 @@ public class SendMailByFeed {
         //lay email tu bai viet chua gui mail theo bai viet status_feed_mail=1, moi lan gui lay max 100 mail de gui
         //select * from tbl_mail where id in (select  id_tbl_mail from tbl_feed_mail where id_tbl_feed=38) and status_feed_mail=1 limit 100
         ArrayList<Mail> lst = MailDao.getMailFromTblFeed(idTblFeed, statusFeedMailSend, numMaxMailTo);
-        //lay ra thong tin bai viet tu bang tbl_feed
-        FeedEntity feedEntity = FeedEntityDao.getByFeed(idTblFeed);
+                            //test
+//                    ArrayList<Mail> lst = new ArrayList<>();
+//                    Mail mx = new Mail();
+//                    mx.setEmail("tunglv9x@gmail.com");
+//                    lst.add(mx);
+//lay ra thong tin bai viet tu bang tbl_feed
+        FeedEntity feedEntity = FeedEntityDao.getByFeed(idFeed);
         //lay tieu de, noi dung, link tai lieu o bang tbl_feed cua feed de gui mail
-        String title = feedEntity.getTitleSend();
-        String content = feedEntity.getContentSend();
-        sendMail(sendName, mailSend, title, content, lst, statusFeedMailSent);
+        //String title = feedEntity.getTitleSend();
+        //String content = feedEntity.getContentSend();
+        String title = "TỔNG HỢP 9000 BÀI HỌC ĐỦ GIAO TIẾP CẢ ĐỜI TIẾNG ANH\n" +
+                       "(Full bản PDF + Video giáo viên bản ngữ đọc chuẩn Tây)";
+        String content = "<p style=\"text-align: justify;\"><span style=\"color: #0000ff;\"><strong>Tiếng Anh giao tiếp Langmaster</strong> </span>gửi đến c&aacute;c bạn&nbsp;</p>\n" +
+"<p style=\"text-align: justify;\">TỔNG HỢP 9000 B&Agrave;I HỌC ĐỦ GIAO TIẾP CẢ ĐỜI TIẾNG ANH (Full bản PDF + Video gi&aacute;o vi&ecirc;n bản ngữ đọc chuẩn T&acirc;y)</p>\n" +
+"<p style=\"text-align: justify;\">C&aacute;c bạn click v&agrave;o <a href=\"http://bit.ly/2xpTLiE\"><span style=\"color: #0000ff;\"><strong>Đ&Acirc;Y</strong></span> </a>để tải t&agrave;i liệu nh&eacute;. Nhanh tay download để kh&ocirc;ng bị bỏ lỡ cơ hội nhận trọn bộ t&agrave;i liệu qu&yacute; gi&aacute; n&agrave;y.</p>\n" +
+"<p style=\"text-align: justify;\">Nhớ đăng k&yacute; k&ecirc;nh Youtube: <a href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\"><span style=\"color: #ff0000;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a></p>\n" +
+"<p style=\"text-align: justify;\">Like fanpage:&nbsp;&nbsp;<a href=\"https://www.facebook.com/englishforvn/\"><span style=\"color: #0000ff;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a></p>\n" +
+"<p style=\"text-align: justify;\">Để được ưu ti&ecirc;n gửi kh&oacute;a học miễn ph&iacute;, t&agrave;i liệu sớm nhất.</p>\n" +
+"<p style=\"text-align: justify;\">Ch&uacute;ng t&ocirc;i ch&acirc;n th&agrave;nh cảm ơn!</p>";
+        //ten nguoi gui
+        String sendName = "Tiếng Anh giao tiếp Langmaster";
+        sendMail(feedEntity.getId(),sendName, mailSend, title, content, lst, statusFeedMailSent);
 
     }
 
-    private static void sendMail(String sendName, String mailSend, String title, String content, ArrayList<Mail> lst, String statusFeedMailSent) throws Exception {
+    private static void sendMail(int idTblFeed,String sendName, String mailSend, String title, String content, ArrayList<Mail> lst, String statusFeedMailSent) throws Exception {
         //lay thong tin mail gui
         MailSend mSend = MailSendDao.getMailSendByEmail(mailSend);
         int countMailSentSuccess = 0;
@@ -76,10 +93,9 @@ public class SendMailByFeed {
                 System.out.println("---------------- tunglv4 gui mail " + mSend.getEmail() + " tu host " + mSend.getHostMail() + " toi: " + to.getEmail() + " thanh cong");
                 countMailSentSuccess++;
                 //update status=2 tbl_feed_mail da gui
-                FeedMail fm = FeedMailDao.getByIdTblFeedIdTblMail(Integer.parseInt(idTblFeed), to.getId());
+                FeedMail fm = FeedMailDao.getByIdTblFeedIdTblMail(idTblFeed, to.getId());
                 fm.setStatus(Integer.parseInt(statusFeedMailSent));
                 FeedMailDao.updateStatus(fm);
-
 
             } catch (AddressException adEx) {
                 System.out.println("-----------------tunglv4 gui toi mail: " + to.getEmail() + " bi loi: " + adEx.getMessage());

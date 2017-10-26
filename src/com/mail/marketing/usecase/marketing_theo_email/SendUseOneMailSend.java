@@ -71,12 +71,12 @@ public class SendUseOneMailSend {
             if (mailSend.getEmail().trim().equals(mailSend1.trim())) {
                 try {
                     //lay danh sach mail gui theo trang thai va so luong mail cho phep gui trong ngay
-                    //ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(mailSend.getMaxMail()));
+                    ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(mailSend.getMaxMail()));
                     //test
-                    ArrayList<Mail> lst = new ArrayList<>();
-                    Mail mx = new Mail();
-                    mx.setEmail("tunglv9x@gmail.com");
-                    lst.add(mx);
+//                    ArrayList<Mail> lst = new ArrayList<>();
+//                    Mail mx = new Mail();
+//                    mx.setEmail("tunglv9x@gmail.com");
+//                    lst.add(mx);
                     //kiem tra thoi gian hien tai co thoa man gui mail khong
                     //checkTime = true roi vao truong hop mailSend.getLastTime()=null va khac "" 
                     boolean checkTime = true;

@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 public class ExtractMailByFeed {
 
     //tham so truyen vao
-    private static String token = "EAACEdEose0cBAPSubzZCVLIZA2D53Ps8TCAmDpgiERcoIt5B8PN2XAApZCfNvqEgZCIQhUqqVwjt6PzZAz11TwDeaVBqZCwrwmEji5eUWwfSmgwtG2ltxaKI08GGaEYmcGRbnmDKNMYMNr7mlguKhI8rK0XZATXxqZA10j9SNagNQIrVyJiPuPwyQZBdMnk1WTjfxjgLa59ydUAZDZD";
+    private static String token = "EAACEdEose0cBADeL9xvjhJPZBK4ACSRHBBBzCu9q8LarT0KXxvEqHaBd8aYORzbB2AwD1gZA1XGCAROkc0vGsxDLOfz6sOMPKty50VAkh9ILW5fpmZCMBvLKjK20kgOcmwE0cEZAx6D2AgzZADZClxVW2ZCTKZAc8t9LwfHgyFE72Twlbl7TI44FgIZCAJ3ZBUOg4ZD";
     //so luong ban ghi lay ra tu bang tbl_feed
     private static String numFeed = "1000";
     

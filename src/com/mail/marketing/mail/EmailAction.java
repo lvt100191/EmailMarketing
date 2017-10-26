@@ -136,7 +136,7 @@ public class EmailAction {
             String folderImage = projectPath + "\\src\\images\\";
             File folder = new File(folderImage);
             File[] listOfFiles = folder.listFiles();
-            if (listOfFiles.length > 0) {
+            if (listOfFiles !=null && listOfFiles.length > 0) {
                 // second part (the image)
                 messageBodyPart = new MimeBodyPart();
                 DataSource fds = new FileDataSource(projectPath + "\\src\\images\\" + listOfFiles[0].getName());

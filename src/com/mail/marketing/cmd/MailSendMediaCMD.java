@@ -35,6 +35,8 @@ import javax.mail.internet.MimeMultipart;
  * @author TUNGLV
  */
 //su dung mot mail gui de gui thong bao den tat ca mail trong bang tbl_mail
+//            String host ="mail.vnedu.vn";
+//            String mailSend1 = "noreply@truelife.vn";
 public class MailSendMediaCMD {
 
     public static void main(String[] args) {

@@ -10,7 +10,10 @@ package com.mail.marketing.entity;
  * @author PMDVCNTT
  */
 public class FeedEntity {
-     public static final String TABLE_NAME = "TBL_FEED";
+
+    public static final String TABLE_NAME = "TBL_FEED";
+    public static final int STATUS_SEND = 1;
+    public static final int STATUS_NO_SEND= 2;
     int id;
     //id cua bai viet
     String idFeed;
@@ -18,8 +21,8 @@ public class FeedEntity {
     String contentFeed;
     //ngay insert vao bang yyyyMMddHHmmss
     String createDate;
-    //so luong email thu thap duoc tu bai viet
-    int amountMail;
+    //thoi gian dang bai viet
+    String createTimeFeed;
     //tieu de gui mail marketing
     String titleSend;
     //noi dung gui mail marketing
@@ -30,8 +33,8 @@ public class FeedEntity {
     String idFanpage;
     //ten trang
     String fanpageName;
-    //ma cua video trong phan tag tren youtube
-    String codeVideo;
+    //trang thai lay ra bai viet de gui email 1: lay ra de gui, 2: khong lay ra
+    int status;
 
     public String getIdFanpage() {
         return idFanpage;
@@ -48,8 +51,6 @@ public class FeedEntity {
     public void setFanpageName(String fanpageName) {
         this.fanpageName = fanpageName;
     }
-    
-    
 
     public int getId() {
         return id;
@@ -83,12 +84,12 @@ public class FeedEntity {
         this.createDate = createDate;
     }
 
-    public int getAmountMail() {
-        return amountMail;
+    public String getCreateTimeFeed() {
+        return createTimeFeed;
     }
 
-    public void setAmountMail(int amountMail) {
-        this.amountMail = amountMail;
+    public void setCreateTimeFeed(String createTimeFeed) {
+        this.createTimeFeed = createTimeFeed;
     }
 
     public String getTitleSend() {
@@ -115,11 +116,12 @@ public class FeedEntity {
         this.linkDocument = linkDocument;
     }
 
-    public String getCodeVideo() {
-        return codeVideo;
+    public int getStatus() {
+        return status;
     }
 
-    public void setCodeVideo(String codeVideo) {
-        this.codeVideo = codeVideo;
+    public void setStatus(int status) {
+        this.status = status;
     }
+
 }

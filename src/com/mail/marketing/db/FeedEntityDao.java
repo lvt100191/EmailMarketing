@@ -57,6 +57,43 @@ public class FeedEntityDao {
         return feedEntitys;
 
     }
+    
+        public static ArrayList<FeedEntity> getListFeedEntity(String limit, int stt) throws SQLException, Exception {
+        ArrayList<FeedEntity> feedEntitys = new ArrayList<>();
+        Connection c = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+
+            String query = "SELECT * FROM  " + FeedEntity.TABLE_NAME
+                    + " WHERE STATUS = ? ORDER BY CREATE_DATE DESC  LIMIT ?; ";
+            pst = c.prepareStatement(query);
+            pst.setString(1, limit);
+            pst.setInt(2, stt);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                FeedEntity feedEntity = unitFeedEntity(rs);
+                feedEntitys.add(feedEntity);
+
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (pst != null) {
+                pst.close();
+            }
+            if (c != null) {
+                c.close();
+            }
+        }
+        return feedEntitys;
+
+    }
 
     public static FeedEntity getByFeed(String feedId) throws SQLException, Exception {
         FeedEntity f = null;
@@ -80,8 +117,10 @@ public class FeedEntityDao {
                 f.setIdFeed(feedId);
                 String title = rs.getString("title_send");
                 String content = rs.getString("content_send");
+                String fanpageName = rs.getString("fanpage_name");
                 f.setTitleSend(title);
                 f.setContentSend(content);
+                f.setFanpageName(fanpageName);
 
             }
         } catch (Exception e) {
@@ -140,12 +179,13 @@ public class FeedEntityDao {
         feedEntity.setIdFeed(rs.getString("id_feed"));
         feedEntity.setContentFeed(rs.getString("content_feed"));
         feedEntity.setCreateDate(rs.getString("create_date"));
-        feedEntity.setAmountMail(rs.getInt("amount_mail"));
+        feedEntity.setCreateTimeFeed(rs.getString("create_time_feed"));
         feedEntity.setTitleSend(rs.getString("title_send"));
         feedEntity.setContentSend(rs.getString("content_send"));
         feedEntity.setLinkDocument(rs.getString("link_document"));
         feedEntity.setIdFanpage(rs.getString("id_fanpage"));
         feedEntity.setFanpageName(rs.getString("fanpage_name"));
+        feedEntity.setStatus(rs.getInt("status"));
         return feedEntity;
     }
 
