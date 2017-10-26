@@ -35,7 +35,7 @@ public class B3SendMailByFeedCMD {
     //id cua bang tbl_Feed
     static String idTblFeed="127";
     //mail gui 
-    static String mailSend = "coso6.mshoatoeic@gmail.com";
+    static String mailSend = "coso7.mshoatoeic@gmail.com";
 
     //trang thai chua gui mail theo bai viet
     static String statusFeedMailSend = "1";
@@ -93,6 +93,7 @@ public class B3SendMailByFeedCMD {
                 }
                 System.out.println("---------------- tunglv4 gui mail " + mSend.getEmail() + " tu host " + mSend.getHostMail() + " toi: " + to.getEmail() + " thanh cong");
                 countMailSentSuccess++;
+                System.out.println("------tong so mail da gui la: "+countMailSentSuccess);
                 //update status=2 tbl_feed_mail da gui
                 FeedMail fm = FeedMailDao.getByIdTblFeedIdTblMail(idTblFeed, to.getId());
                 fm.setStatus(Integer.parseInt(statusFeedMailSent));
