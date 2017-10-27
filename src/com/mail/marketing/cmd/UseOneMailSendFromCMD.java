@@ -31,7 +31,7 @@ public class UseOneMailSendFromCMD {
     //update trang thai da gui mail
     private static String sttMailSent = "2";
     //mail gui
-    private static String mailSend1 = "coso7.mshoatoeic@gmail.com";
+    private static String mailSend1 = "coso9.mshoatoeic@gmail.com";
     //ten nguoi gui, ten nay se hiển thị trên người gửi đến, 
     //nếu không cấu hình sẽ hiển thị địa chỉ mail gửi
     private static String sendName = "Tiếng Anh giao tiếp Langmaster";
