@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
 public class B2ExtractMailByFeedCMD {
 
     //tham so truyen vao
-    private static String token = "EAACEdEose0cBADeL9xvjhJPZBK4ACSRHBBBzCu9q8LarT0KXxvEqHaBd8aYORzbB2AwD1gZA1XGCAROkc0vGsxDLOfz6sOMPKty50VAkh9ILW5fpmZCMBvLKjK20kgOcmwE0cEZAx6D2AgzZADZClxVW2ZCTKZAc8t9LwfHgyFE72Twlbl7TI44FgIZCAJ3ZBUOg4ZD";
+    private static String token = "EAACEdEose0cBAChbfs2kZCZAkP2BN3s8VgwfuRZASfrZCXaoYGK9OJvmcwq60ZAZAVTU3CIZA76bEkXJK3ZAUlxLxmM1ymRWCUe6ZBf60uRCkn6YTn8EMzES3L75MeSnuI8YZAt5Wp8OnHs9gbwm2Pq2pGShTV59OPleIUyOkdsNJiX9kVDm7AMvZA8VypeQDKape8ZD";
     //so luong ban ghi lay ra tu bang tbl_feed
     private static String numFeed = "1000";
     
@@ -91,6 +91,7 @@ public class B2ExtractMailByFeedCMD {
                             
                         } catch (Exception e) {
                             System.out.println("Exception: "+e.getMessage());
+                           e.printStackTrace();
                             
                         }
                     }
