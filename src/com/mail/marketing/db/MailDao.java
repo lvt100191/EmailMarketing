@@ -74,6 +74,7 @@ public class MailDao {
             pst.setString(7, mail.getCreateDate());
             pst.setInt(8, mail.getStatus());
             int a = pst.executeUpdate();
+
             System.out.println("id"+a);
             
         } catch (Exception e) {

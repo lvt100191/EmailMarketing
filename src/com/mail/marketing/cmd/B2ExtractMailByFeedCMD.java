@@ -71,6 +71,7 @@ public class B2ExtractMailByFeedCMD {
                                     //insert vao bang tbl_mail
                                     MailDao.insert(email);
                                     //kiem tra cap idTblFeed - idTblMail da ton hay chua
+                                    //cho nay mailDto dang bi null tim hieu cach lay id sau khi insert
                                     Mail mailDto = MailDao.getByEmail(mail);
                                     if (!checkIdTblFeedIdTblMail(f.getId(), mailDto.getId())) {
                                         FeedMail fm = initFeedMail(f.getId(), mailDto.getId());
