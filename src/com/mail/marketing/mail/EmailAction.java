@@ -107,7 +107,7 @@ public class EmailAction {
             });
 
             // -- Create a new message --
-            Message msg = new MimeMessage(session);
+            MimeMessage msg = new MimeMessage(session);
 
             // -- Set the FROM and TO fields --
             InternetAddress senderAddress = new InternetAddress(mailSend);
@@ -117,7 +117,8 @@ public class EmailAction {
             msg.setFrom(senderAddress);
             msg.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(mailRecipient, false));
-            msg.setSubject(title);
+            //msg.setSubject(title);
+            msg.setSubject(title, "UTF-8");
             //msg.setText(content);
             // This mail has 2 part, the BODY and the embedded image
             MimeMultipart multipart = new MimeMultipart("related");
