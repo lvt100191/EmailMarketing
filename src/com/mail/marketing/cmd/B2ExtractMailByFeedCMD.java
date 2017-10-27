@@ -24,8 +24,10 @@ import java.util.regex.Pattern;
 /**
  *
  * @author TUNGLV
+ * 
  */
-//tu cac bai viet thu thap duoc thuc hien thu thap email tu cac binh luan
+ // tu cac bai viet thu thap duoc tu bang tbl_feed thuc hien thu thap email tu cac binh luan
+ // cua bai viet
 public class B2ExtractMailByFeedCMD {
 
     //tham so truyen vao
@@ -34,6 +36,9 @@ public class B2ExtractMailByFeedCMD {
     private static String numFeed = "1000";
     
     public static void main(String[] args) throws Exception {
+        //sau file jar la tham so truyen vao bat dau tu tham so args[0]
+        //String fromDateUI = args[0];
+        //String token = args[1];
         FanPageAction fanPageAction = new FanPageAction();
         //lay danh sach bai viet tu bang tbl_feed theo so luong truyen vao
         ArrayList<FeedEntity> lstFeed = FeedEntityDao.getListFeedEntity(numFeed);

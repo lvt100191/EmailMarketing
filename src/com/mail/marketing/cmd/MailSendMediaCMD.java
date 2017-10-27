@@ -34,39 +34,44 @@ import javax.mail.internet.MimeMultipart;
  *
  * @author TUNGLV
  */
-//su dung mot mail gui de gui thong bao den tat ca mail trong bang tbl_mail
+//su dung mot mail gui de gui thong bao den tat ca mail trong bang tbl_mail co trang thai =1
 //            String host ="mail.vnedu.vn";
 //            String mailSend1 = "noreply@truelife.vn";
 public class MailSendMediaCMD {
 
+    //tham so dau vao
+    // TODO add your handling code here:
+    //trang thai mail lay ra de gui truong status trong bang tbl_mail
+    static String sttMailSend = "1";
+    //update trang thai da gui mail
+    static String sttMailSent = "2";
+    //server mail
+    static String host = "mail.vnedu.vn";
+    //mail gửi, chú ý phải là mail này thì server mail mới cho phép gửi
+    static String mailSend1 = "noreply@truelife.vn";
+    //ten nguoi gui, ten nay se hiển thị trên người gửi đến, 
+    //nếu không cấu hình sẽ hiển thị địa chỉ mail gửi
+    static String sendName = "Tiếng Anh giao tiếp Langmaster";
+    //tieu de mail
+    static String title = "TỔNG HỢP 9000 BÀI HỌC ĐỦ GIAO TIẾP CẢ ĐỜI TIẾNG ANH (Full bản PDF + Video giáo viên bản ngữ đọc chuẩn Tây)";
+    //noi dung mail
+    static String content = "<p style=\"text-align: justify;\"><span style=\"color: #0000ff;\"><strong>Tiếng Anh giao tiếp Langmaster</strong> </span>gửi đến c&aacute;c bạn&nbsp;</p>\n"
+            + "<p style=\"text-align: justify;\">TỔNG HỢP 9000 B&Agrave;I HỌC ĐỦ GIAO TIẾP CẢ ĐỜI TIẾNG ANH (Full bản PDF + Video gi&aacute;o vi&ecirc;n bản ngữ đọc chuẩn T&acirc;y)</p>\n"
+            + "<p style=\"text-align: justify;\">C&aacute;c bạn click v&agrave;o <a href=\"http://bit.ly/2xpTLiE\"><span style=\"color: #0000ff;\"><strong>Đ&Acirc;Y</strong></span> </a>để tải t&agrave;i liệu nh&eacute;. Nhanh tay download để kh&ocirc;ng bị bỏ lỡ cơ hội nhận trọn bộ t&agrave;i liệu qu&yacute; gi&aacute; n&agrave;y. Sau <strong>18h00</strong> ng&agrave;y <strong>30/10/2017</strong> l&agrave; admin kh&ocirc;ng đảm bảo đ&acirc;u nha :D</p>\n"
+            + "<p style=\"text-align: justify;\">Nhớ đăng k&yacute; k&ecirc;nh Youtube: <a href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\"><span style=\"color: #ff0000;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a></p>\n"
+            + "<p style=\"text-align: justify;\">Like fanpage:&nbsp;&nbsp;<a href=\"https://www.facebook.com/englishforvn/\"><span style=\"color: #0000ff;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a></p>\n"
+            + "<p style=\"text-align: justify;\">Để được ưu ti&ecirc;n gửi kh&oacute;a học miễn ph&iacute;, t&agrave;i liệu sớm nhất.</p>\n"
+            + "<p style=\"text-align: justify;\">Ch&uacute;ng t&ocirc;i ch&acirc;n th&agrave;nh cảm ơn!</p>";
+
     public static void main(String[] args) {
         try {
-
-            // TODO add your handling code here:
-            //trang thai mail lay ra de gui truong status trong bang tbl_mail
-            String sttMailSend = "1";
-            //update trang thai da gui mail
-            String sttMailSent = "2";
-            //server mail
-            String host ="mail.vnedu.vn";
-            String mailSend1 = "noreply@truelife.vn";
-
-            String sendName = "Tiếng Anh giao tiếp Langmaster";
-            String title = "TỔNG HỢP 9000 BÀI HỌC ĐỦ GIAO TIẾP CẢ ĐỜI TIẾNG ANH (Full bản PDF + Video giáo viên bản ngữ đọc chuẩn Tây)";
-            String content = "<p style=\"text-align: justify;\"><span style=\"color: #0000ff;\"><strong>Tiếng Anh giao tiếp Langmaster</strong> </span>gửi đến c&aacute;c bạn&nbsp;</p>\n" +
-"<p style=\"text-align: justify;\">TỔNG HỢP 9000 B&Agrave;I HỌC ĐỦ GIAO TIẾP CẢ ĐỜI TIẾNG ANH (Full bản PDF + Video gi&aacute;o vi&ecirc;n bản ngữ đọc chuẩn T&acirc;y)</p>\n" +
-"<p style=\"text-align: justify;\">C&aacute;c bạn click v&agrave;o <a href=\"http://bit.ly/2xpTLiE\"><span style=\"color: #0000ff;\"><strong>Đ&Acirc;Y</strong></span> </a>để tải t&agrave;i liệu nh&eacute;. Nhanh tay download để kh&ocirc;ng bị bỏ lỡ cơ hội nhận trọn bộ t&agrave;i liệu qu&yacute; gi&aacute; n&agrave;y. Sau <strong>18h00</strong> ng&agrave;y <strong>30/10/2017</strong> l&agrave; admin kh&ocirc;ng đảm bảo đ&acirc;u nha :D</p>\n" +
-"<p style=\"text-align: justify;\">Nhớ đăng k&yacute; k&ecirc;nh Youtube: <a href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\"><span style=\"color: #ff0000;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a></p>\n" +
-"<p style=\"text-align: justify;\">Like fanpage:&nbsp;&nbsp;<a href=\"https://www.facebook.com/englishforvn/\"><span style=\"color: #0000ff;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a></p>\n" +
-"<p style=\"text-align: justify;\">Để được ưu ti&ecirc;n gửi kh&oacute;a học miễn ph&iacute;, t&agrave;i liệu sớm nhất.</p>\n" +
-"<p style=\"text-align: justify;\">Ch&uacute;ng t&ocirc;i ch&acirc;n th&agrave;nh cảm ơn!</p>";
             int countMailSentSuccess = 0;
             ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(1000));
             //test
-//                    ArrayList<Mail> lst = new ArrayList<>();
-//                    Mail mxx = new Mail();
-//                    mxx.setEmail("tunglv9x@gmail.com");
-//                    lst.add(mxx);
+//            ArrayList<Mail> lst = new ArrayList<>();
+//            Mail mxx = new Mail();
+//            mxx.setEmail("tunglv9x@gmail.com");
+//            lst.add(mxx);
             Date d = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HH-mm-ss");
             String dateCreate = sdf.format(d);
@@ -113,9 +118,9 @@ public class MailSendMediaCMD {
         } catch (Exception ex) {
             Logger.getLogger(GUITestMailSendABC.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            System.out.println("--------------xxxxxxxxxxxxxxxxxxxxx-----------------");
-            System.out.println("--------------CHUONG TRINH KET THUC-----------------");
-            System.out.println("--------------xxxxxxxxxxxxxxxxxxxxx-----------------");
+            System.out.println("--------------xxxxxxxxxxxxxxxxxxxxx----------------------------------------------");
+            System.out.println("--------------CHUONG TRINH GUI MAIL noreply@truelife.vn KET THUC-----------------");
+            System.out.println("--------------xxxxxxxxxxxxxxxxxxxxx----------------------------------------------");
         }
     }
 

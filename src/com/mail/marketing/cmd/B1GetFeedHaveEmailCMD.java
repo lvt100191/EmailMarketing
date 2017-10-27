@@ -30,7 +30,7 @@ public class B1GetFeedHaveEmailCMD {
     private static String token = "EAACEdEose0cBAAylZB1wY2jB8GdWWHsjrCMp6E4InDkMWHAUoIdQI4HNoGUcybKsZB0cJh3ZCBaDJHhYHurlQTdoOUezBUO2yxR1wdUVMNynPYbd3W3663pwZBB1RZCz4JMeBUzMytHDt2WCCrtw3GN5Rf48RFivIRGFLQSY0h6ZArfNFZBD9kALWqDchOGHV4ZD";
 
     public static void main(String[] args) throws Exception {
-        //sau file jar la bat dau tu tham so args[0]
+        //sau file jar la tham so truyen vao bat dau tu tham so args[0]
         //String fromDateUI = args[0];
         //String token = args[1];
         System.out.println("------tham so truyen vao--------: ");

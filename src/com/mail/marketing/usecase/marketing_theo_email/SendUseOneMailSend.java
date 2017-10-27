@@ -34,34 +34,19 @@ public class SendUseOneMailSend {
     //update trang thai da gui mail
     private static String sttMailSent = "2";
     
-    private static String mailSend1 = "coso9.mshoatoeic@gmail.com";
+    private static String mailSend1 = "coso8.mshoatoeic@gmail.com";
     //ten nguoi gui
-      private static String sendName = "Ms Hoa Toeic - Sứ giả truyền cảm hứng";
+      private static String sendName = "Tiếng Anh giao tiếp Langmaster";
 
-    private static String title = "Nhanh tay đăng ký 2 khóa học miễn phí từ Ms Hoa Toeic - Hôm nay là ngày cuối chốt danh sách";
-    private static String content ="<table style=\"height: 263px;\" width=\"722\">\n" +
-"<tbody>\n" +
-"<tr style=\"height: 120px;\">\n" +
-"<td style=\"width: 712px; height: 120px; background-color: #d3ed74;\">\n" +
-"<p style=\"text-align: center;\"><span style=\"color: #800000;\"><strong>KH&Oacute;A HỌC TOEIC MIỄN PH&Iacute;</strong></span></p>\n" +
-"<p style=\"text-align: left;\"><strong><span style=\"color: #ff0000;\">Qu&agrave; khủng</span> </strong>m&agrave; c&ocirc; hứa tặng c&aacute;c em, gồm 2 kh&oacute;a học:</p>\n" +
-"<p style=\"text-align: left;\">1. Kh&oacute;a Online MIỄN PH&Iacute; TOEIC 4 kỹ năng 10 buổi&nbsp;<br />2. Lớp bổ trợ TOEIC Speaking &amp; Writing miễn ph&iacute; chiều thứ 7 h&agrave;ng tuần cho học vi&ecirc;n của trung t&acirc;m</p>\n" +
-"<p style=\"text-align: left;\">Đều được ra mắt cả rồi ^^. C&ograve;n bạn n&agrave;o bị lỡ m&agrave; chưa nhận được kh&ocirc;ng :3.&nbsp;</p>\n" +
-"</td>\n" +
-"</tr>\n" +
-"<tr style=\"height: 60px;\">\n" +
-"<td style=\"width: 712px; height: 60px; background-color: #e6d8d8;\">\n" +
-"<p style=\"text-align: justify;\">C&aacute;c em nhanh tay điền v&agrave;o mẫu đăng k&yacute;, trung t&acirc;m sẽ li&ecirc;n hệ hướng dẫn c&aacute;c em tham gia kh&oacute;a học, lưu &yacute; điền đ&uacute;ng địa chỉ v&agrave; số điện thoại để được học tại cơ sở gần nhất, v&igrave; số lượng c&oacute; hạn n&ecirc;n bạn n&agrave;o chưa nhanh tay th&igrave; hẹn c&aacute;c em v&agrave;o dịp kh&aacute;c nha!&nbsp;C&ocirc; sẽ <strong>chốt danh s&aacute;ch</strong> v&agrave;o <span style=\"color: #ff0000;\"><strong>18</strong> </span>giờ ng&agrave;y h&ocirc;m nay nh&eacute;!(<strong>26/10/2017</strong>)</p>\n" +
-"<p style=\"text-align: justify;\">C&aacute;c em click v&agrave;o <span style=\"color: #0000ff;\"><strong><a style=\"color: #0000ff;\" href=\"http://bit.ly/2yQsR35\">Đ&Acirc;Y</a></strong></span> để đăng k&yacute; kh&oacute;a học nh&eacute;!</p>\n" +
-"<p style=\"text-align: justify;\">Bạn n&agrave;o thực hiện</p>\n" +
-"<p style=\"text-align: justify;\">Đăng k&yacute; k&ecirc;nh youtube:&nbsp;<span style=\"color: #ff0000;\"><strong><a style=\"color: #ff0000;\" href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=vi&amp;q=https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q&amp;source=gmail&amp;ust=1509063884202000&amp;usg=AFQjCNE3ThiiKML9xG0CvmBbdlJsD5p5zQ\">Tiếng Anh Cho Người Việt</a></strong></span></p>\n" +
-"<p style=\"text-align: justify;\">Like fanpage:&nbsp;<strong><a href=\"https://www.facebook.com/englishforvn/\" target=\"_blank\" data-saferedirecturl=\"https://www.google.com/url?hl=vi&amp;q=https://www.facebook.com/englishforvn/&amp;source=gmail&amp;ust=1509063884202000&amp;usg=AFQjCNF9cRtKl7eGUxCiIxnmMA3LWSWO4Q\">Tiếng Anh Cho Người Việt</a></strong></p>\n" +
-"<p style=\"text-align: justify;\"><strong>Sẽ được ưu ti&ecirc;n li&ecirc;n hệ trước nha</strong></p>\n" +
-"<p style=\"text-align: justify;\"><strong><span style=\"font-size: 16pt;\">Ms.Hoa!</span></strong></p>\n" +
-"</td>\n" +
-"</tr>\n" +
-"</tbody>\n" +
-"</table>";
+    private static String title ="TỔNG HỢP 9000 BÀI HỌC ĐỦ GIAO TIẾP CẢ ĐỜI TIẾNG ANH\n" +
+                       "(Full bản PDF + Video giáo viên bản ngữ đọc chuẩn Tây)";
+    private static String content ="<p style=\"text-align: justify;\"><span style=\"color: #0000ff;\"><strong>Tiếng Anh giao tiếp Langmaster</strong> </span>gửi đến c&aacute;c bạn&nbsp;</p>\n" +
+"<p style=\"text-align: justify;\">TỔNG HỢP 9000 B&Agrave;I HỌC ĐỦ GIAO TIẾP CẢ ĐỜI TIẾNG ANH (Full bản PDF + Video gi&aacute;o vi&ecirc;n bản ngữ đọc chuẩn T&acirc;y)</p>\n" +
+"<p style=\"text-align: justify;\">C&aacute;c bạn click v&agrave;o <a href=\"http://bit.ly/2xpTLiE\"><span style=\"color: #0000ff;\"><strong>Đ&Acirc;Y</strong></span> </a>để tải t&agrave;i liệu nh&eacute;. Nhanh tay download để kh&ocirc;ng bị bỏ lỡ cơ hội nhận trọn bộ t&agrave;i liệu qu&yacute; gi&aacute; n&agrave;y.</p>\n" +
+"<p style=\"text-align: justify;\">Nhớ đăng k&yacute; k&ecirc;nh Youtube: <a href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\"><span style=\"color: #ff0000;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a></p>\n" +
+"<p style=\"text-align: justify;\">Like fanpage:&nbsp;&nbsp;<a href=\"https://www.facebook.com/englishforvn/\"><span style=\"color: #0000ff;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a></p>\n" +
+"<p style=\"text-align: justify;\">Để được ưu ti&ecirc;n gửi kh&oacute;a học miễn ph&iacute;, t&agrave;i liệu sớm nhất.</p>\n" +
+"<p style=\"text-align: justify;\">Ch&uacute;ng t&ocirc;i ch&acirc;n th&agrave;nh cảm ơn!</p>";
 
     public static void main(String[] args) throws Exception {
         ArrayList<MailSend> lstSend = MailSendDao.getListMailSend();
@@ -71,12 +56,12 @@ public class SendUseOneMailSend {
             if (mailSend.getEmail().trim().equals(mailSend1.trim())) {
                 try {
                     //lay danh sach mail gui theo trang thai va so luong mail cho phep gui trong ngay
-                    ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(mailSend.getMaxMail()));
+                    //ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(mailSend.getMaxMail()));
                     //test
-//                    ArrayList<Mail> lst = new ArrayList<>();
-//                    Mail mx = new Mail();
-//                    mx.setEmail("tunglv9x@gmail.com");
-//                    lst.add(mx);
+                    ArrayList<Mail> lst = new ArrayList<>();
+                    Mail mx = new Mail();
+                    mx.setEmail("tunglv9x@gmail.com");
+                    lst.add(mx);
                     //kiem tra thoi gian hien tai co thoa man gui mail khong
                     //checkTime = true roi vao truong hop mailSend.getLastTime()=null va khac "" 
                     boolean checkTime = true;
