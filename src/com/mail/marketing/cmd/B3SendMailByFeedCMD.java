@@ -26,7 +26,8 @@ import javax.mail.internet.AddressException;
  * @author TUNGLV
  * 
  * */
- //nhap vao id cua bang tbl_feed, lay danh sach email theo 1 bai viet 
+ //nhap vao id cua bang tbl_feed co so mail chua gui >=100, có title, có content, kiem tra link download tai lieu phai hoat dong
+//, lay danh sach email theo 1 bai viet 
  //su dung gmail trong bang tbl_mail_send roi gui mail
  //tìm ra bài viết có số lượng mail chưa gửi nhiều nhất để gửi:
  //select id_tbl_feed, count( *)  from tbl_feed_mail where status=1 group by  id_tbl_feed order by count( *) desc
@@ -34,28 +35,28 @@ import javax.mail.internet.AddressException;
  //select id_tbl_feed, count( *)  from tbl_feed_mail where status=1 and  id_tbl_feed=127  group by  id_tbl_feed order by count( *) desc
 //truyen vao dia chi mail gưi o cmd
 
+
 public class B3SendMailByFeedCMD {
 
     //tham so dau vao
-    //truong id_feed cua  bang tbl_feed 
-    static String idFeed = "612637105494489_1494612213963636";
-    //id cua bang tbl_Feed
-    static String idTblFeed = "127";
-    //mail gui 
-    //static String mailSend = "coso7.mshoatoeic@gmail.com";
-    //ten nguoi gui
-    static String sendName = "Tiếng Anh giao tiếp Langmaster";
-
     //trang thai chua gui mail theo bai viet trường status trong bang tbl_feed_mail
     static String statusFeedMailSend = "1";
     //trang thai da gui mail theo bai viet trường status trong bang tbl_feed_mail
     static String statusFeedMailSent = "2";
     //so luong toi da mail lay ra de gui trong bang tbl_mail
     static String numMaxMailTo = "100";
-    //tieu de mail
-    static String title = "TỔNG HỢP 9000 BÀI HỌC ĐỦ GIAO TIẾP CẢ ĐỜI TIẾNG ANH\n"
-            + "(Full bản PDF + Video giáo viên bản ngữ đọc chuẩn Tây)";
-    //noi dung mail
+    
+    //truong id_feed cua  bang tbl_feed 
+    static String idFeed = "612637105494489_1495485107209680";
+    //id cua bang tbl_Feed
+    static String idTblFeed = "122";
+    //mail gui 
+    //static String mailSend = "coso7.mshoatoeic@gmail.com";
+    //ten nguoi gui, lay gia tri fanpage_name trong bang tbl_feed
+    static String sendName = "Tiếng Anh giao tiếp Langmaster";
+    //tieu de mail, lay title_send trong bang tbl_feed
+    static String title = "Toàn bộ 1000 bài học này + Ví dụ minh họa rõ ràng nhất";
+    //noi dung mail, lay trong content_send ra sửa đổi cho hợp lý
     static String content = "<p style=\"text-align: justify;\"><span style=\"color: #0000ff;\"><strong>Tiếng Anh giao tiếp Langmaster</strong> </span>gửi đến c&aacute;c bạn&nbsp;</p>\n"
             + "<p style=\"text-align: justify;\">TỔNG HỢP 9000 B&Agrave;I HỌC ĐỦ GIAO TIẾP CẢ ĐỜI TIẾNG ANH (Full bản PDF + Video gi&aacute;o vi&ecirc;n bản ngữ đọc chuẩn T&acirc;y)</p>\n"
             + "<p style=\"text-align: justify;\">C&aacute;c bạn click v&agrave;o <a href=\"http://bit.ly/2xpTLiE\"><span style=\"color: #0000ff;\"><strong>Đ&Acirc;Y</strong></span> </a>để tải t&agrave;i liệu nh&eacute;. Nhanh tay download để kh&ocirc;ng bị bỏ lỡ cơ hội nhận trọn bộ t&agrave;i liệu qu&yacute; gi&aacute; n&agrave;y.</p>\n"
