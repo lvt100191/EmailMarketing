@@ -23,6 +23,7 @@ import java.util.Date;
  * @author tunglv4
  */
 //thu thap bai viet co binh luan email tu ngay truyen vao den hien tai cua cac fanpage lay tu bang tbl_facebook
+//khong phai sua khi clean build
 public class B1GetFeedHaveEmailCMD {
 
     //tham so truyen vao
@@ -71,7 +72,7 @@ public class B1GetFeedHaveEmailCMD {
                 }
 
             }
-            System.out.println("-----tong so bai viet thu thap duoc: " + count++);
+            System.out.println("-----tong so bai viet thu thap duoc: " + count);
 
         }
         System.out.println("                    -----*****-----**********************-------------------------------*****----");

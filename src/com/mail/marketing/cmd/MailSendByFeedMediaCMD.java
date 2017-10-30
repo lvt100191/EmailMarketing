@@ -41,7 +41,7 @@ import javax.mail.internet.MimeMultipart;
 //            String host ="mail.vnedu.vn";
 //            String mailSend1 = "noreply@truelife.vn";
 //NOTE
-//hien tai chua chay chien dich nay, dung gmail quang ba cho chat luong
+//tam thoi khong chay nua
 public class MailSendByFeedMediaCMD {
     //tham so truyen vao
     //so luong ban ghi lay ra tu bang tbl_feed

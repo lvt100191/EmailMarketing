@@ -28,13 +28,14 @@ import java.util.regex.Pattern;
  */
 // tu cac bai viet thu thap duoc tu bang tbl_feed thuc hien thu thap email tu cac binh luan
 // cua bai viet
+//khong phai sua khi clean build
 public class B2ExtractMailByFeedCMD {
 
     //tham so truyen vao
     //private static String token = "EAACEdEose0cBAJH8FXLmfJyFzgijTJtMzF6lNiqideQw0fiQdRIgTNZB2rZBLmsZCymLq76ItI6BZCe5jofsfRpQWPS1iWZBU96zmxrnWesOfGZAxPVygOMj1xSvzZCOJ66YEVE4r3LnyhnQ0c4qn28ZCcMJAOT9NjRY62LuDQfQam2BoI3dAqwoNbhKiGVZAcAwZD";
     //so luong ban ghi lay ra tu bang tbl_feed
     //private static String numFeed = "1000";
-
+    
     public static void main(String[] args) throws Exception {
         //sau file jar la tham so truyen vao bat dau tu tham so args[0]
         //so luong bai viet lay ra tu bang tbl_feed
@@ -53,7 +54,10 @@ public class B2ExtractMailByFeedCMD {
         ArrayList<FeedEntity> lstFeed = FeedEntityDao.getListFeedEntity(numFeed);
         //lay danh sach binh luan theo bai dang
         String mail = null;
+        int countFeed =1;
         for (FeedEntity f : lstFeed) {
+            System.out.println("--------------------------duyet qua bai viet thu: "+countFeed++);
+            System.out.println("--------------------------id cua bai viet: "+ f.getIdFeed() +" cua trang: "+f.getFanpageName());
             ArrayList<Comment> comments = fanPageAction.getComments(token, f.getIdFeed());
             for (Comment c : comments) {
                 //lay noi dung binh luan

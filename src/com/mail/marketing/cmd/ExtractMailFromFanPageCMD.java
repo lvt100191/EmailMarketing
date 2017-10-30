@@ -34,6 +34,7 @@ import java.util.regex.Pattern;
 //thu thap email tư cac binh luan cua bai viet
 //cmd run moi tham so cach nhau boi dau cach, thay gia tri ngay va token: 
 //java -jar ExtractMailFromFanPageCMD.jar FANPAGE 2017-10-27 token20171027
+//tam thoi khong chay nua
 public class ExtractMailFromFanPageCMD {
 
     public static void main(String[] args) {

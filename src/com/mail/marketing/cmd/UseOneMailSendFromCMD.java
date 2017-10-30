@@ -25,6 +25,7 @@ import javax.mail.internet.AddressException;
 //su dung 1 mail gui lay ra tu bang tbl_mail_send nhap vao mailSend1, lay ra 100 
 //mail trong bang tbl_mail co trang thai la 1 de gui mail
 //run cmd: 
+//tam thoi khong chay nua
 public class UseOneMailSendFromCMD {
 
     //trang thai mail lay ra de gui truong status trong bang tbl_mail

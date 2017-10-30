@@ -37,7 +37,9 @@ import javax.mail.internet.MimeMultipart;
 //su dung mot mail gui de gui thong bao den tat ca mail trong bang tbl_mail co trang thai =1
 //            String host ="mail.vnedu.vn";
 //            String mailSend1 = "noreply@truelife.vn";
-public class MailSendMediaCMD {
+//truoc khi clean build sua
+//sendName, title, content
+public class B4MailSendMediaCMD {
 
     //tham so dau vao
     // TODO add your handling code here:

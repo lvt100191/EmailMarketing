@@ -34,7 +34,8 @@ import javax.mail.internet.AddressException;
  //kiem tra so email chua gui cua 1 bai viet:
  //select id_tbl_feed, count( *)  from tbl_feed_mail where status=1 and  id_tbl_feed=127  group by  id_tbl_feed order by count( *) desc
 //truyen vao dia chi mail gưi o cmd
-
+//truoc khi clean build sua
+//idFeed, idTblFeed, sendName, title, content
 
 public class B3SendMailByFeedCMD {
 
