@@ -31,7 +31,9 @@ public class B1GetFeedHaveEmailCMD {
 
     public static void main(String[] args) throws Exception {
         //sau file jar la tham so truyen vao bat dau tu tham so args[0]
+        // thu thap bai viet cua fanpage dang tu ngay truyen vao den ngay hien tai
         String fromDateUI = args[0];
+        //token cua user deverloper
         String token = args[1];
         System.out.println("------tham so truyen vao--------: ");
         System.out.println("------fromDateUI: " + fromDateUI);
@@ -44,6 +46,7 @@ public class B1GetFeedHaveEmailCMD {
         for (FaceBook fg : lst) {
             //lay thong tin trang
             Page page = fanPageAction.getPageInfoById(token, fg.getIdFacebook());
+            System.out.println("------------------duyet qua trang: "+ page.getName());
             //lay danh sach bai da dang tu ngay fromDate truyen vao den hien tai
             ArrayList<Feed> lstFeed = fanPageAction.getFeed(token, page.getId(), fromDate);
             //lay danh sach binh luan theo bai dang
@@ -68,6 +71,7 @@ public class B1GetFeedHaveEmailCMD {
                 }
 
             }
+            System.out.println("-----tong so bai viet thu thap duoc: " + count++);
 
         }
         System.out.println("                    -----*****-----**********************-------------------------------*****----");
