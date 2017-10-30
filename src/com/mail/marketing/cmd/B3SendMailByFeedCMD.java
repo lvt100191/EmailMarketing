@@ -32,17 +32,17 @@ import javax.mail.internet.AddressException;
  //select id_tbl_feed, count( *)  from tbl_feed_mail where status=1 group by  id_tbl_feed order by count( *) desc
  //kiem tra so email chua gui cua 1 bai viet:
  //select id_tbl_feed, count( *)  from tbl_feed_mail where status=1 and  id_tbl_feed=127  group by  id_tbl_feed order by count( *) desc
-
+//truyen vao dia chi mail gưi o cmd
 
 public class B3SendMailByFeedCMD {
 
     //tham so dau vao
-    //truong id_feed cua  bang tbl_feed đảm bảo  title_send !=null, content_send !=null
+    //truong id_feed cua  bang tbl_feed 
     static String idFeed = "612637105494489_1494612213963636";
     //id cua bang tbl_Feed
     static String idTblFeed = "127";
     //mail gui 
-    static String mailSend = "coso7.mshoatoeic@gmail.com";
+    //static String mailSend = "coso7.mshoatoeic@gmail.com";
     //ten nguoi gui
     static String sendName = "Tiếng Anh giao tiếp Langmaster";
 
@@ -65,6 +65,14 @@ public class B3SendMailByFeedCMD {
             + "<p style=\"text-align: justify;\">Ch&uacute;ng t&ocirc;i ch&acirc;n th&agrave;nh cảm ơn!</p>";
 
     public static void main(String[] args) throws Exception {
+        //lay dia chi mail gui truyen vao tu cmd
+        String mailSend = args[0].trim();
+        //test
+        //String mailSend = "coso7.mshoatoeic@gmail.com";
+        //end test
+        System.out.println("--------dia chi mail gui la: "+ mailSend);
+        System.out.println("--------dia chi mail gui la: "+ mailSend);
+        System.out.println("--------dia chi mail gui la: "+ mailSend);
         //lay email tu bai viet chua gui mail theo bai viet status_feed_mail=1, moi lan gui lay max 100 mail de gui
         //select * from tbl_mail where id in (select  id_tbl_mail from tbl_feed_mail where id_tbl_feed=38) and status_feed_mail=1 limit 100
         ArrayList<Mail> lst = MailDao.getMailFromTblFeed(idTblFeed, statusFeedMailSend, numMaxMailTo);
@@ -78,6 +86,9 @@ public class B3SendMailByFeedCMD {
         //lay tieu de, noi dung, link tai lieu o bang tbl_feed cua feed de gui mail
         //String title = feedEntity.getTitleSend();
         //String content = feedEntity.getContentSend();
+        System.out.println("--------- Gui mail den danh sach gom: "+lst.size()+ " email!");
+        System.out.println("--------- Gui mail den danh sach gom: "+lst.size()+ " email!");
+        System.out.println("--------- Gui mail den danh sach gom: "+lst.size()+ " email!");
         sendMail(feedEntity.getId(), sendName, mailSend, title, content, lst, statusFeedMailSent);
 
     }

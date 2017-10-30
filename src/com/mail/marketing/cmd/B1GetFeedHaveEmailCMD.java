@@ -26,13 +26,13 @@ import java.util.Date;
 public class B1GetFeedHaveEmailCMD {
 
     //tham so truyen vao
-    private static String fromDateUI = "2017-10-23";
-    private static String token = "EAACEdEose0cBAAylZB1wY2jB8GdWWHsjrCMp6E4InDkMWHAUoIdQI4HNoGUcybKsZB0cJh3ZCBaDJHhYHurlQTdoOUezBUO2yxR1wdUVMNynPYbd3W3663pwZBB1RZCz4JMeBUzMytHDt2WCCrtw3GN5Rf48RFivIRGFLQSY0h6ZArfNFZBD9kALWqDchOGHV4ZD";
+    //private static String fromDateUI = "2017-10-23";
+    //private static String token = "EAACEdEose0cBAAylZB1wY2jB8GdWWHsjrCMp6E4InDkMWHAUoIdQI4HNoGUcybKsZB0cJh3ZCBaDJHhYHurlQTdoOUezBUO2yxR1wdUVMNynPYbd3W3663pwZBB1RZCz4JMeBUzMytHDt2WCCrtw3GN5Rf48RFivIRGFLQSY0h6ZArfNFZBD9kALWqDchOGHV4ZD";
 
     public static void main(String[] args) throws Exception {
         //sau file jar la tham so truyen vao bat dau tu tham so args[0]
-        //String fromDateUI = args[0];
-        //String token = args[1];
+        String fromDateUI = args[0];
+        String token = args[1];
         System.out.println("------tham so truyen vao--------: ");
         System.out.println("------fromDateUI: " + fromDateUI);
         System.out.println("------token: " + token);
