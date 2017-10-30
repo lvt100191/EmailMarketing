@@ -24,21 +24,30 @@ import java.util.regex.Pattern;
 /**
  *
  * @author TUNGLV
- * 
+ *
  */
- // tu cac bai viet thu thap duoc tu bang tbl_feed thuc hien thu thap email tu cac binh luan
- // cua bai viet
+// tu cac bai viet thu thap duoc tu bang tbl_feed thuc hien thu thap email tu cac binh luan
+// cua bai viet
 public class B2ExtractMailByFeedCMD {
 
     //tham so truyen vao
-    private static String token = "EAACEdEose0cBAChbfs2kZCZAkP2BN3s8VgwfuRZASfrZCXaoYGK9OJvmcwq60ZAZAVTU3CIZA76bEkXJK3ZAUlxLxmM1ymRWCUe6ZBf60uRCkn6YTn8EMzES3L75MeSnuI8YZAt5Wp8OnHs9gbwm2Pq2pGShTV59OPleIUyOkdsNJiX9kVDm7AMvZA8VypeQDKape8ZD";
+    //private static String token = "EAACEdEose0cBAJH8FXLmfJyFzgijTJtMzF6lNiqideQw0fiQdRIgTNZB2rZBLmsZCymLq76ItI6BZCe5jofsfRpQWPS1iWZBU96zmxrnWesOfGZAxPVygOMj1xSvzZCOJ66YEVE4r3LnyhnQ0c4qn28ZCcMJAOT9NjRY62LuDQfQam2BoI3dAqwoNbhKiGVZAcAwZD";
     //so luong ban ghi lay ra tu bang tbl_feed
-    private static String numFeed = "1000";
-    
+    //private static String numFeed = "1000";
+
     public static void main(String[] args) throws Exception {
         //sau file jar la tham so truyen vao bat dau tu tham so args[0]
-        //String fromDateUI = args[0];
-        //String token = args[1];
+        //so luong bai viet lay ra tu bang tbl_feed
+        String numFeed = args[0].trim();
+        //token cua user facebook developer
+        String token = args[1].trim();
+        System.out.println("----so bai viet lay ra: "+numFeed+"-----------");
+        System.out.println("----so bai viet lay ra: "+numFeed+"-----------");
+        System.out.println("----so bai viet lay ra: "+numFeed+"-----------");
+        System.out.println("-------token truyen vao: "+token+"-----------");
+        System.out.println("-------token truyen vao: "+token+"-----------");
+        System.out.println("-------token truyen vao: "+token+"-----------");
+
         FanPageAction fanPageAction = new FanPageAction();
         //lay danh sach bai viet tu bang tbl_feed theo so luong truyen vao
         ArrayList<FeedEntity> lstFeed = FeedEntityDao.getListFeedEntity(numFeed);
@@ -65,45 +74,48 @@ public class B2ExtractMailByFeedCMD {
                             if (!checkMailBlock(mail)) {
                                 //kiem tra mail đã tồn tại trong bảng tbl_mail
                                 Mail mailDB = MailDao.getByEmail(mail);
-                                if (mailDB == null) {
+                                if (mailDB == null) {//mail chua ton tai trong tbl_mail
+                                    System.out.println("mail: "+mail+" chua ton tai trong bang tbl_mail, insert vao bang tbl_mail va tbl_feed_mail");
                                     //khoi tao doi tuong mail
                                     Mail email = initMail(mail);
+                                    //lay ra id cua mail trong bang tbl_mail se insert
+                                    int idTblMail = MailDao.getMaxId();
                                     //insert vao bang tbl_mail
                                     MailDao.insert(email);
                                     //kiem tra cap idTblFeed - idTblMail da ton hay chua
                                     //cho nay mailDto dang bi null tim hieu cach lay id sau khi insert
-                                    Mail mailDto = MailDao.getByEmail(mail);
-                                    if (!checkIdTblFeedIdTblMail(f.getId(), mailDto.getId())) {
-                                        FeedMail fm = initFeedMail(f.getId(), mailDto.getId());
+                                    // Mail mailDto = MailDao.getByEmail(mail);
+                                    if (!checkIdTblFeedIdTblMail(f.getId(), idTblMail)) {
+                                        FeedMail fm = initFeedMail(f.getId(), idTblMail);
                                         //insert vao bang tbl_feed_mail
                                         FeedMailDao.insert(fm);
                                     }
-                                } else {//truong hop mail da ton tai trong tbl_mail chua ton tai trong tbl_feed_mail
-                                    if (!checkIdTblFeedIdTblMail(f.getId(), mailDB.getId())) {
-                                        //insert vao bang tbl_feed_mail 
-                                        FeedMail fm = initFeedMail(f.getId(), mailDB.getId());
-                                        //insert vao bang tbl_feed_mail
-                                        FeedMailDao.insert(fm);
-                                    }
-                                    
+                                } else{//truong hop mail da ton tai trong tbl_mail chua ton tai trong tbl_feed_mail
+                                    System.out.println("mail: "+mailDB.getEmail()+" da ton tai trong bang tbl_mail, insert vao bang tbl_feed_mail");
+                                if (!checkIdTblFeedIdTblMail(f.getId(), mailDB.getId())) {
+                                    //insert vao bang tbl_feed_mail 
+                                    FeedMail fm = initFeedMail(f.getId(), mailDB.getId());
+                                    //insert vao bang tbl_feed_mail
+                                    FeedMailDao.insert(fm);
                                 }
-                                
+                                }
+
                             }
-                            
+
                         } catch (Exception e) {
-                            System.out.println("Exception: "+e.getMessage());
-                           e.printStackTrace();
-                            
+                            System.out.println("Exception: " + e.getMessage());
+                            e.printStackTrace();
+
                         }
                     }
                 }
-                
+
             }
-            
+
         }
         System.out.println("                    -----*****-----**********************---------------------*****----");
         System.out.println("                    -----*****-----CHUONG TRINH ExtractMailByFeed KET THUC!---*****----");
-        System.out.println("                    -----*****-----**********************---------------------*****----");        
+        System.out.println("                    -----*****-----**********************---------------------*****----");
     }
 
     //check dia chi mail co bi chan hay chua
@@ -117,7 +129,7 @@ public class B2ExtractMailByFeedCMD {
         }
         return false;
     }
-    
+
     private static Mail initMail(String mail) {
         Mail email = new Mail();
         email.setEmail(mail.toLowerCase());
@@ -139,7 +151,7 @@ public class B2ExtractMailByFeedCMD {
         }
         return false;
     }
-    
+
     private static FeedMail initFeedMail(int idTblFeed, int idTblMail) {
         FeedMail fm = new FeedMail();
         fm.setIdTblFeed(idTblFeed);
@@ -151,5 +163,5 @@ public class B2ExtractMailByFeedCMD {
         fm.setStatus(FeedMail.STATUS_INSERT);
         return fm;
     }
-    
+
 }

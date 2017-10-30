@@ -73,10 +73,34 @@ public class MailDao {
             pst.setString(6, "");
             pst.setString(7, mail.getCreateDate());
             pst.setInt(8, mail.getStatus());
-            int a = pst.executeUpdate();
+            pst.executeUpdate();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            if (pst != null) {
+                pst.close();
+            }
+            if (c != null) {
+                c.close();
+            }
+        }
+    }
 
-            System.out.println("id"+a);
-            
+    public static int getMaxId() throws SQLException, Exception {
+        Connection c = null;
+        PreparedStatement pst = null;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+            String query = "SELECT MAX(ID) AS LAST FROM TBL_MAIL";
+            pst = c.prepareStatement(query);
+            ResultSet rs1 = pst.executeQuery();
+            String maxId = rs1.getString("LAST");
+            //Max Table Id Convert to Integer and +1
+            int intMaxId = (Integer.parseInt(maxId)) + 1;
+            //Convert to String
+            return intMaxId;
+
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {
