@@ -24,6 +24,7 @@ import javax.mail.internet.AddressException;
  */
 //su dung 1 mail gui lay ra tu bang tbl_mail_send nhap vao mailSend1, lay ra 100 
 //mail trong bang tbl_mail co trang thai la 1 de gui mail
+//run cmd: 
 public class UseOneMailSendFromCMD {
 
     //trang thai mail lay ra de gui truong status trong bang tbl_mail
@@ -31,23 +32,24 @@ public class UseOneMailSendFromCMD {
     //update trang thai da gui mail
     private static String sttMailSent = "2";
     //mail gui
-    private static String mailSend1 = "coso4.mshoatoeic@gmail.com";
+    //private static String mailSend1 = "coso4.mshoatoeic@gmail.com";
     //ten nguoi gui, ten nay se hiển thị trên người gửi đến, 
     //nếu không cấu hình sẽ hiển thị địa chỉ mail gửi
-    private static String sendName = "Tiếng Anh giao tiếp Langmaster";
+    private static String sendName = "Tiếng Anh Cho Người Việt";
     //tieu de mail
-    private static String title = "TỔNG HỢP 9000 BÀI HỌC ĐỦ GIAO TIẾP CẢ ĐỜI TIẾNG ANH\n"
-            + "(Full bản PDF + Video giáo viên bản ngữ đọc chuẩn Tây)";
+    private static String title = "130 CÂU HỎI + 500 CÂU TRẢ LỜI PHỎNG VẤN CHUẨN MỰC  SONG NGỮ ANH - VIỆT";
     //noi dung mail
-    private static String content = "<p style=\"text-align: justify;\"><span style=\"color: #0000ff;\"><strong>Tiếng Anh giao tiếp Langmaster</strong> </span>gửi đến c&aacute;c bạn&nbsp;</p>\n"
-            + "<p style=\"text-align: justify;\">TỔNG HỢP 9000 B&Agrave;I HỌC ĐỦ GIAO TIẾP CẢ ĐỜI TIẾNG ANH (Full bản PDF + Video gi&aacute;o vi&ecirc;n bản ngữ đọc chuẩn T&acirc;y)</p>\n"
-            + "<p style=\"text-align: justify;\">C&aacute;c bạn click v&agrave;o <a href=\"http://bit.ly/2xpTLiE\"><span style=\"color: #0000ff;\"><strong>Đ&Acirc;Y</strong></span> </a>để tải t&agrave;i liệu nh&eacute;. Nhanh tay download để kh&ocirc;ng bị bỏ lỡ cơ hội nhận trọn bộ t&agrave;i liệu qu&yacute; gi&aacute; n&agrave;y.</p>\n"
-            + "<p style=\"text-align: justify;\">Nhớ đăng k&yacute; k&ecirc;nh Youtube: <a href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\"><span style=\"color: #ff0000;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a></p>\n"
-            + "<p style=\"text-align: justify;\">Like fanpage:&nbsp;&nbsp;<a href=\"https://www.facebook.com/englishforvn/\"><span style=\"color: #0000ff;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a></p>\n"
-            + "<p style=\"text-align: justify;\">Để được ưu ti&ecirc;n gửi kh&oacute;a học miễn ph&iacute;, t&agrave;i liệu sớm nhất.</p>\n"
-            + "<p style=\"text-align: justify;\">Ch&uacute;ng t&ocirc;i ch&acirc;n th&agrave;nh cảm ơn!</p>";
+    private static String content = "<p>Gửi tất cả c&aacute;c bạn link download t&agrave;i liệu nh&eacute;!</p>\n" +
+"<p><span class=\"_5mfr _47e3\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/fdc/1/16/26a0.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\">⚠️</span></span>&nbsp;DOWNLOAD&nbsp;<span class=\"_5mfr _47e3\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/fdc/1/16/26a0.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\">⚠️</span></span>&nbsp;130 C&Acirc;U HỎI + 500 C&Acirc;U TRẢ LỜI PHỎNG VẤN CHUẨN MỰC&nbsp;<span class=\"_5mfr _47e3\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f51/1/16/1f449.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\">👉</span></span>&nbsp;SONG NGỮ ANH - VIỆT</p>\n" +
+"<p>Click v&agrave;o <span style=\"color: #ff0000;\"><strong><a style=\"color: #ff0000;\" href=\"http://bit.ly/2xpTLiE\">Đ&Acirc;Y</a></strong></span> để tải t&agrave;i liệu</p>\n" +
+"<p>C&aacute;c bạn nhớ đăng k&yacute; k&ecirc;nh youtube: <span style=\"color: #ff0000;\"><strong><a style=\"color: #ff0000;\" href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\">Tiếng Anh Cho Người Việt</a></strong></span></p>\n" +
+"<p>Like Fanpage:&nbsp;<strong><span style=\"color: #0000ff;\"><a style=\"color: #0000ff;\" href=\"https://www.facebook.com/englishforvn/\">Tiếng Anh Cho Người Việt</a></span></strong></p>\n" +
+"<p>Để được ưu ti&ecirc;n gửi mail, nhận t&agrave;i liệu, c&aacute;c kh&oacute;a học miễn ph&iacute; d&agrave;nh cho mọi người. Cũng như ủng hộ ch&uacute;ng t&ocirc;i c&oacute; động lực sưu tập v&agrave; gửi&nbsp; đến tất cả mọi người.</p>\n" +
+"<p>Admin xin ch&acirc;n trọng cảm ơn!</p>";
 
     public static void main(String[] args) throws Exception {
+        //nhap email gui tu cmd
+        String mailSend1 = args[0].trim();
         ArrayList<MailSend> lstSend = MailSendDao.getListMailSend();
         int countMailSentSuccess = 0;
         for (MailSend mailSend : lstSend) {
