@@ -48,22 +48,28 @@ public class B4MailSendMediaCMD {
     //update trang thai da gui mail
     static String sttMailSent = "2";
     //server mail
-    static String host = "mail.vnedu.vn";
+    static String host = "mail.truelife.vn";
     //mail gửi, chú ý phải là mail này thì server mail mới cho phép gửi
     static String mailSend1 = "noreply@truelife.vn";
     //ten nguoi gui, ten nay se hiển thị trên người gửi đến, 
     //nếu không cấu hình sẽ hiển thị địa chỉ mail gửi
-    static String sendName = "Tiếng Anh Cho Người Đi Làm";
+    static String sendName = "Tiếng Anh giao tiếp Langmaster";
     //tieu de mail
-    static String title = "130 CÂU HỎI + 500 CÂU TRẢ LỜI PHỎNG VẤN CHUẨN MỰC  SONG NGỮ ANH - VIỆT";
+    static String title = "Toàn bộ 1000 bài học này + Ví dụ minh họa rõ ràng nhất";
     //noi dung mail
-    static String content = "<p>Gửi tất cả c&aacute;c bạn link download t&agrave;i liệu nh&eacute;!</p>\n" +
-"<p><span class=\"_5mfr _47e3\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/fdc/1/16/26a0.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\">⚠️</span></span>&nbsp;DOWNLOAD&nbsp;<span class=\"_5mfr _47e3\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/fdc/1/16/26a0.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\">⚠️</span></span>&nbsp;130 C&Acirc;U HỎI + 500 C&Acirc;U TRẢ LỜI PHỎNG VẤN CHUẨN MỰC&nbsp;<span class=\"_5mfr _47e3\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f51/1/16/1f449.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\">👉</span></span>&nbsp;SONG NGỮ ANH - VIỆT</p>\n" +
-"<p>Click v&agrave;o <span style=\"color: #ff0000;\"><strong><a style=\"color: #ff0000;\" href=\"http://bit.ly/2xpTLiE\">Đ&Acirc;Y</a></strong></span> để tải t&agrave;i liệu</p>\n" +
-"<p>C&aacute;c bạn nhớ đăng k&yacute; k&ecirc;nh youtube: <span style=\"color: #ff0000;\"><strong><a style=\"color: #ff0000;\" href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\">Tiếng Anh Cho Người Việt</a></strong></span></p>\n" +
-"<p>Like Fanpage:&nbsp;<strong><span style=\"color: #0000ff;\"><a style=\"color: #0000ff;\" href=\"https://www.facebook.com/englishforvn/\">Tiếng Anh Cho Người Việt</a></span></strong></p>\n" +
-"<p>Để được ưu ti&ecirc;n gửi mail, nhận t&agrave;i liệu, c&aacute;c kh&oacute;a học miễn ph&iacute; d&agrave;nh cho mọi người. Cũng như ủng hộ ch&uacute;ng t&ocirc;i c&oacute; động lực sưu tập v&agrave; gửi&nbsp; đến tất cả mọi người.</p>\n" +
-"<p>Admin xin ch&acirc;n trọng cảm ơn!</p>";
+    static String content = "<p style=\"text-align: center;\"><strong>Post mỏi cả tay mới xong hết đống t&agrave;i liệu n&agrave;y</strong>&nbsp;<img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f4c/1/16/1f642.png\" alt=\"\" width=\"16\" height=\"16\" /></p>\n" +
+"<p>~ N&oacute;ng nhất lu&ocirc;n nha<br /><span class=\"_47e3 _5mfr\" title=\"Biểu tượng cảm x&uacute;c smile\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f4c/1/16/1f642.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\" aria-hidden=\"true\">:)</span></span>&nbsp;Bạn n&agrave;o muốn nhận to&agrave;n bộ 1000 b&agrave;i học n&agrave;y + V&iacute; dụ minh họa r&otilde; r&agrave;ng nhất th&igrave;<br /><span class=\"_5mfr _47e3\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f51/1/16/1f449.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\">👉</span></span>&nbsp;Share post n&agrave;y&nbsp;<br /><span class=\"_5mfr _47e3\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f51/1/16/1f449.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\">👉</span></span>&nbsp;Comment email của c&aacute;c bạn nh&eacute;&nbsp;<span class=\"_47e3 _5mfr\" title=\"Biểu tượng cảm x&uacute;c heart\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f6c/1/16/2764.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\" aria-hidden=\"true\">&lt;3</span></span><br />B&acirc;y giờ ad gửi lu&ocirc;n nh&eacute;!&nbsp;<span class=\"_47e3 _5mfr\" title=\"Biểu tượng cảm x&uacute;c heart\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f6c/1/16/2764.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\" aria-hidden=\"true\">&lt;3</span></span>&nbsp;Nhanh nh&eacute;&nbsp;<span class=\"_47e3 _5mfr\" title=\"Biểu tượng cảm x&uacute;c smile\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f4c/1/16/1f642.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\" aria-hidden=\"true\">=)</span></span>))</p>\n" +
+"<p><strong>Admin</strong> gửi c&aacute;c bạn link download t&agrave;i liệu bao gồm:</p>\n" +
+"<p>- 200 C&Acirc;U HỎI PHỎNG VẤN BẰNG TIẾNG ANH</p>\n" +
+"<p>-&nbsp;DOWNLOAD TRỌN BỘ 500 C&Acirc;U GIAO TIẾP TIẾNG ANH TH&Ocirc;NG DỤNG</p>\n" +
+"<p>-&nbsp;100 ĐOẠN GIAO TIẾP TIẾNG ANH H&Agrave;NG NG&Agrave;Y</p>\n" +
+"<p>- 200 B&Agrave;I H&Aacute;T TIẾNG ANH HAY NHẤT</p>\n" +
+"<p>Click v&agrave;o <a href=\"http://bit.ly/2xpTLiE\"><span style=\"color: #ff0000;\"><strong>Đ&Acirc;Y</strong></span> </a>để tải t&agrave;i liệu, ch&uacute; &yacute; nhanh tay, admin kh&ocirc;ng share l&acirc;u đ&acirc;u :D, 1000 lượt download l&agrave; admin ẩn link nh&eacute;!</p>\n" +
+"<p>C&aacute;c bạn đăng k&yacute; k&ecirc;nh youtube:&nbsp;<strong><span style=\"color: #ff0000;\"><a style=\"color: #ff0000;\" href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\">Tiếng Anh Cho Người Việt</a></span></strong></p>\n" +
+"<p>Like fanpage:&nbsp;<span style=\"color: #0000ff;\"><strong><a style=\"color: #0000ff;\" href=\"https://www.facebook.com/englishforvn/\">Tiếng Anh Cho Người Việt</a></strong></span></p>\n" +
+"<p>Để được ưu ti&ecirc;n gửi mail, nhận t&agrave;i liệu, th&ocirc;ng kh&oacute;a học miễn ph&iacute;</p>\n" +
+"<p>Ch&uacute;ng t&ocirc;i xin ch&acirc;n th&agrave;nh cảm ơn!</p>\n" +
+"<p>&nbsp;</p>";
 
     public static void main(String[] args) {
         try {
