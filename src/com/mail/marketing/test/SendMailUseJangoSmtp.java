@@ -23,7 +23,7 @@ public class SendMailUseJangoSmtp {
         //mail nhan
       String destmailid = "tunglv9x@gmail.com";
       //mail gui
-      String sendrmailid = "coso1.mshoatoeic@gmail.com";	  
+      String sendrmailid = "coso9.mshoatoeic@gmail.com";	  
      //Mention user name and password as per your configuration
       final String uname = "congiola1991";
       final String pwd = "Lvt@100191";
