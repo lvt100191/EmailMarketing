@@ -129,6 +129,13 @@ public class B3SendMailByFeedCMD {
                 System.out.println("-----------------------tong so mail da gui la: " + countMailSentSuccess);
                 System.out.println("-----------------------tong so mail da gui la: " + countMailSentSuccess);
                 System.out.println("-----------------------tong so mail da gui la: " + countMailSentSuccess);
+                System.out.println("-----------------------tong so mail da gui la: " + countMailSentSuccess);
+                System.out.println("-----------------------tong so mail da gui la: " + countMailSentSuccess);
+                System.out.println("-----------------------tong so mail da gui la: " + countMailSentSuccess);
+                System.out.println("-----------------------tong so mail da gui la: " + countMailSentSuccess);
+                System.out.println("-----------------------tong so mail da gui la: " + countMailSentSuccess);
+                System.out.println("-----------------------tong so mail da gui la: " + countMailSentSuccess);
+                System.out.println("-----------------------tong so mail da gui la: " + countMailSentSuccess);
                 //update status=2 tbl_feed_mail da gui
                 FeedMail fm = FeedMailDao.getByIdTblFeedIdTblMail(idTblFeed, to.getId());
                 fm.setStatus(Integer.parseInt(statusFeedMailSent));
