@@ -28,14 +28,27 @@
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btCheckAmountFeed" max="32767" attributes="0"/>
-                  <Component id="btCheckMailSendByFeed" max="32767" attributes="0"/>
-                  <Component id="jButton4" max="32767" attributes="0"/>
+                  <Component id="btCheckNumToNoSendByFeed" max="32767" attributes="0"/>
+                  <Component id="btCheckNumMailByFeed" max="32767" attributes="0"/>
                   <Component id="jButton5" max="32767" attributes="0"/>
                   <Component id="jButton6" max="32767" attributes="0"/>
                   <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="375" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jScrollPane1" min="-2" pref="375" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtIdTblFeed1" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
+                          <Component id="txtStatus1" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtIdTblFeed" pref="61" max="32767" attributes="0"/>
+                          <Component id="txtStatus" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
               <EmptySpace pref="35" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -43,8 +56,21 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtStatus1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtIdTblFeed1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtIdTblFeed" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="258" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
                       <Component id="btCheckAmountFeed" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -54,13 +80,12 @@
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" pref="43" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="btCheckMailSendByFeed" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="btCheckNumToNoSendByFeed" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="btCheckNumMailByFeed" min="-2" pref="47" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="41" max="32767" attributes="0"/>
+              <EmptySpace pref="44" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -76,21 +101,24 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="L&#x1ea5;y danh s&#xe1;ch mail theo b&#xe0;i vi&#x1ebf;t"/>
+        <Property name="text" type="java.lang.String" value="L&#x1ea5;y danh s&#xe1;ch N mail theo b&#xe0;i vi&#x1ebf;t"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btCheckMailSendByFeed">
+    <Component class="javax.swing.JButton" name="btCheckNumToNoSendByFeed">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ki&#x1ec3;m tra s&#x1ed1; mail ch&#x1b0;a g&#x1eed;i theo b&#xe0;i vi&#x1ebf;t"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCheckMailSendByFeedActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCheckNumToNoSendByFeedActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="btCheckNumMailByFeed">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ki&#x1ec3;m tra s&#x1ed1; mail thu th&#x1ead;p &#x111;&#x1b0;&#x1ee3;c theo b&#xe0;i vi&#x1ebf;t"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCheckNumMailByFeedActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton5">
       <Properties>
@@ -124,5 +152,19 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="txtStatus1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tr&#x1ea1;ng th&#xe1;i tbl_feed_mail"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txtIdTblFeed1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ID c&#x1ee7;a b&#x1ea3;ng TBL_FEED"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtStatus">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtIdTblFeed">
+    </Component>
   </SubComponents>
 </Form>

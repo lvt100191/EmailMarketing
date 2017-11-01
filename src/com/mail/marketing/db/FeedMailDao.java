@@ -17,7 +17,8 @@ import java.sql.SQLException;
  * @author PMDVCNTT
  */
 public class FeedMailDao {
-        public static FeedMail getByIdTblFeedIdTblMail(int idTblFeed, int idTblMail ) throws SQLException, Exception {
+
+    public static FeedMail getByIdTblFeedIdTblMail(int idTblFeed, int idTblMail) throws SQLException, Exception {
         FeedMail fm = null;
         Connection c = null;
         PreparedStatement pst = null;
@@ -88,8 +89,8 @@ public class FeedMailDao {
             }
         }
     }
-    
-        public static void deleteFeedMail(int idTblMail) throws SQLException, Exception {
+
+    public static void deleteFeedMail(int idTblMail) throws SQLException, Exception {
         Connection c = null;
         PreparedStatement pst = null;
 
@@ -115,7 +116,7 @@ public class FeedMailDao {
     }
 
     public static void updateStatus(FeedMail fm) throws Exception {
-                Connection c = null;
+        Connection c = null;
         PreparedStatement pst = null;
 
         try {
@@ -136,6 +137,59 @@ public class FeedMailDao {
             if (c != null) {
                 c.close();
             }
+        }
+    }
+
+    //dem so email chua gui theo bai viet
+    public static String countMailToNoSendByFeed(String status, String idTblFeed) throws Exception {
+        Connection c = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        int count = 0;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+            String query = "select count(*) from   " + FeedMail.TABLE_NAME + "  where status=? and  id_tbl_feed=?;";
+            pst = c.prepareStatement(query);
+            pst.setInt(1, Integer.parseInt(status));
+            pst.setInt(2, Integer.parseInt(idTblFeed));
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+            return String.valueOf(count);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            rs.close();
+            pst.close();
+            c.close();
+        }
+    }
+
+    //dem so mail thu thập được theo bài viết
+    public static String countMailToByFeed(String idTblFeed) throws Exception {
+        Connection c = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        int count = 0;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+            String query = "select count(*) from   " + FeedMail.TABLE_NAME + "  where  id_tbl_feed=?;";
+            pst = c.prepareStatement(query);
+            pst.setInt(1, Integer.parseInt(idTblFeed));
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+            return String.valueOf(count);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            rs.close();
+            pst.close();
+            c.close();
         }
     }
 }
