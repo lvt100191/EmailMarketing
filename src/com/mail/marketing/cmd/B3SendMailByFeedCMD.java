@@ -46,7 +46,7 @@ public class B3SendMailByFeedCMD {
     static String statusFeedMailSent = "2";
     //so luong toi da mail lay ra de gui trong bang tbl_mail
     static String numMaxMailTo = "100";
-    
+    //truoc khi chay thi copy tham so dau vao file B3SendMailByFeedCMDTest de test truoc
     //id cua bang tbl_Feed
     static String idTblFeed = "163";
     //truong id_feed cua  bang tbl_feed 
