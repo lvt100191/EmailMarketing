@@ -437,13 +437,15 @@ public class SendMail extends javax.swing.JFrame {
         //dieu kien de chay la ngay hien tai phai khac ngay gui cuoi cung
         //thoi gian hien tai phai lon hon thoi gian gui cuoi cung
         //chua xu ly dc hqua chay 21h xong hnay qua 12h no la 00 nen ko chay
-
+        //truong hop ngay hien tai la ngay endDate +1day
         if (!endDate.equals(curDate) && Integer.parseInt(curTime) > Integer.parseInt(endTime)) {
             return true;
         }
+        //truong hop ngay hien tai la ngay endDate + lớn hơn hoặc =2 ngày
         if (Integer.parseInt(curDate) - Integer.parseInt(endDate) >= 2) {
             return true;
         }
+        //truong hop 20171101 - 20171031 >=2 nhưng thời gian lại chưa thỏa mãn vì nó rơi vào trường hợp hôm qua và hôm nay
         return false;
     }
     

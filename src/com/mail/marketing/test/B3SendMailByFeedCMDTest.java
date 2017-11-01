@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mail.marketing.cmd;
+package com.mail.marketing.test;
 
 import com.mail.marketing.db.FeedEntityDao;
 import com.mail.marketing.db.FeedMailDao;
@@ -37,7 +37,7 @@ import javax.mail.internet.AddressException;
 //truoc khi clean build sua
 //idFeed, idTblFeed, sendName, title, content
 
-public class B3SendMailByFeedCMD {
+public class B3SendMailByFeedCMDTest {
 
     //tham so dau vao
     //trang thai chua gui mail theo bai viet trường status trong bang tbl_feed_mail
@@ -67,23 +67,22 @@ public class B3SendMailByFeedCMD {
 "<p style=\"text-align: justify;\">Admin cảm ơn c&aacute;c bạn đ&atilde; ủng hộ!</p>";
 
     public static void main(String[] args) throws Exception {
-        //lay dia chi mail gui truyen vao tu cmd
-        String mailSend = args[0].trim();
+
         //test
         //mail phai thuoc bang tbl_mail_send
-        //String mailSend = "coso7.mshoatoeic@gmail.com";
+        String mailSend = "coso7.mshoatoeic@gmail.com";
         //end test
         System.out.println("--------dia chi mail gui la: "+ mailSend);
         System.out.println("--------dia chi mail gui la: "+ mailSend);
         System.out.println("--------dia chi mail gui la: "+ mailSend);
         //lay email tu bai viet chua gui mail theo bai viet status_feed_mail=1, moi lan gui lay max 100 mail de gui
         //select * from tbl_mail where id in (select  id_tbl_mail from tbl_feed_mail where id_tbl_feed=38) and status_feed_mail=1 limit 100
-        ArrayList<Mail> lst = MailDao.getMailFromTblFeed(idTblFeed, statusFeedMailSend, numMaxMailTo);
+        //ArrayList<Mail> lst = MailDao.getMailFromTblFeed(idTblFeed, statusFeedMailSend, numMaxMailTo);
         //test
-//        ArrayList<Mail> lst = new ArrayList<>();
-//        Mail mx = new Mail();
-//        mx.setEmail("tunglv9x@gmail.com");
-//        lst.add(mx);
+        ArrayList<Mail> lst = new ArrayList<>();
+        Mail mx = new Mail();
+        mx.setEmail("tunglv9x@gmail.com");
+        lst.add(mx);
         //lay ra thong tin bai viet tu bang tbl_feed
         FeedEntity feedEntity = FeedEntityDao.getByFeed(idFeed);
         //lay tieu de, noi dung, link tai lieu o bang tbl_feed cua feed de gui mail
@@ -93,13 +92,13 @@ public class B3SendMailByFeedCMD {
         System.out.println("--------- Gui mail den danh sach gom: "+lst.size()+ " email!");
         System.out.println("--------- Gui mail den danh sach gom: "+lst.size()+ " email!");
         //test
-        //sendMail(feedEntity.getId(), sendName, mailSend, title, content, lst, statusFeedMailSent);
+         sendMail(feedEntity.getId(), sendName, mailSend, title, content, lst, statusFeedMailSent);
         //end test
-        if(lst.size()>=100){
-            sendMail(feedEntity.getId(), sendName, mailSend, title, content, lst, statusFeedMailSent);
-        }else{
-            System.out.println("--------chua co du 100 email de gui, so email hien tai cua bai viet chua gui la: "+lst.size());
-        }
+//        if(lst.size()>=100){
+//            sendMail(feedEntity.getId(), sendName, mailSend, title, content, lst, statusFeedMailSent);
+//        }else{
+//            System.out.println("--------chua co du 100 email de gui, so email hien tai cua bai viet chua gui la: "+lst.size());
+//        }
 
     }
 
