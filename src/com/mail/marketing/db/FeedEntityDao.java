@@ -21,7 +21,7 @@ import java.util.Date;
  * @author PMDVCNTT
  */
 public class FeedEntityDao {
-
+    //lay danh sach bai viet theo gioi han so luong lay ra limit
     public static ArrayList<FeedEntity> getListFeedEntity(String limit) throws SQLException, Exception {
         ArrayList<FeedEntity> feedEntitys = new ArrayList<>();
         Connection c = null;
@@ -57,8 +57,8 @@ public class FeedEntityDao {
         return feedEntitys;
 
     }
-    
-        public static ArrayList<FeedEntity> getListFeedEntity(String limit, int stt) throws SQLException, Exception {
+    //lay danh sach bai viet theo gioi han so luong lay ra limit va theo trang thai
+    public static ArrayList<FeedEntity> getListFeedEntity(String limit, int stt) throws SQLException, Exception {
         ArrayList<FeedEntity> feedEntitys = new ArrayList<>();
         Connection c = null;
         PreparedStatement pst = null;
@@ -94,7 +94,7 @@ public class FeedEntityDao {
         return feedEntitys;
 
     }
-
+    //lay thong tin bai viet theo id cua bai viet tren face
     public static FeedEntity getByFeed(String feedId) throws SQLException, Exception {
         FeedEntity f = null;
         Connection c = null;
@@ -139,7 +139,7 @@ public class FeedEntityDao {
         return f;
 
     }
-
+    //insert bai viet vao bang tbl_feed
     public static void insert(FeedEntity feedEntity) throws Exception {
         Connection c = null;
         PreparedStatement pst = null;
@@ -172,7 +172,7 @@ public class FeedEntityDao {
             }
         }
     }
-
+    //khoi tao doi tuong de insert
     private static FeedEntity unitFeedEntity(ResultSet rs) throws SQLException {
         FeedEntity feedEntity = new FeedEntity();
         feedEntity.setId(rs.getInt("id"));
@@ -187,6 +187,30 @@ public class FeedEntityDao {
         feedEntity.setFanpageName(rs.getString("fanpage_name"));
         feedEntity.setStatus(rs.getInt("status"));
         return feedEntity;
+    }
+    //lay ra so luong bai viet thu thap duoc trong bang tbl_feed
+    public static int countFeed() throws Exception {
+        Connection c = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        int count = 0;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+            String query = "select count(*) from   " + FeedEntity.TABLE_NAME + ";";
+            pst = c.prepareStatement(query);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+            return count;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            rs.close();
+            pst.close();
+            c.close();
+        }
     }
 
 }
