@@ -6,6 +6,7 @@
 package com.mail.marketing.db;
 
 import com.mail.marketing.config.Config;
+import com.mail.marketing.entity.FeedMail;
 import com.mail.marketing.entity.Mail;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -281,12 +282,12 @@ public class MailDao {
         try {
             c = DBUtil.connectDB(Config.DB_NAME);
 
-            String query = "SELECT * FROM  " + Mail.TABLE_NAME
-                    + " WHERE id in (select  id_tbl_mail from tbl_feed_mail where id_tbl_feed=? and status=?)  LIMIT ?; ";
+            String query = "SELECT * FROM  " + Mail.TABLE_NAME + " a "
+                    + " WHERE a.id in (select  b.id_tbl_mail from tbl_feed_mail b where b.id_tbl_feed=? and b.status=?)  LIMIT ?; ";
             pst = c.prepareStatement(query);
-            pst.setString(1, idTblFeed);
-            pst.setString(2, statusFeedMailSend);
-            pst.setString(3, numMaxMailTo);
+            pst.setInt(1, Integer.parseInt(idTblFeed));
+            pst.setInt(2, Integer.parseInt(statusFeedMailSend));
+            pst.setInt(3, Integer.parseInt(numMaxMailTo));
             rs = pst.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
@@ -311,4 +312,39 @@ public class MailDao {
         }
         return mails;
     }
+
+    public static String getMailListByFeed(ArrayList<FeedMail> fmList) throws Exception {
+        String mailLst = "";
+        Connection c = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+            for (FeedMail fm : fmList) {
+                String query = "SELECT * FROM  " + Mail.TABLE_NAME + " where id =?;";
+                pst = c.prepareStatement(query);
+                pst.setInt(1, fm.getIdTblMail());
+                rs = pst.executeQuery();
+                while (rs.next()) {
+                    String mail = rs.getString("email");
+                    mailLst = mailLst + mail + "\n";
+                }
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (pst != null) {
+                pst.close();
+            }
+            if (c != null) {
+                c.close();
+            }
+        }
+        return mailLst;
+    }
+
 }

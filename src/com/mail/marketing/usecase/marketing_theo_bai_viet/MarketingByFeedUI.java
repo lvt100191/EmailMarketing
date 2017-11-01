@@ -7,6 +7,10 @@ package com.mail.marketing.usecase.marketing_theo_bai_viet;
 
 import com.mail.marketing.db.FeedEntityDao;
 import com.mail.marketing.db.FeedMailDao;
+import com.mail.marketing.db.MailDao;
+import com.mail.marketing.entity.FeedMail;
+import com.mail.marketing.entity.Mail;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTextArea;
@@ -40,7 +44,7 @@ public class MarketingByFeedUI extends javax.swing.JFrame {
     private void initComponents() {
 
         btCheckAmountFeed = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btGetMailByFeed = new javax.swing.JButton();
         btCheckNumToNoSendByFeed = new javax.swing.JButton();
         btCheckNumMailByFeed = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -51,6 +55,8 @@ public class MarketingByFeedUI extends javax.swing.JFrame {
         txtIdTblFeed1 = new javax.swing.JLabel();
         txtStatus = new javax.swing.JTextField();
         txtIdTblFeed = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtLimitMail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quảng bá theo bài viết");
@@ -62,7 +68,12 @@ public class MarketingByFeedUI extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Lấy danh sách N mail theo bài viết");
+        btGetMailByFeed.setText("Lấy danh sách N mail chưa gửi theo bài viết");
+        btGetMailByFeed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGetMailByFeedActionPerformed(evt);
+            }
+        });
 
         btCheckNumToNoSendByFeed.setText("Kiểm tra số mail chưa gửi theo bài viết");
         btCheckNumToNoSendByFeed.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +104,8 @@ public class MarketingByFeedUI extends javax.swing.JFrame {
 
         txtIdTblFeed1.setText("ID của bảng TBL_FEED");
 
+        jLabel1.setText("Giới hạn số mail trả về");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,18 +118,20 @@ public class MarketingByFeedUI extends javax.swing.JFrame {
                     .addComponent(btCheckNumMailByFeed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btGetMailByFeed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(120, 120, 120)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtIdTblFeed1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtStatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtStatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtIdTblFeed, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
-                            .addComponent(txtStatus))))
+                            .addComponent(txtStatus)
+                            .addComponent(txtLimitMail))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -137,11 +152,14 @@ public class MarketingByFeedUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btCheckAmountFeed, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtLimitMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btGetMailByFeed, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(btCheckNumToNoSendByFeed, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59)
@@ -157,7 +175,7 @@ public class MarketingByFeedUI extends javax.swing.JFrame {
             txtIdTblFeed.setText("");
             txtStatus.setText("");
             int numFeed = FeedEntityDao.countFeed();
-            txtOutput.setText("Số lượng bài viết thu thập được trong bảng TBL_MAIL: \n" + String.valueOf(numFeed));
+            txtOutput.setText("Số lượng bài viết thu thập được trong bảng TBL_FEED: \n" + String.valueOf(numFeed));
         } catch (Exception ex) {
             Logger.getLogger(MarketingByFeedUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -204,6 +222,34 @@ public class MarketingByFeedUI extends javax.swing.JFrame {
         txtOutput.setText(rs);
     }//GEN-LAST:event_btCheckNumMailByFeedActionPerformed
 
+    private void btGetMailByFeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGetMailByFeedActionPerformed
+        String status = txtStatus.getText().trim();
+        String idTblFeed = txtIdTblFeed.getText().trim();
+        String limit = txtLimitMail.getText().trim();
+        String rs = "";
+        String mailLst = "";
+        if (status == null || status.isEmpty()) {
+            rs = rs + "Yêu cầu nhập [Trạng thái tbl_feed_mail] " + "\n";
+        }
+        if (idTblFeed == null || idTblFeed.isEmpty()) {
+            rs = rs + "Yêu cầu nhập [ID của bảng TBL_FEED] " + "\n";
+        }
+        if (limit == null || limit.isEmpty()) {
+            rs = rs + "Yêu cầu nhập [Giới hạn số mail trả về] " + "\n";
+        }
+        if (rs.isEmpty()) {
+            try {
+                ArrayList<FeedMail> fmList = FeedMailDao.getFmList(status, idTblFeed, limit);
+                mailLst = MailDao.getMailListByFeed(fmList);
+
+            } catch (Exception ex) {
+                Logger.getLogger(MarketingByFeedUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            rs = rs + "Danh sách: " + limit + " email chưa gửi theo bài viết idTblFeed = " + idTblFeed + " là: \n" + mailLst;
+        }
+        txtOutput.setText(rs);
+    }//GEN-LAST:event_btGetMailByFeedActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,12 +289,14 @@ public class MarketingByFeedUI extends javax.swing.JFrame {
     private javax.swing.JButton btCheckAmountFeed;
     private javax.swing.JButton btCheckNumMailByFeed;
     private javax.swing.JButton btCheckNumToNoSendByFeed;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btGetMailByFeed;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtIdTblFeed;
     private javax.swing.JLabel txtIdTblFeed1;
+    private javax.swing.JTextField txtLimitMail;
     private javax.swing.JTextArea txtOutput;
     private javax.swing.JTextField txtStatus;
     private javax.swing.JLabel txtStatus1;

@@ -15,29 +15,31 @@ import java.util.Properties;
  * @author TUNGLV
  */
 public class Config {
+
     private static Properties prop = null;
-    static{
+
+    static {
         prop = new Properties();
-	InputStream input = null;
+        InputStream input = null;
 
-	try {
+        try {
 
-		input = new FileInputStream("..\\EmailMarketing\\src\\config.properties");
+            input = new FileInputStream("..\\EmailMarketing\\src\\config.properties");
 
-		// load a properties file
-		prop.load(input);
+            // load a properties file
+            prop.load(input);
 
-	} catch (IOException ex) {
-		ex.printStackTrace();
-	} finally {
-		if (input != null) {
-			try {
-				input.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
     }
     //lay gia tri config trong file config.properties o day

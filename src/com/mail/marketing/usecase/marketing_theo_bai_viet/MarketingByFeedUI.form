@@ -32,7 +32,7 @@
                   <Component id="btCheckNumMailByFeed" max="32767" attributes="0"/>
                   <Component id="jButton5" max="32767" attributes="0"/>
                   <Component id="jButton6" max="32767" attributes="0"/>
-                  <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btGetMailByFeed" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -41,11 +41,13 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtIdTblFeed1" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
                           <Component id="txtStatus1" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="txtIdTblFeed" pref="61" max="32767" attributes="0"/>
                           <Component id="txtStatus" max="32767" attributes="0"/>
+                          <Component id="txtLimitMail" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -74,11 +76,15 @@
                   <Group type="102" attributes="0">
                       <Component id="btCheckAmountFeed" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="jButton5" min="-2" pref="48" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton5" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtLimitMail" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="jButton6" min="-2" pref="49" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="btGetMailByFeed" min="-2" pref="43" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="btCheckNumToNoSendByFeed" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
@@ -99,10 +105,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCheckAmountFeedActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btGetMailByFeed">
       <Properties>
-        <Property name="text" type="java.lang.String" value="L&#x1ea5;y danh s&#xe1;ch N mail theo b&#xe0;i vi&#x1ebf;t"/>
+        <Property name="text" type="java.lang.String" value="L&#x1ea5;y danh s&#xe1;ch N mail ch&#x1b0;a g&#x1eed;i theo b&#xe0;i vi&#x1ebf;t"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btGetMailByFeedActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btCheckNumToNoSendByFeed">
       <Properties>
@@ -165,6 +174,13 @@
     <Component class="javax.swing.JTextField" name="txtStatus">
     </Component>
     <Component class="javax.swing.JTextField" name="txtIdTblFeed">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gi&#x1edb;i h&#x1ea1;n s&#x1ed1; mail tr&#x1ea3; v&#x1ec1;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtLimitMail">
     </Component>
   </SubComponents>
 </Form>

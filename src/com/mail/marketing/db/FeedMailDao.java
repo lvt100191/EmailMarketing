@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -184,6 +185,43 @@ public class FeedMailDao {
                 count = rs.getInt(1);
             }
             return String.valueOf(count);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            rs.close();
+            pst.close();
+            c.close();
+        }
+    }
+
+    public static ArrayList<FeedMail> getFmList(String status, String idTblFeed, String limit) throws Exception {
+        Connection c = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        ArrayList<FeedMail> lst = new ArrayList<>();
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+            String query = "select * from   " + FeedMail.TABLE_NAME + "  where  id_tbl_feed=? and status=? limit ?;";
+            pst = c.prepareStatement(query);
+            pst.setInt(1, Integer.parseInt(idTblFeed));
+            pst.setInt(2, Integer.parseInt(status));
+            pst.setInt(3, Integer.parseInt(limit));
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                FeedMail fm = new FeedMail();
+                int id = rs.getInt("id");
+                int idTblMail = rs.getInt("id_tbl_mail");
+                fm.setId(id);
+                fm.setIdTblFeed(Integer.parseInt(idTblFeed));
+                fm.setIdTblMail(idTblMail);
+                String date = rs.getString("create_date");
+                if (date != null && !date.isEmpty()) {
+                    fm.setCreateDate(rs.getString("create_date"));
+                }
+                lst.add(fm);
+            }
+            return lst;
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {
