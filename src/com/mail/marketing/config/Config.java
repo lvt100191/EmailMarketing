@@ -48,4 +48,9 @@ public class Config {
     public static final String NUMBER_MAIL = prop.getProperty("number_mail");
     public static final String STATUS_MAIL_SEND = prop.getProperty("status_mail_send");
     public static final String STATUS_MAIL_UPDATE = prop.getProperty("status_mail_update");
+    public static final String FROM_DATE = prop.getProperty("from_date");
+    public static final String NUMBER_FEED = prop.getProperty("number_feed");
+    public static final String MAIL_SEND = prop.getProperty("mail_send");
+    public static final String ID_TBL_FEED = prop.getProperty("id_tbl_feed");
+    public static final String ID_FEED = prop.getProperty("id_feed");
 }

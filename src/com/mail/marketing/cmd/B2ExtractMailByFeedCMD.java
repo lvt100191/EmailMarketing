@@ -5,6 +5,7 @@
  */
 package com.mail.marketing.cmd;
 
+import com.mail.marketing.config.Config;
 import com.mail.marketing.db.FeedEntityDao;
 import com.mail.marketing.db.FeedMailDao;
 import com.mail.marketing.db.MailBlockDao;
@@ -39,9 +40,13 @@ public class B2ExtractMailByFeedCMD {
     public static void main(String[] args) throws Exception {
         //sau file jar la tham so truyen vao bat dau tu tham so args[0]
         //so luong bai viet lay ra tu bang tbl_feed
-        String numFeed = args[0].trim();
+        //String numFeed = args[0].trim();
         //token cua user facebook developer
-        String token = args[1].trim();
+        //String token = args[1].trim();
+        
+        Config cfg = new Config();
+        String token = cfg.USER_ACCESS_TOKEN;
+        String numFeed = cfg.NUMBER_FEED;
         System.out.println("----so bai viet lay ra: "+numFeed+"-----------");
         System.out.println("----so bai viet lay ra: "+numFeed+"-----------");
         System.out.println("----so bai viet lay ra: "+numFeed+"-----------");

@@ -5,6 +5,7 @@
  */
 package com.mail.marketing.cmd;
 
+import com.mail.marketing.config.Config;
 import com.mail.marketing.db.FaceBookDao;
 import com.mail.marketing.db.FeedEntityDao;
 import com.mail.marketing.entity.FaceBook;
@@ -33,9 +34,12 @@ public class B1GetFeedHaveEmailCMD {
     public static void main(String[] args) throws Exception {
         //sau file jar la tham so truyen vao bat dau tu tham so args[0]
         // thu thap bai viet cua fanpage dang tu ngay truyen vao den ngay hien tai
-        String fromDateUI = args[0];
+        //String fromDateUI = args[0];
         //token cua user deverloper
-        String token = args[1];
+        //String token = args[1];
+        Config cfg = new Config();
+        String token = cfg.USER_ACCESS_TOKEN;
+        String fromDateUI = cfg.FROM_DATE;
         System.out.println("------tham so truyen vao--------: ");
         System.out.println("------fromDateUI: " + fromDateUI);
         System.out.println("------token: " + token);
