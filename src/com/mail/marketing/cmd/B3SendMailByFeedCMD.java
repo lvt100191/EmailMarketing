@@ -48,23 +48,27 @@ public class B3SendMailByFeedCMD {
     static String numMaxMailTo = "100";
     //truoc khi chay thi copy tham so dau vao file B3SendMailByFeedCMDTest de test truoc
     //id cua bang tbl_Feed
-    static String idTblFeed = "163";
+    static String idTblFeed = "285";
     //truong id_feed cua  bang tbl_feed 
-    static String idFeed = "233632063512875_712505208958889";
+    static String idFeed = "233632063512875_713964435479633";
     //mail gui 
     //static String mailSend = "coso7.mshoatoeic@gmail.com";
     //ten nguoi gui, lay gia tri fanpage_name trong bang tbl_feed
     static String sendName = "Elight Learning English";
     //tieu de mail, lay title_send trong bang tbl_feed
-    static String title = "Bộ quà tặng dành riêng có các bạn đang lạc lối trên con đường học tiếng Anh và không biết bắt đầu từ đâu";
+    static String title = "1000 CÂU GIAO TIẾP HỌC 1 LẦN DÙNG GIAO TIẾP CẢ ĐỜI";
     //noi dung mail, lay trong content_send ra sửa đổi cho hợp lý, paste vào trang https://wordtohtml.net/ để xem trước
-    static String content = "<p style=\"text-align: center;\"><em><strong>C&ograve;n bạn n&agrave;o chưa nhận được t&agrave;i liệu của Elight Learning English kh&ocirc;ng?</strong></em></p>\n" +
-"<p style=\"text-align: justify;\">👉 BỘ T&Agrave;I LIỆU \"GỐI ĐẦU GIƯỜNG\" CỦA C&Aacute;C CAO THỦ TIẾNG ANH TỪ CƠ BẢN ĐẾN N&Acirc;NG CAO</p>\n" +
-"<p style=\"text-align: justify;\">👉 Bộ t&agrave;i liệu BAO GỒM:<br />1. PHƯƠNG PH&Aacute;P HỌC TIẾNG ANH CHO NGƯỜI MỚI BẮT ĐẦU<br />2. TẤT TẦN TẬT NHỮNG BỘ T&Agrave;I LIỆU \"Đ&Aacute;NG ĐỒNG TIỀN B&Aacute;T GẠO\" m&agrave; bạn c&oacute; thể bỏ c&ocirc;ng sức để học.</p>\n" +
-"<p style=\"text-align: justify;\">Nếu chưa nhận được t&agrave;i liệu c&aacute;c bạn click v&ocirc; <span style=\"color: #ff0000; background-color: #ffffff;\"><strong><a style=\"background-color: #ffffff; color: #ff0000;\" href=\"http://bit.ly/2z6n8X1\">Đ&Acirc;Y</a></strong></span> để download t&agrave;i liệu nh&eacute;! C&oacute; rất nhiều t&agrave;i liệu để ch&uacute;ng ta học cả đời m&agrave; kh&ocirc;ng hết.</p>\n" +
-"<p style=\"text-align: justify;\"><strong>Ch&uacute; &yacute;</strong>: <span style=\"background-color: #ffff00;\">Danh s&aacute;ch t&agrave;i liệu ở phần m&ocirc; tả của mỗi video</span></p>\n" +
-"<p style=\"text-align: justify;\">Đăng k&yacute;, Like , Share k&ecirc;nh Youtube: <a href=\"http://bit.ly/2z6n8X1\"><strong><span style=\"color: #ff0000;\">Tiếng Anh Cho Người Việt</span></strong></a> , Fanpage: <strong><span style=\"color: #0000ff;\"><a style=\"color: #0000ff;\" href=\"http://bit.ly/2iMwgcW\">Tiếng Anh Cho Người Việt</a></span></strong> để theo d&otilde;i cập nhật c&aacute;c t&agrave;i liệu mới nhất từ k&ecirc;nh v&agrave; fanpage nha cả nh&agrave;!</p>\n" +
-"<p style=\"text-align: justify;\">Admin cảm ơn c&aacute;c bạn đ&atilde; ủng hộ!</p>";
+    static String content = "<p style=\"text-align: justify;\">C&aacute;c bạn c&oacute; nhớ h&ocirc;m nay l&agrave; ng&agrave;y m&agrave; c&aacute;c bạn phải v&agrave;o <strong>CHECK EMAIL</strong> để nhận t&agrave;i liệu từ Elight Learning English kh&ocirc;ng nhỉ? Đừng qu&ecirc;n nh&eacute;, Ad đang tiến h&agrave;nh lọc Email v&agrave; bắt đầu gửi rồi đấy&nbsp;<img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f6c/1/16/2764.png\" alt=\"\" width=\"16\" height=\"16\" /></p>\n" +
+"<p style=\"text-align: justify;\"><span class=\"_5mfr _47e3\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f51/1/16/1f449.png\" alt=\"\" width=\"16\" height=\"16\" /></span><strong><span style=\"background-color: #ffff00; color: #800000;\">&nbsp;1000 C&Acirc;U GIAO TIẾP \"HỌC 1 LẦN D&Ugrave;NG GIAO TIẾP CẢ ĐỜI\"</span></strong></p>\n" +
+"<p style=\"text-align: justify;\">Click v&agrave;o&nbsp;<span class=\"_5mfr _47e3\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f51/1/16/1f449.png\" alt=\"\" width=\"16\" height=\"16\" /></span>&nbsp;<a href=\"http://bit.ly/2iizyRp\"><strong><span style=\"color: #0000ff;\">Đ&Acirc;Y</span> </strong></a>để tải t&agrave;i liệu, 1000 C&Acirc;U GIAO TIẾP chỉ d&agrave;nh cho <span style=\"color: #ff0000;\"><strong>1000 lượt tải</strong></span> th&ocirc;i nh&eacute;, vượt qu&aacute; 1000 l&agrave; ADMIN sẽ ẩn link nha!</p>\n" +
+"<p style=\"text-align: justify;\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/fb0/1/16/1f3af.png\" alt=\"\" width=\"16\" height=\"16\" />&nbsp;<strong><span style=\"color: #ff0000;\">ĐỪNG QU&Ecirc;N</span></strong></p>\n" +
+"<p style=\"text-align: justify;\"><strong>Bước 1</strong>: Đăng k&yacute; k&ecirc;nh YOUTUBE: <a href=\"http://bit.ly/2iizyRp\"><strong><span style=\"color: #ff0000;\">Tiếng Anh Cho Người Việt</span></strong></a></p>\n" +
+"<p style=\"text-align: justify;\"><strong>Bước 2</strong>: Like,&nbsp; Share&nbsp; &nbsp; FANPAGE:&nbsp;<a href=\"http://bit.ly/2iMwgcW\"><span style=\"color: #3366ff;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a></p>\n" +
+"<p style=\"text-align: justify;\">Rất nhiều t&agrave;i liệu sẽ được ưu ti&ecirc;n gửi sớm đến bạn n&agrave;o <strong>thực hiện đủ 2 bước</strong> tr&ecirc;n nh&eacute;</p>\n" +
+"<p style=\"text-align: justify;\">Admin xin ch&acirc;n th&agrave;nh cảm ơn c&aacute;c bạn đ&atilde; ủng hộ ch&uacute;ng t&ocirc;i trong suốt thời gian qua</p>\n" +
+"<p style=\"text-align: justify;\">Ch&uacute;c c&aacute;c bạn ng&agrave;y mới vui vẻ</p>\n" +
+"<p style=\"text-align: justify;\">Ch&acirc;n th&agrave;nh!</p>\n" +
+"<p style=\"text-align: justify;\"><span style=\"color: #3366ff;\"><strong>Tiếng Anh Cho Người Việt</strong></span></p>";
 
     public static void main(String[] args) throws Exception {
         //lay dia chi mail gui truyen vao tu cmd
