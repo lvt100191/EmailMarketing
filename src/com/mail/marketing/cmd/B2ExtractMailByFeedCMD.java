@@ -36,33 +36,32 @@ public class B2ExtractMailByFeedCMD {
     //private static String token = "EAACEdEose0cBAJH8FXLmfJyFzgijTJtMzF6lNiqideQw0fiQdRIgTNZB2rZBLmsZCymLq76ItI6BZCe5jofsfRpQWPS1iWZBU96zmxrnWesOfGZAxPVygOMj1xSvzZCOJ66YEVE4r3LnyhnQ0c4qn28ZCcMJAOT9NjRY62LuDQfQam2BoI3dAqwoNbhKiGVZAcAwZD";
     //so luong ban ghi lay ra tu bang tbl_feed
     //private static String numFeed = "1000";
-    
     public static void main(String[] args) throws Exception {
         //sau file jar la tham so truyen vao bat dau tu tham so args[0]
         //so luong bai viet lay ra tu bang tbl_feed
         //String numFeed = args[0].trim();
         //token cua user facebook developer
         //String token = args[1].trim();
-        
+
         Config cfg = new Config();
         String token = cfg.USER_ACCESS_TOKEN;
         String numFeed = cfg.NUMBER_FEED;
-        System.out.println("----so bai viet lay ra: "+numFeed+"-----------");
-        System.out.println("----so bai viet lay ra: "+numFeed+"-----------");
-        System.out.println("----so bai viet lay ra: "+numFeed+"-----------");
-        System.out.println("-------token truyen vao: "+token+"-----------");
-        System.out.println("-------token truyen vao: "+token+"-----------");
-        System.out.println("-------token truyen vao: "+token+"-----------");
+        System.out.println("----so bai viet lay ra: " + numFeed + "-----------");
+        System.out.println("----so bai viet lay ra: " + numFeed + "-----------");
+        System.out.println("----so bai viet lay ra: " + numFeed + "-----------");
+        System.out.println("-------token truyen vao: " + token + "-----------");
+        System.out.println("-------token truyen vao: " + token + "-----------");
+        System.out.println("-------token truyen vao: " + token + "-----------");
 
         FanPageAction fanPageAction = new FanPageAction();
         //lay danh sach bai viet tu bang tbl_feed theo so luong truyen vao
         ArrayList<FeedEntity> lstFeed = FeedEntityDao.getListFeedEntity(numFeed);
         //lay danh sach binh luan theo bai dang
         String mail = null;
-        int countFeed =1;
+        int countFeed = 1;
         for (FeedEntity f : lstFeed) {
-            System.out.println("--------------------------duyet qua bai viet thu: "+countFeed++);
-            System.out.println("--------------------------id cua bai viet: "+ f.getIdFeed() +" cua trang: "+f.getFanpageName());
+            System.out.println("--------------------------duyet qua bai viet thu: " + countFeed++);
+            System.out.println("--------------------------id cua bai viet: " + f.getIdFeed() + " cua trang: " + f.getFanpageName());
             ArrayList<Comment> comments = fanPageAction.getComments(token, f.getIdFeed());
             for (Comment c : comments) {
                 //lay noi dung binh luan
@@ -80,11 +79,11 @@ public class B2ExtractMailByFeedCMD {
                             //kiem tra dieu kien truoc khi insert vao db
                             //truong hop mail ko bi chan va mail chua co trong
                             //bang tbl_mail
-                            if (!checkMailBlock(mail)) {
+                            if (!checkMailBlock(mail) && checkAddressMail(mail)) {
                                 //kiem tra mail đã tồn tại trong bảng tbl_mail
-                                Mail mailDB = MailDao.getByEmail(mail);
+                                Mail mailDB = MailDao.getByEmail(mail.trim());
                                 if (mailDB == null) {//mail chua ton tai trong tbl_mail
-                                    System.out.println("mail: "+mail+" chua ton tai trong bang tbl_mail, insert vao bang tbl_mail va tbl_feed_mail");
+                                    System.out.println("mail: " + mail + " chua ton tai trong bang tbl_mail, insert vao bang tbl_mail va tbl_feed_mail");
                                     //khoi tao doi tuong mail
                                     Mail email = initMail(mail);
                                     //lay ra id cua mail trong bang tbl_mail se insert
@@ -99,14 +98,14 @@ public class B2ExtractMailByFeedCMD {
                                         //insert vao bang tbl_feed_mail
                                         FeedMailDao.insert(fm);
                                     }
-                                } else{//truong hop mail da ton tai trong tbl_mail chua ton tai trong tbl_feed_mail
-                                    System.out.println("mail: "+mailDB.getEmail()+" da ton tai trong bang tbl_mail, insert vao bang tbl_feed_mail");
-                                if (!checkIdTblFeedIdTblMail(f.getId(), mailDB.getId())) {
-                                    //insert vao bang tbl_feed_mail 
-                                    FeedMail fm = initFeedMail(f.getId(), mailDB.getId());
-                                    //insert vao bang tbl_feed_mail
-                                    FeedMailDao.insert(fm);
-                                }
+                                } else {//truong hop mail da ton tai trong tbl_mail chua ton tai trong tbl_feed_mail
+                                    System.out.println("mail: " + mailDB.getEmail() + " da ton tai trong bang tbl_mail, insert vao bang tbl_feed_mail");
+                                    if (!checkIdTblFeedIdTblMail(f.getId(), mailDB.getId())) {
+                                        //insert vao bang tbl_feed_mail 
+                                        FeedMail fm = initFeedMail(f.getId(), mailDB.getId());
+                                        //insert vao bang tbl_feed_mail
+                                        FeedMailDao.insert(fm);
+                                    }
                                 }
 
                             }
@@ -137,6 +136,31 @@ public class B2ExtractMailByFeedCMD {
             return true;
         }
         return false;
+    }
+
+    private static boolean checkAddressMail(String mail) {
+        if (mail.contains("@gmail.con")) {
+            return false;
+        }
+        if (mail.contains("@gmail.com.")) {
+            return false;
+        }
+        if (mail.contains("@gamil.com")) {
+            return false;
+        }
+        if (mail.startsWith("_")) {
+            return false;
+        }
+        if (mail.startsWith("1")) {
+            return false;
+        }
+        if (mail.startsWith("0")) {
+            return false;
+        }
+        if (mail.startsWith(".")) {
+            return false;
+        }
+        return true;
     }
 
     private static Mail initMail(String mail) {
