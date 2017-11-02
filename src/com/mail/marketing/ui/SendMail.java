@@ -438,9 +438,9 @@ public class SendMail extends javax.swing.JFrame {
         //thoi gian hien tai phai lon hon thoi gian gui cuoi cung
         //chua xu ly dc hqua chay 21h xong hnay qua 12h no la 00 nen ko chay
         //truong hop ngay hien tai la ngay endDate +1day
-        if (!endDate.equals(curDate) && Integer.parseInt(curTime) > Integer.parseInt(endTime)) {
-            return true;
-        }
+//        if (!endDate.equals(curDate) && Integer.parseInt(curTime) > Integer.parseInt(endTime)) {
+//            return true;
+//        }
         //truong hop ngay hien tai la ngay endDate + lớn hơn hoặc =2 ngày
         if (Integer.parseInt(curDate) - Integer.parseInt(endDate) >= 2) {
             return true;

@@ -39,7 +39,7 @@ import javax.mail.internet.AddressException;
 
 public class B3SendMailByFeedCMDTest {
 
-        //tham so dau vao
+    //tham so dau vao
     //trang thai chua gui mail theo bai viet trường status trong bang tbl_feed_mail
     static String statusFeedMailSend = "1";
     //trang thai da gui mail theo bai viet trường status trong bang tbl_feed_mail
@@ -48,33 +48,30 @@ public class B3SendMailByFeedCMDTest {
     static String numMaxMailTo = "100";
     //truoc khi chay thi copy tham so dau vao file B3SendMailByFeedCMDTest de test truoc
     //id cua bang tbl_Feed
-    static String idTblFeed = "285";
+    static String idTblFeed = "292";
     //truong id_feed cua  bang tbl_feed 
-    static String idFeed = "233632063512875_713964435479633";
+    static String idFeed = "131304647058701_748193265369833";
     //mail gui 
     //static String mailSend = "coso7.mshoatoeic@gmail.com";
     //ten nguoi gui, lay gia tri fanpage_name trong bang tbl_feed
-    static String sendName = "Elight Learning English";
+    static String sendName = "30 Phút Tiếng Anh Mỗi Ngày";
     //tieu de mail, lay title_send trong bang tbl_feed
-    static String title = "1000 CÂU GIAO TIẾP HỌC 1 LẦN DÙNG GIAO TIẾP CẢ ĐỜI";
+    static String title = "KHÔNG XEM ĐẢM BẢO TIẾC HÙI HỤI - Bộ tài liệu 500 mẫu câu giao tiếp khi đi phỏng vấn gồm";
     //noi dung mail, lay trong content_send ra sửa đổi cho hợp lý, paste vào trang https://wordtohtml.net/ để xem trước
-    static String content = "<p style=\"text-align: justify;\">C&aacute;c bạn c&oacute; nhớ h&ocirc;m nay l&agrave; ng&agrave;y m&agrave; c&aacute;c bạn phải v&agrave;o <strong>CHECK EMAIL</strong> để nhận t&agrave;i liệu từ Elight Learning English kh&ocirc;ng nhỉ? Đừng qu&ecirc;n nh&eacute;, Ad đang tiến h&agrave;nh lọc Email v&agrave; bắt đầu gửi rồi đấy&nbsp;<img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f6c/1/16/2764.png\" alt=\"\" width=\"16\" height=\"16\" /></p>\n" +
-"<p style=\"text-align: justify;\"><span class=\"_5mfr _47e3\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f51/1/16/1f449.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\">👉</span></span><strong><span style=\"background-color: #ffff00; color: #800000;\"> 1000 C&Acirc;U GIAO TIẾP \"HỌC 1 LẦN D&Ugrave;NG GIAO TIẾP CẢ ĐỜI\"</span></strong></p>\n" +
-"<p style=\"text-align: justify;\">Click v&agrave;o <a href=\"http://bit.ly/2iizyRp\"><strong><span style=\"color: #0000ff;\">Đ&Acirc;Y</span> </strong></a>để tải t&agrave;i liệu, 1000 C&Acirc;U GIAO TIẾP chỉ d&agrave;nh cho <span style=\"color: #ff0000;\"><strong>1000 lượt tải</strong></span> th&ocirc;i nh&eacute;, vượt qu&aacute; 1000 l&agrave; ADMIN sẽ ẩn link nha!</p>\n" +
-"<p style=\"text-align: justify;\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/fb0/1/16/1f3af.png\" alt=\"\" width=\"16\" height=\"16\" />&nbsp;<strong><span style=\"color: #ff0000;\">ĐỪNG QU&Ecirc;N</span></strong></p>\n" +
-"<p style=\"text-align: justify;\"><strong>Bước 1</strong>: Đăng k&yacute; k&ecirc;nh YOUTUBE: <a href=\"http://bit.ly/2iizyRp\"><strong><span style=\"color: #ff0000;\">Tiếng Anh Cho Người Việt</span></strong></a></p>\n" +
-"<p style=\"text-align: justify;\"><strong>Bước 2</strong>: Like,&nbsp; Share&nbsp; &nbsp; FANPAGE:&nbsp;<a href=\"http://bit.ly/2iMwgcW\"><span style=\"color: #3366ff;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a></p>\n" +
-"<p style=\"text-align: justify;\">Rất nhiều t&agrave;i liệu sẽ được ưu ti&ecirc;n gửi sớm đến bạn n&agrave;o <strong>thực hiện đủ 2 bước</strong> tr&ecirc;n nh&eacute;</p>\n" +
-"<p style=\"text-align: justify;\">Admin xin ch&acirc;n th&agrave;nh cảm ơn c&aacute;c bạn đ&atilde; ủng hộ ch&uacute;ng t&ocirc;i trong suốt thời gian qua</p>\n" +
-"<p style=\"text-align: justify;\">Ch&uacute;c c&aacute;c bạn ng&agrave;y mới vui vẻ</p>\n" +
-"<p style=\"text-align: justify;\">Ch&acirc;n th&agrave;nh!</p>\n" +
-"<p style=\"text-align: justify;\"><span style=\"color: #3366ff;\"><strong>Tiếng Anh Cho Người Việt</strong></span></p>";
+    static String content = "<p style=\"text-align: justify;\">KH&Ocirc;NG XEM ĐẢM BẢO TIẾC H&Ugrave;I HỤI<br />Admin gửi c&aacute;c bạn <strong>Bộ t&agrave;i liệu 500 mẫu c&acirc;u giao tiếp khi đi phỏng vấn</strong></p>\n" +
+"<p style=\"text-align: justify;\"><br />C&aacute;c bạn click v&agrave;o <a href=\"http://bit.ly/2iizyRp\"><span style=\"color: #ff0000;\"><strong>Đ&Acirc;Y</strong></span></a> download t&agrave;i liệu về học dần nh&eacute; ❤️</p>\n" +
+"<p style=\"text-align: justify;\">Ch&uacute; &yacute;: admin chỉ để link cho 500 bạn download nhanh nhất th&ocirc;i nha, đạt 500 lượt download admin sẽ ẩn link đ&oacute;</p>\n" +
+"<p style=\"text-align: justify;\">Đừng qu&ecirc;n</p>\n" +
+"<p style=\"text-align: justify;\">Đăng k&yacute; k&ecirc;nh youtube: <a href=\"http://bit.ly/2z6n8X1\"><strong><span style=\"color: #ff0000;\">Tiếng Anh Cho Người Việt</span></strong></a></p>\n" +
+"<p style=\"text-align: justify;\">Like, Share Fanpage:&nbsp;<a href=\"http://bit.ly/2iMwgcW\"><strong><span style=\"color: #0000ff;\">Tiếng Anh Cho Người Việt</span></strong></a></p>\n" +
+"<p style=\"text-align: justify;\">Để được ưu ti&ecirc;n gửi mail nhanh nhất sớm nhất tất tần tật c&aacute;c t&agrave;i liệu tiếng anh của ch&uacute;ng t&ocirc;i</p>\n" +
+"<p style=\"text-align: justify;\">Xin ch&acirc;n th&agrave;nh cảm ơn c&aacute;c bạn đ&atilde; ủng hộ ch&uacute;ng t&ocirc;i trong suốt thời gian qua!</p>";
 
     public static void main(String[] args) throws Exception {
 
         //test
-        //mail phai thuoc bang tbl_mail_send
-        String mailSend = "coso7.mshoatoeic@gmail.com";
+        //mail phai thuoc bang tbl_mail_send english.forvn30082017@gmail.com
+        String mailSend = "tienganhchonguoiviet.30082017.1@gmail.com";
         //end test
         System.out.println("--------dia chi mail gui la: "+ mailSend);
         System.out.println("--------dia chi mail gui la: "+ mailSend);
