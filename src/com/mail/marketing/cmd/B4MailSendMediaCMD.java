@@ -53,23 +53,17 @@ public class B4MailSendMediaCMD {
     static String mailSend1 = "noreply@truelife.vn";
     //ten nguoi gui, ten nay se hiển thị trên người gửi đến, 
     //nếu không cấu hình sẽ hiển thị địa chỉ mail gửi
-    static String sendName = "Tiếng Anh giao tiếp Langmaster";
+    static String sendName = "Elight Learning English";
     //tieu de mail
-    static String title = "Toàn bộ 1000 bài học này + Ví dụ minh họa rõ ràng nhất";
+    static String title = " BỘ TÀI LIỆU GỐI ĐẦU GIƯỜNG CỦA CÁC CAO THỦ TIẾNG ANH TỪ CƠ BẢN ĐẾN NÂNG CAO";
     //noi dung mail
-    static String content = "<p style=\"text-align: center;\"><strong>Post mỏi cả tay mới xong hết đống t&agrave;i liệu n&agrave;y</strong>&nbsp;<img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f4c/1/16/1f642.png\" alt=\"\" width=\"16\" height=\"16\" /></p>\n" +
-"<p>~ N&oacute;ng nhất lu&ocirc;n nha<br /><span class=\"_47e3 _5mfr\" title=\"Biểu tượng cảm x&uacute;c smile\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f4c/1/16/1f642.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\" aria-hidden=\"true\">:)</span></span>&nbsp;Bạn n&agrave;o muốn nhận to&agrave;n bộ 1000 b&agrave;i học n&agrave;y + V&iacute; dụ minh họa r&otilde; r&agrave;ng nhất th&igrave;<br /><span class=\"_5mfr _47e3\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f51/1/16/1f449.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\">👉</span></span>&nbsp;Share post n&agrave;y&nbsp;<br /><span class=\"_5mfr _47e3\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f51/1/16/1f449.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\">👉</span></span>&nbsp;Comment email của c&aacute;c bạn nh&eacute;&nbsp;<span class=\"_47e3 _5mfr\" title=\"Biểu tượng cảm x&uacute;c heart\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f6c/1/16/2764.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\" aria-hidden=\"true\">&lt;3</span></span><br />B&acirc;y giờ ad gửi lu&ocirc;n nh&eacute;!&nbsp;<span class=\"_47e3 _5mfr\" title=\"Biểu tượng cảm x&uacute;c heart\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f6c/1/16/2764.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\" aria-hidden=\"true\">&lt;3</span></span>&nbsp;Nhanh nh&eacute;&nbsp;<span class=\"_47e3 _5mfr\" title=\"Biểu tượng cảm x&uacute;c smile\"><img class=\"img\" role=\"presentation\" src=\"https://www.facebook.com/images/emoji.php/v9/f4c/1/16/1f642.png\" alt=\"\" width=\"16\" height=\"16\" /><span class=\"_7oe\" aria-hidden=\"true\">=)</span></span>))</p>\n" +
-"<p><strong>Admin</strong> gửi c&aacute;c bạn link download t&agrave;i liệu bao gồm:</p>\n" +
-"<p>- 200 C&Acirc;U HỎI PHỎNG VẤN BẰNG TIẾNG ANH</p>\n" +
-"<p>-&nbsp;DOWNLOAD TRỌN BỘ 500 C&Acirc;U GIAO TIẾP TIẾNG ANH TH&Ocirc;NG DỤNG</p>\n" +
-"<p>-&nbsp;100 ĐOẠN GIAO TIẾP TIẾNG ANH H&Agrave;NG NG&Agrave;Y</p>\n" +
-"<p>- 200 B&Agrave;I H&Aacute;T TIẾNG ANH HAY NHẤT</p>\n" +
-"<p>Click v&agrave;o <a href=\"http://bit.ly/2xpTLiE\"><span style=\"color: #ff0000;\"><strong>Đ&Acirc;Y</strong></span> </a>để tải t&agrave;i liệu, ch&uacute; &yacute; nhanh tay, admin kh&ocirc;ng share l&acirc;u đ&acirc;u :D, 1000 lượt download l&agrave; admin ẩn link nh&eacute;!</p>\n" +
-"<p>C&aacute;c bạn đăng k&yacute; k&ecirc;nh youtube:&nbsp;<strong><span style=\"color: #ff0000;\"><a style=\"color: #ff0000;\" href=\"https://www.youtube.com/channel/UC3GSyCJ2C2AQBmvJa8J8x8Q\">Tiếng Anh Cho Người Việt</a></span></strong></p>\n" +
-"<p>Like fanpage:&nbsp;<span style=\"color: #0000ff;\"><strong><a style=\"color: #0000ff;\" href=\"https://www.facebook.com/englishforvn/\">Tiếng Anh Cho Người Việt</a></strong></span></p>\n" +
-"<p>Để được ưu ti&ecirc;n gửi mail, nhận t&agrave;i liệu, th&ocirc;ng kh&oacute;a học miễn ph&iacute;</p>\n" +
-"<p>Ch&uacute;ng t&ocirc;i xin ch&acirc;n th&agrave;nh cảm ơn!</p>\n" +
-"<p>&nbsp;</p>";
+    static String content = "<p style=\"text-align: center;\"><em><strong>C&ograve;n bạn n&agrave;o chưa nhận được t&agrave;i liệu của Elight Learning English kh&ocirc;ng?</strong></em></p>\n" +
+"<p style=\"text-align: justify;\">👉 BỘ T&Agrave;I LIỆU \"GỐI ĐẦU GIƯỜNG\" CỦA C&Aacute;C CAO THỦ TIẾNG ANH TỪ CƠ BẢN ĐẾN N&Acirc;NG CAO</p>\n" +
+"<p style=\"text-align: justify;\">👉 Bộ t&agrave;i liệu BAO GỒM:<br />1. PHƯƠNG PH&Aacute;P HỌC TIẾNG ANH CHO NGƯỜI MỚI BẮT ĐẦU<br />2. TẤT TẦN TẬT NHỮNG BỘ T&Agrave;I LIỆU \"Đ&Aacute;NG ĐỒNG TIỀN B&Aacute;T GẠO\" m&agrave; bạn c&oacute; thể bỏ c&ocirc;ng sức để học.</p>\n" +
+"<p style=\"text-align: justify;\">Nếu chưa nhận được t&agrave;i liệu c&aacute;c bạn click v&ocirc; <a href=\"http://bit.ly/2hyJBlZ\"><span style=\"color: #ff0000; background-color: #ffffff;\"><strong>Đ&Acirc;Y</strong></span> </a>để download t&agrave;i liệu nh&eacute;! C&oacute; rất nhiều t&agrave;i liệu để ch&uacute;ng ta học cả đời m&agrave; kh&ocirc;ng hết.</p>\n" +
+"<p style=\"text-align: justify;\"><strong>Ch&uacute; &yacute;</strong>: <span style=\"background-color: #ffff00;\">Danh s&aacute;ch t&agrave;i liệu ở phần m&ocirc; tả của mỗi video</span></p>\n" +
+"<p style=\"text-align: justify;\">Đăng k&yacute;, Like , Share k&ecirc;nh Youtube: <a href=\"http://bit.ly/2z6n8X1\"><strong><span style=\"color: #ff0000;\">Tiếng Anh Cho Người Việt</span></strong></a> , Fanpage: <strong><span style=\"color: #0000ff;\"><a style=\"color: #0000ff;\" href=\"http://bit.ly/2iMwgcW\">Tiếng Anh Cho Người Việt</a></span></strong> để theo d&otilde;i cập nhật c&aacute;c t&agrave;i liệu mới nhất từ k&ecirc;nh v&agrave; fanpage nha cả nh&agrave;!</p>\n" +
+"<p style=\"text-align: justify;\">Admin cảm ơn c&aacute;c bạn đ&atilde; ủng hộ!</p>";
 
     public static void main(String[] args) {
         try {
@@ -84,7 +78,7 @@ public class B4MailSendMediaCMD {
             Date d = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HH-mm-ss");
             String dateCreate = sdf.format(d);
-            String filename = "xxx-mail-to-" + dateCreate;
+            //String filename = "xxx-mail-to-" + dateCreate;
             for (Mail to : lst) {
                 try {
 
