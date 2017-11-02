@@ -53,17 +53,26 @@ public class B4MailSendMediaCMD {
     static String mailSend1 = "noreply@truelife.vn";
     //ten nguoi gui, ten nay se hiển thị trên người gửi đến, 
     //nếu không cấu hình sẽ hiển thị địa chỉ mail gửi
-    static String sendName = "Elight Learning English";
+    static String sendName = "Ms Hoa Toeic - Sứ giả truyền cảm hứng";
     //tieu de mail
-    static String title = " BỘ TÀI LIỆU GỐI ĐẦU GIƯỜNG CỦA CÁC CAO THỦ TIẾNG ANH TỪ CƠ BẢN ĐẾN NÂNG CAO";
+    static String title = "2 Khóa học FREE hot nhất năm";
     //noi dung mail
-    static String content = "<p style=\"text-align: center;\"><em><strong>C&ograve;n bạn n&agrave;o chưa nhận được t&agrave;i liệu của Elight Learning English kh&ocirc;ng?</strong></em></p>\n" +
-"<p style=\"text-align: justify;\">👉 BỘ T&Agrave;I LIỆU \"GỐI ĐẦU GIƯỜNG\" CỦA C&Aacute;C CAO THỦ TIẾNG ANH TỪ CƠ BẢN ĐẾN N&Acirc;NG CAO</p>\n" +
-"<p style=\"text-align: justify;\">👉 Bộ t&agrave;i liệu BAO GỒM:<br />1. PHƯƠNG PH&Aacute;P HỌC TIẾNG ANH CHO NGƯỜI MỚI BẮT ĐẦU<br />2. TẤT TẦN TẬT NHỮNG BỘ T&Agrave;I LIỆU \"Đ&Aacute;NG ĐỒNG TIỀN B&Aacute;T GẠO\" m&agrave; bạn c&oacute; thể bỏ c&ocirc;ng sức để học.</p>\n" +
-"<p style=\"text-align: justify;\">Nếu chưa nhận được t&agrave;i liệu c&aacute;c bạn click v&ocirc; <a href=\"http://bit.ly/2hyJBlZ\"><span style=\"color: #ff0000; background-color: #ffffff;\"><strong>Đ&Acirc;Y</strong></span> </a>để download t&agrave;i liệu nh&eacute;! C&oacute; rất nhiều t&agrave;i liệu để ch&uacute;ng ta học cả đời m&agrave; kh&ocirc;ng hết.</p>\n" +
-"<p style=\"text-align: justify;\"><strong>Ch&uacute; &yacute;</strong>: <span style=\"background-color: #ffff00;\">Danh s&aacute;ch t&agrave;i liệu ở phần m&ocirc; tả của mỗi video</span></p>\n" +
-"<p style=\"text-align: justify;\">Đăng k&yacute;, Like , Share k&ecirc;nh Youtube: <a href=\"http://bit.ly/2z6n8X1\"><strong><span style=\"color: #ff0000;\">Tiếng Anh Cho Người Việt</span></strong></a> , Fanpage: <strong><span style=\"color: #0000ff;\"><a style=\"color: #0000ff;\" href=\"http://bit.ly/2iMwgcW\">Tiếng Anh Cho Người Việt</a></span></strong> để theo d&otilde;i cập nhật c&aacute;c t&agrave;i liệu mới nhất từ k&ecirc;nh v&agrave; fanpage nha cả nh&agrave;!</p>\n" +
-"<p style=\"text-align: justify;\">Admin cảm ơn c&aacute;c bạn đ&atilde; ủng hộ!</p>";
+    static String content = "<p style=\"text-align: center;\"><span style=\"color: #0000ff;\"><strong>ĐĂNG K&Yacute; KH&Oacute;A HỌC TOEIC MIỄN PH&Iacute; TẠI MS.HOA TOEIC</strong></span></p>\n" +
+"<p style=\"text-align: justify;\"><span style=\"color: #000000;\">Thay lời tri &acirc;n đến tất cả c&aacute;c bạn đ&atilde; ủng hộ ch&uacute;ng t&ocirc;i trong suốt thời gian qua,Ms.Hoa xin gửi tới tất cả mọi người 2 kh&oacute;a học đặc biệt <strong>MIỄN PH&Iacute;</strong> v&agrave; c&oacute; <strong>GIỚI HẠN</strong> số lượng.</span></p>\n" +
+"<p style=\"text-align: justify;\"><span style=\"color: #000000;\">Nhanh tay thực hiện đủ <strong>3 bước</strong> sau:</span></p>\n" +
+"<p style=\"text-align: justify;\"><span style=\"color: #000000;\"><strong>Bước 1</strong>: Đăng k&yacute; k&ecirc;nh Youtube: <a href=\"http://bit.ly/2iizyRp\"><strong><span style=\"color: #ff0000;\">Tiếng Anh Cho Người Việt</span></strong></a></span></p>\n" +
+"<p style=\"text-align: justify;\"><span style=\"color: #000000;\"><strong><span style=\"color: #ff0000;\">http://bit.ly/2iizyRp</span></strong></span></p>\n" +
+"<p style=\"text-align: justify;\"><span style=\"color: #000000;\"><strong>Bước 2</strong>: Like fanpage: <a href=\"http://bit.ly/2iMwgcW\"><strong><span style=\"color: #0000ff;\">Tiếng Anh Cho Người Việt</span></strong></a></span></p>\n" +
+"<p style=\"text-align: justify;\"><span style=\"color: #000000;\"><strong><span style=\"color: #0000ff;\">http://bit.ly/2iMwgcW</span></strong></span></p>\n" +
+"<p style=\"text-align: justify;\"><strong>Bước 3</strong>: Click v&agrave;o <a href=\"https://goo.gl/forms/c2b8bGFMghLqzCdr2\"><strong><span style=\"color: #0000ff;\">Đ&Acirc;Y</span></strong></a> điền v&agrave;o form đăng k&yacute; chi tiết v&agrave; ch&iacute;nh x&aacute;c nhất nha!</p>\n" +
+"<p style=\"text-align: justify;\">Ch&uacute;ng t&ocirc;i sẽ li&ecirc;n hệ sớm nhất với c&aacute;c bạn l&agrave;m <strong>đủ 3 bước tr&ecirc;n</strong> theo số điện thoại hoặc email để th&ocirc;ng b&aacute;o hướng dẫn tham gia kh&oacute;a học.&nbsp;</p>\n" +
+"<p style=\"text-align: center;\">&nbsp; <span style=\"color: #ff0000;\"><strong>&nbsp;TH&Ocirc;NG TIN CHI TIẾT 2 KH&Oacute;A HỌC</strong></span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>\n" +
+"<h1 class=\"title\"><span style=\"font-size: 10pt; color: #ff0000;\">Kh&oacute;a học TOEIC A (MỤC TI&Ecirc;U 500-550+)</span></h1>\n" +
+"<p style=\"text-align: justify;\"><span style=\"font-size: 10pt;\"><strong>ĐIỀU KIỆN ĐẦU V&Agrave;O:</strong>&nbsp;Kh&oacute;a học ph&ugrave; hợp cho những bạn&nbsp;đ&atilde; c&oacute; kiến thức cơ bản về Tiếng Anh nhưng chưa&nbsp;được hệ thống b&agrave;i bản theo Format chuẩn&nbsp;TOEIC.&nbsp;Điểm&nbsp;đầu v&agrave;o&nbsp;<strong>tối thiểu 350/990</strong>&nbsp;thi thử tại Ms Hoa TOEIC hoặc&nbsp;đ&atilde; c&oacute;&nbsp;điểm thi tại IIG Việt Nam kh&ocirc;ng qu&aacute; 4 th&aacute;ng</span></p>\n" +
+"<p style=\"text-align: justify;\"><span style=\"font-size: 10pt;\"><strong>MỤC TI&Ecirc;U ĐẦU RA:&nbsp;</strong><strong>500-550+ điểm</strong>&nbsp;<strong>(Hoặc tăng &iacute;t nhất&nbsp;150-200 điểm&nbsp;so với điểm đầu v&agrave;o)</strong></span></p>\n" +
+"<h1 class=\"title\"><span style=\"font-size: 10pt; color: #ff0000;\">Kh&oacute;a học TOEIC B (MỤC TI&Ecirc;U 650-750+)</span></h1>\n" +
+"<p style=\"text-align: justify;\"><span style=\"font-size: 10pt;\"><strong>Kh&oacute;a học TOEIC B</strong>&nbsp;được thiết kế d&agrave;nh cho đối tượng học vi&ecirc;n&nbsp;đ&atilde; nắm kh&aacute; vững kiến thức cơ bản, khả năng nghe kh&aacute; tốt v&agrave; mong muốn chinh phục TOEIC&nbsp;ở mục ti&ecirc;u cao nhất.</span><br /><br /><span style=\"font-size: 10pt;\"><strong>ĐIỀU KIỆN ĐẦU V&Agrave;O:</strong>&nbsp;<strong>Tối thiểu 500/990&nbsp;điểm</strong>. Thi thử tại Ms Hoa TOEIC hoặc c&oacute;&nbsp;điểm ch&iacute;nh thức từ IIG Việt Nam kh&ocirc;ng qu&aacute; 4 th&aacute;ng.</span></p>\n" +
+"<p style=\"text-align: justify;\"><span style=\"font-size: 10pt;\"><strong>MỤC TI&Ecirc;U ĐẦU RA:&nbsp;650-750+ điểm</strong>&nbsp;<strong>(Hoặc CAM KẾT</strong>&nbsp;<strong>tăng&nbsp;&iacute;t nhất&nbsp;150 - 200 điểm&nbsp;so với điểm đầu v&agrave;o).&nbsp;</strong></span></p>";
 
     public static void main(String[] args) {
         try {
