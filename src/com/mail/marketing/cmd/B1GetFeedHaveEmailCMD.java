@@ -30,7 +30,6 @@ public class B1GetFeedHaveEmailCMD {
     //tham so truyen vao
     //private static String fromDateUI = "2017-10-23";
     //private static String token = "EAACEdEose0cBAAylZB1wY2jB8GdWWHsjrCMp6E4InDkMWHAUoIdQI4HNoGUcybKsZB0cJh3ZCBaDJHhYHurlQTdoOUezBUO2yxR1wdUVMNynPYbd3W3663pwZBB1RZCz4JMeBUzMytHDt2WCCrtw3GN5Rf48RFivIRGFLQSY0h6ZArfNFZBD9kALWqDchOGHV4ZD";
-
     public static void main(String[] args) throws Exception {
         //sau file jar la tham so truyen vao bat dau tu tham so args[0]
         // thu thap bai viet cua fanpage dang tu ngay truyen vao den ngay hien tai
@@ -49,35 +48,38 @@ public class B1GetFeedHaveEmailCMD {
         Date fromDate = sdf.parse(fromDateUI);
         int count = 0;
         for (FaceBook fg : lst) {
-            //lay thong tin trang
-            Page page = fanPageAction.getPageInfoById(token, fg.getIdFacebook());
-            System.out.println("------------------duyet qua trang: "+ page.getName());
-            //lay danh sach bai da dang tu ngay fromDate truyen vao den hien tai
-            ArrayList<Feed> lstFeed = fanPageAction.getFeed(token, page.getId(), fromDate);
-            //lay danh sach binh luan theo bai dang
-            String mail = null;
-            for (Feed f : lstFeed) {
-                ArrayList<Comment> comments = fanPageAction.getComments(token, f.getId());
-                for (Comment c : comments) {
-                    //lay noi dung binh luan
-                    String comment = c.getContentComment();
-                    //neu binh luan co chua gmail
-                    if (comment.contains("@gmail.com")) {
-                        //kiem tra id_feed da ton tai trong bang tbl_feed hay chua
-                        if (!checkFeedExisted(f)) {
-                            //khoi tao doi tuong insert
-                            FeedEntity feedEntity = initFeedEntity(f, page);
-                            //insert thong tin bai viet vao bang tbl_feed
-                            FeedEntityDao.insert(feedEntity);
-                            System.out.println("-----thu thap duoc bai viet: " + feedEntity.getIdFeed() + "tu fanpage" + feedEntity.getFanpageName());
-                            System.out.println("-----tong so bai viet thu thap duoc: " + count++);
+            try {
+                //lay thong tin trang
+                Page page = fanPageAction.getPageInfoById(token, fg.getIdFacebook());
+                System.out.println("------------------duyet qua trang: " + page.getName());
+                //lay danh sach bai da dang tu ngay fromDate truyen vao den hien tai
+                ArrayList<Feed> lstFeed = fanPageAction.getFeed(token, page.getId(), fromDate);
+                //lay danh sach binh luan theo bai dang
+                String mail = null;
+                for (Feed f : lstFeed) {
+                    ArrayList<Comment> comments = fanPageAction.getComments(token, f.getId());
+                    for (Comment c : comments) {
+                        //lay noi dung binh luan
+                        String comment = c.getContentComment();
+                        //neu binh luan co chua gmail
+                        if (comment.contains("@gmail.com")) {
+                            //kiem tra id_feed da ton tai trong bang tbl_feed hay chua
+                            if (!checkFeedExisted(f)) {
+                                //khoi tao doi tuong insert
+                                FeedEntity feedEntity = initFeedEntity(f, page);
+                                //insert thong tin bai viet vao bang tbl_feed
+                                FeedEntityDao.insert(feedEntity);
+                                System.out.println("-----thu thap duoc bai viet: " + feedEntity.getIdFeed() + "tu fanpage" + feedEntity.getFanpageName());
+                                System.out.println("-----tong so bai viet thu thap duoc: " + count++);
+                            }
                         }
                     }
+
                 }
+                System.out.println("-----tong so bai viet thu thap duoc: " + count);
+            } catch (Exception ex) {
 
             }
-            System.out.println("-----tong so bai viet thu thap duoc: " + count);
-
         }
         System.out.println("                    -----*****-----**********************-------------------------------*****----");
         System.out.println("                    -----*****-----CHUONG TRINH ExtractFeedHaveCommentEmail KET THUC!---*****----");
