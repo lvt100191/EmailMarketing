@@ -49,6 +49,8 @@ public class CheckMailSend extends javax.swing.JFrame {
         btExit = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtCheckTime = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtSumMailSend = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Kiểm tra mail gửi");
@@ -78,6 +80,8 @@ public class CheckMailSend extends javax.swing.JFrame {
 
         jLabel3.setText("Điều kiện: (thời gian hiện tại - thời gian gửi gần nhất) >=");
 
+        jLabel4.setText("Tổng số mail gửi");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,23 +92,27 @@ public class CheckMailSend extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
+                                .addGap(36, 36, 36)
                                 .addComponent(btCheckMailSend)
-                                .addGap(72, 72, 72)
+                                .addGap(74, 74, 74)
                                 .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel1))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(45, 45, 45)
-                                .addComponent(txtNumMailSend))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCheckTime)))
+                                .addComponent(txtCheckTime))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4))
+                                .addGap(45, 45, 45)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtSumMailSend)
+                                    .addComponent(txtNumMailSend))))
                         .addGap(0, 29, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -116,8 +124,12 @@ public class CheckMailSend extends javax.swing.JFrame {
                     .addComponent(txtCheckTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtSumMailSend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -126,7 +138,7 @@ public class CheckMailSend extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btCheckMailSend)
                     .addComponent(btExit))
-                .addGap(21, 21, 21))
+                .addContainerGap())
         );
 
         pack();
@@ -138,43 +150,52 @@ public class CheckMailSend extends javax.swing.JFrame {
     }//GEN-LAST:event_btExitActionPerformed
 
     private void btCheckMailSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCheckMailSendActionPerformed
-        txtAreaListMailSend.setText(null);
-        txtNumMailSend.setText("0");
-        String lstMailSend = "";
-        int count = 0;
-        if (txtCheckTime.getText() == null || txtCheckTime.getText().isEmpty()) {
-            lstMailSend = lstMailSend + "Yêu cầu nhập: \n[Điều kiện: (thời gian hiện tại - thời gian gửi gần nhất) >=]";
-        } else {
-            int CHECK_TIME = Integer.parseInt(txtCheckTime.getText().trim());
+        try {
+            txtAreaListMailSend.setText(null);
+            txtNumMailSend.setText("0");
+            txtSumMailSend.setText("0");
+            ArrayList<MailSend> lst = MailSendDao.getListMailSend();
+            if (lst != null && lst.size() > 0) {
+                txtSumMailSend.setText(String.valueOf(lst.size()));
+            }
+            String lstMailSend = "";
+            int count = 0;
+            if (txtCheckTime.getText() == null || txtCheckTime.getText().isEmpty()) {
+                lstMailSend = lstMailSend + "Yêu cầu nhập: \n[Điều kiện: (thời gian hiện tại - thời gian gửi gần nhất) >=]";
+            } else {
+                int CHECK_TIME = Integer.parseInt(txtCheckTime.getText().trim());
 
-            try {
-                //lay ra danh sach mail gui
-                ArrayList<MailSend> lstSend = MailSendDao.getListMailSend();
-                for (MailSend mailSend : lstSend) {
-                    //neu gia tri mailSend.getLastTime() khac null va khac ""
-                    if (mailSend.getLastTime() != null && !mailSend.getLastTime().isEmpty()) {
-                        boolean checkTimeSend = checkRunTime(mailSend.getLastTime(), CHECK_TIME);
-                        //thoi gian thoa man gui mail
-                        if (checkTimeSend) {
+                try {
+                    //lay ra danh sach mail gui
+                    ArrayList<MailSend> lstSend = MailSendDao.getListMailSend();
+                    for (MailSend mailSend : lstSend) {
+                        //neu gia tri mailSend.getLastTime() khac null va khac ""
+                        if (mailSend.getLastTime() != null && !mailSend.getLastTime().isEmpty()) {
+                            boolean checkTimeSend = checkRunTime(mailSend.getLastTime(), CHECK_TIME);
+                            //thoi gian thoa man gui mail
+                            if (checkTimeSend) {
+                                count++;
+                                lstMailSend = lstMailSend + mailSend.getEmail().trim() + " \n";
+                            }
+                        } else {
                             count++;
                             lstMailSend = lstMailSend + mailSend.getEmail().trim() + " \n";
                         }
-                    } else {
-                        count++;
-                        lstMailSend = lstMailSend + mailSend.getEmail().trim() + " \n";
-                    }
 
+                    }
+                    if (count > 0) {
+                        txtNumMailSend.setText(String.valueOf(count));
+                    } else {
+                        lstMailSend = "Không có kết quả thỏa mãn";
+                    }
+                } catch (Exception ex) {
+                    Logger.getLogger(SendMail.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                if (count > 0) {
-                    txtNumMailSend.setText(String.valueOf(count));
-                }else{
-                    lstMailSend ="Không có kết quả thỏa mãn";
-                }
-            } catch (Exception ex) {
-                Logger.getLogger(SendMail.class.getName()).log(Level.SEVERE, null, ex);
             }
+            txtAreaListMailSend.setText(lstMailSend);
+        } catch (Exception ex) {
+            Logger.getLogger(CheckMailSend.class.getName()).log(Level.SEVERE, null, ex);
         }
-        txtAreaListMailSend.setText(lstMailSend);
 
     }//GEN-LAST:event_btCheckMailSendActionPerformed
 
@@ -219,10 +240,12 @@ public class CheckMailSend extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtAreaListMailSend;
     private javax.swing.JTextField txtCheckTime;
     private javax.swing.JTextField txtNumMailSend;
+    private javax.swing.JTextField txtSumMailSend;
     // End of variables declaration//GEN-END:variables
 
     private boolean checkRunTime(String lastDate, int days) throws ParseException {
