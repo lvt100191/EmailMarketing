@@ -442,7 +442,7 @@ public class SendMail extends javax.swing.JFrame {
 //            return true;
 //        }
         //truong hop ngay hien tai la ngay endDate + lớn hơn hoặc =2 ngày
-        if (Integer.parseInt(curDate) - Integer.parseInt(endDate) >= 2) {
+        if (Integer.parseInt(curDate) - Integer.parseInt(endDate) >= 3) {
             return true;
         }
         //truong hop 20171101 - 20171031 >=2 nhưng thời gian lại chưa thỏa mãn vì nó rơi vào trường hợp hôm qua và hôm nay
