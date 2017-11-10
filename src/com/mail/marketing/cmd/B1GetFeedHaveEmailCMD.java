@@ -72,6 +72,7 @@ public class B1GetFeedHaveEmailCMD {
                                 System.out.println("-----thu thap duoc bai viet: " + feedEntity.getIdFeed() + "tu fanpage" + feedEntity.getFanpageName());
                                 System.out.println("-----tong so bai viet thu thap duoc: " + count++);
                             }
+                            break;
                         }
                     }
 

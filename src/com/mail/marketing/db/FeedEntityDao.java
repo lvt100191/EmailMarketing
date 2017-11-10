@@ -151,15 +151,17 @@ public class FeedEntityDao {
                     + "(id_feed,"
                     + "content_feed,"
                     + "create_date,"
+                    + "create_time_feed,"                   
                     + "id_fanpage,"
                     + "fanpage_name) "
-                    + "VALUES (?,?,?,?,?);";
+                    + "VALUES (?,?,?,?,?,?);";
             pst = c.prepareStatement(query);
             pst.setString(1, feedEntity.getIdFeed());
             pst.setString(2, feedEntity.getContentFeed());
             pst.setString(3, feedEntity.getCreateDate());
-            pst.setString(4, feedEntity.getIdFanpage());
-            pst.setString(5, feedEntity.getFanpageName());
+            pst.setString(4, feedEntity.getCreateTimeFeed());
+            pst.setString(5, feedEntity.getIdFanpage());
+            pst.setString(6, feedEntity.getFanpageName());
             pst.executeUpdate();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
