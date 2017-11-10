@@ -33,7 +33,7 @@ import java.util.regex.Pattern;
 public class B2ExtractMailByFeedCMD {
 
     //tham so truyen vao
-    //private static String token = "EAACEdEose0cBAJH8FXLmfJyFzgijTJtMzF6lNiqideQw0fiQdRIgTNZB2rZBLmsZCymLq76ItI6BZCe5jofsfRpQWPS1iWZBU96zmxrnWesOfGZAxPVygOMj1xSvzZCOJ66YEVE4r3LnyhnQ0c4qn28ZCcMJAOT9NjRY62LuDQfQam2BoI3dAqwoNbhKiGVZAcAwZD";
+    //private static String token = "EAACEdEose0cBAAm24fJtdH17Y7zaTOGMeiZBWr5A7ZCFhddIKDY57KftLJPs4GgiGrni9oZAbA3DTZBG6yBHEqK9gmKvZARxd4Nt98Of07Ogdk7mEZC82d2DuMRHSjUv2Xt0P0yNZBLplOSZCigvmxS4QO44JgVepZCqkPPxIcFdy52U4CNZBFocZAulhu4oy2AZB1AZD";
     //so luong ban ghi lay ra tu bang tbl_feed
     //private static String numFeed = "1000";
     public static void main(String[] args) throws Exception {
@@ -79,9 +79,13 @@ public class B2ExtractMailByFeedCMD {
                             //kiem tra dieu kien truoc khi insert vao db
                             //truong hop mail ko bi chan va mail chua co trong
                             //bang tbl_mail
+                            if (mail !=null){
+                                mail = mail.trim();
+                                mail = mail.toLowerCase();
+                            }
                             if (!checkMailBlock(mail) && checkAddressMail(mail)) {
                                 //kiem tra mail đã tồn tại trong bảng tbl_mail
-                                Mail mailDB = MailDao.getByEmail(mail.trim());
+                                Mail mailDB = MailDao.getByEmail(mail);
                                 if (mailDB == null) {//mail chua ton tai trong tbl_mail
                                     System.out.println("mail: " + mail + " chua ton tai trong bang tbl_mail, insert vao bang tbl_mail va tbl_feed_mail");
                                     //khoi tao doi tuong mail
