@@ -189,10 +189,17 @@ public class FanPageAction {
                 String rsCommentNext = ResponseUtil.sendGet(rsNext.toString());
                 parser = new JSONParser();
                 JSONObject objComments = (JSONObject) parser.parse(rsCommentNext);
-                String rsPaging = objComments.get("paging").toString();
-                parser = new JSONParser();
-                JSONObject objPaging = (JSONObject) parser.parse(rsPaging);
-                rsNext = objPaging.get("next");
+                Object paging = objComments.get("paging");
+                if (paging != null) {
+                    String rsPaging = objComments.get("paging").toString();
+                    parser = new JSONParser();
+                    JSONObject objPaging = (JSONObject) parser.parse(rsPaging);
+                    rsNext = objPaging.get("next");
+                }
+//                String rsPaging = objComments.get("paging").toString();
+//                parser = new JSONParser();
+//                JSONObject objPaging = (JSONObject) parser.parse(rsPaging);
+//                rsNext = objPaging.get("next");
                 JSONArray dataComments = (JSONArray) objComments.get("data");
 
                 if (dataComments != null && dataComments.size() > 0) {
