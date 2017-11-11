@@ -56,7 +56,7 @@ public class MailBlockDao {
 
             String query = "SELECT * FROM  " + MailBlock.TABLE_NAME
                     + " WHERE "
-                    + " EMAIL_BLOCK = ?; ";
+                    + " LOWER(EMAIL_BLOCK) = ?; ";
             pst = c.prepareStatement(query);
             pst.setString(1, email);
             rs = pst.executeQuery();

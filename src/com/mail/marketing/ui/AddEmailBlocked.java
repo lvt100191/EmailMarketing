@@ -134,6 +134,7 @@ public class AddEmailBlocked extends javax.swing.JFrame {
         try {
             for (String mailLock : lstMailBlocked) {
             //kiem tra mail da ton tai trong bang tbl_mail_blocked hay chua
+            mailLock = mailLock.toLowerCase();
             if(!checkMailBlocked(mailLock.trim())){
              //tim mail trong bang tbl_mail lay ra id cua ban ghi
              Mail m = MailDao.getByEmail(mailLock);
