@@ -126,7 +126,7 @@ public class MailDao {
 
             String query = "SELECT * FROM  " + Mail.TABLE_NAME
                     + " WHERE "
-                    + " EMAIL = ?; ";
+                    + " LOWER(EMAIL) = ?; ";
             pst = c.prepareStatement(query);
             pst.setString(1, email);
             rs = pst.executeQuery();
