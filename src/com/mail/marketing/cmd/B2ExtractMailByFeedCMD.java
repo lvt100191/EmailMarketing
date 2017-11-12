@@ -42,6 +42,14 @@ public class B2ExtractMailByFeedCMD {
         //String numFeed = args[0].trim();
         //token cua user facebook developer
         //String token = args[1].trim();
+        System.out.println("----Thu thap email tu bai viet-----------");
+        System.out.println("----Thu thap email tu bai viet-----------");
+        System.out.println("----Thu thap email tu bai viet-----------");
+        System.out.println("----Thu thap email tu bai viet-----------");
+        System.out.println("----Thu thap email tu bai viet-----------");
+        System.out.println("----Thu thap email tu bai viet-----------");
+        System.out.println("----Thu thap email tu bai viet-----------");
+        System.out.println("----Thu thap email tu bai viet-----------");
 
         Config cfg = new Config();
         String token = cfg.USER_ACCESS_TOKEN;
@@ -79,7 +87,7 @@ public class B2ExtractMailByFeedCMD {
                             //kiem tra dieu kien truoc khi insert vao db
                             //truong hop mail ko bi chan va mail chua co trong
                             //bang tbl_mail
-                            if (mail !=null){
+                            if (mail != null) {
                                 mail = mail.trim();
                                 mail = mail.toLowerCase();
                             }

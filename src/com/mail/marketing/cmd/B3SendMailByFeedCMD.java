@@ -50,10 +50,20 @@ public class B3SendMailByFeedCMD {
     static String statusFeedMailSent = "2";
     //so luong toi da mail lay ra de gui trong bang tbl_mail
     static String numMaxMailTo = "100";
+
     //truoc khi chay phai cau hinh lai file config.properties
     public static void main(String[] args) throws Exception {
         //lay dia chi mail gui truyen vao tu cmd
         //String mailSend = args[0].trim();
+        System.out.println("--------Gui email theo bai viet--------------");
+        System.out.println("--------Gui email theo bai viet--------------");
+        System.out.println("--------Gui email theo bai viet--------------");
+        System.out.println("--------Gui email theo bai viet--------------");
+        System.out.println("--------Gui email theo bai viet--------------");
+        System.out.println("--------Gui email theo bai viet--------------");
+        System.out.println("--------Gui email theo bai viet--------------");
+        System.out.println("--------Gui email theo bai viet--------------");
+
         Config cfg = new Config();
         String mailSend = cfg.MAIL_SEND;
         String idTblFeed = cfg.ID_TBL_FEED;
@@ -63,7 +73,7 @@ public class B3SendMailByFeedCMD {
         System.out.println("--------dia chi mail gui la: " + mailSend);
         //lay email tu bai viet chua gui mail theo bai viet status_feed_mail=1, moi lan gui lay max 100 mail de gui
         //select * from tbl_mail where id in (select  id_tbl_mail from tbl_feed_mail where id_tbl_feed=38) and status_feed_mail=1 limit 100
-         ArrayList<Mail> lst = MailDao.getMailFromTblFeed(idTblFeed, statusFeedMailSend, numMaxMailTo);
+        ArrayList<Mail> lst = MailDao.getMailFromTblFeed(idTblFeed, statusFeedMailSend, numMaxMailTo);
         //test
 //        ArrayList<Mail> lst = new ArrayList<>();
 //        Mail mx = new Mail();

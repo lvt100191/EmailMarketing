@@ -36,6 +36,17 @@ public class B1GetFeedHaveEmailCMD {
         //String fromDateUI = args[0];
         //token cua user deverloper
         //String token = args[1];
+        System.out.println("------Thu thap bai viet--------: ");
+        System.out.println("------Thu thap bai viet--------: ");
+        System.out.println("------Thu thap bai viet--------: ");
+        System.out.println("------Thu thap bai viet--------: ");
+        System.out.println("------Thu thap bai viet--------: ");
+        System.out.println("------Thu thap bai viet--------: ");
+        System.out.println("------Thu thap bai viet--------: ");
+        System.out.println("------Thu thap bai viet--------: ");
+        System.out.println("------Thu thap bai viet--------: ");
+        System.out.println("------Thu thap bai viet--------: ");
+        System.out.println("------Thu thap bai viet--------: ");
         Config cfg = new Config();
         String token = cfg.USER_ACCESS_TOKEN;
         String fromDateUI = cfg.FROM_DATE;
