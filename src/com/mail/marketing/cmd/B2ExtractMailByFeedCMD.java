@@ -69,7 +69,7 @@ public class B2ExtractMailByFeedCMD {
         int countFeed = 1;
         for (FeedEntity f : lstFeed) {
             System.out.println("--------------------------duyet qua bai viet thu: " + countFeed++);
-            System.out.println("--------------------------id cua bai viet: " + f.getIdFeed() + " cua trang: " + f.getFanpageName());
+            //System.out.println("--------------------------id cua bai viet: " + f.getIdFeed() + " cua trang: " + f.getFanpageName());
             ArrayList<Comment> comments = fanPageAction.getComments(token, f.getIdFeed());
             for (Comment c : comments) {
                 //lay noi dung binh luan
