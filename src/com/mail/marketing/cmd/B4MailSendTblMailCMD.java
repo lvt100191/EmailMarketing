@@ -54,10 +54,15 @@ public class B4MailSendTblMailCMD {
     //nếu không cấu hình sẽ hiển thị địa chỉ mail gửi
     static String sendName = "Ms Hoa Toeic - Sứ giả truyền cảm hứng";
     //tieu de mail
-    static String title = "Miễn Phí khóa học Tiếng Anh cho các bạn nhỏ từ 4 - 14 tuổi";
+    static String title = "Kênh tổng hợp tất tần tật tài liệu theo chủ đề";
     //noi dung mail
-    static String content = "<p style=\"text-align: justify;\">Th&aacute;ng 11 Ms Hoa Toeic tổ chức học thử Miễn Ph&iacute; Tiếng Anh cho c&aacute;c bạn nhỏ từ 4 - 14 tuổi với phương ph&aacute;p Phản Xạ Vận động, học tiếng Anh theo hướng to&agrave;n diện tại Trường Anh ngữ Happy Garden n&egrave; cả nh&agrave;.<br />Nhanh tay đăng k&yacute; cho con em m&igrave;nh theo link ở phần m&ocirc; tả của video sau nh&eacute; cả nh&agrave;.<br />Like, share b&agrave;i viết đến tất cả mọi người nh&eacute;. ADMIN cảm ơn cả nh&agrave; nhiều!</p>\n"
-            + "<p>Click v&agrave;o <span style=\"color: #3366ff;\"><strong><a style=\"color: #3366ff;\" href=\"http://bit.ly/2iizyRp\">Đ&Acirc;Y</a> </strong></span>để đăng k&yacute;.</p>";
+    static String content = "<p style=\"text-align: justify;\">C&aacute;c em ơi ủng hộ k&ecirc;nh youtube mới của c&ocirc; nh&eacute;! <a href=\"https://goo.gl/aWrRM9\"><span style=\"color: #ff0000;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a> l&agrave; k&ecirc;nh youtube tổng hợp tất tần tật t&agrave;i liệu từ a-z, từ z đến vv...</p>\n" +
+"<p style=\"text-align: justify;\">Mỗi video sẽ giới thiệu tổng quan về một chủ đề, tại phần m&ocirc; tả sẽ c&oacute; link download tất cả t&agrave;i liệu m&agrave; c&ocirc; sưu tập được, t&agrave;i liệu sẽ ng&agrave;y một phong ph&uacute; v&agrave; đa dạng, đặc biệt hứa hẹn sẽ x&acirc;y dựng một kho t&agrave;i liệu m&agrave; c&aacute;c bạn học cả đời kh&ocirc;ng hết</p>\n" +
+"<p style=\"text-align: justify;\">Đừng qu&ecirc;n đăng k&yacute; v&agrave; chia sẻ k&ecirc;nh Youtube:<a href=\"https://goo.gl/RiY2S6\"><span style=\"color: #ff0000;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a></p>\n" +
+"<p style=\"text-align: justify;\">Like fanpage&nbsp;<a href=\"https://goo.gl/AvHdwi\"><span style=\"color: #3366ff;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a> để theo d&otilde;i những t&agrave;i liệu mới cập nhật của c&ocirc; nha!</p>\n" +
+"<p style=\"text-align: justify;\">Tại k&ecirc;nh youtube hoặc fanpage c&ocirc; sẽ sưu tập kh&oacute;a học free cho c&aacute;c bạn n&agrave;o đăng k&yacute; k&ecirc;nh youtube thay lời tri &acirc;n, h&atilde;y nhanh tay v&agrave; đừng bỏ lỡ.</p>\n" +
+"<p style=\"text-align: justify;\">Cảm ơn c&aacute;c em nhiều!</p>\n" +
+"<p>&nbsp;</p>";
 
     public static void main(String[] args) {
         String mailSend1 = args[0].trim();

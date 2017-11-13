@@ -111,7 +111,7 @@ public class B2ExtractMailByFeedCMD {
                                         FeedMailDao.insert(fm);
                                     }
                                 } else {//truong hop mail da ton tai trong tbl_mail chua ton tai trong tbl_feed_mail
-                                    System.out.println("mail: " + mailDB.getEmail() + " da ton tai trong bang tbl_mail, insert vao bang tbl_feed_mail");
+                                    //System.out.println("mail: " + mailDB.getEmail() + " da ton tai trong bang tbl_mail, insert vao bang tbl_feed_mail");
                                     if (!checkIdTblFeedIdTblMail(f.getId(), mailDB.getId())) {
                                         //insert vao bang tbl_feed_mail 
                                         FeedMail fm = initFeedMail(f.getId(), mailDB.getId());
