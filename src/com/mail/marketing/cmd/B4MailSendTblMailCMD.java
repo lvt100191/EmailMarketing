@@ -49,7 +49,7 @@ public class B4MailSendTblMailCMD {
     //update trang thai da gui mail
     static String sttMailSent = "2";
     //mail gửi, chú ý phải là mail trong bang tbl_mail_send
-    static String mailSend1 = "tienganhchonguoiviet.30082017.1@gmail.com";
+    //static String mailSend1 = "tienganhchonguoiviet.30082017.1@gmail.com";
     //ten nguoi gui, ten nay se hiển thị trên người gửi đến, 
     //nếu không cấu hình sẽ hiển thị địa chỉ mail gửi
     static String sendName = "Ms Hoa Toeic - Sứ giả truyền cảm hứng";
@@ -60,6 +60,7 @@ public class B4MailSendTblMailCMD {
             + "<p>Click v&agrave;o <span style=\"color: #3366ff;\"><strong><a style=\"color: #3366ff;\" href=\"http://bit.ly/2iizyRp\">Đ&Acirc;Y</a> </strong></span>để đăng k&yacute;.</p>";
 
     public static void main(String[] args) {
+        String mailSend1 = args[0].trim();
         System.out.println("--------- Gui mail theo bang tbl_mail------------");
         System.out.println("--------- Gui mail theo bang tbl_mail------------");
         System.out.println("--------- Gui mail theo bang tbl_mail------------");
@@ -68,7 +69,11 @@ public class B4MailSendTblMailCMD {
         System.out.println("--------- Gui mail theo bang tbl_mail------------");
         System.out.println("--------- Gui mail theo bang tbl_mail------------");
         System.out.println("--------- Gui mail theo bang tbl_mail------------");
-        System.out.println("--------- Gui mail theo bang tbl_mail------------");
+        System.out.println("-------------------------------- mail gui: "+mailSend1);
+        System.out.println("-------------------------------- mail gui: "+mailSend1);
+        System.out.println("-------------------------------- mail gui: "+mailSend1);
+        System.out.println("-------------------------------- mail gui: "+mailSend1);
+        System.out.println("-------------------------------- mail gui: "+mailSend1);
         try {
             int countMailSentSuccess = 0;
             ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(100));
