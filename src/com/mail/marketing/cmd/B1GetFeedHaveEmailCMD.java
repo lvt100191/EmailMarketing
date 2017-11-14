@@ -81,7 +81,7 @@ public class B1GetFeedHaveEmailCMD {
                                 FeedEntity feedEntity = initFeedEntity(f, page);
                                 //insert thong tin bai viet vao bang tbl_feed
                                 FeedEntityDao.insert(feedEntity);
-                                System.out.println("-----thu thap duoc bai viet: " + feedEntity.getIdFeed() + "tu fanpage" + feedEntity.getFanpageName());
+                                System.out.println("-----thu thap duoc bai viet: " + feedEntity.getIdFeed() + "tu fanpage: " +StringUtils.removeAccent(feedEntity.getFanpageName()));
                                 System.out.println("-----tong so bai viet thu thap duoc: " + count++);
                             }
                             break;
@@ -89,7 +89,7 @@ public class B1GetFeedHaveEmailCMD {
                     }
 
                 }
-                System.out.println("-----tong so bai viet thu thap duoc: " + count);
+                System.out.println("-----tong so bai viet thu thap duoc: " + count+"\n \n \n");
             } catch (Exception ex) {
 
             }

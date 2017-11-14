@@ -54,7 +54,7 @@ public class B4MailSendTblMailCMD {
     //nếu không cấu hình sẽ hiển thị địa chỉ mail gửi
     static String sendName = "Ms Hoa Toeic - Sứ giả truyền cảm hứng";
     //tieu de mail
-    static String title = "Kênh tổng hợp tất tần tật tài liệu theo chủ đề";
+    static String title = "TRỌN BỘ TÀI LIỆU TỪ VỰNG TIẾNG ANH CHUYÊN NGÀNH";
     //noi dung mail
     static String content = "<p style=\"text-align: justify;\">C&aacute;c em ơi ủng hộ k&ecirc;nh youtube mới của c&ocirc; nh&eacute;! <a href=\"https://goo.gl/aWrRM9\"><span style=\"color: #ff0000;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a> l&agrave; k&ecirc;nh youtube tổng hợp tất tần tật t&agrave;i liệu từ a-z, từ z đến vv...</p>\n" +
 "<p style=\"text-align: justify;\">Mỗi video sẽ giới thiệu tổng quan về một chủ đề, tại phần m&ocirc; tả sẽ c&oacute; link download tất cả t&agrave;i liệu m&agrave; c&ocirc; sưu tập được, t&agrave;i liệu sẽ ng&agrave;y một phong ph&uacute; v&agrave; đa dạng, đặc biệt hứa hẹn sẽ x&acirc;y dựng một kho t&agrave;i liệu m&agrave; c&aacute;c bạn học cả đời kh&ocirc;ng hết</p>\n" +
