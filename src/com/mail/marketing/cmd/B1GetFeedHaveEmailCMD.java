@@ -14,6 +14,7 @@ import com.mail.marketing.facebook.dto.Comment;
 import com.mail.marketing.facebook.dto.Feed;
 import com.mail.marketing.facebook.dto.Page;
 import com.mail.marketing.facebook.usecase.FanPageAction;
+import com.mail.marketing.util.StringUtils;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ public class B1GetFeedHaveEmailCMD {
             try {
                 //lay thong tin trang
                 Page page = fanPageAction.getPageInfoById(token, fg.getIdFacebook());
-                System.out.println("------------------duyet qua trang: " + page.getName());
+                System.out.println("------------------duyet qua trang: " + StringUtils.removeAccent(page.getName()));
                 //lay danh sach bai da dang tu ngay fromDate truyen vao den hien tai
                 ArrayList<Feed> lstFeed = fanPageAction.getFeed(token, page.getId(), fromDate);
                 //lay danh sach binh luan theo bai dang
