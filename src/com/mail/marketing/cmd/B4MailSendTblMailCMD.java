@@ -52,17 +52,15 @@ public class B4MailSendTblMailCMD {
     //static String mailSend1 = "tienganhchonguoiviet.30082017.1@gmail.com";
     //ten nguoi gui, ten nay se hiển thị trên người gửi đến, 
     //nếu không cấu hình sẽ hiển thị địa chỉ mail gửi
-    static String sendName = "Ms Hoa Toeic - Sứ giả truyền cảm hứng";
+    static String sendName = "Tiếng Anh Cho Người Việt";
     //tieu de mail
-    static String title = "TRỌN BỘ TÀI LIỆU TỪ VỰNG TIẾNG ANH CHUYÊN NGÀNH";
+    static String title = "Khám phá chuỗi VIDEO luyện thi TOEIC cực chất,cực hay, cực đã";
     //noi dung mail
-    static String content = "<p style=\"text-align: justify;\">C&aacute;c em ơi ủng hộ k&ecirc;nh youtube mới của c&ocirc; nh&eacute;! <a href=\"https://goo.gl/aWrRM9\"><span style=\"color: #ff0000;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a> l&agrave; k&ecirc;nh youtube tổng hợp tất tần tật t&agrave;i liệu từ a-z, từ z đến vv...</p>\n" +
-"<p style=\"text-align: justify;\">Mỗi video sẽ giới thiệu tổng quan về một chủ đề, tại phần m&ocirc; tả sẽ c&oacute; link download tất cả t&agrave;i liệu m&agrave; c&ocirc; sưu tập được, t&agrave;i liệu sẽ ng&agrave;y một phong ph&uacute; v&agrave; đa dạng, đặc biệt hứa hẹn sẽ x&acirc;y dựng một kho t&agrave;i liệu m&agrave; c&aacute;c bạn học cả đời kh&ocirc;ng hết</p>\n" +
-"<p style=\"text-align: justify;\">Đừng qu&ecirc;n đăng k&yacute; v&agrave; chia sẻ k&ecirc;nh Youtube:<a href=\"https://goo.gl/RiY2S6\"><span style=\"color: #ff0000;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a></p>\n" +
-"<p style=\"text-align: justify;\">Like fanpage&nbsp;<a href=\"https://goo.gl/AvHdwi\"><span style=\"color: #3366ff;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a> để theo d&otilde;i những t&agrave;i liệu mới cập nhật của c&ocirc; nha!</p>\n" +
-"<p style=\"text-align: justify;\">Tại k&ecirc;nh youtube hoặc fanpage c&ocirc; sẽ sưu tập kh&oacute;a học free cho c&aacute;c bạn n&agrave;o đăng k&yacute; k&ecirc;nh youtube thay lời tri &acirc;n, h&atilde;y nhanh tay v&agrave; đừng bỏ lỡ.</p>\n" +
-"<p style=\"text-align: justify;\">Cảm ơn c&aacute;c em nhiều!</p>\n" +
-"<p>&nbsp;</p>";
+    static String content = "<p style=\"text-align: justify;\">Như đ&atilde; hứa hẹn, h&ocirc;m qua ADMIN phải thức đến hơn 3h s&aacute;ng để xuất bản được em n&oacute;. Bạn n&agrave;o đang luy&ecirc;n TOEIC th&igrave; v&ocirc; <a href=\"https://goo.gl/oo1xrf\"><span style=\"color: #3366ff;\"><strong>Đ&Acirc;Y</strong> </span></a>kh&aacute;m ph&aacute; chuỗi video luyện thi toeic <strong>CỰC CHẤT, CỰC HAY, CỰC Đ&Atilde;</strong> nh&eacute;.</p>\n" +
+"<p style=\"text-align: justify;\">VIDEO đầu ti&ecirc;n trong chuỗi VIDEO luyện thi toeic l&agrave; PART 1 của cuốn s&aacute;ch ECONOMY, một cuốn s&aacute;ch được đ&aacute;nh gi&aacute; l&agrave; rất s&aacute;t đối với y&ecirc;u cầu tr&igrave;nh độ TOEIC ở Việt Nam.</p>\n" +
+"<p style=\"text-align: justify;\"><br />VIDEO thật sự hữu &iacute;ch với c&aacute;c bạn th&igrave; để lại cho ADMIN 1 chấm, ADMIN tự hiểu. Nếu video c&ograve;n c&oacute; điểm g&igrave; chưa hợp l&yacute; c&aacute;c bạn vui l&ograve;ng để lại comment nội dung để ch&uacute;ng t&ocirc;i xem x&eacute;t đ&aacute;nh gi&aacute; thực hiện c&aacute;c video tiếp theo được tốt hơn.</p>\n" +
+"<p style=\"text-align: justify;\"><br />Cuối c&ugrave;ng đừng qu&ecirc;n <span style=\"background-color: #ffff00;\"><strong>ĐĂNG K&Yacute;, LIKE, SHARE, SAVE</strong></span> b&agrave;i viết, fanpage, k&ecirc;nh youtube <span style=\"color: #ff0000;\"><strong>Tiếng Anh Cho Người Việt</strong></span> để theo d&otilde;i video tiếp theo v&agrave; ủng hộ ADMIN nha cả nh&agrave;!</p>\n" +
+"<p style=\"text-align: justify;\"><strong>THANK YOU!</strong></p>";
 
     public static void main(String[] args) {
         String mailSend1 = args[0].trim();
