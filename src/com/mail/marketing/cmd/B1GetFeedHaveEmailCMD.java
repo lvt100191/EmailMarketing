@@ -47,13 +47,15 @@ public class B1GetFeedHaveEmailCMD {
         System.out.println("------Thu thap bai viet--------: ");
         System.out.println("------Thu thap bai viet--------: ");
         System.out.println("------Thu thap bai viet--------: ");
-        System.out.println("------Thu thap bai viet--------: ");
+        System.out.println("------Thu thap bai viet--------: \n \n");
         Config cfg = new Config();
         String token = cfg.USER_ACCESS_TOKEN;
         String fromDateUI = cfg.FROM_DATE;
         System.out.println("------tham so truyen vao--------: ");
-        System.out.println("------fromDateUI: " + fromDateUI);
-        System.out.println("------token: " + token);
+        System.out.println("------tham so truyen vao--------: ");
+        System.out.println("------tham so truyen vao--------: ");
+        System.out.println("------fromDateUI: --------------: " + fromDateUI);
+        System.out.println("------token: -------------------: " + token+"\n \n");
         ArrayList<FaceBook> lst = FaceBookDao.getListFaceBook(FaceBook.TYPE_FANPAGE);
         FanPageAction fanPageAction = new FanPageAction();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -81,15 +83,15 @@ public class B1GetFeedHaveEmailCMD {
                                 FeedEntity feedEntity = initFeedEntity(f, page);
                                 //insert thong tin bai viet vao bang tbl_feed
                                 FeedEntityDao.insert(feedEntity);
-                                System.out.println("-----thu thap duoc bai viet: " + feedEntity.getIdFeed() + "tu fanpage: " +StringUtils.removeAccent(feedEntity.getFanpageName()));
-                                System.out.println("-----tong so bai viet thu thap duoc: " + count++);
+                                System.out.println("------------------thu thap duoc bai viet:-------- " + feedEntity.getIdFeed());
+                                System.out.println("------------------tong so bai viet thu thap duoc: " + count++);
                             }
                             break;
                         }
                     }
 
                 }
-                System.out.println("-----tong so bai viet thu thap duoc: " + count+"\n \n \n");
+                System.out.println("-------------------tong so bai viet thu thap duoc: " + count+"\n \n \n");
             } catch (Exception ex) {
 
             }
