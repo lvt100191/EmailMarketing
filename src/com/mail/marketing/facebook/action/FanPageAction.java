@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mail.marketing.facebook.usecase;
+package com.mail.marketing.facebook.action;
 
 import com.mail.marketing.config.Config;
 import com.mail.marketing.db.MailDao;

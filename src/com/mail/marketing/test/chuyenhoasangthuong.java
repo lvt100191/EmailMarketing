@@ -5,6 +5,7 @@
  */
 package com.mail.marketing.test;
 
+import com.mail.marketing.facebook.action.CommentAction;
 import java.text.Normalizer;
 import java.util.regex.Pattern;
 
@@ -14,21 +15,12 @@ import java.util.regex.Pattern;
  */
 public class chuyenhoasangthuong {
 
-    public static void main(String[] args) {
-        String str = "Đại học Kinh tế Quốc dân";
-        System.out.println(removeAccent(str));
+    public static void main(String[] args) throws Exception {
+        //token cua page
+        String token="EAACEdEose0cBANPHYsaItZAtjrEzG0agkRpLsJJZBnAxRQ0AeuqIWkGchB9eUbRZBtjRs4nYpn6LCjW6HzlvrnNjKe3xoFrLo38YZAvniFZBt4bt5X8M9NvOEdUzIjtQY2wAi92sgyELGJ7uFaVlWfUQzaZC4eDfAUXG07RiZALUsFtLt9tYt0rY870piDZB0ZCqC4w9vtt56lwZDZD";
+        CommentAction.postCommentById("275158636317806_298340487332954",token);
+        System.out.println("success!");
     }
 
-    public static String removeAccent(String s) {
-        String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
-        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
-        String str = pattern.matcher(temp).replaceAll("");
-        if (str.contains("Đ")) {
-            str = str.replace("Đ", "D");
-        }
-        if (str.contains("đ")) {
-            str = str.replace("đ", "d");
-        }
-        return str;
-    }
+
 }

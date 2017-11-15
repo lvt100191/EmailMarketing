@@ -12,7 +12,7 @@ import com.mail.marketing.entity.FeedEntity;
 import com.mail.marketing.facebook.dto.Comment;
 import com.mail.marketing.facebook.dto.Feed;
 import com.mail.marketing.facebook.dto.Page;
-import com.mail.marketing.facebook.usecase.FanPageAction;
+import com.mail.marketing.facebook.action.FanPageAction;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

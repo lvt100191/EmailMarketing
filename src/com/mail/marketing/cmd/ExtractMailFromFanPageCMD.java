@@ -14,7 +14,7 @@ import com.mail.marketing.entity.MailBlock;
 import com.mail.marketing.facebook.dto.Comment;
 import com.mail.marketing.facebook.dto.Feed;
 import com.mail.marketing.facebook.dto.Page;
-import com.mail.marketing.facebook.usecase.FanPageAction;
+import com.mail.marketing.facebook.action.FanPageAction;
 import com.mail.marketing.mail.EmailAction;
 import com.mail.marketing.ui.ExtractMail;
 import java.text.SimpleDateFormat;
