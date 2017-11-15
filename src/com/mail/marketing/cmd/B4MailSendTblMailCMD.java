@@ -52,7 +52,7 @@ public class B4MailSendTblMailCMD {
     //static String mailSend1 = "tienganhchonguoiviet.30082017.1@gmail.com";
     //ten nguoi gui, ten nay se hiển thị trên người gửi đến, 
     //nếu không cấu hình sẽ hiển thị địa chỉ mail gửi
-    static String sendName = "Tiếng Anh Cho Người Việt";
+    static String sendName = "Ms Hoa TOEIC - Sứ giả truyền cảm hứng!";
     //tieu de mail
     static String title = "Khám phá chuỗi VIDEO luyện thi TOEIC cực chất,cực hay, cực đã";
     //noi dung mail
