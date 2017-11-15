@@ -49,17 +49,17 @@ public class B2ExtractMailByFeedCMD {
         System.out.println("----Thu thap email tu bai viet-----------");
         System.out.println("----Thu thap email tu bai viet-----------");
         System.out.println("----Thu thap email tu bai viet-----------");
-        System.out.println("----Thu thap email tu bai viet-----------");
+        System.out.println("----Thu thap email tu bai viet----------- \n \n");
 
         Config cfg = new Config();
         String token = cfg.USER_ACCESS_TOKEN;
         String numFeed = cfg.NUMBER_FEED;
         System.out.println("----so bai viet lay ra: " + numFeed + "-----------");
         System.out.println("----so bai viet lay ra: " + numFeed + "-----------");
-        System.out.println("----so bai viet lay ra: " + numFeed + "-----------");
+        System.out.println("----so bai viet lay ra: " + numFeed + "----------- \n \n");
         System.out.println("-------token truyen vao: " + token + "-----------");
         System.out.println("-------token truyen vao: " + token + "-----------");
-        System.out.println("-------token truyen vao: " + token + "-----------");
+        System.out.println("-------token truyen vao: " + token + "----------- \n \n");
 
         FanPageAction fanPageAction = new FanPageAction();
         //lay danh sach bai viet tu bang tbl_feed theo so luong truyen vao
@@ -95,7 +95,7 @@ public class B2ExtractMailByFeedCMD {
                                 //kiem tra mail đã tồn tại trong bảng tbl_mail
                                 Mail mailDB = MailDao.getByEmail(mail);
                                 if (mailDB == null) {//mail chua ton tai trong tbl_mail
-                                    System.out.println("mail: " + mail + " chua ton tai trong bang tbl_mail, insert vao bang tbl_mail va tbl_feed_mail");
+                                    System.out.println("-----" + mail + "---- CHUA TON TAI trong bang TBL_MAIL, INSERT vao bang TBL_MAIL va TBL_FEED_MAIL");
                                     //khoi tao doi tuong mail
                                     Mail email = initMail(mail);
                                     //lay ra id cua mail trong bang tbl_mail se insert
@@ -133,9 +133,11 @@ public class B2ExtractMailByFeedCMD {
             }
 
         }
-        System.out.println("                    -----*****-----**********************---------------------*****----");
-        System.out.println("                    -----*****-----CHUONG TRINH ExtractMailByFeed KET THUC!---*****----");
-        System.out.println("                    -----*****-----**********************---------------------*****----");
+        System.out.println("     -----*****-----**********************---------------------*****----");
+        System.out.println("     -----*****-----**********************---------------------*****----");
+        System.out.println("     -----*****-----CHUONG TRINH ExtractMailByFeed KET THUC!---*****----");
+        System.out.println("     -----*****-----**********************---------------------*****----");
+        System.out.println("     -----*****-----**********************---------------------*****----");
     }
 
     //check dia chi mail co bi chan hay chua

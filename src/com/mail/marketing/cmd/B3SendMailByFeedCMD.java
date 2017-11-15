@@ -17,9 +17,6 @@ import com.mail.marketing.entity.Mail;
 import com.mail.marketing.entity.MailBlock;
 import com.mail.marketing.entity.MailSend;
 import com.mail.marketing.mail.EmailAction;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -62,7 +59,7 @@ public class B3SendMailByFeedCMD {
         System.out.println("--------Gui email theo bai viet--------------");
         System.out.println("--------Gui email theo bai viet--------------");
         System.out.println("--------Gui email theo bai viet--------------");
-        System.out.println("--------Gui email theo bai viet--------------");
+        System.out.println("--------Gui email theo bai viet-------------- \n \n");
 
         Config cfg = new Config();
         String mailSend = cfg.MAIL_SEND;
@@ -70,7 +67,7 @@ public class B3SendMailByFeedCMD {
         String idFeed = cfg.ID_FEED;
         System.out.println("--------dia chi mail gui la: " + mailSend);
         System.out.println("--------dia chi mail gui la: " + mailSend);
-        System.out.println("--------dia chi mail gui la: " + mailSend);
+        System.out.println("--------dia chi mail gui la: " + mailSend+" \n \n");
         //lay email tu bai viet chua gui mail theo bai viet status_feed_mail=1, moi lan gui lay max 100 mail de gui
         //select * from tbl_mail where id in (select  id_tbl_mail from tbl_feed_mail where id_tbl_feed=38) and status_feed_mail=1 limit 100
         ArrayList<Mail> lst = MailDao.getMailFromTblFeed(idTblFeed, statusFeedMailSend, numMaxMailTo);
@@ -87,7 +84,7 @@ public class B3SendMailByFeedCMD {
         String sendName = feedEntity.getFanpageName();
         System.out.println("--------- Gui mail den danh sach gom: " + lst.size() + " email!");
         System.out.println("--------- Gui mail den danh sach gom: " + lst.size() + " email!");
-        System.out.println("--------- Gui mail den danh sach gom: " + lst.size() + " email!");
+        System.out.println("--------- Gui mail den danh sach gom: " + lst.size() + " email! \n \n");
         //test
         //sendMail(feedEntity.getId(), sendName, mailSend, title, content, lst, statusFeedMailSent);
         //end test
