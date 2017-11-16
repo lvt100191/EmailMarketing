@@ -54,12 +54,11 @@ public class B4MailSendTblMailCMD {
     //nếu không cấu hình sẽ hiển thị địa chỉ mail gửi
     static String sendName = "Ms Hoa TOEIC - Sứ giả truyền cảm hứng!";
     //tieu de mail
-    static String title = "Khám phá chuỗi VIDEO luyện thi TOEIC cực chất,cực hay, cực đã";
+    static String title = "05 BỘ TÀI LIỆU HỌC TOEIC HAY NHẤT";
     //noi dung mail
-    static String content = "<p style=\"text-align: justify;\">Như đ&atilde; hứa hẹn, h&ocirc;m qua ADMIN phải thức đến hơn 3h s&aacute;ng để xuất bản được em n&oacute;. Bạn n&agrave;o đang luy&ecirc;n TOEIC th&igrave; v&ocirc; <a href=\"https://goo.gl/oo1xrf\"><span style=\"color: #3366ff;\"><strong>Đ&Acirc;Y</strong> </span></a>kh&aacute;m ph&aacute; chuỗi video luyện thi toeic <strong>CỰC CHẤT, CỰC HAY, CỰC Đ&Atilde;</strong> nh&eacute;.</p>\n" +
-"<p style=\"text-align: justify;\">VIDEO đầu ti&ecirc;n trong chuỗi VIDEO luyện thi toeic l&agrave; PART 1 của cuốn s&aacute;ch ECONOMY, một cuốn s&aacute;ch được đ&aacute;nh gi&aacute; l&agrave; rất s&aacute;t đối với y&ecirc;u cầu tr&igrave;nh độ TOEIC ở Việt Nam.</p>\n" +
-"<p style=\"text-align: justify;\"><br />VIDEO thật sự hữu &iacute;ch với c&aacute;c bạn th&igrave; để lại cho ADMIN 1 chấm, ADMIN tự hiểu. Nếu video c&ograve;n c&oacute; điểm g&igrave; chưa hợp l&yacute; c&aacute;c bạn vui l&ograve;ng để lại comment nội dung để ch&uacute;ng t&ocirc;i xem x&eacute;t đ&aacute;nh gi&aacute; thực hiện c&aacute;c video tiếp theo được tốt hơn.</p>\n" +
-"<p style=\"text-align: justify;\"><br />Cuối c&ugrave;ng đừng qu&ecirc;n <span style=\"background-color: #ffff00;\"><strong>ĐĂNG K&Yacute;, LIKE, SHARE, SAVE</strong></span> b&agrave;i viết, fanpage, k&ecirc;nh youtube <span style=\"color: #ff0000;\"><strong>Tiếng Anh Cho Người Việt</strong></span> để theo d&otilde;i video tiếp theo v&agrave; ủng hộ ADMIN nha cả nh&agrave;!</p>\n" +
+    static String content = "<p style=\"text-align: justify;\">&nbsp;</p>\n" +
+"<p style=\"text-align: justify;\">Gửi c&aacute;c em 5 bộ t&agrave;i liệu học TOEIC hay nhất do c&ocirc; tổng hợp. Đ&acirc;y l&agrave; những t&agrave;i liệu chất lượng v&agrave; bổ &iacute;ch cho người luyện thi TOEIC. C&aacute;c em click v&agrave;o <a href=\"https://goo.gl/RVSmt3\"><span style=\"color: #3366ff;\"><strong>Đ&Acirc;Y</strong> </span></a>để tải về, nhớ học cuốn n&agrave;o hết cuốn đ&oacute;, đừng bỏ dở giữa chừng nh&eacute;!<br />Đừng qu&ecirc;n <span style=\"background-color: #ffff00;\"><strong>ĐĂNG K&Yacute;, LIKE, SHARE, SAVE</strong></span> b&agrave;i viết, fanpage:<a href=\"https://goo.gl/1pyXDa\"><span style=\"color: #3366ff;\"> <strong>Tiếng Anh Cho Người Việt</strong></span></a>, k&ecirc;nh youtube <a href=\"https://goo.gl/VqUFZv\"><span style=\"color: #ff0000;\"><strong>Tiếng Anh Cho Người Việt</strong></span></a> để theo d&otilde;i c&aacute;c t&agrave;i liệu tiếp theo.</p>\n" +
+"<p style=\"text-align: justify;\">Ch&uacute;c c&aacute;c em học tốt ^^</p>\n" +
 "<p style=\"text-align: justify;\"><strong>THANK YOU!</strong></p>";
 
     public static void main(String[] args) {
