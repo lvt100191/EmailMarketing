@@ -103,7 +103,7 @@ public class B4MailSendTblMailCMD {
                         continue;
                     }
 
-                    EmailAction.sendGmail(sendName, mailSend1, mSend.getPassword(), to.getEmail(), title, content);
+                    EmailAction.sendGmail(sendName, mailSend1, mSend.getPassword(), to.getEmail().toLowerCase(), title, content);
 
                     countMailSentSuccess++;
                     System.out.println("-------------------da gui den:  " + to.getEmail() + "  thanh cong! tong so mail da gui:  " + countMailSentSuccess);
