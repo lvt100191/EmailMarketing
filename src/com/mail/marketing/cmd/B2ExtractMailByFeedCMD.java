@@ -165,15 +165,41 @@ public class B2ExtractMailByFeedCMD {
         if (mail.startsWith("_")) {
             return false;
         }
-        if (mail.startsWith("1")) {
-            return false;
-        }
-        if (mail.startsWith("0")) {
-            return false;
-        }
         if (mail.startsWith(".")) {
             return false;
         }
+
+        if (mail.startsWith("0")) {
+            return false;
+        }
+        if (mail.startsWith("1")) {
+            return false;
+        }
+        if (mail.startsWith("2")) {
+            return false;
+        }
+        if (mail.startsWith("3")) {
+            return false;
+        }
+        if (mail.startsWith("4")) {
+            return false;
+        }
+        if (mail.startsWith("5")) {
+            return false;
+        }
+        if (mail.startsWith("6")) {
+            return false;
+        }
+        if (mail.startsWith("7")) {
+            return false;
+        }
+        if (mail.startsWith("8")) {
+            return false;
+        }
+        if (mail.startsWith("9")) {
+            return false;
+        }
+
         return true;
     }
 
