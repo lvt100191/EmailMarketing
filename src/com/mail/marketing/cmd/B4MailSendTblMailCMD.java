@@ -54,17 +54,12 @@ public class B4MailSendTblMailCMD {
     //nếu không cấu hình sẽ hiển thị địa chỉ mail gửi
     static String sendName = "Ms Hoa TOEIC - Sứ giả truyền cảm hứng!";
     //tieu de mail
-    static String title = "Thực hành PART 1 TOEIC";
+    static String title = "Danh sách  các Tài liệu luyện thi TOEIC hay, free và phổ biến nhất";
     //noi dung mail
-    static String content = "<p style=\"text-align: justify;\">Part 1 TOEIC được đ&aacute;nh gi&aacute; l&agrave; phần dễ nhất trong b&agrave;i thi TOEIC, c&aacute;c em đ&atilde; sẵn s&agrave;ng chưa, y&ecirc;u cầu đặt ra phải đ&uacute;ng &iacute;t nhất 06/10 c&acirc;u nha, bạn n&agrave;o chưa đạt được th&igrave; cố gắng luyện th&ecirc;m nh&eacute;!</p>\n" +
-"<p style=\"text-align: justify;\">C&oacute; 2 c&acirc;u c&ocirc; muốn hỏi c&aacute;c bạn l&agrave;:</p>\n" +
-"<p style=\"text-align: justify;\">- C&acirc;u số 1: Tại sao đ&aacute;p &aacute;n B sai ( c&ocirc; thấy người đi xe đạp đang đội mũ bảo hiểm m&agrave;)</p>\n" +
-"<p style=\"text-align: justify;\">- C&acirc;u số 2: Tại sao đ&aacute;p &aacute;n B đ&uacute;ng (c&ocirc; chưa nh&igrave;n thấy bản đồ ở đ&acirc;u m&agrave; c&acirc;u B lại đ&uacute;ng)</p>\n" +
-"<p style=\"text-align: justify;\">Chi tiết c&aacute;c em xem ở <strong><span style=\"color: #3366ff;\"><a style=\"color: #3366ff;\" href=\"https://goo.gl/pwFQ1N\">Đ&Acirc;Y</a></span></strong> nh&eacute;!</p>\n" +
-"<p style=\"text-align: justify;\">Rất mong nhận được phản hồi từ c&aacute;c bạn</p>\n" +
-"<p style=\"text-align: justify;\">Đừng qu&ecirc;n ủng hộ c&ocirc; bằng c&aacute;ch LIKE, SHARE, ĐĂNG K&Yacute; k&ecirc;nh yotube v&agrave; fanpage:<span style=\"color: #ff0000;\"><strong> Tiếng Anh Cho Người Việt</strong></span> nh&eacute;!</p>\n" +
-"<p style=\"text-align: justify;\">Cảm ơn cả nh&agrave; nhiều!</p>\n" +
-"<p>&nbsp;</p>";
+    static String content = "<p style=\"text-align: justify;\">Gửi c&aacute;c bạn <strong>danh s&aacute;ch c&aacute;c&nbsp;T&agrave;i liệu luyện thi TOEIC hay, free v&agrave; phổ biến nhất</strong>, với bộ T&agrave;i liệu n&agrave;y nếu c&aacute;c bạn chịu kh&oacute; luyện thi sẽ được điểm số cao trong c&aacute;c&nbsp;kỳ thi TOEIC. Đ&acirc;y l&agrave; những bộ T&agrave;i liệu gối đầu của c&aacute;c cao thủ tự luyện thi TOEIC.</p>\n" +
+"<p style=\"text-align: justify;\">Nhanh tay tải t&agrave;i liệu tại <a href=\"https://goo.gl/oRXg7E\"><span style=\"color: #3366ff;\"><strong>Đ&Acirc;Y</strong></span></a>. V&igrave; số lượng c&oacute; hạn n&ecirc;n c&ocirc; chỉ share cho <strong>1000</strong> bạn th&ocirc;i nh&eacute;, vượt qu&aacute; 1000 lượt download c&ocirc; sẽ <strong>OFF</strong> link.</p>\n" +
+"<p style=\"text-align: justify;\">Cuối c&ugrave;ng đừng qu&ecirc;n <strong>LIKE, SHARE, ĐĂNG K&Yacute;</strong> fanpage, k&ecirc;nh youtbe: <span style=\"color: #ff0000;\"><strong>Tiếng Anh Cho Người Việt</strong></span> để theo d&otilde;i c&aacute;c t&agrave;i liệu tiếp theo nh&eacute; cả nh&agrave;.</p>\n" +
+"<p style=\"text-align: justify;\"><strong>THANK YOU!</strong></p>";
 
     public static void main(String[] args) {
         String mailSend1 = args[0].trim();
@@ -111,6 +106,10 @@ public class B4MailSendTblMailCMD {
                     EmailAction.sendGmail(sendName, mailSend1, mSend.getPassword(), to.getEmail().toLowerCase(), title, content);
 
                     countMailSentSuccess++;
+                    System.out.println("----------------"+mailSend1+"---------------------");
+                    System.out.println("----------------"+mailSend1+"---------------------");
+                    System.out.println("----------------"+mailSend1+"---------------------");
+                    System.out.println("----------------"+mailSend1+"---------------------");
                     System.out.println("-------------------da gui den:  " + to.getEmail() + "  thanh cong! tong so mail da gui:  " + countMailSentSuccess);
                     System.out.println("-------------------da gui den:  " + to.getEmail() + "  thanh cong! tong so mail da gui:  " + countMailSentSuccess);
                     System.out.println("-------------------da gui den:  " + to.getEmail() + "  thanh cong! tong so mail da gui:  " + countMailSentSuccess);
