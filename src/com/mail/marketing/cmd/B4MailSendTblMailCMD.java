@@ -105,10 +105,11 @@ public class B4MailSendTblMailCMD {
             }
 
             ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, numMailTo);
-            Mail mxx = new Mail();
-            mxx.setEmail(mailReceiv);
-            lst.add(mxx);
-
+            if (checkTest.equals("1")) {
+                Mail mxx = new Mail();
+                mxx.setEmail(mailReceiv);
+                lst.add(mxx);
+            }
             //test
 //            lst = new ArrayList<>();
 //            Mail mxx = new Mail();
