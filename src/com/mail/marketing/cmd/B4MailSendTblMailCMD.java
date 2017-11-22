@@ -74,6 +74,14 @@ public class B4MailSendTblMailCMD {
 
     public static void main(String[] args) {
         String mailSend1 = args[0].trim();
+        String checkTest = args[1].trim();
+        String mailReceiv = "";
+        if (checkTest.equals("1")) {//truyen vao mail test, 0: ko test
+            mailReceiv = args[2].trim();
+        }
+        //test mail gửi, chú ý phải là mail trong bang tbl_mail_send
+        //String mailSend1 = "tienganhchonguoiviet.30082017.1@gmail.com";
+        //end test
         System.out.println("--------- Gui mail theo bang tbl_mail------------");
         System.out.println("--------- Gui mail theo bang tbl_mail------------");
         System.out.println("--------- Gui mail theo bang tbl_mail------------");
@@ -82,32 +90,44 @@ public class B4MailSendTblMailCMD {
         System.out.println("--------- Gui mail theo bang tbl_mail------------");
         System.out.println("--------- Gui mail theo bang tbl_mail------------");
         System.out.println("--------- Gui mail theo bang tbl_mail------------");
-        System.out.println("-------------------------------- mail gui: "+mailSend1);
-        System.out.println("-------------------------------- mail gui: "+mailSend1);
-        System.out.println("-------------------------------- mail gui: "+mailSend1);
-        System.out.println("-------------------------------- mail gui: "+mailSend1);
-        System.out.println("-------------------------------- mail gui: "+mailSend1);
+        System.out.println("-------------------------------- mail gui: " + mailSend1);
+        System.out.println("-------------------------------- mail gui: " + mailSend1);
+        System.out.println("-------------------------------- mail gui: " + mailSend1);
+        System.out.println("-------------------------------- mail gui: " + mailSend1);
+        System.out.println("-------------------------------- mail gui: " + mailSend1);
         try {
+            String numMailTo = "";
             int countMailSentSuccess = 0;
-            ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, String.valueOf(100));
-            System.out.println("--------- Gui mail den danh sach gom: " + lst.size() + " email!");
-            System.out.println("--------- Gui mail den danh sach gom: " + lst.size() + " email!");
-            System.out.println("--------- Gui mail den danh sach gom: " + lst.size() + " email!");
-            System.out.println("--------- Gui mail den danh sach gom: " + lst.size() + " email!");
-            System.out.println("--------- Gui mail den danh sach gom: " + lst.size() + " email!");
-            System.out.println("--------- Gui mail den danh sach gom: " + lst.size() + " email!");
+            if (checkTest.equals("1")) {
+                numMailTo = "99";
+            } else {
+                numMailTo = "100";
+            }
+
+            ArrayList<Mail> lst = EmailAction.getListMail(sttMailSend, numMailTo);
+            Mail mxx = new Mail();
+            mxx.setEmail(mailReceiv);
+            lst.add(mxx);
+
             //test
-//            ArrayList<Mail> lst = new ArrayList<>();
+//            lst = new ArrayList<>();
 //            Mail mxx = new Mail();
 //            mxx.setEmail("tunglv9x@gmail.com");
 //            lst.add(mxx);
             //end test
+            System.out.println("--------- Gui mail den danh sach gom: " + lst.size() + " email!");
+            System.out.println("--------- Gui mail den danh sach gom: " + lst.size() + " email!");
+            System.out.println("--------- Gui mail den danh sach gom: " + lst.size() + " email!");
+            System.out.println("--------- Gui mail den danh sach gom: " + lst.size() + " email!");
+            System.out.println("--------- Gui mail den danh sach gom: " + lst.size() + " email!");
+            System.out.println("--------- Gui mail den danh sach gom: " + lst.size() + " email!");
+
             Date d = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HH-mm-ss");
             String dateCreate = sdf.format(d);
             MailSend mSend = MailSendDao.getMailSendByEmail(mailSend1);
             FeedEntity feedEntity = FeedEntityDao.getByFeed("tunglv4");
-            if(feedEntity == null){
+            if (feedEntity == null) {
                 throw new Exception("------------chua cau hinh bai viet trong bang tbl_feed voi id_feed=tunglv4-----------");
             }
             for (Mail to : lst) {
@@ -121,10 +141,10 @@ public class B4MailSendTblMailCMD {
                     EmailAction.sendGmail(feedEntity.getFanpageName().trim(), mailSend1, mSend.getPassword(), to.getEmail().toLowerCase(), feedEntity.getTitleSend().trim(), feedEntity.getContentSend().trim());
 
                     countMailSentSuccess++;
-                    System.out.println("----------------"+mailSend1+"---------------------");
-                    System.out.println("----------------"+mailSend1+"---------------------");
-                    System.out.println("----------------"+mailSend1+"---------------------");
-                    System.out.println("----------------"+mailSend1+"---------------------");
+                    System.out.println("----------------" + mailSend1 + "---------------------");
+                    System.out.println("----------------" + mailSend1 + "---------------------");
+                    System.out.println("----------------" + mailSend1 + "---------------------");
+                    System.out.println("----------------" + mailSend1 + "---------------------");
                     System.out.println("-------------------da gui den:  " + to.getEmail() + "  thanh cong! tong so mail da gui:  " + countMailSentSuccess);
                     System.out.println("-------------------da gui den:  " + to.getEmail() + "  thanh cong! tong so mail da gui:  " + countMailSentSuccess);
                     System.out.println("-------------------da gui den:  " + to.getEmail() + "  thanh cong! tong so mail da gui:  " + countMailSentSuccess);
