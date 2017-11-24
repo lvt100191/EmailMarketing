@@ -21,6 +21,7 @@ import java.util.Date;
  * @author PMDVCNTT
  */
 public class FeedEntityDao {
+
     //lay danh sach bai viet theo gioi han so luong lay ra limit
     public static ArrayList<FeedEntity> getListFeedEntity(String limit) throws SQLException, Exception {
         ArrayList<FeedEntity> feedEntitys = new ArrayList<>();
@@ -57,6 +58,7 @@ public class FeedEntityDao {
         return feedEntitys;
 
     }
+
     //lay danh sach bai viet theo gioi han so luong lay ra limit va theo trang thai
     public static ArrayList<FeedEntity> getListFeedEntity(String limit, int stt) throws SQLException, Exception {
         ArrayList<FeedEntity> feedEntitys = new ArrayList<>();
@@ -94,6 +96,7 @@ public class FeedEntityDao {
         return feedEntitys;
 
     }
+
     //lay thong tin bai viet theo id cua bai viet tren face
     public static FeedEntity getByFeed(String feedId) throws SQLException, Exception {
         FeedEntity f = null;
@@ -139,6 +142,7 @@ public class FeedEntityDao {
         return f;
 
     }
+
     //insert bai viet vao bang tbl_feed
     public static void insert(FeedEntity feedEntity) throws Exception {
         Connection c = null;
@@ -151,7 +155,7 @@ public class FeedEntityDao {
                     + "(id_feed,"
                     + "content_feed,"
                     + "create_date,"
-                    + "create_time_feed,"                   
+                    + "create_time_feed,"
                     + "id_fanpage,"
                     + "fanpage_name) "
                     + "VALUES (?,?,?,?,?,?);";
@@ -174,6 +178,7 @@ public class FeedEntityDao {
             }
         }
     }
+
     //khoi tao doi tuong de insert
     private static FeedEntity unitFeedEntity(ResultSet rs) throws SQLException {
         FeedEntity feedEntity = new FeedEntity();
@@ -190,6 +195,7 @@ public class FeedEntityDao {
         feedEntity.setStatus(rs.getInt("status"));
         return feedEntity;
     }
+
     //lay ra so luong bai viet thu thap duoc trong bang tbl_feed
     public static int countFeed() throws Exception {
         Connection c = null;
@@ -213,6 +219,51 @@ public class FeedEntityDao {
             pst.close();
             c.close();
         }
+    }
+
+    public static ArrayList<FeedEntity> getLstFeedByNote(String feed_mix_list) throws Exception {
+        ArrayList<FeedEntity> feedEntitys = new ArrayList<>();
+        FeedEntity f = null;
+        Connection c = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+
+            String query = "SELECT * FROM  " + FeedEntity.TABLE_NAME
+                    + " WHERE "
+                    + " NOTE = ?; ";
+            pst = c.prepareStatement(query);
+            pst.setString(1, feed_mix_list);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                f = new FeedEntity();
+                f.setId(id);
+                String title = rs.getString("title_send");
+                String content = rs.getString("content_send");
+                String fanpageName = rs.getString("fanpage_name");
+                f.setTitleSend(title);
+                f.setContentSend(content);
+                f.setFanpageName(fanpageName);
+                feedEntitys.add(f);
+
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (pst != null) {
+                pst.close();
+            }
+            if (c != null) {
+                c.close();
+            }
+        }
+        return feedEntitys;
     }
 
 }
