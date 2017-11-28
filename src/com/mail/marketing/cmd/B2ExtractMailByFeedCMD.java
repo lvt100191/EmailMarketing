@@ -162,6 +162,9 @@ public class B2ExtractMailByFeedCMD {
         if (mail.contains("@gamil.com")) {
             return false;
         }
+         if (mail.contains("..")) {
+            return false;
+        }
         if (mail.startsWith("_")) {
             return false;
         }
