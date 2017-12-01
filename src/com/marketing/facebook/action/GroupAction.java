@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mail.marketing.facebook.action;
+package com.marketing.facebook.action;
 
 import com.mail.marketing.config.Config;
-import com.mail.marketing.facebook.dto.Feed;
-import com.mail.marketing.facebook.dto.Group;
+import com.marketing.facebook.dto.Feed;
+import com.marketing.facebook.dto.Group;
 import com.mail.marketing.http.ResponseUtil;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

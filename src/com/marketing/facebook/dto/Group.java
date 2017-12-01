@@ -3,19 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mail.marketing.facebook.dto;
-
-import java.util.List;
+package com.marketing.facebook.dto;
 
 /**
  *
- * @author TUNGLV
+ * @author PMDVCNTT
  */
-public class User {
-    private String id;
-    private String name;
+public class Group {
+    String id;
+    String name;
 
-    
     public String getId() {
         return id;
     }

@@ -7,10 +7,10 @@ package com.mail.marketing.ui;
 
 import com.mail.marketing.db.FaceBookDao;
 import com.mail.marketing.entity.FaceBook;
-import com.mail.marketing.facebook.dto.Group;
-import com.mail.marketing.facebook.dto.Page;
-import com.mail.marketing.facebook.action.FanPageAction;
-import com.mail.marketing.facebook.action.GroupAction;
+import com.marketing.facebook.dto.Group;
+import com.marketing.facebook.dto.Page;
+import com.marketing.facebook.action.FanPageAction;
+import com.marketing.facebook.action.GroupAction;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

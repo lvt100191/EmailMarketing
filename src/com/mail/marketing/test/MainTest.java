@@ -10,7 +10,7 @@ import com.mail.marketing.db.MailSendDao;
 import com.mail.marketing.entity.FeedEntity;
 import com.mail.marketing.entity.Mail;
 import com.mail.marketing.entity.MailSend;
-import com.mail.marketing.facebook.action.CommentAction;
+import com.marketing.facebook.action.CommentAction;
 import com.mail.marketing.http.ResponseUtil;
 import com.mail.marketing.mail.EmailAction;
 import java.text.Normalizer;
