@@ -5,10 +5,10 @@
  */
 package com.mail.marketing.test;
 
-import com.mail.marketing.config.Config;
-import com.mail.marketing.config.Const;
-import com.mail.marketing.db.MailDao;
-import com.mail.marketing.entity.Mail;
+import coml.marketing.config.Config;
+import coml.marketing.config.Const;
+import com.marketing.db.MailDao;
+import com.marketing.entity.Mail;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -30,10 +30,10 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 
-import com.mail.marketing.config.Config;
-import com.mail.marketing.config.Const;
-import com.mail.marketing.db.MailDao;
-import com.mail.marketing.entity.Mail;
+import coml.marketing.config.Config;
+import coml.marketing.config.Const;
+import com.marketing.db.MailDao;
+import com.marketing.entity.Mail;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.ArrayList;

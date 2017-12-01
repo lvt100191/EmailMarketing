@@ -5,12 +5,12 @@
  */
 package com.mail.marketing.test;
 
-import com.mail.marketing.ui.*;
-import com.mail.marketing.db.MailDao;
-import com.mail.marketing.db.MailSendDao;
-import com.mail.marketing.entity.Mail;
-import com.mail.marketing.entity.MailSend;
-import com.mail.marketing.mail.EmailAction;
+import com.marketing.mail.ui.DashBoard;
+import com.marketing.db.MailDao;
+import com.marketing.db.MailSendDao;
+import com.marketing.entity.Mail;
+import com.marketing.entity.MailSend;
+import com.marketing.mail.action.EmailAction;
 import java.awt.Desktop;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;

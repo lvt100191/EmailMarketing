@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mail.marketing.test;
+package com.marketing.mail.usecase.marketing_theo_bai_viet;
 
 import com.marketing.db.FeedEntityDao;
 import com.marketing.db.FeedMailDao;
@@ -37,7 +37,7 @@ import javax.mail.internet.AddressException;
 //truoc khi clean build sua
 //idFeed, idTblFeed, sendName, title, content
 
-public class B3SendMailByFeedCMDTest {
+public class B3SendMailByFeedCMD {
 
     //tham so dau vao
     //trang thai chua gui mail theo bai viet trường status trong bang tbl_feed_mail
@@ -48,42 +48,42 @@ public class B3SendMailByFeedCMDTest {
     static String numMaxMailTo = "100";
     //truoc khi chay thi copy tham so dau vao file B3SendMailByFeedCMDTest de test truoc
     //id cua bang tbl_Feed
-    static String idTblFeed = "292";
+    static String idTblFeed = "163";
     //truong id_feed cua  bang tbl_feed 
-    static String idFeed = "131304647058701_748193265369833";
+    static String idFeed = "233632063512875_712505208958889";
     //mail gui 
     //static String mailSend = "coso7.mshoatoeic@gmail.com";
     //ten nguoi gui, lay gia tri fanpage_name trong bang tbl_feed
-    static String sendName = "30 Phút Tiếng Anh Mỗi Ngày";
+    static String sendName = "Elight Learning English";
     //tieu de mail, lay title_send trong bang tbl_feed
-    static String title = "KHÔNG XEM ĐẢM BẢO TIẾC HÙI HỤI - Bộ tài liệu 500 mẫu câu giao tiếp khi đi phỏng vấn gồm";
+    static String title = "Bộ quà tặng dành riêng có các bạn đang lạc lối trên con đường học tiếng Anh và không biết bắt đầu từ đâu";
     //noi dung mail, lay trong content_send ra sửa đổi cho hợp lý, paste vào trang https://wordtohtml.net/ để xem trước
-    static String content = "<p style=\"text-align: justify;\">KH&Ocirc;NG XEM ĐẢM BẢO TIẾC H&Ugrave;I HỤI<br />Admin gửi c&aacute;c bạn <strong>Bộ t&agrave;i liệu 500 mẫu c&acirc;u giao tiếp khi đi phỏng vấn</strong></p>\n" +
-"<p style=\"text-align: justify;\"><br />C&aacute;c bạn click v&agrave;o <a href=\"http://bit.ly/2iizyRp\"><span style=\"color: #ff0000;\"><strong>Đ&Acirc;Y</strong></span></a> download t&agrave;i liệu về học dần nh&eacute; ❤️</p>\n" +
-"<p style=\"text-align: justify;\">Ch&uacute; &yacute;: admin chỉ để link cho 500 bạn download nhanh nhất th&ocirc;i nha, đạt 500 lượt download admin sẽ ẩn link đ&oacute;</p>\n" +
-"<p style=\"text-align: justify;\">Đừng qu&ecirc;n</p>\n" +
-"<p style=\"text-align: justify;\">Đăng k&yacute; k&ecirc;nh youtube: <a href=\"http://bit.ly/2z6n8X1\"><strong><span style=\"color: #ff0000;\">Tiếng Anh Cho Người Việt</span></strong></a></p>\n" +
-"<p style=\"text-align: justify;\">Like, Share Fanpage:&nbsp;<a href=\"http://bit.ly/2iMwgcW\"><strong><span style=\"color: #0000ff;\">Tiếng Anh Cho Người Việt</span></strong></a></p>\n" +
-"<p style=\"text-align: justify;\">Để được ưu ti&ecirc;n gửi mail nhanh nhất sớm nhất tất tần tật c&aacute;c t&agrave;i liệu tiếng anh của ch&uacute;ng t&ocirc;i</p>\n" +
-"<p style=\"text-align: justify;\">Xin ch&acirc;n th&agrave;nh cảm ơn c&aacute;c bạn đ&atilde; ủng hộ ch&uacute;ng t&ocirc;i trong suốt thời gian qua!</p>";
+    static String content = "<p style=\"text-align: center;\"><em><strong>C&ograve;n bạn n&agrave;o chưa nhận được t&agrave;i liệu của Elight Learning English kh&ocirc;ng?</strong></em></p>\n" +
+"<p style=\"text-align: justify;\">👉 BỘ T&Agrave;I LIỆU \"GỐI ĐẦU GIƯỜNG\" CỦA C&Aacute;C CAO THỦ TIẾNG ANH TỪ CƠ BẢN ĐẾN N&Acirc;NG CAO</p>\n" +
+"<p style=\"text-align: justify;\">👉 Bộ t&agrave;i liệu BAO GỒM:<br />1. PHƯƠNG PH&Aacute;P HỌC TIẾNG ANH CHO NGƯỜI MỚI BẮT ĐẦU<br />2. TẤT TẦN TẬT NHỮNG BỘ T&Agrave;I LIỆU \"Đ&Aacute;NG ĐỒNG TIỀN B&Aacute;T GẠO\" m&agrave; bạn c&oacute; thể bỏ c&ocirc;ng sức để học.</p>\n" +
+"<p style=\"text-align: justify;\">Nếu chưa nhận được t&agrave;i liệu c&aacute;c bạn click v&ocirc; <span style=\"color: #ff0000; background-color: #ffffff;\"><strong><a style=\"background-color: #ffffff; color: #ff0000;\" href=\"http://bit.ly/2z6n8X1\">Đ&Acirc;Y</a></strong></span> để download t&agrave;i liệu nh&eacute;! C&oacute; rất nhiều t&agrave;i liệu để ch&uacute;ng ta học cả đời m&agrave; kh&ocirc;ng hết.</p>\n" +
+"<p style=\"text-align: justify;\"><strong>Ch&uacute; &yacute;</strong>: <span style=\"background-color: #ffff00;\">Danh s&aacute;ch t&agrave;i liệu ở phần m&ocirc; tả của mỗi video</span></p>\n" +
+"<p style=\"text-align: justify;\">Đăng k&yacute;, Like , Share k&ecirc;nh Youtube: <a href=\"http://bit.ly/2z6n8X1\"><strong><span style=\"color: #ff0000;\">Tiếng Anh Cho Người Việt</span></strong></a> , Fanpage: <strong><span style=\"color: #0000ff;\"><a style=\"color: #0000ff;\" href=\"http://bit.ly/2iMwgcW\">Tiếng Anh Cho Người Việt</a></span></strong> để theo d&otilde;i cập nhật c&aacute;c t&agrave;i liệu mới nhất từ k&ecirc;nh v&agrave; fanpage nha cả nh&agrave;!</p>\n" +
+"<p style=\"text-align: justify;\">Admin cảm ơn c&aacute;c bạn đ&atilde; ủng hộ!</p>";
 
     public static void main(String[] args) throws Exception {
-
+        //lay dia chi mail gui truyen vao tu cmd
+        String mailSend = args[0].trim();
         //test
-        //mail phai thuoc bang tbl_mail_send english.forvn30082017@gmail.com
-        String mailSend = "tienganhchonguoiviet.30082017.1@gmail.com";
+        //mail phai thuoc bang tbl_mail_send
+        //String mailSend = "coso7.mshoatoeic@gmail.com";
         //end test
         System.out.println("--------dia chi mail gui la: "+ mailSend);
         System.out.println("--------dia chi mail gui la: "+ mailSend);
         System.out.println("--------dia chi mail gui la: "+ mailSend);
         //lay email tu bai viet chua gui mail theo bai viet status_feed_mail=1, moi lan gui lay max 100 mail de gui
         //select * from tbl_mail where id in (select  id_tbl_mail from tbl_feed_mail where id_tbl_feed=38) and status_feed_mail=1 limit 100
-        //ArrayList<Mail> lst = MailDao.getMailFromTblFeed(idTblFeed, statusFeedMailSend, numMaxMailTo);
+        ArrayList<Mail> lst = MailDao.getMailFromTblFeed(idTblFeed, statusFeedMailSend, numMaxMailTo);
         //test
-        ArrayList<Mail> lst = new ArrayList<>();
-        Mail mx = new Mail();
-        mx.setEmail("tunglv9x@gmail.com");
-        lst.add(mx);
+//        ArrayList<Mail> lst = new ArrayList<>();
+//        Mail mx = new Mail();
+//        mx.setEmail("tunglv9x@gmail.com");
+//        lst.add(mx);
         //lay ra thong tin bai viet tu bang tbl_feed
         FeedEntity feedEntity = FeedEntityDao.getByFeed(idFeed);
         //lay tieu de, noi dung, link tai lieu o bang tbl_feed cua feed de gui mail
@@ -93,13 +93,13 @@ public class B3SendMailByFeedCMDTest {
         System.out.println("--------- Gui mail den danh sach gom: "+lst.size()+ " email!");
         System.out.println("--------- Gui mail den danh sach gom: "+lst.size()+ " email!");
         //test
-         sendMail(feedEntity.getId(), sendName, mailSend, title, content, lst, statusFeedMailSent);
+        //sendMail(feedEntity.getId(), sendName, mailSend, title, content, lst, statusFeedMailSent);
         //end test
-//        if(lst.size()>=100){
-//            sendMail(feedEntity.getId(), sendName, mailSend, title, content, lst, statusFeedMailSent);
-//        }else{
-//            System.out.println("--------chua co du 100 email de gui, so email hien tai cua bai viet chua gui la: "+lst.size());
-//        }
+        if(lst.size()>=100){
+            sendMail(feedEntity.getId(), sendName, mailSend, title, content, lst, statusFeedMailSent);
+        }else{
+            System.out.println("--------chua co du 100 email de gui, so email hien tai cua bai viet chua gui la: "+lst.size());
+        }
 
     }
 

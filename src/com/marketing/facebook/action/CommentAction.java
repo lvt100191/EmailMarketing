@@ -5,7 +5,7 @@
  */
 package com.marketing.facebook.action;
 
-import com.mail.marketing.http.ResponseUtil;
+import com.marketing.http.ResponseUtil;
 
 /**
  *

@@ -5,15 +5,15 @@
  */
 package com.marketing.facebook.action;
 
-import com.mail.marketing.config.Config;
-import com.mail.marketing.db.MailDao;
-import com.mail.marketing.entity.Mail;
+import coml.marketing.config.Config;
+import com.marketing.db.MailDao;
+import com.marketing.entity.Mail;
 import com.marketing.facebook.dto.Comment;
 import com.marketing.facebook.dto.Feed;
 import com.marketing.facebook.dto.Page;
 import com.marketing.facebook.dto.User;
-import com.mail.marketing.http.ResponseUtil;
-import com.mail.marketing.mail.EmailAction;
+import com.marketing.http.ResponseUtil;
+import com.marketing.mail.action.EmailAction;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

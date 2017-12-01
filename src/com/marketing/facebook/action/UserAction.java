@@ -5,9 +5,9 @@
  */
 package com.marketing.facebook.action;
 
-import com.mail.marketing.config.Config;
+import coml.marketing.config.Config;
 import com.marketing.facebook.dto.User;
-import com.mail.marketing.http.ResponseUtil;
+import com.marketing.http.ResponseUtil;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 

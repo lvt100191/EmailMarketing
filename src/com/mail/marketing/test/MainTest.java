@@ -5,14 +5,14 @@
  */
 package com.mail.marketing.test;
 
-import com.mail.marketing.db.FeedEntityDao;
-import com.mail.marketing.db.MailSendDao;
-import com.mail.marketing.entity.FeedEntity;
-import com.mail.marketing.entity.Mail;
-import com.mail.marketing.entity.MailSend;
+import com.marketing.db.FeedEntityDao;
+import com.marketing.db.MailSendDao;
+import com.marketing.entity.FeedEntity;
+import com.marketing.entity.Mail;
+import com.marketing.entity.MailSend;
 import com.marketing.facebook.action.CommentAction;
-import com.mail.marketing.http.ResponseUtil;
-import com.mail.marketing.mail.EmailAction;
+import com.marketing.http.ResponseUtil;
+import com.marketing.mail.action.EmailAction;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;

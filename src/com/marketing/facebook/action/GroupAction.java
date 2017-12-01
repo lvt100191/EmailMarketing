@@ -5,10 +5,10 @@
  */
 package com.marketing.facebook.action;
 
-import com.mail.marketing.config.Config;
+import coml.marketing.config.Config;
 import com.marketing.facebook.dto.Feed;
 import com.marketing.facebook.dto.Group;
-import com.mail.marketing.http.ResponseUtil;
+import com.marketing.http.ResponseUtil;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

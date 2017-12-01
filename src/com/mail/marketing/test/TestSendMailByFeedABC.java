@@ -5,16 +5,16 @@
  */
 package com.mail.marketing.test;
 
-import com.mail.marketing.db.FeedEntityDao;
-import com.mail.marketing.db.FeedMailDao;
-import com.mail.marketing.db.MailBlockDao;
-import com.mail.marketing.db.MailDao;
-import com.mail.marketing.db.MailSendDao;
-import com.mail.marketing.entity.FeedEntity;
-import com.mail.marketing.entity.Mail;
-import com.mail.marketing.entity.MailBlock;
-import com.mail.marketing.entity.MailSend;
-import com.mail.marketing.mail.EmailAction;
+import com.marketing.db.FeedEntityDao;
+import com.marketing.db.FeedMailDao;
+import com.marketing.db.MailBlockDao;
+import com.marketing.db.MailDao;
+import com.marketing.db.MailSendDao;
+import com.marketing.entity.FeedEntity;
+import com.marketing.entity.Mail;
+import com.marketing.entity.MailBlock;
+import com.marketing.entity.MailSend;
+import com.marketing.mail.action.EmailAction;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

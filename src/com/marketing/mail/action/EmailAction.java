@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mail.marketing.test;
+package com.marketing.mail.action;
 
 import coml.marketing.config.Config;
 import coml.marketing.config.Const;
 import com.marketing.db.MailDao;
 import com.marketing.entity.Mail;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,14 +35,19 @@ import javax.mail.internet.MimeMultipart;
  *
  * @author TUNGLV
  */
-public class SendListMailOutlook {
+public class EmailAction {
 
     //truong hop gui den nhieu email va update bang tbl_mail
     //truoc khi gui mail len trang https://wordtohtml.net/ soan html online để trình bày sau đó paste noi dung vao content
     //thay hinh  anh img trong package images
     public static void sendMultiEmail() throws Exception {
-        //mail outlook
-        String from = "mshoatoeic@outlook.com";
+        //gmail
+
+//        String from = "lazada.ohaythe@gmail.com";
+//        String pwd = "123456a@";
+//        String from = "m3.sonlv95@gmail.com";
+//        String pwd = "123456a@";
+        String from = "hoa.ms.toeic@gmail.com";
         String pwd = "123456a@";
         String title = Const.TITLE;
         String content = Const.CONTENT;
@@ -48,16 +55,16 @@ public class SendListMailOutlook {
         String numMail = Config.NUMBER_MAIL;
         String status = Config.STATUS_MAIL_SEND;
         String statusUpdate = Config.STATUS_MAIL_UPDATE;
-        ArrayList<Mail> lst = getListMail(status, numMail);
+        //ArrayList<Mail> lst = getListMail(status, numMail);
         //test mail thi set nhu nay
-//        ArrayList<Mail> lst = new ArrayList<>();
-//        Mail m = new Mail();
-//        m.setEmail("tunglv9x@gmail.com");
-//        lst.add(m);
+        ArrayList<Mail> lst = new ArrayList<>();
+        Mail m = new Mail();
+        m.setEmail("tunglv9x@gmail.com");
+        lst.add(m);
         //end test
         for (Mail to : lst) {
             try {
-                sendOutlookMail(from, pwd, to.getEmail(), title, content);
+                sendGmail(null, from, pwd, to.getEmail(), title, content);
                 System.out.println("tunglv gui toi mail" + to.getEmail() + " thanh cong");
                 //update status
                 to.setStatus(Integer.parseInt(statusUpdate));
@@ -70,17 +77,176 @@ public class SendListMailOutlook {
             }
         }
     }
-
+    //sendName: Tên sẽ hiển thị lên hộp thư đến thay vì hiển thị địa chỉ email 
     //mailSend: gmail gui
     //passwordMailSend: mat khau cua email gui
     //mailRecipient: dia chi email nhan
     //title: tieu de mail
     //content: noi dung mail
-    public static void sendGmail(String mailSend, String passwordMailSend, String mailRecipient, String title, String content) throws MessagingException, FileNotFoundException {
+    public static void sendGmail(String sendName, String mailSend, String passwordMailSend, String mailRecipient, String title, String content) throws MessagingException, FileNotFoundException, UnsupportedEncodingException {
         final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
         // Get a Properties object
         Properties props = System.getProperties();
         props.setProperty("mail.smtp.host", "smtp.gmail.com");
+        props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY);
+        props.setProperty("mail.smtp.socketFactory.fallback", "false");
+        props.setProperty("mail.smtp.port", "465");
+        props.setProperty("mail.smtp.socketFactory.port", "465");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.debug", "true");
+        props.put("mail.store.protocol", "pop3");
+        props.put("mail.transport.protocol", "smtp");
+        try {
+            Session session = null;
+            session = Session.getDefaultInstance(props,
+                    new Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    //chu y neu gap loi nay thi phai bat bao mat tren tai khoan mail google cho phep ung dung it bao mat hon Erreur d'envoi, cause: javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+                    return new PasswordAuthentication(mailSend, passwordMailSend);
+                }
+            });
+
+            // -- Create a new message --
+            MimeMessage msg = new MimeMessage(session);
+
+            // -- Set the FROM and TO fields --
+            InternetAddress senderAddress = new InternetAddress(mailSend);
+            if (sendName != null && sendName != "") {
+                senderAddress.setPersonal(sendName, "UTF-8");
+            }
+            msg.setFrom(senderAddress);
+            msg.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(mailRecipient, false));
+            //msg.setSubject(title);
+            msg.setSubject(title, "UTF-8");
+            //msg.setText(content);
+            // This mail has 2 part, the BODY and the embedded image
+            MimeMultipart multipart = new MimeMultipart("related");
+
+            // first part (the html)
+            BodyPart messageBodyPart = new MimeBodyPart();
+            String htmlText = content + "<img src=\"cid:image\">";
+            messageBodyPart.setContent(htmlText, "text/html;charset=utf-8");
+            // add it
+            multipart.addBodyPart(messageBodyPart);
+
+            File currentDirFile = new File(".");
+            String helper = currentDirFile.getAbsolutePath();
+            //projectPath C:\Users\PMDVCNTT\Documents\GitHub\EmailMarketing\
+            String projectPath = helper.substring(0, helper.length() - 1);
+            String folderImage = projectPath + "\\src\\images\\";
+            File folder = new File(folderImage);
+            File[] listOfFiles = folder.listFiles();
+            if (listOfFiles !=null && listOfFiles.length > 0) {
+                // second part (the image)
+                messageBodyPart = new MimeBodyPart();
+                DataSource fds = new FileDataSource(projectPath + "\\src\\images\\" + listOfFiles[0].getName());
+                messageBodyPart.setDataHandler(new DataHandler(fds));
+                messageBodyPart.setHeader("Content-ID", "<image>");
+                // add image to the multipart
+                multipart.addBodyPart(messageBodyPart);
+            }
+            // put everything together
+            msg.setContent(multipart);
+            msg.setSentDate(new Date());
+
+            Transport.send(msg);
+            //System.out.println("Message sent.");
+        } catch (MessagingException e) {
+            throw new MessagingException(e.getMessage());
+        }
+    }
+
+    //mailSend: outlook mail gui
+    //passwordMailSend: mat khau cua email gui
+    //mailRecipient: dia chi email nhan
+    //title: tieu de mail
+    //content: noi dung mail
+    //gap loi nay la do da gui qua so luong mail cho phep trong ngay
+    /*
+    tunglv gui toi mail: nguyenvantruong03111998@gmail.com bi loicom.sun.mail.smtp.SMTPSendFailedException:
+    554 5.2.0 STOREDRV.Submission.Exception:OutboundSpamException; 
+    Failed to process message due to a permanent exception with message WASCL 
+    UserAction verdict is not None. Actual verdict is RefuseQuota, ShowTierUpgrade.
+    OutboundSpamException: WASCL UserAction verdict is not None. 
+    Actual verdict is RefuseQuota, ShowTierUpgrade. <471579726.21.1507465985178.JavaMail.javamailuser@localhost> 
+    [Hostname=KL1PR04MB1686.apcprd04.prod.outlook.com]
+     */
+    public static void sendOutlookMail(String mailSend, String passwordMailSend, String mailRecipient, String title, String content) throws MessagingException, FileNotFoundException {
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "outlook.office365.com");
+        //hien tai chua ho tro gui mail co dinh dang @outlook.com.vn
+//        if (mailSend.contains("@outlook.com.vn")) {
+//            props.put("mail.smtp.host", "outlook.office365.com.vn");
+//        }
+
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(mailSend, passwordMailSend);
+            }
+        });
+
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(mailSend));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(mailRecipient));
+            message.setSubject(title);
+            // message.setText("Ms.Hoa Toeic xin chào các em!");
+            MimeMultipart multipart = new MimeMultipart("related");
+
+            // first part (the html)
+            BodyPart messageBodyPart = new MimeBodyPart();
+            String htmlText = content + "<img src=\"cid:image\">";
+            messageBodyPart.setContent(htmlText, "text/html;charset=utf-8");
+            // add it
+            multipart.addBodyPart(messageBodyPart);
+
+            File currentDirFile = new File(".");
+            String helper = currentDirFile.getAbsolutePath();
+            //projectPath C:\Users\PMDVCNTT\Documents\GitHub\EmailMarketing\
+            String projectPath = helper.substring(0, helper.length() - 1);
+            String folderImage = projectPath + "\\src\\images\\";
+            File folder = new File(folderImage);
+            File[] listOfFiles = folder.listFiles();
+            if (listOfFiles.length > 0) {
+                // second part (the image)
+                messageBodyPart = new MimeBodyPart();
+                DataSource fds = new FileDataSource(projectPath + "\\src\\images\\" + listOfFiles[0].getName());
+                messageBodyPart.setDataHandler(new DataHandler(fds));
+                messageBodyPart.setHeader("Content-ID", "<image>");
+                // add image to the multipart
+                multipart.addBodyPart(messageBodyPart);
+            }
+
+            // put everything together
+            message.setContent(multipart);
+            message.setSentDate(new Date());
+            Transport.send(message);
+
+            System.out.println("Done");
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //mailSend: zoho mail gui
+    //passwordMailSend: mat khau cua email gui
+    //mailRecipient: dia chi email nhan
+    //title: tieu de mail
+    //content: noi dung mail
+    public static void sendZohoMail(String mailSend, String passwordMailSend, String mailRecipient, String title, String content) throws MessagingException, FileNotFoundException {
+        final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
+        // Get a Properties object
+        Properties props = System.getProperties();
+        props.setProperty("mail.smtp.host", "smtp.zoho.com");
         props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY);
         props.setProperty("mail.smtp.socketFactory.fallback", "false");
         props.setProperty("mail.smtp.port", "465");
@@ -117,15 +283,22 @@ public class SendListMailOutlook {
             // add it
             multipart.addBodyPart(messageBodyPart);
 
-            // second part (the image)
-            messageBodyPart = new MimeBodyPart();
-            DataSource fds = new FileDataSource("..\\EmailMarketing\\src\\images\\img.PNG");
-
-            messageBodyPart.setDataHandler(new DataHandler(fds));
-            messageBodyPart.setHeader("Content-ID", "<image>");
-
-            // add image to the multipart
-            multipart.addBodyPart(messageBodyPart);
+            File currentDirFile = new File(".");
+            String helper = currentDirFile.getAbsolutePath();
+            //projectPath C:\Users\PMDVCNTT\Documents\GitHub\EmailMarketing\
+            String projectPath = helper.substring(0, helper.length() - 1);
+            String folderImage = projectPath + "\\src\\images\\";
+            File folder = new File(folderImage);
+            File[] listOfFiles = folder.listFiles();
+            if (listOfFiles.length > 0) {
+                // second part (the image)
+                messageBodyPart = new MimeBodyPart();
+                DataSource fds = new FileDataSource(projectPath + "\\src\\images\\" + listOfFiles[0].getName());
+                messageBodyPart.setDataHandler(new DataHandler(fds));
+                messageBodyPart.setHeader("Content-ID", "<image>");
+                // add image to the multipart
+                multipart.addBodyPart(messageBodyPart);
+            }
 
             // put everything together
             msg.setContent(multipart);
@@ -134,74 +307,6 @@ public class SendListMailOutlook {
             //System.out.println("Message sent.");
         } catch (MessagingException e) {
             throw new MessagingException(e.getMessage());
-        }
-    }
-
-    //mailSend: outlook mail gui
-    //passwordMailSend: mat khau cua email gui
-    //mailRecipient: dia chi email nhan
-    //title: tieu de mail
-    //content: noi dung mail
-    //gap loi nay la do da gui qua so luong mail cho phep trong ngay
-    /*
-    tunglv gui toi mail: nguyenvantruong03111998@gmail.com bi loicom.sun.mail.smtp.SMTPSendFailedException:
-    554 5.2.0 STOREDRV.Submission.Exception:OutboundSpamException; 
-    Failed to process message due to a permanent exception with message WASCL 
-    UserAction verdict is not None. Actual verdict is RefuseQuota, ShowTierUpgrade.
-    OutboundSpamException: WASCL UserAction verdict is not None. 
-    Actual verdict is RefuseQuota, ShowTierUpgrade. <471579726.21.1507465985178.JavaMail.javamailuser@localhost> 
-    [Hostname=KL1PR04MB1686.apcprd04.prod.outlook.com]
-    */
-    public static void sendOutlookMail(String mailSend, String passwordMailSend, String mailRecipient, String title, String content) throws MessagingException, FileNotFoundException {
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "outlook.office365.com");
-        props.put("mail.smtp.port", "587");
-
-        Session session = Session.getInstance(props,
-                new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(mailSend, passwordMailSend);
-            }
-        });
-
-        try {
-
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(mailSend));
-            message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(mailRecipient));
-            message.setSubject(title);
-            // message.setText("Ms.Hoa Toeic xin chào các em!");
-            MimeMultipart multipart = new MimeMultipart("related");
-
-            // first part (the html)
-            BodyPart messageBodyPart = new MimeBodyPart();
-            String htmlText = content + "<img src=\"cid:image\">";
-            messageBodyPart.setContent(htmlText, "text/html;charset=utf-8");
-            // add it
-            multipart.addBodyPart(messageBodyPart);
-
-            // second part (the image)
-            messageBodyPart = new MimeBodyPart();
-            DataSource fds = new FileDataSource("..\\EmailMarketing\\src\\images\\img.PNG");
-
-            messageBodyPart.setDataHandler(new DataHandler(fds));
-            messageBodyPart.setHeader("Content-ID", "<image>");
-
-            // add image to the multipart
-            multipart.addBodyPart(messageBodyPart);
-
-            // put everything together
-            message.setContent(multipart);
-            message.setSentDate(new Date());
-            Transport.send(message);
-
-            System.out.println("Done");
-
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
         }
     }
 
@@ -243,4 +348,5 @@ public class SendListMailOutlook {
     public static void main(String[] args) throws SQLException, Exception {
         sendMultiEmail();
     }
+
 }
