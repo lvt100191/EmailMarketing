@@ -22,12 +22,13 @@ import org.apache.commons.io.FileUtils;
  * @author TUNGLV
  */
 public class CheckMailAddress {
-
+    //truoc khi RUN truyen vao danh sach mail can check trong file
+    //EmailMarketing\\src\\kiem_tra_danh_sach_mail_nhan.txt
     public static void main(String[] args) throws IOException {
         String listMailAddressValid = "";
         String listMailAddressInValid = "";
         //doc file txt danh sach dia chi mail can kiem tra dia chi - trỏ đúng đường dẫn
-        String filePath = "C:\\Users\\TUNGLV\\Desktop\\mail.txt";
+        String filePath = "..\\EmailMarketing\\src\\kiem_tra_danh_sach_mail_nhan.txt";
         File file = new File(filePath);
         for (String line : FileUtils.readLines(file)) {
             if (line.contains("@gmail.com")) {
@@ -64,8 +65,8 @@ public class CheckMailAddress {
         }
         //dia chi mail hop le la dia chi chua bi chan trong bang tbl_mail_blocked
         //dung dinh dang gmail
-        System.out.println("dia chi mail hop le: \n" + listMailAddressValid);
-        System.out.println("dia chi mail ko hop le: \n" + listMailAddressInValid);
+        System.out.println("==============DIA CHI MAIL HOP LE===================: \n" + listMailAddressValid);
+        System.out.println("==============DIA CHI MAIL KHONG HOP LE=============: \n" + listMailAddressInValid);
     }
 
     private static boolean checkAddressMail(String mail) {
