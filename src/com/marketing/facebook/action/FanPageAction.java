@@ -5,7 +5,7 @@
  */
 package com.marketing.facebook.action;
 
-import coml.marketing.config.Config;
+import com.marketing.config.Config;
 import com.marketing.db.MailDao;
 import com.marketing.entity.Mail;
 import com.marketing.facebook.dto.Comment;

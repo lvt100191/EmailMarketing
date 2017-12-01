@@ -1,4 +1,4 @@
-package com.mail.marketing.test;
+package com.marketing.test;
 
 import java.io.IOException;
 import java.util.Properties;

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mail.marketing.test;
+package com.marketing.test;
 
-import coml.marketing.config.Config;
-import coml.marketing.config.Const;
+import com.marketing.config.Config;
+import com.marketing.config.Const;
 import com.marketing.db.MailDao;
 import com.marketing.entity.Mail;
 import java.io.FileNotFoundException;

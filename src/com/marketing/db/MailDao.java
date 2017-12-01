@@ -5,7 +5,7 @@
  */
 package com.marketing.db;
 
-import coml.marketing.config.Config;
+import com.marketing.config.Config;
 import com.marketing.entity.FeedMail;
 import com.marketing.entity.Mail;
 import java.sql.Connection;

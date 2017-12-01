@@ -5,7 +5,7 @@
  */
 package com.marketing.mail.cmd;
 
-import coml.marketing.config.Config;
+import com.marketing.config.Config;
 import com.marketing.db.FeedEntityDao;
 import com.marketing.db.FeedMailDao;
 import com.marketing.db.MailBlockDao;

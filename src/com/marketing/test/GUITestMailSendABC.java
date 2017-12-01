@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mail.marketing.test;
+package com.marketing.test;
 
 import com.marketing.db.FeedMailDao;
 import com.marketing.db.MailBlockDao;
@@ -11,7 +11,7 @@ import com.marketing.db.MailDao;
 import com.marketing.entity.Mail;
 import com.marketing.entity.MailBlock;
 import com.marketing.mail.action.EmailAction;
-import static com.mail.marketing.test.TestSendMailABC.sendMail;
+import static com.marketing.test.TestSendMailABC.sendMail;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

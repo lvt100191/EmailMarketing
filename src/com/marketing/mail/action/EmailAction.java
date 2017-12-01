@@ -5,8 +5,8 @@
  */
 package com.marketing.mail.action;
 
-import coml.marketing.config.Config;
-import coml.marketing.config.Const;
+import com.marketing.config.Config;
+import com.marketing.config.Const;
 import com.marketing.db.MailDao;
 import com.marketing.entity.Mail;
 import java.io.File;

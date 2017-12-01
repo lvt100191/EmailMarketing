@@ -15,7 +15,7 @@ import com.marketing.entity.Mail;
 import com.marketing.entity.MailBlock;
 import com.marketing.entity.MailSend;
 import com.marketing.mail.action.EmailAction;
-import com.mail.marketing.test.GUITestMailSendABC;
+import com.marketing.test.GUITestMailSendABC;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

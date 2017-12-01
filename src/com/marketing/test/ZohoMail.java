@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mail.marketing.test;
+package com.marketing.test;
 
-import coml.marketing.config.Config;
-import coml.marketing.config.Const;
+import com.marketing.config.Config;
+import com.marketing.config.Const;
 import com.marketing.db.MailDao;
 import com.marketing.entity.Mail;
 import java.io.FileNotFoundException;
@@ -29,7 +29,36 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-public class ZohoMailListString {
+
+import com.marketing.config.Config;
+import com.marketing.config.Const;
+import com.marketing.db.MailDao;
+import com.marketing.entity.Mail;
+import java.io.FileNotFoundException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Properties;
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.Authenticator;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+
+/**
+ *
+ * @author TUNGLV
+ */
+public class ZohoMail {
 
     //truong hop gui den nhieu email va update bang tbl_mail
     //truoc khi gui mail len trang https://wordtohtml.net/ soan html online để trình bày sau đó paste noi dung vao content
@@ -52,15 +81,22 @@ public class ZohoMailListString {
         String numMail = Config.NUMBER_MAIL;
         String status = Config.STATUS_MAIL_SEND;
         String statusUpdate = Config.STATUS_MAIL_UPDATE;
-        String lst = "trungdu136@gmail.com;bichtuyetltb@gmail.com;nguyenminhcp221099@gmail.com;thanhhien2217@gmail.com;vothuhang.qn@gmail.com;hathutran30.01@gmail.com;hieunghia3112@gmail.com;trinhtayhoaphuyen@gmail.com;lien181297@gmail.com;kangtaeguk@gmail.com;thuan.9096@gmail.com;thehieu2912@gmail.com;trungtiennb@gmail.com;musawinx.936@gmail.com;gianglept98@gmail.com;nth040863@gmail.com;hunghust25@gmaik.com;";
-        String[] arr = lst.split(";");
-        for (String to : arr) {
+        ArrayList<Mail> lst = getListMail(status, numMail);
+        //test mail thi set nhu nay
+//        ArrayList<Mail> lst = new ArrayList<>();
+//        Mail m = new Mail();
+//        m.setEmail("tunglv9x@gmail.com");
+//        lst.add(m);
+        //end test
+        for (Mail to : lst) {
             try {
-                sendZohoMail(from, pwd, to, title, content);
-                System.out.println("tunglv gui toi mail" + to + " thanh cong");
-
+                sendZohoMail(from, pwd, to.getEmail(), title, content);
+                System.out.println("tunglv gui toi mail" + to.getEmail() + " thanh cong");
+                //update status
+                to.setStatus(Integer.parseInt(statusUpdate));
+                MailDao.updateMail(to);
             } catch (Exception e) {
-                System.out.println("tunglv gui toi mail: " + to + " bi loi" + e.getMessage());
+                System.out.println("tunglv gui toi mail: " + to.getEmail() + " bi loi" + e.getMessage());
                 if (e.getMessage() != null && e.getMessage() != "" && e.getMessage().contains("550 5.4.5 Daily user sending quota exceeded")) {
                     throw new Exception("Email da gui qua so luong cho phep trong ngay");
                 }
@@ -73,10 +109,6 @@ public class ZohoMailListString {
     //mailRecipient: dia chi email nhan
     //title: tieu de mail
     //content: noi dung mail
-    //gap loi nay la do da gui qua so luong mail cho phep
-    /*
-    com.sun.mail.smtp.SMTPSendFailedException: 550 5.4.6 Unusual sending activity detected. Please try after sometime. <a href=https://www.zoho.com/mail/help/usage-policy.html target=_blank>Learn more.</a>
-    */
     public static void sendZohoMail(String mailSend, String passwordMailSend, String mailRecipient, String title, String content) throws MessagingException, FileNotFoundException {
         final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
         // Get a Properties object
@@ -245,6 +277,5 @@ public class ZohoMailListString {
         sendMultiEmail();
     }
 }
-
 
 

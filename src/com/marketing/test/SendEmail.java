@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mail.marketing.test;
+package com.marketing.test;
 
 import com.marketing.mail.ui.DashBoard;
 import com.marketing.db.MailDao;

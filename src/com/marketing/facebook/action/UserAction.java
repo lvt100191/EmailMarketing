@@ -5,7 +5,7 @@
  */
 package com.marketing.facebook.action;
 
-import coml.marketing.config.Config;
+import com.marketing.config.Config;
 import com.marketing.facebook.dto.User;
 import com.marketing.http.ResponseUtil;
 import org.json.simple.JSONObject;

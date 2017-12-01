@@ -5,7 +5,7 @@
  */
 package com.marketing.facebook.action;
 
-import coml.marketing.config.Config;
+import com.marketing.config.Config;
 import com.marketing.facebook.dto.Feed;
 import com.marketing.facebook.dto.Group;
 import com.marketing.http.ResponseUtil;

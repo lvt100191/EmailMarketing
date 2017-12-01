@@ -5,7 +5,7 @@
  */
 package com.marketing.db;
 
-import coml.marketing.config.Config;
+import com.marketing.config.Config;
 import com.marketing.entity.FaceBook;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
