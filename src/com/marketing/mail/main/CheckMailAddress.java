@@ -22,6 +22,7 @@ import org.apache.commons.io.FileUtils;
  * @author TUNGLV
  */
 public class CheckMailAddress {
+
     //truoc khi RUN truyen vao danh sach mail can check trong file
     //EmailMarketing\\src\\kiem_tra_danh_sach_mail_nhan.txt
     public static void main(String[] args) throws IOException {
@@ -48,8 +49,9 @@ public class CheckMailAddress {
                             mail = mail.toLowerCase();
                         }
                         if (!checkMailBlock(mail) && checkAddressMail(mail)) {
-                            listMailAddressValid = listMailAddressValid + mail + "\n";
-
+                            if (!listMailAddressValid.contains(mail)) {
+                                listMailAddressValid = listMailAddressValid + mail + "\n";
+                            }
                         } else {
                             listMailAddressInValid = listMailAddressInValid + line + "\n";
                         }
