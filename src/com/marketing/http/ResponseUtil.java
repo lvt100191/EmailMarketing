@@ -102,6 +102,7 @@ public class ResponseUtil
         HttpURLConnection httpConnection = (HttpURLConnection) urlCon;
         httpConnection.setRequestMethod("POST");
         httpConnection.setRequestProperty("Content-Type", "application/json");
+     
         //httpConnection.setRequestProperty("Content-Length", Integer.toString(request.length()));
         httpConnection.setConnectTimeout(Integer.parseInt(timeout));
         httpConnection.setReadTimeout(Integer.parseInt(timeout));

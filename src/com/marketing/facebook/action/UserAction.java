@@ -18,7 +18,7 @@ import org.json.simple.parser.JSONParser;
 public class UserAction {
 
     //lay user theo token
-    public User getUserByToken(String token) throws Exception {
+    public static User getUserByToken(String token) throws Exception {
         User user = new User();
         try {
 
@@ -56,28 +56,27 @@ public class UserAction {
         }
     }
 
-    //post bai len trang ca nhan
+    //post bai len trang ca nhan của chính mình
     //token: ma truy nhap cua user developer
     //userID: id cua user
     //msg: noi dung bai post len trang
-    public void postFeed(String token, String userID, String msg) throws Exception {
+    public static String postFeed(String token, String userID, String msg) throws Exception {
         try {
-            String urlPostFeed = "https://graph.facebook.com/v2.10/" + userID + "/feed?message=" + msg + "&access_token=" + token;
+            String urlPostFeed = "https://graph.facebook.com/" + userID + "/feed?message=" + msg + "&access_token=" + token;
             ResponseUtil responseUtil = new ResponseUtil();
-            responseUtil.sendPost(urlPostFeed);
+            String rs = responseUtil.sendPost(urlPostFeed);
+            return rs;
         } catch (Exception e) {
             throw new Exception("getPageUserLikes error: " + e.getMessage());
         }
     }
 
     public static void main(String[] args) throws Exception {
-        Config cfg = new Config();
-        String token = cfg.USER_ACCESS_TOKEN;
-        UserAction userAction = new UserAction();
-        //lay thong tin user
-        User u = userAction.getUserByToken(token);
+        String token="EAACEdEose0cBAMWrgvlWWxNJhd1CpuECHZBJvUK2Yhtx3ZAAZAwzRsb3deS5aNq7rZAeBoFslGgdL48rDKqZAGl4IY4hZCrO44r5hyCaUJxUjK8KFZAZA1Q95MFBiHHTpRSRS1hLZAKoosLeVwqtBaZC6rv4sutZA5rSSJ03A7JRGOLC4swULo8VItKTdzlrGGEvh8ZD";
+  User u = getUserByToken(token);
+        String rs= postFeed(token,"100007282699326","tienganhchobe");
   
-        System.out.println("=========================thuc hien thanh cong");
+        System.out.println("=========================ket qua thuc hien"+rs);
 
     }
 

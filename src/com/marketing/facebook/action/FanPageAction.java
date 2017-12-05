@@ -299,19 +299,6 @@ public class FanPageAction {
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        FanPageAction fanPage = new FanPageAction();
-        Config cfg = new Config();
-        String token = cfg.USER_ACCESS_TOKEN;
-
-        //lay thong tin email tu binh luan insert vao DB
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date fromDate = sdf.parse("2017-10-06");
-        fanPage.getEmailInComments(token, fromDate);
-
-        System.out.println("thuc hien thanh cong");
-    }
-
     public String getMemberOfFanPage(String idFacebook, String token) throws Exception {
         String numMember = null;
         JSONParser parser = null;
@@ -321,5 +308,11 @@ public class FanPageAction {
         JSONObject obj = (JSONObject) parser.parse(rsJson);
         numMember = obj.get("fan_count").toString();
         return numMember;
+    }
+
+    public static void main(String[] args) throws Exception {
+  String rs="";
+
+        System.out.println("ket qua thuc thi: "+rs);
     }
 }
