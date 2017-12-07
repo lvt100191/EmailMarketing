@@ -43,6 +43,7 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btAddEmailBlocked" pref="182" max="32767" attributes="0"/>
                           <Component id="btCheckMailSend" max="32767" attributes="0"/>
+                          <Component id="btCheckMailRecipent" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -66,7 +67,10 @@
                   <Component id="jButton1" pref="52" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jButton3" min="-2" pref="55" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jButton3" min="-2" pref="55" max="-2" attributes="0"/>
+                  <Component id="btCheckMailRecipent" min="-2" pref="55" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="btSendMail" pref="49" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
@@ -129,6 +133,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCheckMailSendActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btCheckMailRecipent">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ki&#x1ec3;m tra mail nh&#x1ead;n"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCheckMailRecipentActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

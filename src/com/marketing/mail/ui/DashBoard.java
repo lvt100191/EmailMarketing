@@ -40,6 +40,7 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btSendMail = new javax.swing.JButton();
         btCheckMailSend = new javax.swing.JButton();
+        btCheckMailRecipent = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bảng điều khiển");
@@ -89,6 +90,13 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
+        btCheckMailRecipent.setText("Kiểm tra mail nhận");
+        btCheckMailRecipent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCheckMailRecipentActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,7 +117,8 @@ public class DashBoard extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btAddEmailBlocked, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                            .addComponent(btCheckMailSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btCheckMailSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btCheckMailRecipent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -126,7 +135,9 @@ public class DashBoard extends javax.swing.JFrame {
                     .addComponent(btCheckMailSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btCheckMailRecipent, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(btSendMail, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                 .addGap(41, 41, 41))
@@ -136,8 +147,8 @@ public class DashBoard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       this.dispose();
-       new AddFanpageOrGroup();
+        this.dispose();
+        new AddFanpageOrGroup();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -164,9 +175,15 @@ public class DashBoard extends javax.swing.JFrame {
     }//GEN-LAST:event_btSendMailActionPerformed
 
     private void btCheckMailSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCheckMailSendActionPerformed
-       this.dispose();
-       new CheckMailSend();
+        this.dispose();
+        new CheckMailSend();
     }//GEN-LAST:event_btCheckMailSendActionPerformed
+
+    private void btCheckMailRecipentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCheckMailRecipentActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new CheckMailRecipientAddress();
+    }//GEN-LAST:event_btCheckMailRecipentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,6 +222,7 @@ public class DashBoard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAddEmailBlocked;
+    private javax.swing.JButton btCheckMailRecipent;
     private javax.swing.JButton btCheckMailSend;
     private javax.swing.JButton btSendMail;
     private javax.swing.JButton jButton1;
