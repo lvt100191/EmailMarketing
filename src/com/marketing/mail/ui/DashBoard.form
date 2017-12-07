@@ -32,20 +32,19 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btSendMail" min="-2" pref="179" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton2" max="32767" attributes="0"/>
-                          <Component id="jButton1" pref="182" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btAddEmailBlocked" pref="182" max="32767" attributes="0"/>
-                          <Component id="btCheckMailSend" max="32767" attributes="0"/>
-                          <Component id="btCheckMailRecipent" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jButton2" max="32767" attributes="0"/>
+                      <Component id="jButton1" pref="182" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="btSendMail" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btAddEmailBlocked" pref="182" max="32767" attributes="0"/>
+                  <Component id="btCheckMailSend" max="32767" attributes="0"/>
+                  <Component id="btCheckMailRecipent" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btUpdateStatusTblMail" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
@@ -72,7 +71,10 @@
                   <Component id="btCheckMailRecipent" min="-2" pref="55" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="btSendMail" pref="49" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btSendMail" pref="49" max="32767" attributes="0"/>
+                  <Component id="btUpdateStatusTblMail" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -141,6 +143,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCheckMailRecipentActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btUpdateStatusTblMail">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Update tr&#x1ea1;ng th&#xe1;i TBL MAIL"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btUpdateStatusTblMailActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

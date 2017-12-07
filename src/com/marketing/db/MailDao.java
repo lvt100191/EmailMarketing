@@ -221,6 +221,32 @@ public class MailDao {
         }
 
     }
+        //update status theo dia chi mail
+    public static void updateStatusByMail(Mail mail) throws SQLException, Exception {
+        Connection c = null;
+        PreparedStatement pst = null;
+
+        try {
+            c = DBUtil.connectDB(Config.DB_NAME);
+
+            String query = "UPDATE  " + Mail.TABLE_NAME
+                    + " SET STATUS = ? WHERE EMAIL= ?; ";
+            pst = c.prepareStatement(query);
+            pst.setInt(1, mail.getStatus());
+            pst.setString(2, mail.getEmail());
+            pst.executeUpdate();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            if (pst != null) {
+                pst.close();
+            }
+            if (c != null) {
+                c.close();
+            }
+        }
+
+    }
 
     //lay so luong toan bo email trong bang tbl_mail
     public static int count() throws SQLException, Exception {
